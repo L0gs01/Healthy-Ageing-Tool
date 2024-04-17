@@ -9,6 +9,7 @@ import pandas as pd
 from pandas import DataFrame
 import plotly.express as px
 import plotly.graph_objects as go
+import plotly.graph_objects as go
 
 
 # This is a server module. It runs on the Anvil server,
@@ -63,7 +64,7 @@ selection_education = df_selectedvariables.at[0,"education"]
 
 if selection_initialrank == 'Good':
     selection_initialrank = 'good'
-if selection_initialrank == 'Bad':
+if selection_initialrank == 'Poor':
     selection_initialrank = 'bad'
 if selection_initialrank == 'Fair':
     selection_initialrank = 'fair'
@@ -147,21 +148,8 @@ print(df_final)
 
 @anvil.server.callable
 def create_fig_initial():
-  data = df_final
-  fig1 = go.Figure(
-    data = [ go.Bar(
-            name="Initial Values",
-            x=data["ACTIVITY"],
-            y=data["initial_value"],
-        ),
-    ],
-    layout=go.Layout(
-        title="initial Values",
-        yaxis_title="Value"
-    )
-    )
-  fig1.show()
-  
+  fig = px.bar(df_final, x='ACTIVITY', y='initial_value')
+  fig.show()
 @anvil.server.callable
 def create_fig_adjusted():
   data = df_final

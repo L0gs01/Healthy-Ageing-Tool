@@ -109,8 +109,14 @@ class Homepage(HomepageTemplate):
     anvil.server.call('get_variables')
     anvil.server.call('get_money')
     self.plots_card.visible=True
+    fig_initial = anvil.server.call('create_fig_initial') 
+    self.initial_plot.figure = fig_initial
     fig = anvil.server.call('create_fig_combo') 
     self.combo_plot.figure = fig
+    fig_adjusted = anvil.server.call('create_fig_adjusted')
+    self.adjusted_plot.figure = fig_adjusted
+
+
 
 
 
