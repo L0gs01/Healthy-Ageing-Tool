@@ -38,7 +38,7 @@ components:
     data_bindings:
     - {property: text, code: 'self.item[''employment'']'}
   - name: label_2
-    properties: {text: Initial Health}
+    properties: {text: Health Quality (Before)}
     type: Label
     layout_properties: {grid_position: 'OUXOHW,DMUJFE'}
   - name: initialrank_label
@@ -68,7 +68,7 @@ components:
     data_bindings:
     - {property: text, code: 'self.item[''country'']'}
   - name: label_3
-    properties: {text: Adjusted Health}
+    properties: {text: Health Quality (After)}
     type: Label
     layout_properties: {grid_position: 'IBWSTW,YZCOUC'}
   - name: adjustedrank_label
