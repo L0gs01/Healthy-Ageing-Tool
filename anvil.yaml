@@ -3,10 +3,38 @@ services:
 - source: /runtime/services/tables.yml
   client_config: {}
   server_config: {}
+- source: /runtime/services/anvil/files.yml
+  client_config: {}
+  server_config: {file_table: files}
 startup: {type: form, module: Homepage}
 package_name: M3_App_4
 allow_embedding: false
 name: M3 App 4
 runtime_options: {version: 2, client_version: '3', server_version: python3-full, server_spec: null}
 startup_form: null
+db_schema:
+  selectedvariables_i:
+    client: none
+    server: full
+    columns: []
+    title: SelectedVariables_I
+  moneyvalues:
+    client: none
+    server: full
+    columns: []
+    title: MoneyValues
+  files:
+    client: none
+    server: full
+    columns:
+    - name: path
+      admin_ui: {order: 0, width: 200}
+      type: string
+    - name: file
+      admin_ui: {order: 1, width: 200}
+      type: media
+    - name: file_version
+      admin_ui: {order: 2, width: 200}
+      type: string
+    title: Files
 renamed: true

@@ -1,5 +1,8 @@
 from ._anvil_designer import HomepageTemplate
 from anvil import *
+import anvil.tables as tables
+import anvil.tables.query as q
+from anvil.tables import app_tables
 
 class Homepage(HomepageTemplate):
   def __init__(self, **properties):
@@ -14,7 +17,9 @@ class Homepage(HomepageTemplate):
     variables= {}
     self.homepage_buttons.visible = False
     save_clicked = alert(
-      content = Individual_InitialSelection(item=variables),
+      content = individualinitial
+      
+      (item=variables),
       title = "Select Variables For Individual",
       large=True,
       buttons=[("Save", True), ("Cancel", False)],

@@ -1,0 +1,100 @@
+container: {type: ColumnPanel}
+components:
+- name: column_panel_1
+  properties: {role: elevated-card, tooltip: '', border: '', foreground: '', visible: true,
+    wrap_on: mobile, col_spacing: medium, spacing_above: small, col_widths: '{}',
+    spacing_below: small, background: ''}
+  type: ColumnPanel
+  layout_properties: {grid_position: 'UYFOYW,QDACNU'}
+  components:
+  - name: label_1
+    properties: {text: Name}
+    type: Label
+    layout_properties: {grid_position: 'IQZGOL,QMHRAS'}
+  - name: name_label
+    properties: {text: ''}
+    type: Label
+    layout_properties: {grid_position: 'IQZGOL,DRMJRN'}
+    data_bindings:
+    - {property: text, code: 'self.item[''name'']'}
+  - name: label_4
+    properties: {text: Age}
+    type: Label
+    layout_properties: {grid_position: 'IQZGOL,QIAJVT'}
+  - name: age_label
+    properties: {}
+    type: Label
+    layout_properties: {grid_position: 'IQZGOL,OQGLBJ'}
+    data_bindings:
+    - {property: text, code: 'self.item[''age'']'}
+  - name: label_8
+    properties: {text: Employment}
+    type: Label
+    layout_properties: {grid_position: 'IQZGOL,WNVCAI'}
+  - name: employment_label
+    properties: {}
+    type: Label
+    layout_properties: {grid_position: 'IQZGOL,UJMHLB'}
+    data_bindings:
+    - {property: text, code: 'self.item[''employment'']'}
+  - name: label_2
+    properties: {text: Initial Health}
+    type: Label
+    layout_properties: {grid_position: 'OUXOHW,DMUJFE'}
+  - name: initialrank_label
+    properties: {}
+    type: Label
+    layout_properties: {grid_position: 'OUXOHW,LRTAMH'}
+    data_bindings:
+    - {property: text, code: 'self.item[''initalrank'']'}
+  - name: label_5
+    properties: {text: Sex}
+    type: Label
+    layout_properties: {grid_position: 'OUXOHW,NUUEJY'}
+  - name: sex_label
+    properties: {}
+    type: Label
+    layout_properties: {grid_position: 'OUXOHW,VKKPEW'}
+    data_bindings:
+    - {property: text, code: 'self.item[''sex'']'}
+  - name: label_9
+    properties: {text: Country}
+    type: Label
+    layout_properties: {grid_position: 'OUXOHW,PQKYYZ'}
+  - name: country_label
+    properties: {}
+    type: Label
+    layout_properties: {grid_position: 'OUXOHW,OVOSFP'}
+    data_bindings:
+    - {property: text, code: 'self.item[''country'']'}
+  - name: label_3
+    properties: {text: Adjusted Health}
+    type: Label
+    layout_properties: {grid_position: 'IBWSTW,YZCOUC'}
+  - name: adjustedrank_label
+    properties: {}
+    type: Label
+    layout_properties: {grid_position: 'IBWSTW,PLIZHB'}
+    data_bindings:
+    - {property: text, code: 'self.item[''adjustedrank'']'}
+  - name: label_6
+    properties: {text: Martial Status}
+    type: Label
+    layout_properties: {grid_position: 'IBWSTW,PJOXAY'}
+  - name: maritalstatus_label
+    properties: {}
+    type: Label
+    layout_properties: {grid_position: 'IBWSTW,OEGDXQ'}
+    data_bindings:
+    - {property: text, code: 'self.item[''maritalstatus'']'}
+  - name: label_7
+    properties: {text: Education}
+    type: Label
+    layout_properties: {grid_position: 'IBWSTW,PFMDHU'}
+  - name: education_label
+    properties: {}
+    type: Label
+    layout_properties: {grid_position: 'IBWSTW,CUTGJD'}
+    data_bindings:
+    - {property: text, code: 'self.item[''education'']'}
+is_package: true
