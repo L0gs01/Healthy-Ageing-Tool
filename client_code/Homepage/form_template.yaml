@@ -1,0 +1,188 @@
+is_package: true
+container:
+  type: HtmlTemplate
+  properties: {html: '@theme:standard-page.html'}
+components:
+- type: ColumnPanel
+  properties: {col_widths: '{}'}
+  name: content_panel
+  layout_properties: {slot: default}
+  components:
+  - name: homepage_buttons
+    properties: {role: outlined-card}
+    type: ColumnPanel
+    layout_properties: {grid_position: 'VMJIJE,PYLYIE'}
+    event_bindings: {}
+    components:
+    - name: is_button_select
+      properties: {text: Individual, role: filled-button}
+      type: Button
+      layout_properties: {grid_position: 'OKJPYK,AFUQZS'}
+      event_bindings: {click: is_button_select_click}
+    - name: button_2
+      properties: {text: Population, role: filled-button}
+      type: Button
+      layout_properties: {grid_position: 'OKJPYK,QDZCHI'}
+  - name: individualhome_card
+    properties: {role: outlined-card, visible: false, col_widths: '{}'}
+    type: ColumnPanel
+    layout_properties: {grid_position: 'VIKFMX,SOXDGL'}
+    event_bindings: {show: individualhome_card_show}
+    components:
+    - name: initial_plot
+      properties: {}
+      type: Plot
+      layout_properties: {grid_position: 'JAMLXF,TYPBKA'}
+      event_bindings: {click: initial_plot_click}
+    - name: adjusted_plot
+      properties: {}
+      type: Plot
+      layout_properties: {grid_position: 'JAMLXF,QQHLEB'}
+    - name: combo_plot
+      properties: {}
+      type: Plot
+      layout_properties: {grid_position: 'UQVJCJ,BOEAWD'}
+    - name: variables_panel
+      properties: {role: elevated-card, tooltip: '', border: '', foreground: '', visible: true,
+        wrap_on: mobile, col_spacing: medium, spacing_above: small, col_widths: '{"YZCOUC":10,"PLIZHB":10,"PJOXAY":10,"OEGDXQ":10,"PFMDHU":20}',
+        spacing_below: small, background: ''}
+      type: ColumnPanel
+      layout_properties:
+        col_widths: {}
+        grid_position: NFENRC,XBEQAK
+      components:
+      - name: label_1_copy
+        properties: {text: 'Name:', align: right}
+        type: Label
+        layout_properties: {grid_position: 'IQZGOL,QMHRAS'}
+      - name: name_label
+        properties: {text: ''}
+        type: Label
+        layout_properties: {grid_position: 'IQZGOL,DRMJRN'}
+        data_bindings:
+        - {property: text, code: 'self.item[''name'']'}
+      - name: label_4
+        properties: {text: 'Age:', align: right}
+        type: Label
+        layout_properties: {grid_position: 'IQZGOL,QIAJVT'}
+      - name: age_label
+        properties: {}
+        type: Label
+        layout_properties: {grid_position: 'IQZGOL,OQGLBJ'}
+        data_bindings:
+        - {property: text, code: 'self.item[''age'']'}
+      - name: label_8
+        properties: {text: 'Employment:', align: right}
+        type: Label
+        layout_properties: {grid_position: 'IQZGOL,WNVCAI'}
+      - name: employment_label
+        properties: {}
+        type: Label
+        layout_properties: {grid_position: 'IQZGOL,UJMHLB'}
+        data_bindings:
+        - {property: text, code: 'self.item[''employment'']'}
+      - name: label_2
+        properties: {text: 'Initial Health:', align: right}
+        type: Label
+        layout_properties: {grid_position: 'OUXOHW,DMUJFE'}
+      - name: initialrank_label
+        properties: {}
+        type: Label
+        layout_properties: {grid_position: 'OUXOHW,LRTAMH'}
+        data_bindings:
+        - {property: text, code: 'self.item[''initalrank'']'}
+      - name: label_5
+        properties: {text: 'Sex:', align: right}
+        type: Label
+        layout_properties: {grid_position: 'OUXOHW,NUUEJY'}
+      - name: sex_label
+        properties: {}
+        type: Label
+        layout_properties: {grid_position: 'OUXOHW,VKKPEW'}
+        data_bindings:
+        - {property: text, code: 'self.item[''sex'']'}
+      - name: label_7
+        properties: {text: 'Education:', align: right}
+        type: Label
+        layout_properties: {grid_position: 'OUXOHW,ZIHUVO'}
+      - name: education_label
+        properties: {}
+        type: Label
+        layout_properties: {grid_position: 'OUXOHW,CBUTHH'}
+        data_bindings:
+        - {property: text, code: 'self.item[''education'']'}
+      - name: label_3
+        properties: {text: 'Adjusted Health:', align: right}
+        type: Label
+        layout_properties: {grid_position: 'IBWSTW,YZCOUC'}
+      - name: adjustedrank_label
+        properties: {}
+        type: Label
+        layout_properties: {grid_position: 'IBWSTW,PLIZHB'}
+        data_bindings:
+        - {property: text, code: 'self.item[''adjustedrank'']'}
+      - name: label_6
+        properties: {text: 'Martial Status:', align: right}
+        type: Label
+        layout_properties: {grid_position: 'IBWSTW,PJOXAY'}
+      - name: maritalstatus_label
+        properties: {}
+        type: Label
+        layout_properties: {grid_position: 'IBWSTW,OEGDXQ'}
+        data_bindings:
+        - {property: text, code: 'self.item[''maritalstatus'']'}
+      - name: label_9
+        properties: {text: 'Country:', role: null, align: right}
+        type: Label
+        layout_properties: {grid_position: 'IBWSTW,PFMDHU TQFUUB,KIUIET'}
+      - name: country_label
+        properties: {}
+        type: Label
+        layout_properties: {grid_position: 'IBWSTW,PFMDHU TQFUUB,DUZCTK'}
+        data_bindings:
+        - {property: text, code: 'self.item[''country'']'}
+    - name: is_edit_button
+      properties: {text: Edit Variable Selection, role: filled-button}
+      type: Button
+      layout_properties: {grid_position: 'LXDSPI,HJLRDN'}
+      event_bindings: {click: is_edit_button_click}
+    - name: is_money_button
+      properties: {text: Modify Money Values, role: filled-button}
+      type: Button
+      layout_properties: {grid_position: 'LXDSPI,ELEMMH'}
+      event_bindings: {click: is_money_button_click}
+    - name: button_1
+      properties: {text: Test Var Button (ADIMIN USE), role: outlined-button}
+      type: Button
+      layout_properties: {grid_position: 'LXDSPI,ORVQTR'}
+      event_bindings: {click: button_1_click}
+- type: FlowPanel
+  properties: {}
+  name: navbar_links
+  layout_properties: {slot: nav-right}
+- name: nav_panel
+  properties: {role: tonal-card}
+  type: ColumnPanel
+  layout_properties: {slot: left-nav}
+  components:
+  - name: nav_title
+    properties: {bold: true, text: Navigation, underline: true, align: center, role: body}
+    type: Label
+    layout_properties: {grid_position: 'IMHDKS,VYRAPO'}
+  - name: homepage_navbutton
+    properties: {text: Homepage, role: outlined-button}
+    type: Button
+    layout_properties: {grid_position: 'ABNWUS,MFXPGD'}
+    event_bindings: {click: homepage_navbutton_click}
+  - name: individual_navbutton
+    properties: {text: Individual, role: outlined-button}
+    type: Button
+    layout_properties: {grid_position: 'USOCHD,FIUTMQ'}
+  - name: population_navbutton
+    properties: {text: Population, role: outlined-button}
+    type: Button
+    layout_properties: {grid_position: 'GZSVXT,CILYDC'}
+- name: label_1
+  properties: {text: Health Aging Tool, role: title}
+  type: Label
+  layout_properties: {slot: title}
