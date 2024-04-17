@@ -96,6 +96,7 @@ if selection_education == 'Secondary':
     selection_education = 'secondary_non_tertiary'
 if selection_education == 'Tertiary':
     selection_education = 'tertiary'
+
 #----------------------------------
 initial_filter_criteria = (df_predictedvalues['sph_rec_rel']==selection_initialrank)&(df_predictedvalues['age_rec_10y']==selection_age)&(df_predictedvalues['sex_rec']==selection_sex)&(df_predictedvalues['marital_rec_rel']==selection_maritalstatus)&(df_predictedvalues['employment_rec']==selection_employment)&(df_predictedvalues['education_rec']==selection_education)
 df_initial = df_predictedvalues[initial_filter_criteria]
@@ -123,15 +124,32 @@ df_combo.drop(['combination_x','SE_x','combination_y','SE_y'],axis=1,inplace=Tru
 df_combo.set_index('ACTIVITY',inplace=True)
 #display(df_combo)
 
-housing_hourlyvalue = 15.4
-transport_hourlyvalue = 6.85
-nutrition_hourlyvalue = 3.56
-clothing_hourlyvalue = 0.91
-laundry_hourlyvalue = 12.29
-childcare_hourlyvalue = 4.90
-adultcare_hourlyvalue = 4.46
-voluntary_hourlyvalue = 11.63
-total_hourlyvalue = housing_hourlyvalue+transport_hourlyvalue+nutrition_hourlyvalue+clothing_hourlyvalue+laundry_hourlyvalue+childcare_hourlyvalue+adultcare_hourlyvalue+voluntary_hourlyvalue
+# money_housing = df_selectedmoney.at[0,'housing']
+# money_transport = df_selectedmoney.at[0,'transport']
+# money_nutrition = df_selectedmoney.at[0,'nutrition']
+# money_clothing = df_selectedmoney.at[0,'clothing']
+# money_laundry = df_selectedmoney.at[0,'laundry']
+# money_childcare = df_selectedmoney.at[0,'childcare']
+# money_adultcare = df_selectedmoney.at[0,'adultcare']
+# money_voluntaryactivity = df_selectedmoney.at[0,'voluntaryactivity']
+
+
+# if money_housing = '':
+#     money_housing = 15.4
+# if money_transport  = '':
+#     money_transport= 6.85
+# if money_nutrition  = '':
+#     money_nutrition= 3.56
+# if money_clothing  = '':
+#     money_clothing = 0.91
+# if money_laundry  = '':
+#     money_laundry= 12.29
+# if money_childcare  = '':
+#     money_childcare= 4.90
+# if money_adultcare  = '':
+#     money_adultcare= 4.46
+# if money_voluntaryactivity  = '':
+#     money_voluntaryactivity= 11.63
 
 hourly_data = [15.4,6.85,3.56,0.91,12.29,4.90,4.46,11.63]
 
@@ -139,8 +157,8 @@ df_hourlyvalue = DataFrame(data = hourly_data, columns = ['HourlyValue'])
 df_hourlyvalue.index =['Housing','Transport','Nutrition','Clothing','Laundry','ChildCare','AdultCare','Voluntary']
 #display(df_hourlyvalue)
 
-df_combo['initial_monthly'] = df_combo.initial_value * df_hourlyvalue.HourlyValue
-df_combo['adjusted_monthly'] = df_combo.adjusted_value * df_hourlyvalue.HourlyValue
+df_combo['initial_monthly'] = (df_combo.initial_value * df_hourlyvalue.HourlyValue)/60
+df_combo['adjusted_monthly'] = (df_combo.adjusted_value * df_hourlyvalue.HourlyValue)/60
 
 housing_difference = (df_combo.at['Housing',"adjusted_monthly"])-(df_combo.at['Housing',"initial_monthly"])
 transport_difference = (df_combo.at['Transport',"adjusted_monthly"])-(df_combo.at['Transport',"initial_monthly"])

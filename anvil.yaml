@@ -50,7 +50,7 @@ db_schema:
       admin_ui: {width: 200, order: 5}
       type: string
     - name: adultcare
-      admin_ui: {width: 200, order: 6}
+      admin_ui: {order: 6, width: 200}
       type: string
     - name: voluntaryactivity
       admin_ui: {width: 200, order: 7}
