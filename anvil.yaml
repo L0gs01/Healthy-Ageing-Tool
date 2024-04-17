@@ -13,16 +13,6 @@ name: M3 App 4
 runtime_options: {version: 2, client_version: '3', server_version: python3-full, server_spec: null}
 startup_form: null
 db_schema:
-  selectedvariables_i:
-    client: none
-    server: full
-    columns: []
-    title: SelectedVariables_I
-  moneyvalues:
-    client: none
-    server: full
-    columns: []
-    title: MoneyValues
   files:
     client: none
     server: full
@@ -37,4 +27,65 @@ db_schema:
       admin_ui: {order: 2, width: 200}
       type: string
     title: Files
+  moneyvalues:
+    client: full
+    server: full
+    columns:
+    - name: housing
+      admin_ui: {width: 200, order: 0}
+      type: string
+    - name: transport
+      admin_ui: {width: 200, order: 1}
+      type: string
+    - name: nutrition
+      admin_ui: {width: 200, order: 2}
+      type: string
+    - name: clothing
+      admin_ui: {width: 200, order: 3}
+      type: string
+    - name: laundry
+      admin_ui: {width: 200, order: 4}
+      type: string
+    - name: childcare
+      admin_ui: {width: 200, order: 5}
+      type: string
+    - name: adultcare
+      admin_ui: {width: 200, order: 6}
+      type: string
+    - name: voluntaryactivity
+      admin_ui: {width: 200, order: 7}
+      type: string
+    title: MoneyValues
+  selectedvariables_i:
+    client: full
+    server: full
+    columns:
+    - name: name
+      admin_ui: {width: 200, order: 0}
+      type: string
+    - name: initialrank
+      admin_ui: {width: 200, order: 1}
+      type: string
+    - name: adjustedrank
+      admin_ui: {width: 200, order: 2}
+      type: string
+    - name: age
+      admin_ui: {width: 200, order: 3}
+      type: string
+    - name: sex
+      admin_ui: {width: 200, order: 4}
+      type: string
+    - name: maritalstatus
+      admin_ui: {width: 200, order: 5}
+      type: string
+    - name: employment
+      admin_ui: {width: 200, order: 6}
+      type: string
+    - name: education
+      admin_ui: {width: 200, order: 7}
+      type: string
+    - name: country
+      admin_ui: {width: 200, order: 8}
+      type: string
+    title: SelectedVariables_I
 renamed: true

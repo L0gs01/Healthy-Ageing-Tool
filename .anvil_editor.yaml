@@ -6,7 +6,8 @@ unique_ids:
     Individual_MoneyValue: '1713354558326218955507645.76187'
     Individual_ViewSelection: '1713354577057584672828849.3373'
   modules: {}
-  server_modules: {}
+  server_modules:
+    ServerModule1: '1713356173952574658945596.464'
   assets:
     standard-page.html: DVKUDKDCDFXWXDW4WRBYRLLG3D4RHJMF
     theme.css: GFAPW7ZZINFMCWL3CEL432P2EWRQLVTQ
