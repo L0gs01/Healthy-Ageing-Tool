@@ -116,6 +116,30 @@ class Homepage(HomepageTemplate):
     fig_adjusted = anvil.server.call('create_fig_adjusted')
     self.adjusted_plot.figure = fig_adjusted
 
+  def homepage_navbutton_click(self, **event_args):
+    """This method is called when the button is clicked"""
+    pass
+
+  def individual_navbutton_click(self, **event_args):
+    """This method is called when the button is clicked"""
+    pass
+
+  def population_navbutton_click(self, **event_args):
+    """This method is called when the button is clicked"""
+    pass
+
+  def initial_plot_click(self, points, **event_args):
+    """This method is called when a data point is clicked."""
+    pass
+
+  def adjusted_plot_click(self, points, **event_args):
+    """This method is called when a data point is clicked."""
+    pass
+
+  def combo_plot_click(self, points, **event_args):
+    """This method is called when a data point is clicked."""
+    pass
+
 
 
 

@@ -148,22 +148,20 @@ print(df_final)
 
 @anvil.server.callable
 def create_fig_initial():
-  fig = px.bar(df_final, x='ACTIVITY', y='initial_value')
-  fig.show()
+  fig_initial = px.bar(df_final, x='ACTIVITY', y='initial_value')
+  fig_initial.show()
 @anvil.server.callable
 def create_fig_adjusted():
   data = df_final
   fig1 = go.Figure(
-    data = [go.Bar(
-            name="Adjusted Values",
-            x=data["ACTIVITY"],
-            y=data["adjusted_value"],
-        ),
-    ],
+    data = go.Bar(
+     name="Adjusted Values",
+     x=data["ACTIVITY"],
+     y=data["adjusted_value"],
+     ),
     layout=go.Layout(
-        title="Adjusted Values",
-        yaxis_title="Value"
-    )
+       title="Adjusted Values",
+        yaxis_title="Value")
     )
   fig1.show()
 @anvil.server.callable
@@ -184,7 +182,7 @@ def create_fig_combo():
             offsetgroup=1,
         ),
         go.Bar(
-            name="Difference",
+            name="Difference Values",
             x=data["ACTIVITY"],
             y=data["difference_value"],
             offsetgroup=1,

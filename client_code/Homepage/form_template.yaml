@@ -27,7 +27,7 @@ components:
     properties: {role: outlined-card, visible: false, col_widths: '{}'}
     type: ColumnPanel
     layout_properties: {grid_position: 'QZWGGA,JXUAQQ'}
-    event_bindings: {show: individualhome_card_show}
+    event_bindings: {}
     components:
     - name: variables_panel
       properties: {role: elevated-card, tooltip: '', border: '', foreground: '', visible: true,
@@ -161,10 +161,12 @@ components:
       properties: {}
       type: Plot
       layout_properties: {grid_position: 'NHSMXF,SJXLEX'}
+      event_bindings: {click: adjusted_plot_click}
     - name: combo_plot
       properties: {}
       type: Plot
       layout_properties: {grid_position: 'ZHAZWK,GSDSNQ'}
+      event_bindings: {click: combo_plot_click}
 - type: FlowPanel
   properties: {}
   name: navbar_links
@@ -187,10 +189,12 @@ components:
     properties: {text: Individual, role: outlined-button}
     type: Button
     layout_properties: {grid_position: 'USOCHD,FIUTMQ'}
+    event_bindings: {click: individual_navbutton_click}
   - name: population_navbutton
     properties: {text: Population, role: outlined-button}
     type: Button
     layout_properties: {grid_position: 'GZSVXT,CILYDC'}
+    event_bindings: {click: population_navbutton_click}
 - name: label_1
   properties: {text: Health Aging Tool, role: title}
   type: Label
