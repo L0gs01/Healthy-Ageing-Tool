@@ -9,7 +9,6 @@ import pandas as pd
 from pandas import DataFrame
 import plotly.express as px
 import plotly.graph_objects as go
-import plotly.graph_objects as go
 
 
 # This is a server module. It runs on the Anvil server,
@@ -30,17 +29,14 @@ df_ukireland = pd.read_csv(data_files['UK_predicted_values.csv'])
 
 selected_var = app_tables.selectedvariables_i.search()
 variable_dicts = [{'initialrank':r['initialrank'], 'adjustedrank':r['adjustedrank'], 'age':r['age'],'sex':r['sex'],'maritalstatus':r['maritalstatus'], 'employment':r['employment'], 'education':r['education'], 'country':r['country']} for r in selected_var]
-print(variable_dicts)
 df_selectedvariables = pd.DataFrame.from_dict(variable_dicts)
 selected_money = app_tables.moneyvalues.search()
 money_dicts = [{'housing':r['housing'], 'transport':r['transport'], 'nutrition':r['nutrition'],'clothing':r['clothing'],'laundry':r['laundry'], 'childcare':r['childcare'], 'adultcare':r['adultcare'], 'voluntaryactivity':r['voluntaryactivity']} for r in selected_money]
-print(money_dicts)
 df_selectedmoney = pd.DataFrame.from_dict(money_dicts)
-
+print(df_selectedvariables)
+print(df_selectedmoney)
 #---------------------CREATED CSV DATAFRAMES
-df_selectedvariable = pd.DataFrame.from_dict(variable_dicts)
-data_country = df_selectedvariable.at[0,'country']
-print(data_country)
+data_country = df_selectedvariables.at[0,'country']
 
 df_predictedvalues = None
 # if data_country == 'Europe (all)': df_predicted_values = df_europe
@@ -103,98 +99,88 @@ if selection_education == 'Tertiary':
 #----------------------------------
 initial_filter_criteria = (df_predictedvalues['sph_rec_rel']==selection_initialrank)&(df_predictedvalues['age_rec_10y']==selection_age)&(df_predictedvalues['sex_rec']==selection_sex)&(df_predictedvalues['marital_rec_rel']==selection_maritalstatus)&(df_predictedvalues['employment_rec']==selection_employment)&(df_predictedvalues['education_rec']==selection_education)
 df_initial = df_predictedvalues[initial_filter_criteria]
-    
+ 
 adjusted_filter_criteria = (df_predictedvalues['sph_rec_rel']==selection_adjustedrank)&(df_predictedvalues['age_rec_10y']==selection_age)&(df_predictedvalues['sex_rec']==selection_sex)&(df_predictedvalues['marital_rec_rel']==selection_maritalstatus)&(df_predictedvalues['employment_rec']==selection_employment)&(df_predictedvalues['education_rec']==selection_education)
 df_adjusted = df_predictedvalues[adjusted_filter_criteria]
-print(selection_adjustedrank)
 
 df_initial.drop(['age_rec_10y','sph_rec_rel','sex_rec','marital_rec_rel','employment_rec','education_rec','COUNTRY'],axis=1,inplace=True)
 df_adjusted.drop(['age_rec_10y','sph_rec_rel','sex_rec','marital_rec_rel','employment_rec','education_rec','COUNTRY'],axis=1,inplace=True)
-
-print(df_initial)
-print(df_adjusted)
-
 df_initial.rename(columns={"link": "initial_value"},inplace = True)
 df_adjusted.rename(columns={"link": "adjusted_value"},inplace = True)
+print(df_adjusted)
 
 df_combo = pd.merge(df_initial,df_adjusted, on='ACTIVITY')
 df_combo.drop(['combination_x','SE_x','combination_y','SE_y'],axis=1,inplace=True)
-print(df_combo)
+df_combo.set_index('ACTIVITY',inplace=True)
+
+housing_hourlyvalue = 15.4
+transport_hourlyvalue = 6.85
+nutrition_hourlyvalue = 3.56
+clothing_hourlyvalue = 0.91
+laundry_hourlyvalue = 12.29
+childcare_hourlyvalue = 4.90
+adultcare_hourlyvalue = 4.46
+voluntary_hourlyvalue = 11.63
+total_hourlyvalue = housing_hourlyvalue+transport_hourlyvalue+nutrition_hourlyvalue+clothing_hourlyvalue+laundry_hourlyvalue+childcare_hourlyvalue+adultcare_hourlyvalue+voluntary_hourlyvalue
+
+hourly_data = [15.4,6.85,3.56,0.91,12.29,4.90,4.46,11.63]
+
+df_hourlyvalue = DataFrame(data = hourly_data, columns = ['HourlyValue'])
+df_hourlyvalue.index =['Housing','Transport','Nutrition','Clothing','Laundry','ChildCare','AdultCare','Voluntary']
+df_hourlyvalue
+
+df_combo['initial_monthly'] = df_combo.initial_value * df_hourlyvalue.HourlyValue
+df_combo['adjusted_monthly'] = df_combo.adjusted_value * df_hourlyvalue.HourlyValue
 
 
-housing_difference = (df_combo.at[0,"adjusted_value"])-(df_combo.at[0,"initial_value"])
-transport_difference = (df_combo.at[1,"adjusted_value"])-(df_combo.at[1,"initial_value"])
-nutrition_difference = (df_combo.at[2,"adjusted_value"])-(df_combo.at[2,"initial_value"])
-clothing_difference = (df_combo.at[3,"adjusted_value"])-(df_combo.at[3,"initial_value"])
-laundry_difference = (df_combo.at[4,"adjusted_value"])-(df_combo.at[4,"initial_value"])
-childcare_difference = (df_combo.at[5,"adjusted_value"])-(df_combo.at[5,"initial_value"])
-adultcare_difference = (df_combo.at[6,"adjusted_value"])-(df_combo.at[6,"initial_value"])
-voluntary_difference = (df_combo.at[7,"adjusted_value"])-(df_combo.at[7,"initial_value"])
+housing_difference = (df_combo.at['Housing',"adjusted_monthly"])-(df_combo.at['Housing',"initial_monthly"])
+transport_difference = (df_combo.at['Transport',"adjusted_monthly"])-(df_combo.at['Transport',"initial_monthly"])
+nutrition_difference = (df_combo.at['Nutrition',"adjusted_monthly"])-(df_combo.at['Nutrition',"initial_monthly"])
+clothing_difference = (df_combo.at['Clothing',"adjusted_monthly"])-(df_combo.at['Clothing',"initial_monthly"])
+laundry_difference = (df_combo.at['Laundry',"adjusted_monthly"])-(df_combo.at['Laundry',"initial_monthly"])
+childcare_difference = (df_combo.at['ChildCare',"adjusted_monthly"])-(df_combo.at['ChildCare',"initial_monthly"])
+adultcare_difference = (df_combo.at['AdultCare',"adjusted_monthly"])-(df_combo.at['AdultCare',"initial_monthly"])
+voluntary_difference = (df_combo.at['Voluntary',"adjusted_monthly"])-(df_combo.at['Voluntary',"initial_monthly"])
 
-list_difference = [housing_difference,
-                  transport_difference,
-                  nutrition_difference,
-                  clothing_difference,
-                  laundry_difference,
-                  childcare_difference,
-                  adultcare_difference,
-                  voluntary_difference]
+
+list_difference = [housing_difference,transport_difference,nutrition_difference,clothing_difference,laundry_difference,childcare_difference,adultcare_difference,voluntary_difference]
 df_difference = DataFrame(data = list_difference, columns = ['difference_value'])
 df_difference
 
 df_final= pd.merge(df_combo,df_difference, left_index=True, right_index=True)
 print(df_final)
 
-
 @anvil.server.callable
 def create_fig_initial():
-  fig_initial = px.bar(df_final, x='ACTIVITY', y='initial_value')
+  fig_initial = px.bar(df_final, x=df_final.index, y='initial_monthly')
   fig_initial.show()
+  
 @anvil.server.callable
 def create_fig_adjusted():
-  data = df_final
-  fig1 = go.Figure(
-    data = go.Bar(
-     name="Adjusted Values",
-     x=data["ACTIVITY"],
-     y=data["adjusted_value"],
-     ),
-    layout=go.Layout(
-       title="Adjusted Values",
-        yaxis_title="Value")
-    )
-  fig1.show()
+  fig_adjusted = px.bar(df_final, x=df_final.index, y='adjusted_monthly')
+  fig_adjusted.show()
+  
+@anvil.server.callable
+def create_fig_difference():
+  fig_difference = px.bar(df_final, x=df_final.index, y='difference_monthly')
+  fig_difference.show()
+  
 @anvil.server.callable
 def create_fig_combo():
   data = df_final
-  fig1 = go.Figure(
-    data = [
-        go.Bar(
-            name="Initial Values",
-            x=data["ACTIVITY"],
-            y=data["initial_value"],
-            offsetgroup=0,
-        ),
-        go.Bar(
-            name="Adjusted Values",
-            x=data["ACTIVITY"],
-            y=data["adjusted_value"],
-            offsetgroup=1,
-        ),
-        go.Bar(
-            name="Difference Values",
-            x=data["ACTIVITY"],
-            y=data["difference_value"],
-            offsetgroup=1,
-        ),
-    ],
-    layout=go.Layout(
-        title="Comparative Values",
-        yaxis_title="Value"
-    )
-    )
-  fig1.show()
-
+  fig = go.Figure(data=[
+        go.Bar(name="Initial Values",
+               x=df_final.index,
+                y=data["initial_monthly"],
+                offsetgroup=0),
+        go.Bar(name="Adjusted Values",
+            x=df_final.index,
+            y=data["adjusted_monthly"],
+            offsetgroup=1, ),],
+        layout=go.Layout(title="Comparative Values",yaxis_title="Value")
+  )
+  fig.show()
+  
 @anvil.server.callable
 def get_variables():
     return app_tables.selectedvariables_i.search()[0]
