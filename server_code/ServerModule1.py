@@ -66,7 +66,7 @@ if selection_initialrank == 'Fair':
     selection_initialrank = 'fair'
 if selection_adjustedrank == 'Good':
     selection_adjustedrank = 'good'
-if selection_adjustedrank == 'Bad':
+if selection_adjustedrank == 'Poor':
     selection_adjustedrank = 'bad'
 if selection_adjustedrank == 'Fair':
     selection_adjustedrank = 'fair'
