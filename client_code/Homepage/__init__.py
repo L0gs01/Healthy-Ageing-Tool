@@ -1,5 +1,6 @@
 from ._anvil_designer import HomepageTemplate
 from anvil import *
+import plotly.graph_objects as go
 import anvil.server
 import anvil.tables as tables
 import anvil.tables.query as q
@@ -115,6 +116,8 @@ class Homepage(HomepageTemplate):
     self.combo_plot.figure = fig
     fig_adjusted = anvil.server.call('create_fig_adjusted')
     self.adjusted_plot.figure = fig_adjusted
+    fig_difference = anvil.server.call('create_fig_difference')
+    self.difference_plot.figure = fig_difference
 
   def homepage_navbutton_click(self, **event_args):
     """This method is called when the button is clicked"""

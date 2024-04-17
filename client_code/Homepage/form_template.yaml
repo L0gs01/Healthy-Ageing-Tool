@@ -162,6 +162,10 @@ components:
       type: Plot
       layout_properties: {grid_position: 'NHSMXF,SJXLEX'}
       event_bindings: {click: adjusted_plot_click}
+    - name: difference_plot
+      properties: {}
+      type: Plot
+      layout_properties: {grid_position: 'NHSMXF,ECXYBE'}
     - name: combo_plot
       properties: {}
       type: Plot
