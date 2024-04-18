@@ -125,7 +125,7 @@ components:
     - {property: selected_value, code: 'self.item[''initialrank'']', writeback: true}
   - name: adjustedrank_label_copy
     properties: {role: null, align: center, tooltip: '', border: '', foreground: '',
-      visible: true, text: Helaht Quality After Intervention, font_size: null, font: '',
+      visible: true, text: Health Quality After Intervention, font_size: null, font: '',
       spacing_above: small, icon_align: left, spacing_below: small, italic: false,
       background: '', bold: false, underline: false, icon: ''}
     type: Label

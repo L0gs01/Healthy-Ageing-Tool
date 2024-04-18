@@ -104,6 +104,8 @@ class Homepage(HomepageTemplate):
                                               childcare=money_val['childcare'],
                                               adultcare=money_val['adultcare'],
                                               voluntaryactivity=money_val['voluntaryactivity'])
+    else:
+      app_tables.moneyvalues.delete_all_rows()
 
   def button_1_click(self, **event_args):
     """This method is called when the button is clicked"""
