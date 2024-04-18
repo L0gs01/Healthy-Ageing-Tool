@@ -124,38 +124,28 @@ df_combo.drop(['combination_x','SE_x','combination_y','SE_y'],axis=1,inplace=Tru
 df_combo.set_index('ACTIVITY',inplace=True)
 #display(df_combo)
 
-# money_housing = df_selectedmoney.at[0,'housing']
-# money_transport = df_selectedmoney.at[0,'transport']
-# money_nutrition = df_selectedmoney.at[0,'nutrition']
-# money_clothing = df_selectedmoney.at[0,'clothing']
-# money_laundry = df_selectedmoney.at[0,'laundry']
-# money_childcare = df_selectedmoney.at[0,'childcare']
-# money_adultcare = df_selectedmoney.at[0,'adultcare']
-# money_voluntaryactivity = df_selectedmoney.at[0,'voluntaryactivity']
+money_housing = df_selectedmoney.at[0,'housing']
+money_housing = float(money_housing)
+money_transport = df_selectedmoney.at[0,'transport']
+money_transport = float(money_transport)
+money_nutrition = df_selectedmoney.at[0,'nutrition']
+money_nutrition = float(money_nutrition)
+money_clothing = df_selectedmoney.at[0,'clothing']
+money_clothing = float(money_clothing)
+money_laundry = df_selectedmoney.at[0,'laundry']
+money_laundry= float(money_laundry)
+money_childcare = df_selectedmoney.at[0,'childcare']
+money_childcare = float(money_childcare)
+money_adultcare = df_selectedmoney.at[0,'adultcare']
+money_adultcare = float(money_adultcare)
+money_voluntaryactivity = df_selectedmoney.at[0,'voluntaryactivity']
+money_voluntaryactivity = float(money_voluntaryactivity)
 
-
-# if money_housing = '':
-#     money_housing = 15.4
-# if money_transport  = '':
-#     money_transport= 6.85
-# if money_nutrition  = '':
-#     money_nutrition= 3.56
-# if money_clothing  = '':
-#     money_clothing = 0.91
-# if money_laundry  = '':
-#     money_laundry= 12.29
-# if money_childcare  = '':
-#     money_childcare= 4.90
-# if money_adultcare  = '':
-#     money_adultcare= 4.46
-# if money_voluntaryactivity  = '':
-#     money_voluntaryactivity= 11.63
-
-hourly_data = [15.4,6.85,3.56,0.91,12.29,4.90,4.46,11.63]
+hourly_data = [money_housing,money_transport,money_nutrition,money_clothing,money_laundry,money_childcare,money_adultcare,money_voluntaryactivity]
 
 df_hourlyvalue = DataFrame(data = hourly_data, columns = ['HourlyValue'])
 df_hourlyvalue.index =['Housing','Transport','Nutrition','Clothing','Laundry','ChildCare','AdultCare','Voluntary']
-#display(df_hourlyvalue)
+print(df_hourlyvalue)
 
 df_combo['initial_monthly'] = (df_combo.initial_value * df_hourlyvalue.HourlyValue)/60
 df_combo['adjusted_monthly'] = (df_combo.adjusted_value * df_hourlyvalue.HourlyValue)/60

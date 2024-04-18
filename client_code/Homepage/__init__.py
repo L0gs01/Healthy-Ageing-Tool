@@ -15,7 +15,15 @@ class Homepage(HomepageTemplate):
   def __init__(self, **properties):
     # Set Form properties and Data Bindings.
     self.init_components(**properties)
-
+    app_tables.moneyvalues.delete_all_rows()
+    app_tables.moneyvalues.add_row(housing='15.4',
+                            transport='6.86',
+                            nutrition='3.56',
+                            clothing='0.91',
+                            laundry='12.29',
+                            childcare='4.9',
+                            adultcare='4.46',
+                            voluntaryactivity='11.63')
     # Any code you write here will run before the form opens.
 
   def is_button_select_click(self, **event_args):
