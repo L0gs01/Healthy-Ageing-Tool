@@ -147,8 +147,8 @@ df_hourlyvalue = DataFrame(data = hourly_data, columns = ['HourlyValue'])
 df_hourlyvalue.index =['Housing','Transport','Nutrition','Clothing','Laundry','ChildCare','AdultCare','Voluntary']
 print(df_hourlyvalue)
 
-df_combo['initial_monthly'] = (df_combo.initial_value * df_hourlyvalue.HourlyValue)/60
-df_combo['adjusted_monthly'] = (df_combo.adjusted_value * df_hourlyvalue.HourlyValue)/60
+df_combo['initial_monthly'] = (((df_combo.initial_value * df_hourlyvalue.HourlyValue)/60)*12)
+df_combo['adjusted_monthly'] = (((df_combo.adjusted_value * df_hourlyvalue.HourlyValue)/60)*12)
 
 housing_difference = (df_combo.at['Housing',"adjusted_monthly"])-(df_combo.at['Housing',"initial_monthly"])
 transport_difference = (df_combo.at['Transport',"adjusted_monthly"])-(df_combo.at['Transport',"initial_monthly"])
