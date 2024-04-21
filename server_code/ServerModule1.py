@@ -169,7 +169,7 @@ df_difference.index =['Housing','Transport','Nutrition','Clothing','Laundry','Ch
 df_difference
 df_final_raw= pd.merge(df_combo,df_difference, left_index=True, right_index=True)
 
-# df_final['initial_value'] = df_final['initial_value'].astype('int64')
+
 df_final = df_final_raw.apply(lambda column: column.astype(int))
 df_final[df_final < 0] = 0
 
@@ -182,33 +182,32 @@ print(df_final.dtypes)
 @anvil.server.callable
 def create_fig_initial():
   data = df_final
-  fig_initial = px.bar(data, x=df_final.index, y='initial_monthly',title="Initial Monthly Value",color_discrete_sequence=["red"])
-  return fig_initial
+  fig_initial_time = px.bar(data, x=df_final.index, y='initial_value',title="Initial Monthly Value",color_discrete_sequence=["red"])
+  return fig_initial_time
 
 @anvil.server.callable
 def create_fig_adjusted():
   data = df_final
-  fig_adjusted = px.bar(data, x=df_final.index, y='adjusted_monthly',title="Adjusted Monthly Value")
-  return fig_adjusted
+  fig_adjusted_time = px.bar(data, x=df_final.index, y='adjusted_value',title="Adjusted Monthly Value")
+  return fig_adjusted_time
   
 @anvil.server.callable
 def create_fig_difference():
   data = df_final
-  fig_difference = px.bar(data, x=df_final.index, y='difference_monthly',title="Difference In Monthly Value",color_discrete_sequence=["green"])
-  return fig_difference
+  fig_difference_time = px.bar(data, x=df_final.index, y='difference_monthly',title="Difference In Monthly Value",color_discrete_sequence=["green"])
+  return fig_difference_time
   
 @anvil.server.callable
 def create_fig_combo():
   data = df_final
-
   fig1 = go.Figure(data=[
         go.Bar(name="Initial Values",
                x=df_final.index,
-                y=data["initial_monthly"],
+                y=data["initial_value"],
                 offsetgroup=0),
         go.Bar(name="Adjusted Values",
             x=df_final.index,
-            y=data["adjusted_monthly"],
+            y=data["adjusted_value"],
             offsetgroup=1)
     ],
     layout=go.Layout(
