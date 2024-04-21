@@ -92,8 +92,8 @@ components:
     properties:
       include_placeholder: true
       placeholder: Please Select An Option
-      items: [Europe (all) (DO NOT SELECT), Belgium, Estonia, Finland, France, Greece,
-        Romania, Serbia, ' United Kingdom of Great Britain and Northern Ireland']
+      items: [Europe (all), Belgium, Estonia, Finland, France, Greece, Romania, Serbia,
+        ' United Kingdom of Great Britain and Northern Ireland']
     type: DropDown
     layout_properties: {grid_position: 'ITFPLU,AVIBMQ'}
     data_bindings:

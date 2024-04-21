@@ -37,9 +37,9 @@ print(df_selectedvariables)
 print(df_selectedmoney)
 #---------------------CREATED CSV DATAFRAMES
 data_country = df_selectedvariables.at[0,'country']
-
+print(data_country)
 df_predictedvalues = None
-if data_country == 'Europe (all)': df_predicted_values = df_europe
+if data_country == 'Europe (all)': df_predictedvalues = df_europe
 if data_country == 'Belgium': df_predictedvalues = df_belgium
 if data_country == 'Estonia': df_predictedvalues = df_estonia
 if data_country == 'Finland': df_predictedvalues = df_finland
