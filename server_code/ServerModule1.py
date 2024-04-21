@@ -149,6 +149,7 @@ df_hourlyvalue = DataFrame(data = hourly_data, columns = ['HourlyValue'])
 df_hourlyvalue.index =['Housing','Transport','Nutrition','Clothing','Laundry','ChildCare','AdultCare','Voluntary']
 print(df_hourlyvalue)
 
+
 df_combo['difference_value'] = (df_combo.adjusted_value-df_combo.initial_value)
 df_combo['initial_monthly'] = (((df_combo.initial_value * df_hourlyvalue.HourlyValue)/60)*12)
 df_combo['adjusted_monthly'] = (((df_combo.adjusted_value * df_hourlyvalue.HourlyValue)/60)*12)
@@ -181,11 +182,11 @@ with pd.option_context('display.max_rows', None,
 print(df_final.dtypes)
 
 total_initial_time = df_final['initial_value'].sum()
-total_adjusted_time = df_final['initial_value'].sum()
-total_difference_time = df_final['initial_value'].sum()
-total_initial_value = df_final['initial_value'].sum()
-total_adjusted_value = df_final['initial_value'].sum()
-total_difference_value = df_final['initial_value'].sum()
+total_adjusted_time = df_final['adjusted_value'].sum()
+total_difference_time = df_final['difference_value'].sum()
+total_initial_value = df_final['initial_monthly'].sum()
+total_adjusted_value = df_final['adjusted_monthly'].sum()
+total_difference_value = df_final['difference_monthly'].sum()
 
 totals = (total_adjusted_time,total_difference_time,total_initial_time,total_adjusted_value,total_difference_value,total_initial_value)
 
@@ -252,3 +253,24 @@ def get_money():
 @anvil.server.callable
 def get_inital_time():
   return total_initial_time
+
+@anvil.server.callable
+def get_adjusted_time():
+  return total_adjusted_time
+
+@anvil.server.callable
+def get_difference_time():
+  return total_difference_time
+
+@anvil.server.callable
+def get_inital_value():
+  return total_initial_value
+
+@anvil.server.callable
+def get_adjusted_value():
+  return total_adjusted_value
+  
+@anvil.server.callable
+def get_difference_value():
+  return total_difference_value
+

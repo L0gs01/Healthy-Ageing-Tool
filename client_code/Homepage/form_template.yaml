@@ -171,19 +171,56 @@ components:
       properties: {}
       type: Plot
       layout_properties: {grid_position: 'IDVBFC,URFFRQ'}
-    - name: rich_text_1
-      properties: {content: 'this is a number {number} this is a name {name}'}
+    - name: richtext_sentence
+      properties: {content: ' The annual value of non-market activities when {name_1}
+          health is {initial_rank_1} is {initial_value} pounds. The annual value of
+          non-market activities when {name_2} health is {adjusted_rank1} is {adjusted_value}
+          pounds. The annual value of health attributable to non-market activities
+          when {name_3} health changes from {initial_rank_2} to {adjusted_rank2} is
+          {difference_value} pounds.'}
       type: RichText
       layout_properties: {grid_position: 'JJNTLG,WSQEXS'}
       components:
-      - name: richtext_number
+      - name: name_1
         properties: {}
         type: RichText
-        layout_properties: {slot: number}
-      - name: rich_text_2
+        layout_properties: {slot: name_1}
+      - name: name_2
         properties: {}
         type: RichText
-        layout_properties: {slot: name}
+        layout_properties: {slot: name_2}
+      - name: initial_rank1
+        properties: {}
+        type: RichText
+        layout_properties: {slot: initial_rank_1}
+      - name: initial_rank2
+        properties: {}
+        type: RichText
+        layout_properties: {slot: initial_rank_2}
+      - name: initial_value
+        properties: {}
+        type: RichText
+        layout_properties: {slot: initial_value}
+      - name: adjusted_rank1
+        properties: {}
+        type: RichText
+        layout_properties: {slot: adjusted_rank1}
+      - name: adjusted_rank2
+        properties: {}
+        type: RichText
+        layout_properties: {slot: adjusted_rank2}
+      - name: name_3
+        properties: {}
+        type: RichText
+        layout_properties: {slot: name_3}
+      - name: adjusted_value
+        properties: {}
+        type: RichText
+        layout_properties: {slot: adjusted_value}
+      - name: difference_value
+        properties: {}
+        type: RichText
+        layout_properties: {slot: difference_value}
 - type: FlowPanel
   properties: {}
   name: navbar_links

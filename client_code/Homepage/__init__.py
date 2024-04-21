@@ -120,6 +120,7 @@ class Homepage(HomepageTemplate):
     anvil.server.call('get_variables')
     anvil.server.call('get_money')
     self.plots_card.visible=True
+    #bar graphs
     barfig_initial_time = anvil.server.call('create_barfig_initial_time') 
     self.initial_time_bar.figure = barfig_initial_time
     barfig_combo_time = anvil.server.call('create_barfig_combo_time') 
@@ -128,11 +129,24 @@ class Homepage(HomepageTemplate):
     self.adjusted_time_bar.figure = barfig_adjusted_time
     barfig_difference_time = anvil.server.call('create_barfig_difference_time')
     self.difference_time_bar.figure = barfig_difference_time
-    initial_time_text = anvil.server.call('get_inital_time')
-    self.richtext_number.content = initial_time_text
-    self.rich_text_2.content = self.name_label.text
-    # piefig_intial_time = anvil.server.call('create_piefig_initial_time')
-    # self.initial_time_pie.figure = piefig_intial_time
+    #pie charts
+      # piefig_intial_time = anvil.server.call('create_piefig_initial_time')
+      # self.initial_time_pie.figure = piefig_intial_time
+    #sentence stuff
+    self.name_1.content = self.name_label.text
+    self.name_2.content = self.name_label.text
+    self.name_3.content = self.name_label.text
+    self.initial_rank1.content = self.initialrank_label.text
+    self.initial_rank2.content = self.initialrank_label.text
+    self.adjusted_rank1.content = self.adjustedrank_label.text
+    self.adjusted_rank2.content = self.adjustedrank_label.text
+    initial_value_text = anvil.server.call('get_inital_value')
+    self.initial_value.content = initial_value_text
+    adjusted_value_text = anvil.server.call('get_adjusted_value')
+    self.adjusted_value.content = adjusted_value_text
+    difference_value_text = anvil.server.call('get_difference_value')
+    self.difference_value.content = difference_value_text
+
 
     
 
