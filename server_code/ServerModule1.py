@@ -17,15 +17,16 @@ import plotly.graph_objects as go
 # them with @anvil.server.callable.
 
 # -----------------------CREATE SELECTED DATAFRAMES
-df_europe = pd.read_csv(data_files['all_predicted_values.csv'])
-df_belgium = pd.read_csv(data_files['BE_predicted_values.csv'])
-df_estonia = pd.read_csv(data_files['EE_predicted_values.csv'])
-df_finland = pd.read_csv(data_files['FI_predicted_values.csv'])
-df_france = pd.read_csv(data_files['FR_predicted_values.csv'])
-df_greece = pd.read_csv(data_files['EL_predicted_values.csv'])
+df_europe = pd.read_csv(data_files['all_predicted_values_total.csv'])
+df_belgium = pd.read_csv(data_files['BE_predicted_values_total.csv'])
+df_estonia = pd.read_csv(data_files['EE_predicted_values_total.csv'])
+df_finland = pd.read_csv(data_files['FI_predicted_values_total.csv'])
+df_france = pd.read_csv(data_files['FR_predicted_values_total.csv'])
+df_greece = pd.read_csv(data_files['EL_predicted_values_total.csv'])
+#df_romania = pd.read_csv(data_files['RO_predicted_values_total.csv'])
 df_romania = pd.read_csv(data_files['RO_predicted_values.csv'])
-df_serbia = pd.read_csv(data_files['RS_predicted_values.csv'])
-df_ukireland = pd.read_csv(data_files['UK_predicted_values.csv'])
+df_serbia = pd.read_csv(data_files['RS_predicted_values_total.csv'])
+df_ukireland = pd.read_csv(data_files['UK_predicted_values_total.csv'])
 
 selected_var = app_tables.selectedvariables_i.search()
 variable_dicts = [{'initialrank':r['initialrank'], 'adjustedrank':r['adjustedrank'], 'age':r['age'],'sex':r['sex'],'maritalstatus':r['maritalstatus'], 'employment':r['employment'], 'education':r['education'], 'country':r['country']} for r in selected_var]
@@ -70,6 +71,8 @@ if selection_adjustedrank == 'Poor':
     selection_adjustedrank = 'bad'
 if selection_adjustedrank == 'Fair':
     selection_adjustedrank = 'fair'
+if selection_age == '55-64':
+    selection_age = '55_64'
 if selection_age == '65-74':
     selection_age = '65_74'
 if selection_age == '75+':

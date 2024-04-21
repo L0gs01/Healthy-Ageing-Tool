@@ -27,7 +27,7 @@ components:
     properties:
       include_placeholder: true
       placeholder: Please Select An Option
-      items: [65-74, 75+]
+      items: [55-64, 65-74, 75+]
     type: DropDown
     layout_properties: {grid_position: 'WHQQXL,KRGWBU'}
     data_bindings:
