@@ -34,11 +34,11 @@ df_selectedvariables = pd.DataFrame.from_dict(variable_dicts)
 selected_money = app_tables.moneyvalues.search()
 money_dicts = [{'housing':r['housing'], 'transport':r['transport'], 'nutrition':r['nutrition'],'clothing':r['clothing'],'laundry':r['laundry'], 'childcare':r['childcare'], 'adultcare':r['adultcare'], 'voluntaryactivity':r['voluntaryactivity']} for r in selected_money]
 df_selectedmoney = pd.DataFrame.from_dict(money_dicts)
-print(df_selectedvariables)
-print(df_selectedmoney)
+# print(df_selectedvariables)
+# print(df_selectedmoney)
 #---------------------CREATED CSV DATAFRAMES
 data_country = df_selectedvariables.at[0,'country']
-print(data_country)
+# print(data_country)
 df_predictedvalues = None
 if data_country == 'Europe (all)': df_predictedvalues = df_europe
 if data_country == 'Belgium': df_predictedvalues = df_belgium
@@ -49,7 +49,7 @@ if data_country == 'Greece': df_predictedvalues = df_greece
 if data_country == 'Romania': df_predictedvalues = df_romania
 if data_country == 'Serbia': df_predictedvalues = df_serbia
 if data_country == 'United Kingdom of Great Britain and Northern Ireland': df_predicted_values = df_ukireland
-print(df_predictedvalues)
+# print(df_predictedvalues)
 #------------------select correct dataframe values
 selection_initialrank = df_selectedvariables.at[0,'initialrank']
 selection_adjustedrank = df_selectedvariables.at[0,'adjustedrank']
@@ -119,13 +119,13 @@ df_adjusted.drop(["a"], axis=1, inplace=True)
 
 df_initial.rename(columns={"link": "initial_value"},inplace = True)
 df_adjusted.rename(columns={"link": "adjusted_value"},inplace = True)
-#display(df_initial)   
-#display(df_adjusted) 
+print(df_initial)   
+print(df_adjusted) 
 
 df_combo = pd.merge(df_initial,df_adjusted, on='ACTIVITY')
 df_combo.drop(['combination_x','SE_x','combination_y','SE_y'],axis=1,inplace=True)
 df_combo.set_index('ACTIVITY',inplace=True)
-#display(df_combo)
+print(df_combo)
 
 money_housing = df_selectedmoney.at[0,'housing']
 money_housing = float(money_housing)
@@ -167,8 +167,16 @@ list_difference = [housing_difference,transport_difference,nutrition_difference,
 df_difference = DataFrame(data = list_difference, columns = ['difference_monthly'])
 df_difference.index =['Housing','Transport','Nutrition','Clothing','Laundry','ChildCare','AdultCare','Voluntary']
 df_difference
-df_final= pd.merge(df_combo,df_difference, left_index=True, right_index=True)
+df_final_raw= pd.merge(df_combo,df_difference, left_index=True, right_index=True)
+
+# df_final['initial_value'] = df_final['initial_value'].astype('int64')
+df_final = df_final_raw.apply(lambda column: column.astype(int))
+df_final[df_final < 0] = 0
+
 print(df_final)
+print(df_final.dtypes)
+
+
 #display(df_final)
 
 @anvil.server.callable
