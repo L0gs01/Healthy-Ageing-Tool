@@ -17,7 +17,7 @@ import plotly.graph_objects as go
 # them with @anvil.server.callable.
 
 # -----------------------CREATE SELECTED DATAFRAMES
-#df_europe = pd.read_csv(data_files[''])
+df_europe = pd.read_csv(data_files['all_predicted_values.csv'])
 df_belgium = pd.read_csv(data_files['BE_predicted_values.csv'])
 df_estonia = pd.read_csv(data_files['EE_predicted_values.csv'])
 df_finland = pd.read_csv(data_files['FI_predicted_values.csv'])
@@ -39,7 +39,7 @@ print(df_selectedmoney)
 data_country = df_selectedvariables.at[0,'country']
 
 df_predictedvalues = None
-# if data_country == 'Europe (all)': df_predicted_values = df_europe
+if data_country == 'Europe (all)': df_predicted_values = df_europe
 if data_country == 'Belgium': df_predictedvalues = df_belgium
 if data_country == 'Estonia': df_predictedvalues = df_estonia
 if data_country == 'Finland': df_predictedvalues = df_finland
