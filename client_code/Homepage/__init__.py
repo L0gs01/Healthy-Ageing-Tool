@@ -120,14 +120,21 @@ class Homepage(HomepageTemplate):
     anvil.server.call('get_variables')
     anvil.server.call('get_money')
     self.plots_card.visible=True
-    fig_initial = anvil.server.call('create_fig_initial') 
-    self.initial_plot.figure = fig_initial
-    fig = anvil.server.call('create_fig_combo') 
-    self.combo_plot.figure = fig
-    fig_adjusted = anvil.server.call('create_fig_adjusted')
-    self.adjusted_plot.figure = fig_adjusted
-    fig_difference = anvil.server.call('create_fig_difference')
-    self.difference_plot.figure = fig_difference
+    barfig_initial_time = anvil.server.call('create_barfig_initial_time') 
+    self.initial_time_bar.figure = barfig_initial_time
+    barfig_combo_time = anvil.server.call('create_barfig_combo_time') 
+    self.combo_bar_time.figure = barfig_combo_time
+    barfig_adjusted_time = anvil.server.call('create_barfig_adjusted_time')
+    self.adjusted_time_bar.figure = barfig_adjusted_time
+    barfig_difference_time = anvil.server.call('create_barfig_difference_time')
+    self.difference_time_bar.figure = barfig_difference_time
+    initial_time_text = anvil.server.call('get_inital_time')
+    self.richtext_number.content = initial_time_text
+    self.rich_text_2.content = self.name_label.text
+    # piefig_intial_time = anvil.server.call('create_piefig_initial_time')
+    # self.initial_time_pie.figure = piefig_intial_time
+
+    
 
   def homepage_navbutton_click(self, **event_args):
     """This method is called when the button is clicked"""
@@ -141,15 +148,15 @@ class Homepage(HomepageTemplate):
     """This method is called when the button is clicked"""
     pass
 
-  def initial_plot_click(self, points, **event_args):
+  def initial_time_bar_click(self, points, **event_args):
     """This method is called when a data point is clicked."""
     pass
 
-  def adjusted_plot_click(self, points, **event_args):
+  def adjusted_time_bar_click(self, points, **event_args):
     """This method is called when a data point is clicked."""
     pass
 
-  def combo_plot_click(self, points, **event_args):
+  def combo_bar_time_click(self, points, **event_args):
     """This method is called when a data point is clicked."""
     pass
 

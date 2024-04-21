@@ -23,8 +23,7 @@ df_estonia = pd.read_csv(data_files['EE_predicted_values_total.csv'])
 df_finland = pd.read_csv(data_files['FI_predicted_values_total.csv'])
 df_france = pd.read_csv(data_files['FR_predicted_values_total.csv'])
 df_greece = pd.read_csv(data_files['EL_predicted_values_total.csv'])
-#df_romania = pd.read_csv(data_files['RO_predicted_values_total.csv'])
-df_romania = pd.read_csv(data_files['RO_predicted_values.csv'])
+df_romania = pd.read_csv(data_files['RO_predicted_values_total.csv'])
 df_serbia = pd.read_csv(data_files['RS_predicted_values_total.csv'])
 df_ukireland = pd.read_csv(data_files['UK_predicted_values_total.csv'])
 
@@ -150,6 +149,7 @@ df_hourlyvalue = DataFrame(data = hourly_data, columns = ['HourlyValue'])
 df_hourlyvalue.index =['Housing','Transport','Nutrition','Clothing','Laundry','ChildCare','AdultCare','Voluntary']
 print(df_hourlyvalue)
 
+df_combo['difference_value'] = (df_combo.adjusted_value-df_combo.initial_value)
 df_combo['initial_monthly'] = (((df_combo.initial_value * df_hourlyvalue.HourlyValue)/60)*12)
 df_combo['adjusted_monthly'] = (((df_combo.adjusted_value * df_hourlyvalue.HourlyValue)/60)*12)
 
@@ -173,49 +173,73 @@ df_final_raw= pd.merge(df_combo,df_difference, left_index=True, right_index=True
 df_final = df_final_raw.apply(lambda column: column.astype(int))
 df_final[df_final < 0] = 0
 
-print(df_final)
+with pd.option_context('display.max_rows', None,
+                       'display.max_columns', None,
+                       'display.precision', 3,
+                       ):
+    print(df_final)
 print(df_final.dtypes)
 
+total_initial_time = df_final['initial_value'].sum()
+total_adjusted_time = df_final['initial_value'].sum()
+total_difference_time = df_final['initial_value'].sum()
+total_initial_value = df_final['initial_value'].sum()
+total_adjusted_value = df_final['initial_value'].sum()
+total_difference_value = df_final['initial_value'].sum()
+
+totals = (total_adjusted_time,total_difference_time,total_initial_time,total_adjusted_value,total_difference_value,total_initial_value)
+
+df_totals = DataFrame(data = totals, columns = ['HourlyValue'])
 
 #display(df_final)
 
 @anvil.server.callable
-def create_fig_initial():
+def create_barfig_initial_time():
   data = df_final
   fig_initial_time = px.bar(data, x=df_final.index, y='initial_value',title="Initial Monthly Value",color_discrete_sequence=["red"])
   return fig_initial_time
 
 @anvil.server.callable
-def create_fig_adjusted():
+def create_barfig_adjusted_time():
   data = df_final
   fig_adjusted_time = px.bar(data, x=df_final.index, y='adjusted_value',title="Adjusted Monthly Value")
   return fig_adjusted_time
   
 @anvil.server.callable
-def create_fig_difference():
+def create_barfig_difference_time():
   data = df_final
-  fig_difference_time = px.bar(data, x=df_final.index, y='difference_monthly',title="Difference In Monthly Value",color_discrete_sequence=["green"])
+  fig_difference_time = px.bar(data, x=df_final.index, y='difference_value',title="Difference In Monthly Value",color_discrete_sequence=["green"])
   return fig_difference_time
   
 @anvil.server.callable
-def create_fig_combo():
+def create_barfig_combo_time():
   data = df_final
   fig1 = go.Figure(data=[
         go.Bar(name="Initial Values",
-               x=df_final.index,
-                y=data["initial_value"],
-                offsetgroup=0),
+          x=df_final.index,
+          y=data["initial_value"],
+          offsetgroup=0),
         go.Bar(name="Adjusted Values",
-            x=df_final.index,
-            y=data["adjusted_value"],
-            offsetgroup=1)
+          x=df_final.index,
+          y=data["adjusted_value"],
+          offsetgroup=1),
+        go.Bar(name="Difference Values",
+          x=df_final.index,
+          y=data["difference_value"],
+          offsetgroup=1)
     ],
     layout=go.Layout(
-        title="Comparative Values",
+        title="Comparative Values (monthly time)",
         yaxis_title="Value"
     )
   )
   return fig1
+
+# @anvil.server.callable
+# def create_piefig_initial_time():
+#   data = df_final
+#   fig_pie_inital = px.pie(data, values=["initial_value"], names=df.index, color=df.index)
+#   fig_pie_inital.show()
   
 @anvil.server.callable
 def get_variables():
@@ -224,3 +248,7 @@ def get_variables():
 @anvil.server.callable
 def get_money():
     return app_tables.moneyvalues.search()[0]
+
+@anvil.server.callable
+def get_inital_time():
+  return total_initial_time

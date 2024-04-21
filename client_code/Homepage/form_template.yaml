@@ -144,29 +144,46 @@ components:
       layout_properties: {grid_position: 'LXDSPI,ORVQTR'}
       event_bindings: {click: button_1_click}
   - name: plots_card
-    properties: {role: outlined-card, visible: false}
+    properties: {role: outlined-card, visible: false, col_widths: '{}'}
     type: ColumnPanel
     layout_properties: {grid_position: 'QRAHGX,KKNNGS'}
     components:
-    - name: initial_plot
+    - name: initial_time_bar
       properties: {}
       type: Plot
       layout_properties: {grid_position: 'NHSMXF,PBVKVR'}
-      event_bindings: {click: initial_plot_click}
-    - name: adjusted_plot
+      event_bindings: {click: initial_time_bar_click}
+    - name: adjusted_time_bar
       properties: {}
       type: Plot
       layout_properties: {grid_position: 'NHSMXF,SJXLEX'}
-      event_bindings: {click: adjusted_plot_click}
-    - name: difference_plot
+      event_bindings: {click: adjusted_time_bar_click}
+    - name: difference_time_bar
       properties: {}
       type: Plot
       layout_properties: {grid_position: 'NHSMXF,ECXYBE'}
-    - name: combo_plot
+    - name: combo_bar_time
       properties: {}
       type: Plot
       layout_properties: {grid_position: 'ZHAZWK,GSDSNQ'}
-      event_bindings: {click: combo_plot_click}
+      event_bindings: {click: combo_bar_time_click}
+    - name: initial_time_pie
+      properties: {}
+      type: Plot
+      layout_properties: {grid_position: 'IDVBFC,URFFRQ'}
+    - name: rich_text_1
+      properties: {content: 'this is a number {number} this is a name {name}'}
+      type: RichText
+      layout_properties: {grid_position: 'JJNTLG,WSQEXS'}
+      components:
+      - name: richtext_number
+        properties: {}
+        type: RichText
+        layout_properties: {slot: number}
+      - name: rich_text_2
+        properties: {}
+        type: RichText
+        layout_properties: {slot: name}
 - type: FlowPanel
   properties: {}
   name: navbar_links
