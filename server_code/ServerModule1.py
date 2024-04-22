@@ -238,7 +238,7 @@ def create_barfig_combo_time():
 
 @anvil.server.callable
 def create_piefig_initial_time():
-  trace = go.Pie(labels= df_final.index, values=df_final.iloc[:,1])
+  trace = go.Pie(labels= df_final.index, values=df_final.iloc[:,0])
   data = [trace]
   fig = go.Figure(data = data)
   return(fig)
