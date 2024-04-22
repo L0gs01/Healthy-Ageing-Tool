@@ -236,11 +236,10 @@ def create_barfig_combo_time():
   )
   return fig1
 
-# @anvil.server.callable
-# def create_piefig_initial_time():
-#   data = df_final
-#   fig_pie_inital = px.pie(data, values=["initial_value"], names=df.index, color=df.index)
-#   fig_pie_inital.show()
+@anvil.server.callable
+def create_piefig_initial_time():
+  fig_activity = px.pie(df_final, values='initial_value', names=df_final.index)
+  fig_activity.show()
   
 @anvil.server.callable
 def get_variables():
@@ -252,25 +251,25 @@ def get_money():
 
 @anvil.server.callable
 def get_inital_time():
-  return total_initial_time
+  return int(total_initial_time)
 
 @anvil.server.callable
 def get_adjusted_time():
-  return total_adjusted_time
+  return int(total_adjusted_time)
 
 @anvil.server.callable
 def get_difference_time():
-  return total_difference_time
+  return int(total_difference_time)
 
 @anvil.server.callable
 def get_inital_value():
-  return total_initial_value
+  return int(total_initial_value)
 
 @anvil.server.callable
 def get_adjusted_value():
-  return total_adjusted_value
+  return int(total_adjusted_value)
   
 @anvil.server.callable
 def get_difference_value():
-  return total_difference_value
+  return int(total_difference_value)
 
