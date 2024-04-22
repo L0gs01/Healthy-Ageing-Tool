@@ -151,35 +151,35 @@ components:
     - name: initial_time_bar
       properties: {}
       type: Plot
-      layout_properties: {grid_position: 'NHSMXF,PBVKVR'}
+      layout_properties: {grid_position: 'QZLRJE,OYNFVI'}
       event_bindings: {click: initial_time_bar_click}
     - name: adjusted_time_bar
       properties: {}
       type: Plot
-      layout_properties: {grid_position: 'NHSMXF,SJXLEX'}
+      layout_properties: {grid_position: 'QZLRJE,JJCIHR'}
       event_bindings: {click: adjusted_time_bar_click}
     - name: difference_time_bar
       properties: {}
       type: Plot
-      layout_properties: {grid_position: 'NHSMXF,ECXYBE'}
+      layout_properties: {grid_position: 'QZLRJE,JVLEVE'}
     - name: combo_bar_time
       properties: {}
       type: Plot
-      layout_properties: {grid_position: 'ZHAZWK,GSDSNQ'}
+      layout_properties: {grid_position: 'UKEJML,DZGVUV'}
       event_bindings: {click: combo_bar_time_click}
     - name: initial_time_pie
       properties: {}
       type: Plot
       layout_properties: {grid_position: 'IDVBFC,URFFRQ XFNXVO,AMWBPI'}
-    - name: initial_mooney_pie
+    - name: initial_money_pie
       properties: {}
       type: Plot
       layout_properties: {grid_position: 'IDVBFC,URFFRQ PAAITM,XNMHIM'}
-    - name: adjusted_time_plot
+    - name: adjusted_time_pie
       properties: {}
       type: Plot
       layout_properties: {grid_position: 'IDVBFC,POPNQS ZNALWL,XNXAFZ'}
-    - name: plot_2
+    - name: adjusted_money_pie
       properties: {}
       type: Plot
       layout_properties: {grid_position: 'IDVBFC,POPNQS SOCMFH,FIPPXI'}
