@@ -238,9 +238,10 @@ def create_barfig_combo_time():
 
 @anvil.server.callable
 def create_piefig_initial_time():
-  data = df_final
-  fig_activity = go.pie(data, values='initial_value', names=df_final.index)
-  return fig_activity
+  trace = go.Pie(labels= df_final.index, values=df_final.iloc[:,1])
+  data = [trace]
+  fig = go.Figure(data = data)
+  return(fig)
   
 @anvil.server.callable
 def get_variables():
