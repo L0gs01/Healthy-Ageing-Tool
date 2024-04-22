@@ -188,9 +188,21 @@ total_initial_value = df_final['initial_monthly'].sum()
 total_adjusted_value = df_final['adjusted_monthly'].sum()
 total_difference_value = df_final['difference_monthly'].sum()
 
-totals = (total_adjusted_time,total_difference_time,total_initial_time,total_adjusted_value,total_difference_value,total_initial_value)
+totals = (total_initial_time,total_adjusted_time,total_difference_time,total_initial_value,total_adjusted_value,total_difference_value)
 
 df_totals = DataFrame(data = totals, columns = ['HourlyValue'])
+df_totals.index=['total_initial_time','total_adjusted_time','total_difference_time','total_initial_value','total_adjusted_value','total_difference_value']
+print(df_totals)
+
+
+total_initial_time_diff = 525600 - (total_initial_time*60)
+total_adjusted_time_diff = 525600 - (total_adjusted_time*60)
+total_difference_time_diff = 525600 - (total_difference_time*60)
+total_time_diff = {'activity_time':[total_initial_time*60,total_adjusted_time*60,total_difference_time*60],'nonactivity_time':[total_initial_time_diff,total_adjusted_time_diff,total_difference_time_diff]}
+df_total_diff = pd.DataFrame(data=total_time_diff)
+df_total_diff.index = ['initial_times','adjusted_times','diiference_times']
+df_total_diff_trans = df_total_diff.T
+print(df_total_diff_trans)
 
 #display(df_final)
 
@@ -237,13 +249,6 @@ def create_barfig_combo_time():
   return fig1
 
 @anvil.server.callable
-def create_piefig_difference_time():
-  trace = go.Pie(labels= df_final.index, values=df_final.iloc[:,2],title= 'Time (Difference)')
-  data = [trace]
-  fig = go.Figure(data = data)
-  return(fig)
-
-@anvil.server.callable
 def create_piefig_time():
   data = [go.Pie(labels= df_final.index,
                  values=df_final.iloc[:,0],
@@ -263,6 +268,27 @@ def create_piefig_time():
   figure.update_traces(textposition='inside')
   figure.update_layout(uniformtext_minsize=12, uniformtext_mode='hide')
   return(figure)
+
+@anvil.server.callable
+def create_piefig_difference_time():
+  trace = go.Pie(labels= df_final.index, values=df_final.iloc[:,2],title= 'Time (Difference)')
+  data = [trace]
+  fig = go.Figure(data = data)
+  return(fig)
+
+@anvil.server.callable
+def create_piefig_timecomp_initial():
+  trace = go.Pie(labels= df_total_diff_trans.index,values=df_total_diff_trans.loc[:,"initial_times"],title= 'Time In Activity Vs Total (pre)')
+  data = [trace]
+  fig = go.Figure(data = data)
+  return(fig)
+
+@anvil.server.callable
+def create_piefig_timecomp_adjusted():
+  trace = go.Pie(labels= df_total_diff_trans.index,values=df_total_diff_trans.loc[:,"adjusted_times"],title= 'Time In Activity Vs Total (pre)')
+  data = [trace]
+  fig = go.Figure(data = data)
+  return(fig)
     
 @anvil.server.callable
 def get_variables():

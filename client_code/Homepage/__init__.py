@@ -130,8 +130,10 @@ class Homepage(HomepageTemplate):
     barfig_difference_time = anvil.server.call('create_barfig_difference_time')
     self.difference_time_bar.figure = barfig_difference_time
     #pie charts
-    self.difference_time_pie.figure = anvil.server.call('create_piefig_difference_time')
     self.time_pie.figure = anvil.server.call('create_piefig_time')
+    self.difference_time_pie.figure = anvil.server.call('create_piefig_difference_time')
+    self.time_comparison_pie_initial.figure = anvil.server.call('create_piefig_timecomp_initial')
+    self.time_comparison_pie_adjusted.figure = anvil.server.call('create_piefig_timecomp_adjusted')
     #sentence stuff
     self.name_1.content = self.name_label.text
     self.name_2.content = self.name_label.text
