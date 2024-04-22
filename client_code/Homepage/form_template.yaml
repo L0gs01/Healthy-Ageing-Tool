@@ -167,22 +167,14 @@ components:
       type: Plot
       layout_properties: {grid_position: 'UKEJML,DZGVUV'}
       event_bindings: {click: combo_bar_time_click}
-    - name: initial_time_pie
+    - name: time_pie
       properties: {}
       type: Plot
-      layout_properties: {grid_position: 'IDVBFC,URFFRQ XFNXVO,AMWBPI'}
-    - name: initial_money_pie
+      layout_properties: {grid_position: ',KUMEWD'}
+    - name: difference_time_pie
       properties: {}
       type: Plot
-      layout_properties: {grid_position: 'IDVBFC,URFFRQ PAAITM,XNMHIM'}
-    - name: adjusted_time_pie
-      properties: {}
-      type: Plot
-      layout_properties: {grid_position: 'IDVBFC,POPNQS ZNALWL,XNXAFZ'}
-    - name: adjusted_money_pie
-      properties: {}
-      type: Plot
-      layout_properties: {grid_position: 'IDVBFC,POPNQS SOCMFH,FIPPXI'}
+      layout_properties: {grid_position: ',LQBUOL'}
     - name: richtext_sentence
       properties: {content: ' The annual value of non-market activities when {name_1}
           health is {initial_rank_1} is {initial_value} pounds. The annual value of

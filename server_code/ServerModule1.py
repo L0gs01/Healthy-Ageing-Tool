@@ -237,12 +237,33 @@ def create_barfig_combo_time():
   return fig1
 
 @anvil.server.callable
-def create_piefig_initial_time():
-  trace = go.Pie(labels= df_final.index, values=df_final.iloc[:,0])
+def create_piefig_difference_time():
+  trace = go.Pie(labels= df_final.index, values=df_final.iloc[:,2],title= 'Time (Difference)')
   data = [trace]
   fig = go.Figure(data = data)
   return(fig)
-  
+
+@anvil.server.callable
+def create_piefig_time():
+  data = [go.Pie(labels= df_final.index,
+                 values=df_final.iloc[:,0],
+                 domain={'x':[0.3,0.7], 'y':[0.2,0.8]}, 
+                 hole=0.5,
+                 direction='clockwise',
+                 sort=False,
+                 title = "Time (monthly)"),
+           go.Pie(labels= df_final.index,
+                 values=df_final.iloc[:,1],
+                 domain={'x':[0.1,0.9], 'y':[0,1]},
+                 hole=0.75,
+                 direction='clockwise',
+                 sort=False)
+         ]
+  figure=go.Figure(data=data, layout={'title':'Activity by Time '})  
+  figure.update_traces(textposition='inside')
+  figure.update_layout(uniformtext_minsize=12, uniformtext_mode='hide')
+  return(figure)
+    
 @anvil.server.callable
 def get_variables():
     return app_tables.selectedvariables_i.search()[0]
