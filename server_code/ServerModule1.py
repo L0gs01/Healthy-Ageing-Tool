@@ -209,19 +209,31 @@ print(df_total_diff_trans)
 @anvil.server.callable
 def create_barfig_initial_time():
   data = df_final
-  fig_initial_time = px.bar(data, x=df_final.index, y='initial_value',title="Monthly Value Before Intervention",color_discrete_sequence=["red"],labels={'x': 'Activity', 'y':'Hours Spent (Monthly)'})
+  fig_initial_time = px.bar(data, x=df_final.index,
+                            y='initial_value',
+                            title="Before Intervention",
+                            color_discrete_sequence=["red"],
+                            labels={'index': 'Activity', 'initial_value':'Hours Spent (Monthly)'})
   return fig_initial_time
 
 @anvil.server.callable
 def create_barfig_adjusted_time():
   data = df_final
-  fig_adjusted_time = px.bar(data, x=df_final.index, y='adjusted_value',title="Monthly Value After Intervention")
+  fig_adjusted_time = px.bar(data, x=df_final.index,
+                             y='adjusted_value',
+                             title="After Intervention",
+                             color_discrete_sequence=["blue"],
+                             labels={'index': 'Activity', 'adjusted_value':'Hours Spent (Monthly)'})
   return fig_adjusted_time
   
 @anvil.server.callable
 def create_barfig_difference_time():
   data = df_final
-  fig_difference_time = px.bar(data, x=df_final.index, y='difference_value',title="Difference In Monthly Value",color_discrete_sequence=["green"])
+  fig_difference_time = px.bar(data, x=df_final.index,
+                               y='difference_value',
+                               title="Difference In Monthly Value",
+                               color_discrete_sequence=["green"],
+                               labels={'index': 'Activity', 'difference_value':'Hours Spent (Monthly)'})
   return fig_difference_time
   
 @anvil.server.callable
@@ -231,15 +243,18 @@ def create_barfig_combo_time():
         go.Bar(name="Initial Values",
           x=df_final.index,
           y=data["initial_value"],
-          offsetgroup=0),
+          offsetgroup=0,
+          marker=dict(color='red')),
         go.Bar(name="Adjusted Values",
           x=df_final.index,
           y=data["adjusted_value"],
-          offsetgroup=1),
+          offsetgroup=1,
+          marker=dict(color='blue')),
         go.Bar(name="Difference Values",
           x=df_final.index,
           y=data["difference_value"],
-          offsetgroup=1)
+          offsetgroup=1,
+          marker=dict(color='green'))
     ],
     layout=go.Layout(
         title="Comparative Values (monthly time)",
