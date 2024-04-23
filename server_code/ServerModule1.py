@@ -209,13 +209,13 @@ print(df_total_diff_trans)
 @anvil.server.callable
 def create_barfig_initial_time():
   data = df_final
-  fig_initial_time = px.bar(data, x=df_final.index, y='initial_value',title="Initial Monthly Value",color_discrete_sequence=["red"])
+  fig_initial_time = px.bar(data, x=df_final.index, y='initial_value',title="Monthly Value Before Intervention",color_discrete_sequence=["red"],labels={'x': 'Activity', 'y':'Hours Spent (Monthly)'})
   return fig_initial_time
 
 @anvil.server.callable
 def create_barfig_adjusted_time():
   data = df_final
-  fig_adjusted_time = px.bar(data, x=df_final.index, y='adjusted_value',title="Adjusted Monthly Value")
+  fig_adjusted_time = px.bar(data, x=df_final.index, y='adjusted_value',title="Monthly Value After Intervention")
   return fig_adjusted_time
   
 @anvil.server.callable
@@ -243,7 +243,8 @@ def create_barfig_combo_time():
     ],
     layout=go.Layout(
         title="Comparative Values (monthly time)",
-        yaxis_title="Value"
+        yaxis_title="Value",
+        xaxis_title="Activities"
     )
   )
   return fig1
@@ -264,7 +265,7 @@ def create_piefig_time():
                  direction='clockwise',
                  sort=False)
          ]
-  figure=go.Figure(data=data, layout={'title':'Activity by Time '})  
+  figure=go.Figure(data=data, layout={'title':'Activity Percent By Time' + '<br>' +  '<span style="font-size: 12px;">Before (Inner Circle)</span>' + '<br>' +  '<span style="font-size: 12px;">After (Outer Circle)</span>'})  
   figure.update_traces(textposition='inside')
   figure.update_layout(uniformtext_minsize=12, uniformtext_mode='hide')
   return(figure)
@@ -273,21 +274,21 @@ def create_piefig_time():
 def create_piefig_difference_time():
   trace = go.Pie(labels= df_final.index, values=df_final.iloc[:,2],title= 'Time (Difference)')
   data = [trace]
-  fig = go.Figure(data = data)
+  fig = go.Figure(data = data, layout={'title':'Additional Time Spent In Activity'})                                    
   return(fig)
 
 @anvil.server.callable
 def create_piefig_timecomp_initial():
-  trace = go.Pie(labels= df_total_diff_trans.index,values=df_total_diff_trans.loc[:,"initial_times"],title= 'Time In Activity Vs Total (pre)')
+  trace = go.Pie(labels= df_total_diff_trans.index,values=df_total_diff_trans.loc[:,"initial_times"])
   data = [trace]
-  fig = go.Figure(data = data)
+  fig = go.Figure(data = data, layout={'title':'Time Spent in Activities Vs. Whole (Before)'})  
   return(fig)
 
 @anvil.server.callable
 def create_piefig_timecomp_adjusted():
-  trace = go.Pie(labels= df_total_diff_trans.index,values=df_total_diff_trans.loc[:,"adjusted_times"],title= 'Time In Activity Vs Total (pre)')
+  trace = go.Pie(labels= df_total_diff_trans.index,values=df_total_diff_trans.loc[:,"adjusted_times"])
   data = [trace]
-  fig = go.Figure(data = data)
+  fig = go.Figure(data = data, layout={'title':'Time Spent in Activities Vs. Whole (After)'}) 
   return(fig)
     
 @anvil.server.callable
