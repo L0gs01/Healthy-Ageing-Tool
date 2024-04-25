@@ -121,12 +121,12 @@ class Homepage(HomepageTemplate):
     anvil.server.call('get_money')
     self.plots_card.visible=True
     #bar graphs
-    barfig_initial_time = anvil.server.call('create_barfig_initial_time') 
-    self.initial_time_bar.figure = barfig_initial_time
+    # barfig_initial_time = anvil.server.call('create_barfig_initial_time') 
+    # self.initial_time_bar.figure = barfig_initial_time
     barfig_combo_time = anvil.server.call('create_barfig_combo_time') 
     self.combo_bar_time.figure = barfig_combo_time
-    barfig_adjusted_time = anvil.server.call('create_barfig_adjusted_time')
-    self.adjusted_time_bar.figure = barfig_adjusted_time
+    # barfig_adjusted_time = anvil.server.call('create_barfig_adjusted_time')
+    # self.adjusted_time_bar.figure = barfig_adjusted_time
     barfig_difference_time = anvil.server.call('create_barfig_difference_time')
     self.difference_time_bar.figure = barfig_difference_time
     #pie charts

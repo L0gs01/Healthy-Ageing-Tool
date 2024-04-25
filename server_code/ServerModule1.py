@@ -249,12 +249,12 @@ def create_barfig_combo_time():
           x=df_final.index,
           y=data["adjusted_value"],
           offsetgroup=1,
-          marker=dict(color='blue')),
-        go.Bar(name="Difference Values",
-          x=df_final.index,
-          y=data["difference_value"],
-          offsetgroup=1,
-          marker=dict(color='green'))
+          marker=dict(color='blue'))
+        # go.Bar(name="Difference Values",
+        #   x=df_final.index,
+        #   y=data["difference_value"],
+        #   offsetgroup=1,
+        #   marker=dict(color='green'))
     ],
     layout=go.Layout(
         title="Comparative Values (monthly time)",
