@@ -272,13 +272,18 @@ def create_piefig_time():
                  hole=0.5,
                  direction='clockwise',
                  sort=False,
-                 title = "Time (monthly)"),
+                 title=dict(text='Before',
+                      position='top center')
+                ),
            go.Pie(labels= df_final.index,
                  values=df_final.iloc[:,1],
                  domain={'x':[0.1,0.9], 'y':[0,1]},
                  hole=0.75,
                  direction='clockwise',
-                 sort=False)
+                 sort=False,
+                 title=dict(text='After',
+                     position='top center')
+                 )
          ]
   figure=go.Figure(data=data, layout={'title':'Activity Percent By Time' + '<br>' +  '<span style="font-size: 12px;">Before (Inner Circle)</span>' + '<br>' +  '<span style="font-size: 12px;">After (Outer Circle)</span>'})  
   figure.update_traces(textposition='inside')
@@ -287,23 +292,25 @@ def create_piefig_time():
 
 @anvil.server.callable
 def create_piefig_difference_time():
-  trace = go.Pie(labels= df_final.index, values=df_final.iloc[:,2],title= 'Time (Difference)')
+  trace = go.Pie(labels= df_final.index, values=df_final.iloc[:,2])
   data = [trace]
   fig = go.Figure(data = data, layout={'title':'Additional Time Spent In Activity'})                                    
   return(fig)
 
 @anvil.server.callable
 def create_piefig_timecomp_initial():
-  trace = go.Pie(labels= df_total_diff_trans.index,values=df_total_diff_trans.loc[:,"initial_times"])
+  trace = go.Pie(labels= df_total_diff_trans.index,values=df_total_diff_trans.loc[:,"initial_times"],sort=False)
   data = [trace]
   fig = go.Figure(data = data, layout={'title':'Time Spent in Activities Vs. Whole (Before)'})  
+  fig.update_traces(marker=dict(colors=['blue', 'red']))
   return(fig)
 
 @anvil.server.callable
 def create_piefig_timecomp_adjusted():
-  trace = go.Pie(labels= df_total_diff_trans.index,values=df_total_diff_trans.loc[:,"adjusted_times"])
+  trace = go.Pie(labels= df_total_diff_trans.index,values=df_total_diff_trans.loc[:,"adjusted_times"],sort=False)
   data = [trace]
   fig = go.Figure(data = data, layout={'title':'Time Spent in Activities Vs. Whole (After)'}) 
+  fig.update_traces(marker=dict(colors=['blue', 'red']))
   return(fig)
     
 @anvil.server.callable
