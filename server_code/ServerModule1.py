@@ -262,6 +262,7 @@ def create_barfig_combo_time():
         xaxis_title="Activities"
     )
   )
+  fig1.update_xaxes(tickangle=90)
   return fig1
 
 @anvil.server.callable
