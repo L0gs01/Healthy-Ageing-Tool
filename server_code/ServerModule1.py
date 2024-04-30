@@ -302,7 +302,7 @@ def create_piefig_difference_time():
 def create_piefig_timecomp_initial():
   trace = go.Pie(labels= df_total_diff_trans.index,values=df_total_diff_trans.loc[:,"initial_times"],sort=False)
   data = [trace]
-  fig = go.Figure(data = data, layout={'title':'Minutes Spent in Activities Vs. Whole (Before)'})  
+  fig = go.Figure(data = data, layout={'title':'Minutes Spent in Activities vs. Whole (Before)'})  
   fig.update_traces(marker=dict(colors=['blue', 'red']))
   return(fig)
 
@@ -310,7 +310,7 @@ def create_piefig_timecomp_initial():
 def create_piefig_timecomp_adjusted():
   trace = go.Pie(labels= df_total_diff_trans.index,values=df_total_diff_trans.loc[:,"adjusted_times"],sort=False)
   data = [trace]
-  fig = go.Figure(data = data, layout={'title':'Minutes Spent in Activities Vs. Whole (After)'}) 
+  fig = go.Figure(data = data, layout={'title':'Minutes Spent in Activities vs. Whole (After)'}) 
   fig.update_traces(marker=dict(colors=['blue', 'red']))
   return(fig)
     
