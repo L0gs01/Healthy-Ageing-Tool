@@ -213,7 +213,7 @@ def create_barfig_initial_time():
                             y='initial_value',
                             title="Before Intervention",
                             color_discrete_sequence=["red"],
-                            labels={'index': 'Activity', 'initial_value':'Hours Spent (Yearly)'})
+                            labels={'index': 'Activity', 'initial_value':'Minutes Per Month'})
   return fig_initial_time
 
 @anvil.server.callable
@@ -223,7 +223,7 @@ def create_barfig_adjusted_time():
                              y='adjusted_value',
                              title="After Intervention",
                              color_discrete_sequence=["blue"],
-                             labels={'index': 'Activity', 'adjusted_value':'Hours Spent (Yearly)'})
+                             labels={'index': 'Activity', 'adjusted_value':'Minutes Per Month'})
   return fig_adjusted_time
   
 @anvil.server.callable
@@ -233,7 +233,7 @@ def create_barfig_difference_time():
                                y='difference_monthlytime',
                                title="Gains In Time Spent Per Activity",
                                color_discrete_sequence=["green"],
-                               labels={'index': 'Activity', 'difference_monthlytime':'Hours Per Year'})
+                               labels={'index': 'Activity', 'difference_monthlytime':'Minutes Per Month'})
   return fig_difference_time
   
 @anvil.server.callable
@@ -257,8 +257,8 @@ def create_barfig_combo_time():
         #   marker=dict(color='green'))
     ],
     layout=go.Layout(
-        title="Comparative Values (Hours Per Year)",
-        yaxis_title="Hours Per Year",
+        title="Comparative Values (Minutes Per Month)",
+        yaxis_title="Minutes Per Month",
         xaxis_title="Activities"
     )
   )
@@ -285,7 +285,7 @@ def create_piefig_time():
                      position='top center')
                  )
          ]
-  figure=go.Figure(data=data, layout={'title':'Activity Percent By Time (Hours/Year)' + '<br>' +  '<span style="font-size: 12px;">Before (Inner Circle)</span>' + '<br>' +  '<span style="font-size: 12px;">After (Outer Circle)</span>'})  
+  figure=go.Figure(data=data, layout={'title':'Activity Percent By Time (Min/Month)' + '<br>' +  '<span style="font-size: 12px;">Before (Inner Circle)</span>' + '<br>' +  '<span style="font-size: 12px;">After (Outer Circle)</span>'})  
   figure.update_traces(textposition='inside')
   figure.update_layout(uniformtext_minsize=12, uniformtext_mode='hide')
   return(figure)
@@ -294,14 +294,14 @@ def create_piefig_time():
 def create_piefig_difference_time():
   trace = go.Pie(labels= df_final.index, values=df_final.iloc[:,2])
   data = [trace]
-  fig = go.Figure(data = data, layout={'title':'Additional Time Spent In Activity (Hours/Year)'})                                    
+  fig = go.Figure(data = data, layout={'title':'Additional Time Spent In Activity (Min/Month)'})                                    
   return(fig)
 
 @anvil.server.callable
 def create_piefig_timecomp_initial():
   trace = go.Pie(labels= df_total_diff_trans.index,values=df_total_diff_trans.loc[:,"initial_times"],sort=False)
   data = [trace]
-  fig = go.Figure(data = data, layout={'title':'Time Spent in Activities Vs. Whole (Before)'})  
+  fig = go.Figure(data = data, layout={'title':'Minutes Spent in Activities Vs. Whole (Before)'})  
   fig.update_traces(marker=dict(colors=['blue', 'red']))
   return(fig)
 
@@ -309,7 +309,7 @@ def create_piefig_timecomp_initial():
 def create_piefig_timecomp_adjusted():
   trace = go.Pie(labels= df_total_diff_trans.index,values=df_total_diff_trans.loc[:,"adjusted_times"],sort=False)
   data = [trace]
-  fig = go.Figure(data = data, layout={'title':'Time Spent in Activities Vs. Whole (After)'}) 
+  fig = go.Figure(data = data, layout={'title':'Minutes Spent in Activities Vs. Whole (After)'}) 
   fig.update_traces(marker=dict(colors=['blue', 'red']))
   return(fig)
     

@@ -174,10 +174,10 @@ components:
       type: Plot
       layout_properties: {grid_position: 'SHHZIA,DTKUUK'}
     - name: richtext_sentence
-      properties: {content: ' The annual value of non-market activities when {name_1}
-          health is {initial_rank_1} is {initial_value} pounds. The annual value of
-          non-market activities when {name_2} health is {adjusted_rank1} is {adjusted_value}
-          pounds. The annual value of health attributable to non-market activities
+      properties: {content: ' The monthly value of non-market activities when {name_1}
+          health is {initial_rank_1} is {initial_value} pounds. The monthly value
+          of non-market activities when {name_2} health is {adjusted_rank1} is {adjusted_value}
+          pounds. The monthly value of health attributable to non-market activities
           when {name_3} health changes from {initial_rank_2} to {adjusted_rank2} is
           {difference_value} pounds.'}
       type: RichText

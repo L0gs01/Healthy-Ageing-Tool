@@ -60,7 +60,7 @@ class Homepage(HomepageTemplate):
         self.country_label.text = variables['country'] 
         print(variables)
         if variables['country'] == (' United Kingdom') and variables['education'] == ('Lower Than Secondary'):
-          alert('Your selection criteria results in no data in our tables. Please make a different selection')
+          alert('There is no data for people with education "lower than secondary" in the United Kindgom. Please choose a different country and/or education level.')
 
   def is_edit_button_click(self, **event_args):
     """This method is called when the button is clicked"""
@@ -93,7 +93,7 @@ class Homepage(HomepageTemplate):
         self.education_label.text = variables['education']
         self.country_label.text = variables['country'] 
         if variables['country'] == (' United Kingdom') and variables['education'] == ('Lower Than Secondary'):
-          alert('Your selection matches no current data in our tables. Please make a different selection')
+          alert('There is no data for individuals that are "Lower Than Secondary" in educaton AND from the "UK". Please make a different selection')
 
 
   def is_money_button_click(self, **event_args):

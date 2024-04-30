@@ -78,7 +78,7 @@ components:
     data_bindings:
     - {property: text, code: 'self.item[''adjustedrank'']'}
   - name: label_6
-    properties: {text: Martial Status}
+    properties: {text: Marital Status}
     type: Label
     layout_properties: {grid_position: 'IBWSTW,PJOXAY'}
   - name: maritalstatus_label
