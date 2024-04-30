@@ -17,14 +17,14 @@ import plotly.graph_objects as go
 # them with @anvil.server.callable.
 
 # -----------------------CREATE SELECTED DATAFRAMES
-df_europe = pd.read_csv(data_files['all_predicted_values_total.csv'])
-df_belgium = pd.read_csv(data_files['BE_predicted_values_total.csv'])
-df_estonia = pd.read_csv(data_files['EE_predicted_values_total.csv'])
-df_finland = pd.read_csv(data_files['FI_predicted_values_total.csv'])
-df_france = pd.read_csv(data_files['FR_predicted_values_total.csv'])
-df_greece = pd.read_csv(data_files['EL_predicted_values_total.csv'])
-df_romania = pd.read_csv(data_files['RO_predicted_values_total.csv'])
-df_serbia = pd.read_csv(data_files['RS_predicted_values_total.csv'])
+df_europe = pd.read_csv(data_files['all_predicted_values_55.csv'])
+df_belgium = pd.read_csv(data_files['BE_predicted_values_55.csv'])
+df_estonia = pd.read_csv(data_files['EE_predicted_values_55.csv'])
+df_finland = pd.read_csv(data_files['FI_predicted_values_55.csv'])
+df_france = pd.read_csv(data_files['FR_predicted_values_55.csv'])
+df_greece = pd.read_csv(data_files['EL_predicted_values_55.csv'])
+df_romania = pd.read_csv(data_files['RO_predicted_values_55.csv'])
+df_serbia = pd.read_csv(data_files['RS_predicted_values_55.csv'])
 df_ukireland = pd.read_csv(data_files['UK_predicted_values_total.csv'])
 
 selected_var = app_tables.selectedvariables_i.search()
