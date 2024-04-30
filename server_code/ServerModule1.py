@@ -33,8 +33,8 @@ df_selectedvariables = pd.DataFrame.from_dict(variable_dicts)
 selected_money = app_tables.moneyvalues.search()
 money_dicts = [{'housing':r['housing'], 'transport':r['transport'], 'nutrition':r['nutrition'],'clothing':r['clothing'],'laundry':r['laundry'], 'childcare':r['childcare'], 'adultcare':r['adultcare'], 'voluntaryactivity':r['voluntaryactivity']} for r in selected_money]
 df_selectedmoney = pd.DataFrame.from_dict(money_dicts)
-# print(df_selectedvariables)
-# print(df_selectedmoney)
+print(df_selectedvariables)
+print(df_selectedmoney)
 #---------------------CREATED CSV DATAFRAMES
 data_country = df_selectedvariables.at[0,'country']
 # print(data_country)
@@ -102,11 +102,11 @@ if selection_education == 'Tertiary':
 #----------------------------------
 initial_filter_criteria = (df_predictedvalues['sph_rec_rel']==selection_initialrank)&(df_predictedvalues['age_rec_10y']==selection_age)&(df_predictedvalues['sex_rec']==selection_sex)&(df_predictedvalues['marital_rec_rel']==selection_maritalstatus)&(df_predictedvalues['employment_rec']==selection_employment)&(df_predictedvalues['education_rec']==selection_education)
 df_initial = df_predictedvalues[initial_filter_criteria]
-
+print(df_initial)
 
 adjusted_filter_criteria = (df_predictedvalues['sph_rec_rel']==selection_adjustedrank)&(df_predictedvalues['age_rec_10y']==selection_age)&(df_predictedvalues['sex_rec']==selection_sex)&(df_predictedvalues['marital_rec_rel']==selection_maritalstatus)&(df_predictedvalues['employment_rec']==selection_employment)&(df_predictedvalues['education_rec']==selection_education)
 df_adjusted = df_predictedvalues[adjusted_filter_criteria]
-
+print(df_adjusted)
 
 df_initial.drop(['age_rec_10y','sph_rec_rel','sex_rec','marital_rec_rel','employment_rec','education_rec','COUNTRY'],axis=1,inplace=True)
 df_initial.rename({"Unnamed: 0":"a"}, axis="columns", inplace=True)
