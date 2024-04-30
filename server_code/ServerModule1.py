@@ -151,8 +151,8 @@ print(df_hourlyvalue)
 
 
 df_combo['difference_value'] = (df_combo.adjusted_value-df_combo.initial_value)
-df_combo['initial_monthly'] = (((df_combo.initial_value * df_hourlyvalue.HourlyValue)/60)*12)
-df_combo['adjusted_monthly'] = (((df_combo.adjusted_value * df_hourlyvalue.HourlyValue)/60)*12)
+df_combo['initial_monthly'] = (((df_combo.initial_value/60) * df_hourlyvalue.HourlyValue)*12)
+df_combo['adjusted_monthly'] = (((df_combo.adjusted_value/60) * df_hourlyvalue.HourlyValue)*12)
 
 housing_difference = (df_combo.at['Housing',"adjusted_monthly"])-(df_combo.at['Housing',"initial_monthly"])
 transport_difference = (df_combo.at['Transport',"adjusted_monthly"])-(df_combo.at['Transport',"initial_monthly"])
@@ -195,10 +195,10 @@ df_totals.index=['total_initial_time','total_adjusted_time','total_difference_ti
 print(df_totals)
 
 
-total_initial_time_diff = 525600 - (total_initial_time*60)
-total_adjusted_time_diff = 525600 - (total_adjusted_time*60)
-total_difference_time_diff = 525600 - (total_difference_time*60)
-total_time_diff = {'Time Spent In Activities':[total_initial_time*60,total_adjusted_time*60,total_difference_time*60],'Time Spent Outside Activities':[total_initial_time_diff,total_adjusted_time_diff,total_difference_time_diff]}
+total_initial_time_diff = 8760 - (total_initial_time)
+total_adjusted_time_diff = 8760 - (total_adjusted_time)
+total_difference_time_diff = 8760 - (total_difference_time)
+total_time_diff = {'Time Spent In Activities':[total_initial_time,total_adjusted_time,total_difference_time],'Time Spent Outside Activities':[total_initial_time_diff,total_adjusted_time_diff,total_difference_time_diff]}
 df_total_diff = pd.DataFrame(data=total_time_diff)
 df_total_diff.index = ['initial_times','adjusted_times','diiference_times']
 df_total_diff_trans = df_total_diff.T
@@ -231,7 +231,7 @@ def create_barfig_difference_time():
   data = df_final
   fig_difference_time = px.bar(data, x=df_final.index,
                                y='difference_value',
-                               title="Change In Time Spent Per Activity",
+                               title="Gains In Time Spent Per Activity",
                                color_discrete_sequence=["green"],
                                labels={'index': 'Activity', 'difference_value':'Hours Per Year'})
   return fig_difference_time
