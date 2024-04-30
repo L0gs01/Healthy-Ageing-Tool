@@ -59,8 +59,8 @@ class Homepage(HomepageTemplate):
         self.education_label.text = variables['education']
         self.country_label.text = variables['country'] 
         print(variables)
-        if variables['country'] == ('United Kingdom') and variables['education'] == ('Lower Than Secondary'):
-          alert('Your selection criteria results in no data. Please make a different selection')
+        if variables['country'] == (' United Kingdom') and variables['education'] == ('Lower Than Secondary'):
+          alert('Your selection criteria results in no data in our tables. Please make a different selection')
 
   def is_edit_button_click(self, **event_args):
     """This method is called when the button is clicked"""
@@ -92,8 +92,8 @@ class Homepage(HomepageTemplate):
         self.employment_label.text = variables['employment']
         self.education_label.text = variables['education']
         self.country_label.text = variables['country'] 
-        if variables['country'] == ('United Kingdom') and variables['education'] == ('Lower Than Secondary'):
-          alert('Your selection criteria results in no data. Please make a different selection')
+        if variables['country'] == (' United Kingdom') and variables['education'] == ('Lower Than Secondary'):
+          alert('Your selection matches no current data in our tables. Please make a different selection')
 
 
   def is_money_button_click(self, **event_args):
@@ -117,8 +117,8 @@ class Homepage(HomepageTemplate):
                                               childcare=money_val['childcare'],
                                               adultcare=money_val['adultcare'],
                                               voluntaryactivity=money_val['voluntaryactivity'])
-    else:
-      app_tables.moneyvalues.delete_all_rows()
+    # else:
+    #   app_tables.moneyvalues.delete_all_rows()
 
   def button_1_click(self, **event_args):
     """This method is called when the button is clicked"""
