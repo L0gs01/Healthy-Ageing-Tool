@@ -231,21 +231,21 @@ def create_barfig_difference_time():
   data = df_final
   fig_difference_time = px.bar(data, x=df_final.index,
                                y='difference_value',
-                               title="Monetary value of change in health status",
+                               title="Monetary Value of Change in Health Status",
                                color_discrete_sequence=["green"],
-                               labels={'index': 'Activity', 'difference_value':'Hours Spent (Yearly)'})
+                               labels={'index': 'Activity', 'difference_value':'Value'})
   return fig_difference_time
   
 @anvil.server.callable
 def create_barfig_combo_time():
   data = df_final
   fig1 = go.Figure(data=[
-        go.Bar(name="Initial Values",
+        go.Bar(name="Before Intervention",
           x=df_final.index,
           y=data["initial_value"],
           offsetgroup=0,
           marker=dict(color='red')),
-        go.Bar(name="Adjusted Values",
+        go.Bar(name="After Intervention",
           x=df_final.index,
           y=data["adjusted_value"],
           offsetgroup=1,
@@ -285,7 +285,7 @@ def create_piefig_time():
                      position='top center')
                  )
          ]
-  figure=go.Figure(data=data, layout={'title':'Activity Percent By Time (Yearly)' + '<br>' +  '<span style="font-size: 12px;">Before (Inner Circle)</span>' + '<br>' +  '<span style="font-size: 12px;">After (Outer Circle)</span>'})  
+  figure=go.Figure(data=data, layout={'title':'Activity Percent By Time (Hours/Year)' + '<br>' +  '<span style="font-size: 12px;">Before (Inner Circle)</span>' + '<br>' +  '<span style="font-size: 12px;">After (Outer Circle)</span>'})  
   figure.update_traces(textposition='inside')
   figure.update_layout(uniformtext_minsize=12, uniformtext_mode='hide')
   return(figure)
@@ -294,7 +294,7 @@ def create_piefig_time():
 def create_piefig_difference_time():
   trace = go.Pie(labels= df_final.index, values=df_final.iloc[:,2])
   data = [trace]
-  fig = go.Figure(data = data, layout={'title':'Additional Time Spent In Activity (Yearly)'})                                    
+  fig = go.Figure(data = data, layout={'title':'Additional Time Spent In Activity (Hours/Year)'})                                    
   return(fig)
 
 @anvil.server.callable
