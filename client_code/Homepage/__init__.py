@@ -33,9 +33,9 @@ class Homepage(HomepageTemplate):
     self.homepage_buttons.visible = False
     save_clicked = alert(
       content = Individual_InitialSelection(item=variables),
-      title = "Select Variables For Individual",
+      title = "Define the person’s characteristics:",
       large=True,
-      buttons=[("Save", True), ("Cancel", False)],
+      buttons=[("Next", True), ("Cancel", False)],
     )
     if save_clicked:
         self.individualhome_card.visible = True
@@ -59,16 +59,16 @@ class Homepage(HomepageTemplate):
         self.education_label.text = variables['education']
         self.country_label.text = variables['country'] 
         print(variables)
-        if variables['country'] == (' United Kingdom of Great Britain and Northern Ireland') and variables['education'] == ('Lower Than Secondary'):
+        if variables['country'] == ('United Kingdom') and variables['education'] == ('Lower Than Secondary'):
           alert('Your selection criteria results in no data. Please make a different selection')
 
   def is_edit_button_click(self, **event_args):
     """This method is called when the button is clicked"""
     save_clicked = alert(
       content = Individual_InitialSelection(item=variables),
-      title = "Edit Variables For Individual",
+      title = "Define the person’s characteristics:",
       large=True,
-      buttons=[("Save", True), ("Cancel", False)],
+      buttons=[("Next", True), ("Cancel", False)],
     )
     if save_clicked:
         print(variables)
@@ -92,7 +92,7 @@ class Homepage(HomepageTemplate):
         self.employment_label.text = variables['employment']
         self.education_label.text = variables['education']
         self.country_label.text = variables['country'] 
-        if variables['country'] == (' United Kingdom of Great Britain and Northern Ireland') and variables['education'] == ('Lower Than Secondary'):
+        if variables['country'] == ('United Kingdom') and variables['education'] == ('Lower Than Secondary'):
           alert('Your selection criteria results in no data. Please make a different selection')
 
 

@@ -129,12 +129,12 @@ components:
         data_bindings:
         - {property: text, code: 'self.item[''country'']'}
     - name: is_edit_button
-      properties: {text: Edit Variable Selection, role: filled-button}
+      properties: {text: Edit Individual Characteristics, role: filled-button}
       type: Button
       layout_properties: {grid_position: 'LXDSPI,HJLRDN'}
       event_bindings: {click: is_edit_button_click}
     - name: is_money_button
-      properties: {text: Modify Money Values, role: filled-button}
+      properties: {text: Set Hourly Rates By Activity, role: filled-button}
       type: Button
       layout_properties: {grid_position: 'LXDSPI,ELEMMH'}
       event_bindings: {click: is_money_button_click}

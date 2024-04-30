@@ -6,7 +6,7 @@ components:
   layout_properties: {grid_position: 'AQEYTG,IKAFBC'}
   components:
   - name: is_selection_title
-    properties: {align: center, text: Please Define Your Person}
+    properties: {align: center, text: Please describe the individual}
     type: Label
     layout_properties: {grid_position: 'TAUWTF,DIELUL'}
   - name: individualname_label_copy
@@ -91,7 +91,7 @@ components:
       include_placeholder: true
       placeholder: Please Select An Option
       items: [Europe (all), Belgium, Estonia, Finland, France, Greece, Romania, Serbia,
-        ' United Kingdom of Great Britain and Northern Ireland']
+        ' United Kingdom']
     type: DropDown
     layout_properties: {grid_position: 'ITFPLU,AVIBMQ'}
     data_bindings:
@@ -102,12 +102,11 @@ components:
   layout_properties: {grid_position: 'EBZYGF,KNPRCP'}
   components:
   - name: is_newhealth
-    properties: {align: center, text: 'Please define the pre and post intervention
-        health statuses '}
+    properties: {align: center, text: Health status}
     type: Label
     layout_properties: {grid_position: 'TKNQIP,JQKKMR'}
   - name: initialhealth_label_copy
-    properties: {text: Health Quality Before Intervention, align: center}
+    properties: {text: Before intervention, align: center}
     type: Label
     layout_properties: {grid_position: 'DNUOSA,ZGLMUW'}
   - name: initialhealth_dropdown_copy
@@ -123,9 +122,9 @@ components:
     - {property: selected_value, code: 'self.item[''initialrank'']', writeback: true}
   - name: adjustedrank_label_copy
     properties: {role: null, align: center, tooltip: '', border: '', foreground: '',
-      visible: true, text: Health Quality After Intervention, font_size: null, font: '',
-      spacing_above: small, icon_align: left, spacing_below: small, italic: false,
-      background: '', bold: false, underline: false, icon: ''}
+      visible: true, text: After intervention, font_size: null, font: '', spacing_above: small,
+      icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
+      underline: false, icon: ''}
     type: Label
     layout_properties: {grid_position: 'FFDENX,UEVDAI'}
   - name: adjustedrank_dropdown_copy
