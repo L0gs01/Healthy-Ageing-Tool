@@ -37,18 +37,18 @@ print(df_selectedvariables)
 print(df_selectedmoney)
 #---------------------CREATED CSV DATAFRAMES
 data_country = df_selectedvariables.at[0,'country']
-# print(data_country)
-df_predictedvalues = None
-if data_country == 'Europe (all)': df_predictedvalues = df_europe
-if data_country == 'Belgium': df_predictedvalues = df_belgium
-if data_country == 'Estonia': df_predictedvalues = df_estonia
-if data_country == 'Finland': df_predictedvalues = df_finland
-if data_country == 'France': df_predictedvalues = df_france
-if data_country == 'Greece': df_predictedvalues = df_greece
-if data_country == 'Romania': df_predictedvalues = df_romania
-if data_country == 'Serbia': df_predictedvalues = df_serbia
-if data_country == 'United Kingdom of Great Britain and Northern Ireland': df_predicted_values = df_ukireland
-# print(df_predictedvalues)
+print(data_country)
+df_monthlytimevalues = None
+if data_country == 'Europe (all)': df_monthlytimevalues = df_europe
+if data_country == 'Belgium': df_monthlytimevalues = df_belgium
+if data_country == 'Estonia': df_monthlytimevalues = df_estonia
+if data_country == 'Finland': df_monthlytimevalues = df_finland
+if data_country == 'France': df_monthlytimevalues = df_france
+if data_country == 'Greece': df_monthlytimevalues = df_greece
+if data_country == 'Romania': df_monthlytimevalues = df_romania
+if data_country == 'Serbia': df_monthlytimevalues = df_serbia
+if data_country == 'United Kingdom of Great Britain and Northern Ireland': df_monthlytimevalues = df_ukireland
+print(df_monthlytimevalues)
 #------------------select correct dataframe values
 selection_initialrank = df_selectedvariables.at[0,'initialrank']
 selection_adjustedrank = df_selectedvariables.at[0,'adjustedrank']
@@ -100,12 +100,12 @@ if selection_education == 'Tertiary':
     selection_education = 'tertiary'
 
 #----------------------------------
-initial_filter_criteria = (df_predictedvalues['sph_rec_rel']==selection_initialrank)&(df_predictedvalues['age_rec_10y']==selection_age)&(df_predictedvalues['sex_rec']==selection_sex)&(df_predictedvalues['marital_rec_rel']==selection_maritalstatus)&(df_predictedvalues['employment_rec']==selection_employment)&(df_predictedvalues['education_rec']==selection_education)
-df_initial = df_predictedvalues[initial_filter_criteria]
+initial_filter_criteria = (df_monthlytimevalues['sph_rec_rel']==selection_initialrank)&(df_monthlytimevalues['age_rec_10y']==selection_age)&(df_monthlytimevalues['sex_rec']==selection_sex)&(df_monthlytimevalues['marital_rec_rel']==selection_maritalstatus)&(df_monthlytimevalues['employment_rec']==selection_employment)&(df_monthlytimevalues['education_rec']==selection_education)
+df_initial = df_monthlytimevalues[initial_filter_criteria]
 print(df_initial)
 
-adjusted_filter_criteria = (df_predictedvalues['sph_rec_rel']==selection_adjustedrank)&(df_predictedvalues['age_rec_10y']==selection_age)&(df_predictedvalues['sex_rec']==selection_sex)&(df_predictedvalues['marital_rec_rel']==selection_maritalstatus)&(df_predictedvalues['employment_rec']==selection_employment)&(df_predictedvalues['education_rec']==selection_education)
-df_adjusted = df_predictedvalues[adjusted_filter_criteria]
+adjusted_filter_criteria = (df_monthlytimevalues['sph_rec_rel']==selection_adjustedrank)&(df_monthlytimevalues['age_rec_10y']==selection_age)&(df_monthlytimevalues['sex_rec']==selection_sex)&(df_monthlytimevalues['marital_rec_rel']==selection_maritalstatus)&(df_monthlytimevalues['employment_rec']==selection_employment)&(df_monthlytimevalues['education_rec']==selection_education)
+df_adjusted = df_monthlytimevalues[adjusted_filter_criteria]
 print(df_adjusted)
 
 df_initial.drop(['age_rec_10y','sph_rec_rel','sex_rec','marital_rec_rel','employment_rec','education_rec','COUNTRY'],axis=1,inplace=True)
@@ -116,8 +116,8 @@ df_adjusted.drop(['age_rec_10y','sph_rec_rel','sex_rec','marital_rec_rel','emplo
 df_adjusted.rename({"Unnamed: 0":"a"}, axis="columns", inplace=True)
 df_adjusted.drop(["a"], axis=1, inplace=True)
 
-df_initial.rename(columns={"link": "initial_value"},inplace = True)
-df_adjusted.rename(columns={"link": "adjusted_value"},inplace = True)
+df_initial.rename(columns={"link": "initial_monthlytime"},inplace = True)
+df_adjusted.rename(columns={"link": "adjusted_monthlytime"},inplace = True)
 print(df_initial)   
 print(df_adjusted) 
 
@@ -145,29 +145,29 @@ money_voluntaryactivity = float(money_voluntaryactivity)
 
 hourly_data = [money_housing,money_transport,money_nutrition,money_clothing,money_laundry,money_childcare,money_adultcare,money_voluntaryactivity]
 
-df_hourlyvalue = DataFrame(data = hourly_data, columns = ['HourlyValue'])
-df_hourlyvalue.index =['Housing','Transport','Nutrition','Clothing','Laundry','ChildCare','AdultCare','Voluntary']
-print(df_hourlyvalue)
+df_hourlymoneyrate = DataFrame(data = hourly_data, columns = ['HourlyMoney'])
+df_hourlymoneyrate.index =['Housing','Transport','Nutrition','Clothing','Laundry','ChildCare','AdultCare','Voluntary']
+print(df_hourlymoneyrate)
 
 
-df_combo['difference_value'] = (df_combo.adjusted_value-df_combo.initial_value)
-df_combo['initial_monthly'] = (((df_combo.initial_value/60) * df_hourlyvalue.HourlyValue)*12)
-df_combo['adjusted_monthly'] = (((df_combo.adjusted_value/60) * df_hourlyvalue.HourlyValue)*12)
+df_combo['difference_monthlytime'] = (df_combo.adjusted_monthlytime-df_combo.initial_monthlytime)
+df_combo['initial_monthlyvalue'] = (((df_combo.initial_monthlytime/60) * df_hourlymoneyrate.HourlyMoney)*12)
+df_combo['adjusted_monthlyvalue'] = (((df_combo.adjusted_monthlytime/60) * df_hourlymoneyrate.HourlyMoney)*12)
+print(df_combo)
 
-housing_difference = (df_combo.at['Housing',"adjusted_monthly"])-(df_combo.at['Housing',"initial_monthly"])
-transport_difference = (df_combo.at['Transport',"adjusted_monthly"])-(df_combo.at['Transport',"initial_monthly"])
-nutrition_difference = (df_combo.at['Nutrition',"adjusted_monthly"])-(df_combo.at['Nutrition',"initial_monthly"])
-clothing_difference = (df_combo.at['Clothing',"adjusted_monthly"])-(df_combo.at['Clothing',"initial_monthly"])
-laundry_difference = (df_combo.at['Laundry',"adjusted_monthly"])-(df_combo.at['Laundry',"initial_monthly"])
-childcare_difference = (df_combo.at['ChildCare',"adjusted_monthly"])-(df_combo.at['ChildCare',"initial_monthly"])
-adultcare_difference = (df_combo.at['AdultCare',"adjusted_monthly"])-(df_combo.at['AdultCare',"initial_monthly"])
-voluntary_difference = (df_combo.at['Voluntary',"adjusted_monthly"])-(df_combo.at['Voluntary',"initial_monthly"])
+housing_difference = (df_combo.at['Housing',"adjusted_monthlyvalue"])-(df_combo.at['Housing',"initial_monthlyvalue"])
+transport_difference = (df_combo.at['Transport',"adjusted_monthlyvalue"])-(df_combo.at['Transport',"initial_monthlyvalue"])
+nutrition_difference = (df_combo.at['Nutrition',"adjusted_monthlyvalue"])-(df_combo.at['Nutrition',"initial_monthlyvalue"])
+clothing_difference = (df_combo.at['Clothing',"adjusted_monthlyvalue"])-(df_combo.at['Clothing',"initial_monthlyvalue"])
+laundry_difference = (df_combo.at['Laundry',"adjusted_monthlyvalue"])-(df_combo.at['Laundry',"initial_monthlyvalue"])
+childcare_difference = (df_combo.at['ChildCare',"adjusted_monthlyvalue"])-(df_combo.at['ChildCare',"initial_monthlyvalue"])
+adultcare_difference = (df_combo.at['AdultCare',"adjusted_monthlyvalue"])-(df_combo.at['AdultCare',"initial_monthlyvalue"])
+voluntary_difference = (df_combo.at['Voluntary',"adjusted_monthlyvalue"])-(df_combo.at['Voluntary',"initial_monthlyvalue"])
 
 list_difference = [housing_difference,transport_difference,nutrition_difference,clothing_difference,laundry_difference,childcare_difference,adultcare_difference,voluntary_difference]
 
-df_difference = DataFrame(data = list_difference, columns = ['difference_monthly'])
+df_difference = DataFrame(data = list_difference, columns = ['difference_monthlyvalue'])
 df_difference.index =['Housing','Transport','Nutrition','Clothing','Laundry','ChildCare','AdultCare','Voluntary']
-df_difference
 df_final_raw= pd.merge(df_combo,df_difference, left_index=True, right_index=True)
 
 
@@ -181,12 +181,12 @@ with pd.option_context('display.max_rows', None,
     print(df_final)
 print(df_final.dtypes)
 
-total_initial_time = df_final['initial_value'].sum()
-total_adjusted_time = df_final['adjusted_value'].sum()
-total_difference_time = df_final['difference_value'].sum()
-total_initial_value = df_final['initial_monthly'].sum()
-total_adjusted_value = df_final['adjusted_monthly'].sum()
-total_difference_value = df_final['difference_monthly'].sum()
+total_initial_time = df_final['initial_monthlytime'].sum()
+total_adjusted_time = df_final['adjusted_monthlytime'].sum()
+total_difference_time = df_final['difference_monthlytime'].sum()
+total_initial_value = df_final['initial_monthlyvalue'].sum()
+total_adjusted_value = df_final['adjusted_monthlyvalue'].sum()
+total_difference_value = df_final['difference_monthlyvalue'].sum()
 
 totals = (total_initial_time,total_adjusted_time,total_difference_time,total_initial_value,total_adjusted_value,total_difference_value)
 
@@ -200,7 +200,7 @@ total_adjusted_time_diff = 8760 - (total_adjusted_time)
 total_difference_time_diff = 8760 - (total_difference_time)
 total_time_diff = {'Time Spent In Activities':[total_initial_time,total_adjusted_time,total_difference_time],'Time Spent Outside Activities':[total_initial_time_diff,total_adjusted_time_diff,total_difference_time_diff]}
 df_total_diff = pd.DataFrame(data=total_time_diff)
-df_total_diff.index = ['initial_times','adjusted_times','diiference_times']
+df_total_diff.index = ['initial_times','adjusted_times','difference_times']
 df_total_diff_trans = df_total_diff.T
 print(df_total_diff_trans)
 
@@ -230,10 +230,10 @@ def create_barfig_adjusted_time():
 def create_barfig_difference_time():
   data = df_final
   fig_difference_time = px.bar(data, x=df_final.index,
-                               y='difference_value',
+                               y='difference_monthlytime',
                                title="Gains In Time Spent Per Activity",
                                color_discrete_sequence=["green"],
-                               labels={'index': 'Activity', 'difference_value':'Hours Per Year'})
+                               labels={'index': 'Activity', 'difference_monthlytime':'Hours Per Year'})
   return fig_difference_time
   
 @anvil.server.callable
@@ -242,12 +242,12 @@ def create_barfig_combo_time():
   fig1 = go.Figure(data=[
         go.Bar(name="Before Intervention",
           x=df_final.index,
-          y=data["initial_value"],
+          y=data["initial_monthlytime"],
           offsetgroup=0,
           marker=dict(color='red')),
         go.Bar(name="After Intervention",
           x=df_final.index,
-          y=data["adjusted_value"],
+          y=data["adjusted_monthlytime"],
           offsetgroup=1,
           marker=dict(color='blue'))
         # go.Bar(name="Difference Values",
