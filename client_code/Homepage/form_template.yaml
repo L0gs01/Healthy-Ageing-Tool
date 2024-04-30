@@ -228,7 +228,7 @@ components:
       type: ColumnPanel
       components:
       - name: label_10
-        properties: {text: Initial Number, role: title, align: center}
+        properties: {text: Before Intervention, role: title, align: center}
         type: Label
         layout_properties: {grid_position: 'OFTFXY,WJDDSM'}
       - name: initial_box
@@ -242,7 +242,7 @@ components:
       layout_properties: {grid_position: 'FOZIPL,PVEWXU'}
       components:
       - name: label_10_copy
-        properties: {text: Adjusted Number, role: title, align: center}
+        properties: {text: After Intervention, role: title, align: center}
         type: Label
         layout_properties: {grid_position: 'OFTFXY,WJDDSM'}
       - name: adjusted_box

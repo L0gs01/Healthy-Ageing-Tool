@@ -213,7 +213,7 @@ def create_barfig_initial_time():
                             y='initial_value',
                             title="Before Intervention",
                             color_discrete_sequence=["red"],
-                            labels={'index': 'Activity', 'initial_value':'Hours Spent (Monthly)'})
+                            labels={'index': 'Activity', 'initial_value':'Hours Spent (Yearly)'})
   return fig_initial_time
 
 @anvil.server.callable
@@ -223,7 +223,7 @@ def create_barfig_adjusted_time():
                              y='adjusted_value',
                              title="After Intervention",
                              color_discrete_sequence=["blue"],
-                             labels={'index': 'Activity', 'adjusted_value':'Hours Spent (Monthly)'})
+                             labels={'index': 'Activity', 'adjusted_value':'Hours Spent (Yearly)'})
   return fig_adjusted_time
   
 @anvil.server.callable
@@ -231,9 +231,9 @@ def create_barfig_difference_time():
   data = df_final
   fig_difference_time = px.bar(data, x=df_final.index,
                                y='difference_value',
-                               title="Difference In Monthly Value",
+                               title="Monetary value of change in health status",
                                color_discrete_sequence=["green"],
-                               labels={'index': 'Activity', 'difference_value':'Hours Spent (Monthly)'})
+                               labels={'index': 'Activity', 'difference_value':'Hours Spent (Yearly)'})
   return fig_difference_time
   
 @anvil.server.callable
@@ -257,7 +257,7 @@ def create_barfig_combo_time():
         #   marker=dict(color='green'))
     ],
     layout=go.Layout(
-        title="Comparative Values (monthly time)",
+        title="Comparative Values (Hours Per Year)",
         yaxis_title="Value",
         xaxis_title="Activities"
     )
@@ -285,7 +285,7 @@ def create_piefig_time():
                      position='top center')
                  )
          ]
-  figure=go.Figure(data=data, layout={'title':'Activity Percent By Time' + '<br>' +  '<span style="font-size: 12px;">Before (Inner Circle)</span>' + '<br>' +  '<span style="font-size: 12px;">After (Outer Circle)</span>'})  
+  figure=go.Figure(data=data, layout={'title':'Activity Percent By Time (Yearly)' + '<br>' +  '<span style="font-size: 12px;">Before (Inner Circle)</span>' + '<br>' +  '<span style="font-size: 12px;">After (Outer Circle)</span>'})  
   figure.update_traces(textposition='inside')
   figure.update_layout(uniformtext_minsize=12, uniformtext_mode='hide')
   return(figure)
@@ -294,7 +294,7 @@ def create_piefig_time():
 def create_piefig_difference_time():
   trace = go.Pie(labels= df_final.index, values=df_final.iloc[:,2])
   data = [trace]
-  fig = go.Figure(data = data, layout={'title':'Additional Time Spent In Activity'})                                    
+  fig = go.Figure(data = data, layout={'title':'Additional Time Spent In Activity (Yearly)'})                                    
   return(fig)
 
 @anvil.server.callable
