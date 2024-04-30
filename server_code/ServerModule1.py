@@ -151,8 +151,8 @@ print(df_hourlymoneyrate)
 
 
 df_combo['difference_monthlytime'] = (df_combo.adjusted_monthlytime-df_combo.initial_monthlytime)
-df_combo['initial_monthlyvalue'] = (((df_combo.initial_monthlytime/60) * df_hourlymoneyrate.HourlyMoney)*12)
-df_combo['adjusted_monthlyvalue'] = (((df_combo.adjusted_monthlytime/60) * df_hourlymoneyrate.HourlyMoney)*12)
+df_combo['initial_monthlyvalue'] = ((df_combo.initial_monthlytime/60) * df_hourlymoneyrate.HourlyMoney)
+df_combo['adjusted_monthlyvalue'] = ((df_combo.adjusted_monthlytime/60) * df_hourlymoneyrate.HourlyMoney)
 print(df_combo)
 
 housing_difference = (df_combo.at['Housing',"adjusted_monthlyvalue"])-(df_combo.at['Housing',"initial_monthlyvalue"])
@@ -195,9 +195,9 @@ df_totals.index=['total_initial_time','total_adjusted_time','total_difference_ti
 print(df_totals)
 
 
-total_initial_time_diff = 8760 - (total_initial_time)
-total_adjusted_time_diff = 8760 - (total_adjusted_time)
-total_difference_time_diff = 8760 - (total_difference_time)
+total_initial_time_diff = 43800 - (total_initial_time)
+total_adjusted_time_diff = 43800 - (total_adjusted_time)
+total_difference_time_diff = 43800 - (total_difference_time)
 total_time_diff = {'Time Spent In Activities':[total_initial_time,total_adjusted_time,total_difference_time],'Time Spent Outside Activities':[total_initial_time_diff,total_adjusted_time_diff,total_difference_time_diff]}
 df_total_diff = pd.DataFrame(data=total_time_diff)
 df_total_diff.index = ['initial_times','adjusted_times','difference_times']
