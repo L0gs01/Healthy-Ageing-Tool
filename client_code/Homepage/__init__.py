@@ -99,7 +99,15 @@ class Homepage(HomepageTemplate):
   def is_money_button_click(self, **event_args):
     """This method is called when the button is clicked"""
     global money_val
-    money_val = {}
+    housing='15.4'
+    transport='6.86'
+    nutrition='3.56'
+    clothing='0.91'
+    laundry='12.29'
+    childcare='4.9'
+    adultcare='4.46'
+    voluntaryactivity='11.63'
+    money_val={'housing':housing,'transport':transport,'nutrition':nutrition,'clothing':clothing,'laundry':laundry,'childcare':childcare,'adultcare':adultcare,'voluntaryactivity':voluntaryactivity}
     save_clicked = alert(
       content = Individual_MoneyValue(item=money_val),
       title = "Edit Monatary Value For Activities",
