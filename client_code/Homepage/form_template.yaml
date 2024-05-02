@@ -184,8 +184,8 @@ components:
             2015 GBP). The annual value of non-market productive activities when {name_2}''s
             health is {adjusted_rank1} is £{adjusted_value} (in real 2015 GBP).  The
             value of health attributable to changes in time spent on non-market productive
-            activities for {name_3}''s health changes from {initial_rank_2} to {adjusted_rank2}
-            is £{difference_value} (in real 2015 GBP).'}
+            activities for {name_3}''s when {name}''s health changes from {initial_rank_2}
+            to {adjusted_rank2} is £{difference_value} (in real 2015 GBP).'}
         type: RichText
         layout_properties: {grid_position: 'XKHVTQ,LHFYMF'}
         components:
@@ -229,6 +229,10 @@ components:
           properties: {}
           type: RichText
           layout_properties: {slot: difference_value}
+        - name: name_7
+          properties: {}
+          type: RichText
+          layout_properties: {slot: name}
     - name: outlined_card_3
       properties: {role: outlined-card}
       type: ColumnPanel
@@ -249,15 +253,15 @@ components:
           properties: {}
           type: RichText
           layout_properties: {slot: name_4}
-        - name: rich_text_3
+        - name: initial_3
           properties: {}
           type: RichText
           layout_properties: {slot: initial}
-        - name: rich_text_4
+        - name: adjusted_3
           properties: {}
           type: RichText
           layout_properties: {slot: adjusted}
-        - name: rich_text_5
+        - name: diff_1
           properties: {}
           type: RichText
           layout_properties: {slot: diff_1}
