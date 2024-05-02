@@ -156,8 +156,10 @@ class Homepage(HomepageTemplate):
     self.name_6.content = self.name_label.text
     self.initial_rank1.content = self.initialrank_label.text
     self.initial_rank2.content = self.initialrank_label.text
+    self.initial_rank3.content = self.initialrank_label.text
     self.adjusted_rank1.content = self.adjustedrank_label.text
     self.adjusted_rank2.content = self.adjustedrank_label.text
+    self.adjusted_rank3.content = self.adjustedrank_label.text    
     initial_value_text = (anvil.server.call('get_inital_value')*60)
     self.initial_box.content = initial_value_text
     self.initial_value.content = initial_value_text
