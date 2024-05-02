@@ -178,13 +178,19 @@ components:
       type: ColumnPanel
       layout_properties: {grid_position: 'FNMEYO,ZTLDZM'}
       components:
-      - name: richtext_sentence
-        properties: {content: ' The monthly value of non-market activities when {name_1}
-            health is {initial_rank_1} is {initial_value} pounds. The monthly value
-            of non-market activities when {name_2} health is {adjusted_rank1} is {adjusted_value}
-            pounds. The monthly value of health attributable to non-market activities
-            when {name_3} health changes from {initial_rank_2} to {adjusted_rank2}
-            is {difference_value} pounds.'}
+      - name: richtext_sentence_p1
+        properties: {content: 'The annual value of non-market productive activities
+            when {name_1}''s health is {initial_rank_1} is £{initial_value} (in real
+            2015 GBP). The annual value of non-market productive activities when {name_2}''s
+            health is {adjusted_rank1} is £{adjusted_value} (in real 2015 GBP).The
+            annual value of non-market productive activities when  {name_3}''s health
+            changes from {initial_rank_2} to {adjusted_rank2} is {difference_value}
+            pounds.   The annual value of non-market productive activities when NAME
+            ''s health is POOR is £658 (in real 2015 GBP). The annual value of non-market
+            productive activities when NAME''s health is GOOD is £870. The annual
+            value of non-market productive activities when NAME ''s health is POOR
+            is £658 (in real 2015 GBP). The annual value of non-market productive
+            activities when NAME''s health is GOOD is £870. '}
         type: RichText
         layout_properties: {grid_position: 'XKHVTQ,LHFYMF'}
         components:
@@ -228,6 +234,15 @@ components:
           properties: {}
           type: RichText
           layout_properties: {slot: difference_value}
+    - name: outlined_card_3
+      properties: {role: outlined-card}
+      type: ColumnPanel
+      layout_properties: {grid_position: 'JABIWM,OQYPXQ'}
+      components:
+      - name: richtext_sentence_p2
+        properties: {content: richtext_sentence_p1}
+        type: RichText
+        layout_properties: {grid_position: 'DPPHGK,EDRZUO'}
     - name: outlined_card_1
       properties: {role: outlined-card}
       type: ColumnPanel

@@ -198,7 +198,7 @@ print(df_totals)
 total_initial_time_diff = 43800 - (total_initial_time)
 total_adjusted_time_diff = 43800 - (total_adjusted_time)
 total_difference_time_diff = 43800 - (total_difference_time)
-total_time_diff = {'Time Spent In Activities':[total_initial_time,total_adjusted_time,total_difference_time],'Time Spent Outside Activities':[total_initial_time_diff,total_adjusted_time_diff,total_difference_time_diff]}
+total_time_diff = {'Non-Market Productive Activities':[total_initial_time,total_adjusted_time,total_difference_time],'All Other Activities':[total_initial_time_diff,total_adjusted_time_diff,total_difference_time_diff]}
 df_total_diff = pd.DataFrame(data=total_time_diff)
 df_total_diff.index = ['initial_times','adjusted_times','difference_times']
 df_total_diff_trans = df_total_diff.T
@@ -211,7 +211,7 @@ def create_barfig_initial_time():
   data = df_final
   fig_initial_time = px.bar(data, x=df_final.index,
                             y='initial_value',
-                            title="Before Intervention",
+                            title="Before Intervention Time Spent On Non-Market Productive Activities",
                             color_discrete_sequence=["red"],
                             labels={'index': 'Activity', 'initial_value':'Minutes Per Month'})
   return fig_initial_time
@@ -221,7 +221,7 @@ def create_barfig_adjusted_time():
   data = df_final
   fig_adjusted_time = px.bar(data, x=df_final.index,
                              y='adjusted_value',
-                             title="After Intervention",
+                             title="After Intervention Time Spent On Non-Market Productive Activities",
                              color_discrete_sequence=["blue"],
                              labels={'index': 'Activity', 'adjusted_value':'Minutes Per Month'})
   return fig_adjusted_time
@@ -231,7 +231,7 @@ def create_barfig_difference_time():
   data = df_final
   fig_difference_time = px.bar(data, x=df_final.index,
                                y='difference_monthlytime',
-                               title="Gains In Time Spent Per Activity",
+                               title="Increase In Time Spent On Non-Market Productive Activities",
                                color_discrete_sequence=["green"],
                                labels={'index': 'Activity', 'difference_monthlytime':'Minutes Per Month'})
   return fig_difference_time
@@ -257,7 +257,7 @@ def create_barfig_combo_time():
         #   marker=dict(color='green'))
     ],
     layout=go.Layout(
-        title="Comparative Values (Minutes Per Month)",
+        title="Time Spent On Non-Market Productive Activities",
         yaxis_title="Minutes Per Month",
         xaxis_title="Activities"
     )
@@ -286,7 +286,7 @@ def create_piefig_time():
                      position='top center')
                  )
          ]
-  figure=go.Figure(data=data, layout={'title':'Activity Percent By Time (Min/Month)' + '<br>' +  '<span style="font-size: 12px;">Before (Inner Circle)</span>' + '<br>' +  '<span style="font-size: 12px;">After (Outer Circle)</span>'})  
+  figure=go.Figure(data=data, layout={'title':'Breakdown Of Time Spent On Non-Market Productive Activities' + '<br>' +  '<span style="font-size: 12px;">Before Intervention (Inner Circle)</span>' + '<br>' +  '<span style="font-size: 12px;">After Intervention (Outer Circle)</span>'})  
   figure.update_traces(textposition='inside')
   figure.update_layout(uniformtext_minsize=12, uniformtext_mode='hide')
   return(figure)
@@ -295,14 +295,14 @@ def create_piefig_time():
 def create_piefig_difference_time():
   trace = go.Pie(labels= df_final.index, values=df_final.iloc[:,2])
   data = [trace]
-  fig = go.Figure(data = data, layout={'title':'Additional Time Spent In Activity (Min/Month)'})                                    
+  fig = go.Figure(data = data, layout={'title':'Breakdown Of Increase In Time Spent On Non-Market Productive Activities'})                                    
   return(fig)
 
 @anvil.server.callable
 def create_piefig_timecomp_initial():
   trace = go.Pie(labels= df_total_diff_trans.index,values=df_total_diff_trans.loc[:,"initial_times"],sort=False)
   data = [trace]
-  fig = go.Figure(data = data, layout={'title':'Minutes Spent in Activities vs. Whole (Before)'})  
+  fig = go.Figure(data = data, layout={'title':'Time Usage Before Intervention'})  
   fig.update_traces(marker=dict(colors=['blue', 'red']))
   return(fig)
 
@@ -310,7 +310,7 @@ def create_piefig_timecomp_initial():
 def create_piefig_timecomp_adjusted():
   trace = go.Pie(labels= df_total_diff_trans.index,values=df_total_diff_trans.loc[:,"adjusted_times"],sort=False)
   data = [trace]
-  fig = go.Figure(data = data, layout={'title':'Minutes Spent in Activities vs. Whole (After)'}) 
+  fig = go.Figure(data = data, layout={'title':'Time usage after intervention'}) 
   fig.update_traces(marker=dict(colors=['blue', 'red']))
   return(fig)
     
