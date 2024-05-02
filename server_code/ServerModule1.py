@@ -310,7 +310,7 @@ def create_piefig_timecomp_initial():
 def create_piefig_timecomp_adjusted():
   trace = go.Pie(labels= df_total_diff_trans.index,values=df_total_diff_trans.loc[:,"adjusted_times"],sort=False)
   data = [trace]
-  fig = go.Figure(data = data, layout={'title':'Time usage after intervention'}) 
+  fig = go.Figure(data = data, layout={'title':'Time Usage After Intervention'}) 
   fig.update_traces(marker=dict(colors=['blue', 'red']))
   return(fig)
     
