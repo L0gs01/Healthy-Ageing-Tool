@@ -225,11 +225,11 @@ components:
           properties: {}
           type: RichText
           layout_properties: {slot: adjusted_value}
-        - name: difference_value
+        - name: difference_value1
           properties: {}
           type: RichText
           layout_properties: {slot: difference_value}
-        - name: name_7
+        - name: name_4
           properties: {}
           type: RichText
           layout_properties: {slot: name}
@@ -253,15 +253,15 @@ components:
           properties: {}
           type: RichText
           layout_properties: {slot: name_4}
-        - name: initial_3
+        - name: initial_rank3
           properties: {}
           type: RichText
           layout_properties: {slot: initial}
-        - name: adjusted_3
+        - name: adjusted_rank3
           properties: {}
           type: RichText
           layout_properties: {slot: adjusted}
-        - name: diff_1
+        - name: difference_value2
           properties: {}
           type: RichText
           layout_properties: {slot: diff_1}

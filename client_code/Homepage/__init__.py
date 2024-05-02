@@ -151,6 +151,9 @@ class Homepage(HomepageTemplate):
     self.name_1.content = self.name_label.text
     self.name_2.content = self.name_label.text
     self.name_3.content = self.name_label.text
+    self.name_4.content = self.name_label.text
+    self.name_5.content = self.name_label.text
+    self.name_6.content = self.name_label.text
     self.initial_rank1.content = self.initialrank_label.text
     self.initial_rank2.content = self.initialrank_label.text
     self.adjusted_rank1.content = self.adjustedrank_label.text
@@ -162,7 +165,8 @@ class Homepage(HomepageTemplate):
     self.adjusted_value.content = adjusted_value_text
     self.adjusted_box.content = adjusted_value_text
     difference_value_text = (anvil.server.call('get_difference_value')*60)
-    self.difference_value.content = difference_value_text
+    self.difference_value1.content = difference_value_text
+    self.difference_value2.content = difference_value_text
     self.difference_box.content = difference_value_text
 
 
