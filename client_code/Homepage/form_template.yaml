@@ -271,7 +271,7 @@ components:
       type: ColumnPanel
       components:
       - name: label_10
-        properties: {text: Before Intervention, role: title, align: center}
+        properties: {text: Before Intervention, role: input-prompt, align: center}
         type: Label
         layout_properties: {grid_position: 'OFTFXY,WJDDSM'}
       - name: rich_text_1
@@ -282,6 +282,10 @@ components:
         properties: {content: ' {something}', role: null, align: left}
         type: RichText
         layout_properties: {grid_position: 'OAPYQG,PUJAOY'}
+      - name: spacer_1_copy_2
+        properties: {height: 32}
+        type: Spacer
+        layout_properties: {grid_position: 'OAPYQG,IILQZT'}
       layout_properties: {grid_position: 'FOZIPL,VSBLKC'}
     - name: outlined_card_1_copy
       properties: {role: outlined-card}
@@ -289,7 +293,7 @@ components:
       layout_properties: {grid_position: 'FOZIPL,PVEWXU'}
       components:
       - name: label_10_copy
-        properties: {text: After Intervention, role: title, align: center}
+        properties: {text: After Intervention, role: input-prompt, align: center}
         type: Label
         layout_properties: {grid_position: 'OFTFXY,WJDDSM'}
       - name: rich_text_2
@@ -300,13 +304,17 @@ components:
         properties: {content: '{adjusted}', role: null, align: left}
         type: RichText
         layout_properties: {grid_position: 'OAPYQG,PUJAOY'}
+      - name: spacer_1_copy
+        properties: {height: 32}
+        type: Spacer
+        layout_properties: {grid_position: 'OAPYQG,ONXWNV'}
     - name: outlined_card_1_copy_2
       properties: {role: outlined-card}
       type: ColumnPanel
       layout_properties: {grid_position: 'FOZIPL,BGJWDL'}
       components:
       - name: label_10_copy_2
-        properties: {text: Value Of Change In Health Status, role: title, align: center}
+        properties: {text: Value Of Change In Health Status, role: input-prompt, align: center}
         type: Label
         layout_properties: {grid_position: 'OFTFXY,WJDDSM'}
       - name: rich_text_3
@@ -317,6 +325,10 @@ components:
         properties: {content: '{difference}', role: null, align: left}
         type: RichText
         layout_properties: {grid_position: 'OAPYQG,PUJAOY'}
+      - name: spacer_1
+        properties: {height: 32}
+        type: Spacer
+        layout_properties: {grid_position: 'OAPYQG,BBUWPX'}
 - type: FlowPanel
   properties: {}
   name: navbar_links
