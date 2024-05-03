@@ -184,7 +184,7 @@ print(df_final.dtypes)
 total_initial_time = df_final['initial_monthlytime'].sum()
 total_adjusted_time = df_final['adjusted_monthlytime'].sum()
 total_difference_time = df_final['difference_monthlytime'].sum()
-total_initial_value = df_final['initial_monthlyvalue'].sum()
+total_initial_value = (((df_hourlymoneyrate.HourlyMoney/60) * df_final.initial_monthlytime).sum()*12)
 total_adjusted_value = df_final['adjusted_monthlyvalue'].sum()
 total_difference_value = df_final['difference_monthlyvalue'].sum()
 
