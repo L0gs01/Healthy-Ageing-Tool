@@ -151,27 +151,28 @@ print(df_hourlymoneyrate)
 
 
 df_combo['difference_monthlytime'] = (df_combo.adjusted_monthlytime-df_combo.initial_monthlytime)
-df_combo['initial_monthlyvalue'] = ((df_combo.initial_monthlytime/60) * df_hourlymoneyrate.HourlyMoney)
-df_combo['adjusted_monthlyvalue'] = ((df_combo.adjusted_monthlytime/60) * df_hourlymoneyrate.HourlyMoney)
+df_combo['initial_monthlyvalue'] = (df_combo.initial_monthlytime * (df_hourlymoneyrate.HourlyMoney/60))
+df_combo['adjusted_monthlyvalue'] = (df_combo.adjusted_monthlytime * (df_hourlymoneyrate.HourlyMoney/60))
+df_combo['difference_monthlyvalue'] = df_combo.adjusted_monthlyvalue-df_combo.initial_monthlyvalue
 print(df_combo)
 
-housing_difference = (df_combo.at['Housing',"adjusted_monthlyvalue"])-(df_combo.at['Housing',"initial_monthlyvalue"])
-transport_difference = (df_combo.at['Transport',"adjusted_monthlyvalue"])-(df_combo.at['Transport',"initial_monthlyvalue"])
-nutrition_difference = (df_combo.at['Nutrition',"adjusted_monthlyvalue"])-(df_combo.at['Nutrition',"initial_monthlyvalue"])
-clothing_difference = (df_combo.at['Clothing',"adjusted_monthlyvalue"])-(df_combo.at['Clothing',"initial_monthlyvalue"])
-laundry_difference = (df_combo.at['Laundry',"adjusted_monthlyvalue"])-(df_combo.at['Laundry',"initial_monthlyvalue"])
-childcare_difference = (df_combo.at['ChildCare',"adjusted_monthlyvalue"])-(df_combo.at['ChildCare',"initial_monthlyvalue"])
-adultcare_difference = (df_combo.at['AdultCare',"adjusted_monthlyvalue"])-(df_combo.at['AdultCare',"initial_monthlyvalue"])
-voluntary_difference = (df_combo.at['Voluntary',"adjusted_monthlyvalue"])-(df_combo.at['Voluntary',"initial_monthlyvalue"])
+# housing_difference = (df_combo.at['Housing',"adjusted_monthlyvalue"])-(df_combo.at['Housing',"initial_monthlyvalue"])
+# transport_difference = (df_combo.at['Transport',"adjusted_monthlyvalue"])-(df_combo.at['Transport',"initial_monthlyvalue"])
+# nutrition_difference = (df_combo.at['Nutrition',"adjusted_monthlyvalue"])-(df_combo.at['Nutrition',"initial_monthlyvalue"])
+# clothing_difference = (df_combo.at['Clothing',"adjusted_monthlyvalue"])-(df_combo.at['Clothing',"initial_monthlyvalue"])
+# laundry_difference = (df_combo.at['Laundry',"adjusted_monthlyvalue"])-(df_combo.at['Laundry',"initial_monthlyvalue"])
+# childcare_difference = (df_combo.at['ChildCare',"adjusted_monthlyvalue"])-(df_combo.at['ChildCare',"initial_monthlyvalue"])
+# adultcare_difference = (df_combo.at['AdultCare',"adjusted_monthlyvalue"])-(df_combo.at['AdultCare',"initial_monthlyvalue"])
+# voluntary_difference = (df_combo.at['Voluntary',"adjusted_monthlyvalue"])-(df_combo.at['Voluntary',"initial_monthlyvalue"])
 
-list_difference = [housing_difference,transport_difference,nutrition_difference,clothing_difference,laundry_difference,childcare_difference,adultcare_difference,voluntary_difference]
+# list_difference = [housing_difference,transport_difference,nutrition_difference,clothing_difference,laundry_difference,childcare_difference,adultcare_difference,voluntary_difference]
 
-df_difference = DataFrame(data = list_difference, columns = ['difference_monthlyvalue'])
-df_difference.index =['Housing','Transport','Nutrition','Clothing','Laundry','ChildCare','AdultCare','Voluntary']
-df_final_raw= pd.merge(df_combo,df_difference, left_index=True, right_index=True)
+# df_difference = DataFrame(data = list_difference, columns = ['difference_monthlyvalue'])
+# df_difference.index =['Housing','Transport','Nutrition','Clothing','Laundry','ChildCare','AdultCare','Voluntary']
+# df_final_raw= pd.merge(df_combo,df_difference, left_index=True, right_index=True)
 
 
-df_final = df_final_raw.apply(lambda column: column.astype(int))
+df_final = df_combo.apply(lambda column: column.astype(int))
 df_final[df_final < 0] = 0
 
 with pd.option_context('display.max_rows', None,
@@ -184,9 +185,9 @@ print(df_final.dtypes)
 total_initial_time = df_final['initial_monthlytime'].sum()
 total_adjusted_time = df_final['adjusted_monthlytime'].sum()
 total_difference_time = df_final['difference_monthlytime'].sum()
-total_initial_value = (((df_hourlymoneyrate.HourlyMoney/60) * df_final.initial_monthlytime).sum()*12)
-total_adjusted_value = df_final['adjusted_monthlyvalue'].sum()
-total_difference_value = df_final['difference_monthlyvalue'].sum()
+total_initial_value = (df_final['initial_monthlyvalue'].sum())*12
+total_adjusted_value = (df_final['adjusted_monthlyvalue'].sum())*12
+total_difference_value = (df_final['difference_monthlyvalue'].sum())*12
 
 totals = (total_initial_time,total_adjusted_time,total_difference_time,total_initial_value,total_adjusted_value,total_difference_value)
 
