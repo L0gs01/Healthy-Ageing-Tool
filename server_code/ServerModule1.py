@@ -90,7 +90,7 @@ if selection_employment == 'Part Time':
     selection_employment = 'part_time'
 if selection_employment == 'Full Time':
     selection_employment = 'full_time'
-if selection_employment == 'Not Payed':
+if selection_employment == 'Not Paid':
     selection_employment = 'not_paid'
 if selection_education == 'Lower Than Secondary':
     selection_education = 'lower_than_secondary'
@@ -98,7 +98,8 @@ if selection_education == 'Secondary':
     selection_education = 'secondary_non_tertiary'
 if selection_education == 'Tertiary':
     selection_education = 'tertiary'
-
+selection_total = (selection_initialrank,selection_adjustedrank,selection_age,selection_sex,selection_maritalstatus,selection_employment,selection_education)
+print(selection_total)
 #----------------------------------
 initial_filter_criteria = (df_monthlytimevalues['sph_rec_rel']==selection_initialrank)&(df_monthlytimevalues['age_rec_10y']==selection_age)&(df_monthlytimevalues['sex_rec']==selection_sex)&(df_monthlytimevalues['marital_rec_rel']==selection_maritalstatus)&(df_monthlytimevalues['employment_rec']==selection_employment)&(df_monthlytimevalues['education_rec']==selection_education)
 df_initial = df_monthlytimevalues[initial_filter_criteria]
