@@ -300,6 +300,10 @@ components:
   properties: {}
   name: navbar_links
   layout_properties: {slot: nav-right}
+  components:
+  - name: slider_1
+    properties: {}
+    type: form:Slider
 - name: nav_panel
   properties: {role: tonal-card}
   type: ColumnPanel

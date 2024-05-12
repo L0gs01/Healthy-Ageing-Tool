@@ -6,6 +6,7 @@ unique_ids:
     Individual_InitialSelection: '1713351620816725120570707.2188'
     Individual_MoneyValue: '1713354558326218955507645.76187'
     Individual_ViewSelection: '1713354577057584672828849.3373'
+    Slider: '1715524137199606193139203.8779'
   modules: {}
   server_modules:
     ServerModule1: '1713356173952574658945596.464'
