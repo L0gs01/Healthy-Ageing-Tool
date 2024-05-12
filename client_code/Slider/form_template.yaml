@@ -5,7 +5,7 @@ properties:
 - {name: step, type: number, important: true, default_value: 1}
 is_package: true
 events:
-- name: event
+- name: change
   default_event: true
   parameters:
   - {name: level, description: Slider's new value}

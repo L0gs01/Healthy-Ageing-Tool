@@ -8,10 +8,36 @@ components:
   name: content_panel
   layout_properties: {slot: default}
   components:
-  - name: outlined_card_3
-    properties: {role: outlined-card}
+  - name: column_panel_1
+    properties: {}
     type: ColumnPanel
-    layout_properties: {grid_position: 'ADJECR,KZWOWY'}
+    layout_properties: {grid_position: 'RQZXKG,BXZXFZ'}
+    components:
+    - name: nav_panel
+      properties: {role: tonal-card, visible: false}
+      type: ColumnPanel
+      layout_properties: {grid_position: 'BXPFJA,MIRVNT'}
+      components:
+      - name: nav_title
+        properties: {bold: true, text: Navigation, underline: true, align: center,
+          role: body}
+        type: Label
+        layout_properties: {grid_position: 'IMHDKS,VYRAPO'}
+      - name: homepage_navbutton
+        properties: {text: Homepage, role: outlined-button}
+        type: Button
+        layout_properties: {grid_position: 'USOCHD,ZOQZBL'}
+        event_bindings: {click: homepage_navbutton_click}
+      - name: individual_navbutton
+        properties: {text: Individual, role: outlined-button}
+        type: Button
+        layout_properties: {grid_position: 'USOCHD,FIUTMQ'}
+        event_bindings: {click: individual_navbutton_click}
+      - name: population_navbutton
+        properties: {text: Population, role: outlined-button}
+        type: Button
+        layout_properties: {grid_position: 'USOCHD,XVZQGV'}
+        event_bindings: {click: population_navbutton_click}
   - name: label_1
     properties: {text: Health Aging Tool, role: title}
     type: Label
@@ -308,31 +334,4 @@ components:
   properties: {}
   name: navbar_links
   layout_properties: {slot: nav-right}
-  components:
-  - name: slider_1
-    properties: {}
-    type: form:Slider
-- name: nav_panel
-  properties: {role: tonal-card}
-  type: ColumnPanel
-  layout_properties: {slot: left-nav}
-  components:
-  - name: nav_title
-    properties: {bold: true, text: Navigation, underline: true, align: center, role: body}
-    type: Label
-    layout_properties: {grid_position: 'IMHDKS,VYRAPO'}
-  - name: homepage_navbutton
-    properties: {text: Homepage, role: outlined-button}
-    type: Button
-    layout_properties: {grid_position: 'ABNWUS,MFXPGD'}
-    event_bindings: {click: homepage_navbutton_click}
-  - name: individual_navbutton
-    properties: {text: Individual, role: outlined-button}
-    type: Button
-    layout_properties: {grid_position: 'USOCHD,FIUTMQ'}
-    event_bindings: {click: individual_navbutton_click}
-  - name: population_navbutton
-    properties: {text: Population, role: outlined-button}
-    type: Button
-    layout_properties: {grid_position: 'GZSVXT,CILYDC'}
-    event_bindings: {click: population_navbutton_click}
+  components: []
