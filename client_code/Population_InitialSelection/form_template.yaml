@@ -5,7 +5,7 @@ components:
   type: ColumnPanel
   layout_properties: {grid_position: 'EDPSJU,BTKEFK'}
   components:
-  - name: label_1
+  - name: label_123
     properties: {role: input-prompt, background: lightgrey, text: Population Stuff}
     type: Label
     layout_properties: {grid_position: 'GNNCDO,ZFWZFI'}
@@ -54,7 +54,7 @@ components:
     properties: {text: 'Value:', align: right}
     type: Label
     layout_properties: {grid_position: 'JMIEAE,NFKEJW'}
-  - name: label_11_copy_6
+  - name: label_1
     properties: {text: '1'}
     type: Label
     layout_properties: {grid_position: 'JMIEAE,KUAUWL'}
@@ -62,7 +62,7 @@ components:
     properties: {text: 'Value:', align: right}
     type: Label
     layout_properties: {grid_position: 'JMIEAE,XMKKDX'}
-  - name: label_11_copy_8
+  - name: label_2
     properties: {text: '1'}
     type: Label
     layout_properties: {grid_position: 'JMIEAE,FCWKTB'}
@@ -70,7 +70,7 @@ components:
     properties: {text: 'Value:', align: right}
     type: Label
     layout_properties: {grid_position: 'JMIEAE,QZBUCD'}
-  - name: label_11_copy_10
+  - name: label_3
     properties: {text: '1'}
     type: Label
     layout_properties: {grid_position: 'JMIEAE,SGLGJB'}
@@ -78,7 +78,7 @@ components:
     properties: {align: right, text: 'Value:'}
     type: Label
     layout_properties: {grid_position: 'JMIEAE,RSSXQL'}
-  - name: label_11_copy_12
+  - name: label_4
     properties: {text: '1'}
     type: Label
     layout_properties: {grid_position: 'JMIEAE,CJNIYC'}
@@ -208,7 +208,7 @@ components:
     properties: {text: After Intervention}
     type: Label
     layout_properties: {grid_position: 'XEGWOA,XOOXSC'}
-  - name: slider_1_copy_6
+  - name: slider_11
     properties: {}
     type: form:Slider
     layout_properties: {grid_position: 'ASZZRB,JZMTEP'}
@@ -216,15 +216,15 @@ components:
     properties: {}
     type: form:Slider
     layout_properties: {grid_position: 'ASZZRB,WIAPAZ'}
-  - name: slider_1_copy_2_copy_2
+  - name: slider_13
     properties: {}
     type: form:Slider
     layout_properties: {grid_position: 'ASZZRB,CRJVNZ'}
-  - name: slider_1_copy_3_copy_2
+  - name: slider_14
     properties: {}
     type: form:Slider
     layout_properties: {grid_position: 'ASZZRB,UHHXAY'}
-  - name: slider_1_copy_4_copy_2
+  - name: slider_15
     properties: {}
     type: form:Slider
     layout_properties: {grid_position: 'ASZZRB,JTYRXB'}
@@ -297,23 +297,23 @@ components:
     properties: {text: After Intervention}
     type: Label
     layout_properties: {grid_position: 'XEGWOA,XOOXSC'}
-  - name: slider_1_copy_7
+  - name: slider_16
     properties: {}
     type: form:Slider
     layout_properties: {grid_position: 'ASZZRB,JZMTEP'}
-  - name: slider_1_copy_copy_3
+  - name: slider_17
     properties: {}
     type: form:Slider
     layout_properties: {grid_position: 'ASZZRB,WIAPAZ'}
-  - name: slider_1_copy_2_copy_3
+  - name: slider_18
     properties: {}
     type: form:Slider
     layout_properties: {grid_position: 'ASZZRB,CRJVNZ'}
-  - name: slider_1_copy_3_copy_3
+  - name: slider_19
     properties: {}
     type: form:Slider
     layout_properties: {grid_position: 'ASZZRB,UHHXAY'}
-  - name: slider_1_copy_4_copy_3
+  - name: slider_20
     properties: {}
     type: form:Slider
     layout_properties: {grid_position: 'ASZZRB,JTYRXB'}
