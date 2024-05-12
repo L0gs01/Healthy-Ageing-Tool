@@ -86,7 +86,7 @@ components:
     properties: {align: right, text: 'Value:'}
     type: Label
     layout_properties: {grid_position: 'JMIEAE,ARVIIS'}
-  - name: label_11_copy_14
+  - name: label_5
     properties: {text: '1'}
     type: Label
     layout_properties: {grid_position: 'JMIEAE,EJDENB'}
@@ -143,7 +143,7 @@ components:
     properties: {text: 'Value:', align: right}
     type: Label
     layout_properties: {grid_position: 'JMIEAE,NFKEJW'}
-  - name: label_11_copy_6_copy
+  - name: label_6
     properties: {text: '1'}
     type: Label
     layout_properties: {grid_position: 'JMIEAE,KUAUWL'}
@@ -151,7 +151,7 @@ components:
     properties: {text: 'Value:', align: right}
     type: Label
     layout_properties: {grid_position: 'JMIEAE,XMKKDX'}
-  - name: label_11_copy_8_copy
+  - name: label_7
     properties: {text: '1'}
     type: Label
     layout_properties: {grid_position: 'JMIEAE,FCWKTB'}
@@ -159,7 +159,7 @@ components:
     properties: {text: 'Value:', align: right}
     type: Label
     layout_properties: {grid_position: 'JMIEAE,QZBUCD'}
-  - name: label_11_copy_10_copy
+  - name: label_8
     properties: {text: '1'}
     type: Label
     layout_properties: {grid_position: 'JMIEAE,SGLGJB'}
