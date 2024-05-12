@@ -18,26 +18,27 @@ components:
     type: Label
     layout_properties: {grid_position: 'XEGWOA,LIUQXS'}
   - name: label_11_copy_2
-    properties: {}
+    properties: {text: Percent Of Population Positive Outcome}
     type: Label
     layout_properties: {grid_position: 'XEGWOA,JKUKUJ'}
   - name: label_11_copy_3
-    properties: {text: Before Intervention}
+    properties: {text: Before Intervention Ranking}
     type: Label
     layout_properties: {grid_position: 'XEGWOA,SJYIRX'}
   - name: label_11_copy_4
-    properties: {text: After Intervention}
+    properties: {text: After Intervention Ranking}
     type: Label
     layout_properties: {grid_position: 'XEGWOA,XOOXSC'}
   - name: slider_1
     properties: {}
     type: form:Slider
     layout_properties: {grid_position: 'ASZZRB,JZMTEP'}
-    event_bindings: {event: slider_1_event}
+    event_bindings: {event: slider_1_event, change: slider_1_change, changes: slider_1_changes}
   - name: slider_2
     properties: {}
     type: form:Slider
     layout_properties: {grid_position: 'ASZZRB,WIAPAZ'}
+    event_bindings: {change: slider_2_change, changes: slider_2_changes}
   - name: slider_3
     properties: {}
     type: form:Slider
@@ -55,9 +56,11 @@ components:
     type: Label
     layout_properties: {grid_position: 'JMIEAE,NFKEJW'}
   - name: label_1
-    properties: {text: '1'}
+    properties: {text: ''}
     type: Label
     layout_properties: {grid_position: 'JMIEAE,KUAUWL'}
+    data_bindings:
+    - {property: text, code: '1', writeback: false}
   - name: label_11_copy_7
     properties: {text: 'Value:', align: right}
     type: Label
@@ -100,7 +103,7 @@ components:
     type: Label
     layout_properties: {grid_position: 'RDDJKL,GNLETJ'}
   - name: label_11_copy_15
-    properties: {text: Total Population Size}
+    properties: {text: Age}
     type: Label
     layout_properties: {grid_position: 'XEGWOA,NBAAYN'}
   - name: label_11_copy_copy
@@ -167,7 +170,7 @@ components:
     properties: {align: right, text: 'Value:'}
     type: Label
     layout_properties: {grid_position: 'JMIEAE,RSSXQL'}
-  - name: label_11_copy_12_copy
+  - name: label_9
     properties: {text: '1'}
     type: Label
     layout_properties: {grid_position: 'JMIEAE,CJNIYC'}
@@ -175,7 +178,7 @@ components:
     properties: {align: right, text: 'Value:'}
     type: Label
     layout_properties: {grid_position: 'JMIEAE,ARVIIS'}
-  - name: label_11_copy_14_copy
+  - name: label_10
     properties: {text: '1'}
     type: Label
     layout_properties: {grid_position: 'JMIEAE,EJDENB'}
@@ -232,7 +235,7 @@ components:
     properties: {text: 'Value:', align: right}
     type: Label
     layout_properties: {grid_position: 'JMIEAE,NFKEJW'}
-  - name: label_11_copy_6_copy_2
+  - name: label_11
     properties: {text: '1'}
     type: Label
     layout_properties: {grid_position: 'JMIEAE,KUAUWL'}
@@ -240,7 +243,7 @@ components:
     properties: {text: 'Value:', align: right}
     type: Label
     layout_properties: {grid_position: 'JMIEAE,XMKKDX'}
-  - name: label_11_copy_8_copy_2
+  - name: label_12
     properties: {text: '1'}
     type: Label
     layout_properties: {grid_position: 'JMIEAE,FCWKTB'}
@@ -248,7 +251,7 @@ components:
     properties: {text: 'Value:', align: right}
     type: Label
     layout_properties: {grid_position: 'JMIEAE,QZBUCD'}
-  - name: label_11_copy_10_copy_2
+  - name: label_13
     properties: {text: '1'}
     type: Label
     layout_properties: {grid_position: 'JMIEAE,SGLGJB'}
@@ -256,7 +259,7 @@ components:
     properties: {align: right, text: 'Value:'}
     type: Label
     layout_properties: {grid_position: 'JMIEAE,RSSXQL'}
-  - name: label_11_copy_12_copy_2
+  - name: label_14
     properties: {text: '1'}
     type: Label
     layout_properties: {grid_position: 'JMIEAE,CJNIYC'}
@@ -264,7 +267,7 @@ components:
     properties: {align: right, text: 'Value:'}
     type: Label
     layout_properties: {grid_position: 'JMIEAE,ARVIIS'}
-  - name: label_11_copy_14_copy_2
+  - name: label_15
     properties: {text: '1'}
     type: Label
     layout_properties: {grid_position: 'JMIEAE,EJDENB'}
@@ -321,7 +324,7 @@ components:
     properties: {text: 'Value:', align: right}
     type: Label
     layout_properties: {grid_position: 'JMIEAE,NFKEJW'}
-  - name: label_11_copy_6_copy_3
+  - name: label_16
     properties: {text: '1'}
     type: Label
     layout_properties: {grid_position: 'JMIEAE,KUAUWL'}
@@ -329,7 +332,7 @@ components:
     properties: {text: 'Value:', align: right}
     type: Label
     layout_properties: {grid_position: 'JMIEAE,XMKKDX'}
-  - name: label_11_copy_8_copy_3
+  - name: label_17
     properties: {text: '1'}
     type: Label
     layout_properties: {grid_position: 'JMIEAE,FCWKTB'}
@@ -337,7 +340,7 @@ components:
     properties: {text: 'Value:', align: right}
     type: Label
     layout_properties: {grid_position: 'JMIEAE,QZBUCD'}
-  - name: label_11_copy_10_copy_3
+  - name: label_18
     properties: {text: '1'}
     type: Label
     layout_properties: {grid_position: 'JMIEAE,SGLGJB'}
@@ -345,7 +348,7 @@ components:
     properties: {align: right, text: 'Value:'}
     type: Label
     layout_properties: {grid_position: 'JMIEAE,RSSXQL'}
-  - name: label_11_copy_12_copy_3
+  - name: label_19
     properties: {text: '1'}
     type: Label
     layout_properties: {grid_position: 'JMIEAE,CJNIYC'}
@@ -353,7 +356,7 @@ components:
     properties: {align: right, text: 'Value:'}
     type: Label
     layout_properties: {grid_position: 'JMIEAE,ARVIIS'}
-  - name: label_11_copy_14_copy_3
+  - name: label_20
     properties: {text: '1'}
     type: Label
     layout_properties: {grid_position: 'JMIEAE,EJDENB'}

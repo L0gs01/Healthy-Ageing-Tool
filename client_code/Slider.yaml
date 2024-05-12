@@ -3,7 +3,7 @@ properties:
 - {name: slider_min, type: number, important: true}
 - {name: slider_max, type: number, important: true}
 - {name: step, type: number, important: true, default_value: 1}
-is_package: true
+is_package: false
 events:
 - name: change
   default_event: true

@@ -13,4 +13,6 @@ class Population_InitialSelection(Population_InitialSelectionTemplate):
 
     # Any code you write here will run before the form opens.
 
-
+  def slider_1_change(self, level, **event_args):
+    """This method is called when the slider is moved"""
+    self.label_1.text = self.slider_1.level
