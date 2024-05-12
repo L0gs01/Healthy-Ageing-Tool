@@ -34,19 +34,19 @@ components:
     type: form:Slider
     layout_properties: {grid_position: 'ASZZRB,JZMTEP'}
     event_bindings: {event: slider_1_event}
-  - name: slider_1_copy
+  - name: slider_2
     properties: {}
     type: form:Slider
     layout_properties: {grid_position: 'ASZZRB,WIAPAZ'}
-  - name: slider_1_copy_2
+  - name: slider_3
     properties: {}
     type: form:Slider
     layout_properties: {grid_position: 'ASZZRB,CRJVNZ'}
-  - name: slider_1_copy_3
+  - name: slider_4
     properties: {}
     type: form:Slider
     layout_properties: {grid_position: 'ASZZRB,UHHXAY'}
-  - name: slider_1_copy_4
+  - name: slider_5
     properties: {}
     type: form:Slider
     layout_properties: {grid_position: 'ASZZRB,JTYRXB'}
@@ -119,23 +119,23 @@ components:
     properties: {text: After Intervention}
     type: Label
     layout_properties: {grid_position: 'XEGWOA,XOOXSC'}
-  - name: slider_1_copy_5
+  - name: slider_6
     properties: {}
     type: form:Slider
     layout_properties: {grid_position: 'ASZZRB,JZMTEP'}
-  - name: slider_1_copy_copy
+  - name: slider_7
     properties: {}
     type: form:Slider
     layout_properties: {grid_position: 'ASZZRB,WIAPAZ'}
-  - name: slider_1_copy_2_copy
+  - name: slider_8
     properties: {}
     type: form:Slider
     layout_properties: {grid_position: 'ASZZRB,CRJVNZ'}
-  - name: slider_1_copy_3_copy
+  - name: slider_9
     properties: {}
     type: form:Slider
     layout_properties: {grid_position: 'ASZZRB,UHHXAY'}
-  - name: slider_1_copy_4_copy
+  - name: slider_10
     properties: {}
     type: form:Slider
     layout_properties: {grid_position: 'ASZZRB,JTYRXB'}
@@ -212,7 +212,7 @@ components:
     properties: {}
     type: form:Slider
     layout_properties: {grid_position: 'ASZZRB,JZMTEP'}
-  - name: slider_1_copy_copy_2
+  - name: slider_12
     properties: {}
     type: form:Slider
     layout_properties: {grid_position: 'ASZZRB,WIAPAZ'}
