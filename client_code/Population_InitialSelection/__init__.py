@@ -104,3 +104,24 @@ class Population_InitialSelection(Population_InitialSelectionTemplate):
   def textbox_7_pressed_enter(self, **event_args):
     """This method is called when the user presses Enter in this text box"""
     pass
+
+ def save_btn_click(self, **event_args):
+    """This method is called when the button is clicked"""
+    global pop_selection 
+    pop_selection = {self.slider_1.level}
+
+  def show_btn_click(self, **event_args):
+    """This method is called when the button is clicked"""
+    print(pop_selection)
+pop_selection = {self.slider_1.level,
+                 self.slider_1.level,
+                 self.slider_1.level,
+                 self.slider_1.level,
+                 self.slider_1.level,
+                 self.slider_1.level,
+                 self.slider_1.level,
+                 self.slider_1.level,
+                 self.slider_1.level,
+                 self.slider_1.level,
+                 self.slider_1.level,
+                 self.slider_1.level,self.slider_1.level,self.slider_1.level,self.slider_1.level,self.slider_1.level,self.slider_1.level,self.slider_1.level,self.slider_1.level,self.slider_1.level}
