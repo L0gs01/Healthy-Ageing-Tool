@@ -37,7 +37,7 @@ print(df_selectedvariables)
 print(df_selectedmoney)
 #---------------------CREATED CSV DATAFRAMES
 data_country = df_selectedvariables.at[0,'country']
-print(data_country)
+# print(data_country)
 df_monthlytimevalues = None
 if data_country == 'Europe (all)': df_monthlytimevalues = df_europe
 if data_country == 'Belgium': df_monthlytimevalues = df_belgium
@@ -48,7 +48,7 @@ if data_country == 'Greece': df_monthlytimevalues = df_greece
 if data_country == 'Romania': df_monthlytimevalues = df_romania
 if data_country == 'Serbia': df_monthlytimevalues = df_serbia
 if data_country == 'United Kingdom of Great Britain and Northern Ireland': df_monthlytimevalues = df_ukireland
-print(df_monthlytimevalues)
+# print(df_monthlytimevalues)
 #------------------select correct dataframe values
 selection_initialrank = df_selectedvariables.at[0,'initialrank']
 selection_adjustedrank = df_selectedvariables.at[0,'adjustedrank']
@@ -99,15 +99,15 @@ if selection_education == 'Secondary':
 if selection_education == 'Tertiary':
     selection_education = 'tertiary'
 selection_total = (selection_initialrank,selection_adjustedrank,selection_age,selection_sex,selection_maritalstatus,selection_employment,selection_education)
-print(selection_total)
+# print(selection_total)
 #----------------------------------
 initial_filter_criteria = (df_monthlytimevalues['sph_rec_rel']==selection_initialrank)&(df_monthlytimevalues['age_rec_10y']==selection_age)&(df_monthlytimevalues['sex_rec']==selection_sex)&(df_monthlytimevalues['marital_rec_rel']==selection_maritalstatus)&(df_monthlytimevalues['employment_rec']==selection_employment)&(df_monthlytimevalues['education_rec']==selection_education)
 df_initial = df_monthlytimevalues[initial_filter_criteria]
-print(df_initial)
+# print(df_initial)
 
 adjusted_filter_criteria = (df_monthlytimevalues['sph_rec_rel']==selection_adjustedrank)&(df_monthlytimevalues['age_rec_10y']==selection_age)&(df_monthlytimevalues['sex_rec']==selection_sex)&(df_monthlytimevalues['marital_rec_rel']==selection_maritalstatus)&(df_monthlytimevalues['employment_rec']==selection_employment)&(df_monthlytimevalues['education_rec']==selection_education)
 df_adjusted = df_monthlytimevalues[adjusted_filter_criteria]
-print(df_adjusted)
+# print(df_adjusted)
 
 df_initial.drop(['age_rec_10y','sph_rec_rel','sex_rec','marital_rec_rel','employment_rec','education_rec','COUNTRY'],axis=1,inplace=True)
 df_initial.rename({"Unnamed: 0":"a"}, axis="columns", inplace=True)
@@ -119,13 +119,13 @@ df_adjusted.drop(["a"], axis=1, inplace=True)
 
 df_initial.rename(columns={"link": "initial_monthlytime"},inplace = True)
 df_adjusted.rename(columns={"link": "adjusted_monthlytime"},inplace = True)
-print(df_initial)   
-print(df_adjusted) 
+# print(df_initial)   
+# print(df_adjusted) 
 
 df_combo = pd.merge(df_initial,df_adjusted, on='ACTIVITY')
 df_combo.drop(['combination_x','SE_x','combination_y','SE_y'],axis=1,inplace=True)
 df_combo.set_index('ACTIVITY',inplace=True)
-print(df_combo)
+# print(df_combo)
 
 money_housing = df_selectedmoney.at[0,'housing']
 money_housing = float(money_housing)
@@ -148,14 +148,14 @@ hourly_data = [money_housing,money_transport,money_nutrition,money_clothing,mone
 
 df_hourlymoneyrate = DataFrame(data = hourly_data, columns = ['HourlyMoney'])
 df_hourlymoneyrate.index =['Housing','Transport','Nutrition','Clothing','Laundry','ChildCare','AdultCare','Voluntary']
-print(df_hourlymoneyrate)
+# print(df_hourlymoneyrate)
 
 
 df_combo['difference_monthlytime'] = (df_combo.adjusted_monthlytime-df_combo.initial_monthlytime)
 df_combo['initial_monthlyvalue'] = (df_combo.initial_monthlytime * (df_hourlymoneyrate.HourlyMoney/60))
 df_combo['adjusted_monthlyvalue'] = (df_combo.adjusted_monthlytime * (df_hourlymoneyrate.HourlyMoney/60))
 df_combo['difference_monthlyvalue'] = df_combo.adjusted_monthlyvalue-df_combo.initial_monthlyvalue
-print(df_combo)
+# print(df_combo)
 
 # housing_difference = (df_combo.at['Housing',"adjusted_monthlyvalue"])-(df_combo.at['Housing',"initial_monthlyvalue"])
 # transport_difference = (df_combo.at['Transport',"adjusted_monthlyvalue"])-(df_combo.at['Transport',"initial_monthlyvalue"])
@@ -181,7 +181,7 @@ with pd.option_context('display.max_rows', None,
                        'display.precision', 3,
                        ):
     print(df_final)
-print(df_final.dtypes)
+# print(df_final.dtypes)
 
 total_initial_time = df_final['initial_monthlytime'].sum()
 total_adjusted_time = df_final['adjusted_monthlytime'].sum()
@@ -194,7 +194,7 @@ totals = (total_initial_time,total_adjusted_time,total_difference_time,total_ini
 
 df_totals = DataFrame(data = totals, columns = ['HourlyValue'])
 df_totals.index=['total_initial_time','total_adjusted_time','total_difference_time','total_initial_value','total_adjusted_value','total_difference_value']
-print(df_totals)
+# print(df_totals)
 
 
 total_initial_time_diff = 43800 - (total_initial_time)
@@ -204,7 +204,7 @@ total_time_diff = {'Non-Market Productive Activities':[total_initial_time,total_
 df_total_diff = pd.DataFrame(data=total_time_diff)
 df_total_diff.index = ['initial_times','adjusted_times','difference_times']
 df_total_diff_trans = df_total_diff.T
-print(df_total_diff_trans)
+# print(df_total_diff_trans)
 
 #display(df_final)
 
