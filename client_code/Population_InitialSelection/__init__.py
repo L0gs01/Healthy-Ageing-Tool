@@ -97,13 +97,11 @@ class Population_InitialSelection(Population_InitialSelectionTemplate):
     """This method is called when the slider is moved"""
     self.label_20.text = self.slider_20.level
 
-  def dropdown_10_change(self, **event_args):
-    """This method is called when an item is selected"""
-    self.label_10.text = self.dropdown_10.selected_value
-
 
   def save_btn_click(self, **event_args):
     """This method is called when the button is clicked"""
+    global textbox_6_end
+    textbox_6_end = (int(self.textbox_6.text)*4)
     global pop_selection
     pop_selection = {self.slider_1.level,
                      self.slider_2.level,
@@ -128,7 +126,9 @@ class Population_InitialSelection(Population_InitialSelectionTemplate):
     
   def show_btn_click(self, **event_args):
     """This method is called when the button is clicked"""
+    
     print(pop_selection)
+    print(textbox_6_end)
 
 
 
