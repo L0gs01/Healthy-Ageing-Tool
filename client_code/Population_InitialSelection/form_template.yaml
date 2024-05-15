@@ -134,7 +134,7 @@ components:
     properties: {}
     type: form:Slider
     layout_properties: {grid_position: 'ASZZRB,BTBQFT'}
-    event_bindings: {change: slider_8_change}
+    event_bindings: {change: slider_7_change}
   - name: slider_8
     properties: {}
     type: form:Slider
