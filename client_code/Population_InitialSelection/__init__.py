@@ -104,30 +104,30 @@ class Population_InitialSelection(Population_InitialSelectionTemplate):
 
   def save_btn_click(self, **event_args):
     """This method is called when the button is clicked"""
+    global pop_selection
+    pop_selection = {self.slider_1.level,
+                     self.slider_2.level,
+                     self.slider_3.level,
+                     self.slider_4.level,
+                     self.slider_5.level,
+                     self.textbox_6.text,
+                     self.slider_7.level,
+                     self.slider_8.level,
+                     self.slider_9.level,
+                     self.dropdown_10.selected_variable,
+                     self.slider_11.level,
+                     self.slider_12.level,
+                     self.slider_13.level,
+                     self.slider_14.level,
+                     self.slider_15.level,
+                     self.slider_16.level,
+                     self.slider_17.level,
+                     self.slider_18.level,
+                     self.slider_19.level,
+                     self.slider_20.level}
     
-
   def show_btn_click(self, **event_args):
     """This method is called when the button is clicked"""
-    pass
+    print(pop_selection)
 
  
-pop_selection = {self.slider_1.level,
-                 self.slider_2.level,
-                 self.slider_3.level,
-                 self.slider_4.level,
-                 self.slider_5.level,
-                 self.slider_6.level,
-                 self.slider_7.level,
-                 self.slider_8.level,
-                 self.slider_9.level,
-                 self.slider_10.level,
-                 self.slider_11.level,
-                 self.slider_12.level,
-                 self.slider_13.level,
-                 self.slider_14.level,
-                 self.slider_15.level,
-                 self.slider_16.level,
-                 self.slider_17.level,
-                 self.slider_18.level,
-                 self.slider_19.level,
-                 self.slider_20.level}
