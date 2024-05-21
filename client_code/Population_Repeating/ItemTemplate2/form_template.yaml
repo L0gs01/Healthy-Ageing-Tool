@@ -24,13 +24,15 @@ components:
   type: DropDown
   layout_properties: {grid_position: 'JCMJOD,IOIUWP'}
   data_bindings:
-  - {property: selected_value, code: 'self.item['''']', writeback: true}
+  - {property: selected_value, code: 'self.item[''Age'']', writeback: true}
 - name: drop_down_3
   properties:
     items: [Good, Fair, Poor]
     include_placeholder: true
   type: DropDown
   layout_properties: {grid_position: 'JCMJOD,KREZBO'}
+  data_bindings:
+  - {property: selected_value, code: 'self.item[''Initial_Health'']', writeback: false}
 - name: slider_1
   properties: {slider_max: 100, slider_min: 1, step: 5}
   type: form:Slider
@@ -41,3 +43,5 @@ components:
     items: [Good, Fair, Poor]
   type: DropDown
   layout_properties: {grid_position: 'JCMJOD,QHNKSI'}
+  data_bindings:
+  - {property: selected_value, code: 'self.item[''Adjusted_Health'']', writeback: false}

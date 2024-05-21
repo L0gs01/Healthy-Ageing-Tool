@@ -6,7 +6,7 @@ services:
 - source: /runtime/services/anvil/files.yml
   client_config: {}
   server_config: {file_table: files}
-startup: {type: form, module: Population_Repeating}
+startup: {type: form, module: Population_InitialSelection}
 package_name: Adjusted_Values_Tool
 allow_embedding: false
 name: Adjusted Values Tool
@@ -89,7 +89,7 @@ db_schema:
       type: string
     title: SelectedVariables_I
   pop_info:
-    client: none
+    client: full
     server: full
     columns:
     - name: Age
