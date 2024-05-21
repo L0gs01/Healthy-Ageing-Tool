@@ -162,7 +162,8 @@ class Homepage(HomepageTemplate):
     adjusted_value_text = anvil.server.call('get_adjusted_value')
     self.adjusted_value.content = adjusted_value_text
     self.adjusted_box.content = adjusted_value_text
-    difference_value_text = anvil.server.call('get_difference_value')
+    # difference_value_text = anvil.server.call('get_difference_value')
+    difference_value_text = (adjusted_value_text - initial_value_text)
     self.difference_value1.content = difference_value_text
     self.difference_box.content = difference_value_text
 
