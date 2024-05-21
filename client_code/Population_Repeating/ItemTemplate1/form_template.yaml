@@ -41,6 +41,7 @@ components:
     event_bindings: {change: percent_slider_change}
     data_bindings:
     - {property: slider_max, code: '100', writeback: false}
+    - {property: selected_value, code: 'self.item[''Percent_Change'']', writeback: false}
   - name: percent_label
     properties: {text: '0', align: right}
     type: Label
