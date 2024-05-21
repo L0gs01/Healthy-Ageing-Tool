@@ -91,6 +91,18 @@ db_schema:
   pop_info:
     client: none
     server: full
-    columns: []
+    columns:
+    - name: Age
+      admin_ui: {width: 200, order: 0}
+      type: string
+    - name: Initial_Health
+      admin_ui: {width: 200, order: 1}
+      type: string
+    - name: Percent_Change
+      admin_ui: {width: 200, order: 2}
+      type: string
+    - name: Adjusted_Health
+      admin_ui: {width: 200, order: 3}
+      type: string
     title: Pop_Info
 renamed: true
