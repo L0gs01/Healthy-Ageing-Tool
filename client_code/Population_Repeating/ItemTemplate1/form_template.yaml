@@ -1,7 +1,59 @@
 is_package: true
 container: {type: ColumnPanel}
 components:
-- name: population_initial_selection_1
-  properties: {}
-  type: form:Population_InitialSelection
-  layout_properties: {grid_position: 'GZYEPW,IKZGEL'}
+- name: outlined_card_1
+  properties: {role: outlined-card}
+  type: ColumnPanel
+  layout_properties: {grid_position: 'VHDHHK,NLBCJB'}
+  components:
+  - name: pop_age_label
+    properties: {text: Age, align: center}
+    type: Label
+    layout_properties: {grid_position: 'FHPFXP,SLGMSX RLBQSO,ITMUHZ'}
+  - name: pop_age_dd
+    properties:
+      items: [55-64, 65-74, 75+]
+      include_placeholder: true
+    type: DropDown
+    layout_properties: {grid_position: 'FHPFXP,SLGMSX PLWTKW,WBJVCW'}
+    data_bindings:
+    - {property: selected_value, code: 'self.item[''Age'']', writeback: true}
+  - name: label_2
+    properties: {text: Before Intervention Health Status, align: center}
+    type: Label
+    layout_properties: {grid_position: 'FHPFXP,AMIWFF IGIFGU,EXLBKM'}
+  - name: pop_initial_dd
+    properties:
+      include_placeholder: true
+      items: [Good, Fair, Poor]
+    type: DropDown
+    layout_properties: {grid_position: 'FHPFXP,AMIWFF KBVQCP,OSRMPA'}
+    data_bindings:
+    - {property: selected_value, code: 'self.item[''Adjusted_Health'']', writeback: false}
+  - name: label_3
+    properties: {text: Percent Improved, align: center}
+    type: Label
+    layout_properties: {grid_position: 'FHPFXP,CXTNST LIOOIJ,QPZXKB'}
+  - name: percent_slider
+    properties: {slider_max: 100, slider_min: 16, step: 5, level: 0}
+    type: form:Slider
+    layout_properties: {grid_position: 'FHPFXP,CXTNST LNZYUI,QRDFOM'}
+    event_bindings: {change: percent_slider_change}
+    data_bindings:
+    - {property: level, code: 'self.item[''Percent_Change'']'}
+  - name: percent_label
+    properties: {text: '0', align: right}
+    type: Label
+    layout_properties: {grid_position: 'FHPFXP,CXTNST ZYHOWS,HLKBQE'}
+  - name: label_4
+    properties: {text: After Intervention Health Status, align: center}
+    type: Label
+    layout_properties: {grid_position: 'FHPFXP,KALCBP'}
+  - name: pop_adjusted_dd
+    properties:
+      items: [Good, Fair, Poor]
+      include_placeholder: true
+    type: DropDown
+    layout_properties: {grid_position: 'FHPFXP,KALCBP'}
+    data_bindings:
+    - {property: selected_value, code: 'self.item[''Initial_Health'']', writeback: false}

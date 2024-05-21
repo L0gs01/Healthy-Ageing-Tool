@@ -9,7 +9,7 @@ components:
     properties: {text: Age, align: center}
     type: Label
     layout_properties: {grid_position: 'FHPFXP,SLGMSX RLBQSO,ITMUHZ'}
-  - name: drop_down_2
+  - name: pop_age_dd
     properties:
       items: [55-64, 65-74, 75+]
       include_placeholder: true
@@ -21,7 +21,7 @@ components:
     properties: {text: Before Intervention Health Status, align: center}
     type: Label
     layout_properties: {grid_position: 'FHPFXP,AMIWFF IGIFGU,EXLBKM'}
-  - name: drop_down_1
+  - name: pop_initial_dd
     properties:
       include_placeholder: true
       items: [Good, Fair, Poor]
@@ -33,19 +33,20 @@ components:
     properties: {text: Percent Improved, align: center}
     type: Label
     layout_properties: {grid_position: 'FHPFXP,CXTNST LIOOIJ,QPZXKB'}
-  - name: slider_1
-    properties: {slider_max: 100, slider_min: 1, step: 5}
+  - name: percent_slider
+    properties: {slider_max: 100, slider_min: 16, step: 5, level: 0}
     type: form:Slider
     layout_properties: {grid_position: 'FHPFXP,CXTNST LNZYUI,QRDFOM'}
-  - name: percent_num
-    properties: {}
+    event_bindings: {change: percent_slider_change}
+  - name: percent_label
+    properties: {text: '0', align: right}
     type: Label
     layout_properties: {grid_position: 'FHPFXP,CXTNST ZYHOWS,HLKBQE'}
   - name: label_4
     properties: {text: After Intervention Health Status, align: center}
     type: Label
     layout_properties: {grid_position: 'FHPFXP,KALCBP'}
-  - name: drop_down_3
+  - name: pop_adjusted_dd
     properties:
       items: [Good, Fair, Poor]
       include_placeholder: true
