@@ -91,21 +91,6 @@ db_schema:
   pop_info:
     client: none
     server: full
-    columns:
-    - name: Var_1
-      admin_ui: {width: 200, order: 0}
-      type: number
-    - name: Var_2
-      admin_ui: {width: 200, order: 1}
-      type: number
-    - name: Var_3
-      admin_ui: {width: 200, order: 2}
-      type: number
-    - name: Var_4
-      admin_ui: {width: 200, order: 3}
-      type: number
-    - name: Var_5
-      admin_ui: {order: 4, width: 200}
-      type: number
+    columns: []
     title: Pop_Info
 renamed: true

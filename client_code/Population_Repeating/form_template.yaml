@@ -1,7 +1,7 @@
 container: {type: ColumnPanel}
 components:
 - name: repeating_panel_1
-  properties: {item_template: Population_InitialSelection}
+  properties: {item_template: Population_Repeating.ItemTemplate2}
   type: RepeatingPanel
-  layout_properties: {grid_position: 'HUFTOO,LVDXKP'}
+  layout_properties: {grid_position: 'CRXJSX,FOFRVB'}
 is_package: true
