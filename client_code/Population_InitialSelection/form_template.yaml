@@ -56,6 +56,8 @@ components:
     type: form:Slider
     layout_properties: {grid_position: 'FHPFXP,CXTNST LNZYUI,QRDFOM'}
     event_bindings: {change: pop_percent_slider_change}
+    data_bindings:
+    - {property: level, code: 'self.item[''percent'']', writeback: false}
   - name: percent_label
     properties: {text: '0', align: right}
     type: Label
@@ -71,6 +73,8 @@ components:
     type: form:Slider
     layout_properties: {grid_position: 'FHPFXP,ZBZYEY YPSLUX,UXMYQR'}
     event_bindings: {change: pop_percentsuccess_slider_change}
+    data_bindings:
+    - {property: level, code: 'self.item[''percent_s'']', writeback: false}
   - name: percentsuccess_label
     properties: {text: '0', align: right}
     type: Label
