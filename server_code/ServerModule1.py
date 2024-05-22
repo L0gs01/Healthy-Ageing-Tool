@@ -261,7 +261,7 @@ def create_barfig_combo_time():
     layout=go.Layout(
         title="Time Spent On Non-Market Productive Activities",
         yaxis_title="Minutes Per Month",
-        xaxis_title="Activities"
+        xaxis_title="Activity"
     )
   )
   fig1.update_xaxes(tickangle=90)

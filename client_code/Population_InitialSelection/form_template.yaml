@@ -46,7 +46,7 @@ components:
     type: DropDown
     layout_properties: {grid_position: 'FHPFXP,AMIWFF KBVQCP,OSRMPA'}
     data_bindings:
-    - {property: selected_value, code: 'self.item[''adjusted'']', writeback: false}
+    - {property: selected_value, code: 'self.item[''initial'']', writeback: true}
   - name: label_3
     properties: {text: Percent Improved, align: center}
     type: Label
@@ -92,7 +92,7 @@ components:
     type: DropDown
     layout_properties: {grid_position: 'FHPFXP,KALCBP'}
     data_bindings:
-    - {property: selected_value, code: 'self.item[''initial'']', writeback: false}
+    - {property: selected_value, code: 'self.item[''adjusted'']', writeback: true}
 - name: save_btn
   properties: {text: Save, role: outlined-button}
   type: Button

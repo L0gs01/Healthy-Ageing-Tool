@@ -95,7 +95,7 @@ db_schema:
     - name: pop_age_dd
       admin_ui: {order: 0, width: 200}
       type: string
-    - name: pop_initial
+    - name: pop_initial_dd
       admin_ui: {order: 1, width: 200}
       type: string
     - name: pop_percent_slider
@@ -106,6 +106,9 @@ db_schema:
       type: string
     - name: pop_country_dd
       admin_ui: {order: -1, width: 200}
+      type: string
+    - name: pop_percentsuccess_slider
+      admin_ui: {order: 2.5, width: 200}
       type: string
     title: Pop_Info
 renamed: true
