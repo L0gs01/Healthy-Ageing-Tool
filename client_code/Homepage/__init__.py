@@ -2,6 +2,7 @@ from ._anvil_designer import HomepageTemplate
 from anvil import *
 import plotly.graph_objects as go
 import anvil.server
+from anvil.designer import in_designer
 import anvil.tables as tables
 import anvil.tables.query as q
 from anvil.tables import app_tables

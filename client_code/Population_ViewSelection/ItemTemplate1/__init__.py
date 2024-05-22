@@ -12,7 +12,3 @@ class ItemTemplate1(ItemTemplate1Template):
     self.init_components(**properties)
 
     # Any code you write here will run before the form opens.
-
-  def percent_slider_change(self, level, **event_args):
-    """This method is called when the slider is moved"""
-    self.percent_label.text = self.percent_slider.level
