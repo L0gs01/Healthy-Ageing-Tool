@@ -202,33 +202,20 @@ class Homepage(HomepageTemplate):
     pop_variables= {}
     self.homepage_buttons.visible = False
     save_clicked = alert(
-      content = Individual_InitialSelection(item=pop_variablesvariables),
-      title = "Define the ’s characteristics:",
+      content = Individual_InitialSelection(item=pop_variables),
+      title = "Define the populations’s characteristics:",
       large=True,
       buttons=[("Next", True), ("Cancel", False)],
     )
     if save_clicked:
         self.individualhome_card.visible = True
-        app_tables.selectedvariables_i.delete_all_rows()
-        app_tables.selectedvariables_i.add_row(initialrank=variables['initialrank'],
-                                            sex=variables['sex'],
-                                            age=variables['age'],
-                                            maritalstatus=variables['maritalstatus'],
-                                            employment=variables['employment'],
-                                            education=variables['education'],
-                                            country=variables['country'],
-                                            adjustedrank=variables['adjustedrank'],
-                                            name=variables['name'])
+        app_tables.pop_info.delete_all_rows()
+        app_tables.pop_info.add_row( pop_age,
+                                            pop_initial,
+                                            pop_adjusted,
+                                            pop_country,
         self.name_label.text = variables['name']
-        self.initialrank_label.text = variables['initialrank']
-        self.adjustedrank_label.text = variables['adjustedrank']
-        self.age_label.text = variables['age']
-        self.sex_label.text = variables['sex']
-        self.maritalstatus_label.text = variables['maritalstatus']
-        self.employment_label.text = variables['employment']
-        self.education_label.text = variables['education']
-        self.country_label.text = variables['country'] 
-        print(variables)
+        print(pop_variables)
         if variables['country'] == (' United Kingdom') and variables['education'] == ('Lower Than Secondary'):
           alert('There is no data for people with education "lower than secondary" in the United Kindgom. Please choose a different country and/or education level.')
 

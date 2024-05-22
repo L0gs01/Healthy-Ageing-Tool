@@ -33,11 +33,11 @@ components:
     properties: {text: Percent Improved, align: center}
     type: Label
     layout_properties: {grid_position: 'FHPFXP,CXTNST LIOOIJ,QPZXKB'}
-  - name: percent_slider
+  - name: pop_percent_slider
     properties: {slider_max: 100, slider_min: 16, step: 5, level: 0}
     type: form:Slider
     layout_properties: {grid_position: 'FHPFXP,CXTNST LNZYUI,QRDFOM'}
-    event_bindings: {change: percent_slider_change}
+    event_bindings: {change: pop_percent_slider_change}
   - name: percent_label
     properties: {text: '0', align: right}
     type: Label

@@ -17,7 +17,7 @@ class Population_InitialSelection(Population_InitialSelectionTemplate):
   #   """This method is called when the slider is moved"""
   #   self.label_20.text = self.slider_20.level
 
-  def percent_slider_change(self, level, **event_args):
+  def pop_percent_slider_change(self, level, **event_args):
     """This method is called when the slider is moved"""
     self.percent_label.text = self.percent_slider.level
 
