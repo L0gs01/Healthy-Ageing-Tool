@@ -331,6 +331,14 @@ components:
         properties: {height: 32}
         type: Spacer
         layout_properties: {grid_position: 'OAPYQG,BBUWPX'}
+  - name: populationhome_card
+    properties: {role: outlined-card}
+    type: ColumnPanel
+    layout_properties: {grid_position: 'ARAECF,DAGFAS'}
+  - name: pop_plot_card
+    properties: {role: outlined-card}
+    type: ColumnPanel
+    layout_properties: {grid_position: 'PTJVSR,HGVFSR'}
 - type: FlowPanel
   properties: {}
   name: navbar_links

@@ -9,6 +9,9 @@ from ..Individual_InitialSelection import Individual_InitialSelection
 from ..Individual_EditSelection import Individual_EditSelection
 from ..Individual_MoneyValue import Individual_MoneyValue
 from ..Individual_ViewSelection import Individual_ViewSelection
+from ..Population_InitialSelection import Population_InitialSelection
+from ..Population_ViewSelection import Population_ViewSelection
+from ..Population_ViewSelection.ItemTemplate1 import ItemTemplate1
 import anvil.media
 
 class Homepage(HomepageTemplate):
@@ -202,22 +205,23 @@ class Homepage(HomepageTemplate):
     pop_variables= {}
     self.homepage_buttons.visible = False
     save_clicked = alert(
-      content = Individual_InitialSelection(item=pop_variables),
+      content = Population_InitialSelection(item=pop_variables),
       title = "Define the populations’s characteristics:",
       large=True,
       buttons=[("Next", True), ("Cancel", False)],
     )
     if save_clicked:
-        self.individualhome_card.visible = True
-        app_tables.pop_info.delete_all_rows()
-        app_tables.pop_info.add_row( pop_age,
-                                            pop_initial,
-                                            pop_adjusted,
-                                            pop_country,
-        self.name_label.text = variables['name']
-        print(pop_variables)
-        if variables['country'] == (' United Kingdom') and variables['education'] == ('Lower Than Secondary'):
-          alert('There is no data for people with education "lower than secondary" in the United Kindgom. Please choose a different country and/or education level.')
+    #     self.populationhome_card.visible = True
+    #     app_tables.pop_info.delete_all_rows()
+    #     app_tables.pop_info.add_row(initial_health=variables['initialrank'],
+    #                                         pop_initial,
+    #                                         pop_adjusted,
+                                    
+    #                                         pop_country,
+    #     self.name_label.text = variables['name']
+    #     # print(pop_variables)
+    #     # if variables['country'] == (' United Kingdom') and variables['education'] == ('Lower Than Secondary'):
+    #       # alert('There is no data for people with education "lower than secondary" in the United Kindgom. Please choose a different country and/or education level.')
 
 
 

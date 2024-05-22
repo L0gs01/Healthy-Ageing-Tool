@@ -92,17 +92,17 @@ db_schema:
     client: full
     server: full
     columns:
-    - name: Age
-      admin_ui: {width: 200, order: 0}
+    - name: pop_age
+      admin_ui: {order: 0, width: 200}
       type: string
-    - name: Initial_Health
-      admin_ui: {width: 200, order: 1}
+    - name: pop_initial
+      admin_ui: {order: 1, width: 200}
       type: string
-    - name: Percent_Change
-      admin_ui: {width: 200, order: 2}
+    - name: pop_percent
+      admin_ui: {order: 2, width: 200}
       type: string
-    - name: Adjusted_Health
-      admin_ui: {width: 200, order: 3}
+    - name: pop_adjusted
+      admin_ui: {order: 3, width: 200}
       type: string
     title: Pop_Info
 renamed: true

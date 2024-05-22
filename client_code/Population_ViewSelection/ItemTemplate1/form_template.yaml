@@ -17,7 +17,7 @@ components:
     type: DropDown
     layout_properties: {grid_position: 'FHPFXP,SLGMSX PLWTKW,WBJVCW'}
     data_bindings:
-    - {property: selected_value, code: 'self.item[''Age'']', writeback: true}
+    - {property: selected_value, code: 'self.item[''pop_age'']', writeback: true}
   - name: label_2
     properties: {text: Before Intervention Health Status, align: center}
     type: Label
@@ -29,7 +29,7 @@ components:
     type: DropDown
     layout_properties: {grid_position: 'FHPFXP,AMIWFF LWDLAG,FZLUZX'}
     data_bindings:
-    - {property: selected_value, code: 'self.item[''Adjusted_Health'']', writeback: false}
+    - {property: selected_value, code: 'self.item[''pop_initial'']', writeback: true}
   - name: label_3
     properties: {text: Percent Improved, align: center}
     type: Label
@@ -41,7 +41,7 @@ components:
     event_bindings: {change: percent_slider_change}
     data_bindings:
     - {property: slider_max, code: '100', writeback: false}
-    - {property: selected_value, code: 'self.item[''Percent_Change'']', writeback: false}
+    - {property: selected_value, code: 'self.item[''pop_percent'']', writeback: false}
   - name: percent_label
     properties: {text: '0', align: right}
     type: Label
@@ -57,4 +57,4 @@ components:
     type: DropDown
     layout_properties: {grid_position: 'FHPFXP,KALCBP'}
     data_bindings:
-    - {property: selected_value, code: 'self.item[''Initial_Health'']', writeback: false}
+    - {property: selected_value, code: 'self.item[''pop_adjusted'']', writeback: true}
