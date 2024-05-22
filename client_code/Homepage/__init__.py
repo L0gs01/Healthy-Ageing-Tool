@@ -211,7 +211,7 @@ class Homepage(HomepageTemplate):
       buttons=[("Next", True), ("Cancel", False)],
     )
     if save_clicked:
-    #     self.populationhome_card.visible = True
+      self.populationhome_card.visible = True
     #     app_tables.pop_info.delete_all_rows()
     #     app_tables.pop_info.add_row(initial_health=variables['initialrank'],
     #                                         pop_initial,
