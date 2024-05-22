@@ -13,10 +13,10 @@ components:
     properties: {}
     type: Label
     layout_properties: {grid_position: 'MLQZTX,FMNRHV'}
-- name: pop_repeating_panel
-  properties: {item_template: Population_ViewSelection.ItemTemplate1}
-  type: RepeatingPanel
-  layout_properties: {grid_position: 'UIAFVN,SEISPO'}
+  - name: repeating_panel_1
+    properties: {item_template: Population_ViewSelection.ItemTemplate1}
+    type: RepeatingPanel
+    layout_properties: {grid_position: 'SQRAZJ,ESPMIH'}
 - name: pop_edit_button
   properties: {text: Edit, role: filled-button}
   type: Button
