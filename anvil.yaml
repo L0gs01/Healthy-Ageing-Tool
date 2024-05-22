@@ -6,7 +6,7 @@ services:
 - source: /runtime/services/anvil/files.yml
   client_config: {}
   server_config: {file_table: files}
-startup: {type: form, module: Homepage}
+startup: {type: form, module: Population_ViewSelection}
 package_name: Adjusted_Values_Tool
 allow_embedding: false
 name: Adjusted Values Tool
