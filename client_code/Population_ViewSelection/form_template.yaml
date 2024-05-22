@@ -13,7 +13,7 @@ components:
     properties: {}
     type: Label
     layout_properties: {grid_position: 'MLQZTX,FMNRHV'}
-  - name: repeating_panel_1
+  - name: pop_repeating_panel
     properties: {item_template: Population_ViewSelection.ItemTemplate1}
     type: RepeatingPanel
     layout_properties: {grid_position: 'SQRAZJ,ESPMIH'}

@@ -110,5 +110,8 @@ db_schema:
     - name: pop_percentsuccess_slider
       admin_ui: {order: 2.5, width: 200}
       type: string
+    - name: pop_name_text
+      admin_ui: {width: 200, order: 4}
+      type: string
     title: Pop_Info
 renamed: true

@@ -11,14 +11,21 @@ components:
   properties: {}
   type: TextBox
   layout_properties: {grid_position: 'PVJTZM,LAKCFS'}
+  data_bindings:
+  - {property: text, code: 'self.item[''pop_name_text'']', writeback: true}
 - name: label_1
   properties: {align: center, text: Age Range}
   type: Label
   layout_properties: {grid_position: 'LMEUSD,LIBMQI TTCQBA,BKCDPV'}
 - name: pop_viewage_dd
-  properties: {}
+  properties:
+    items: [Good, Fair, Poor]
+    include_placeholder: true
   type: DropDown
   layout_properties: {grid_position: 'LMEUSD,LIBMQI VSQELI,YSOZVW'}
+  data_bindings:
+  - {property: selected_value, code: 'self.item[''pop_age_dd'']', writeback: true}
+  event_bindings: {change: pop_viewage_dd_change}
 - name: label_1_copy
   properties: {align: center, text: Before}
   type: Label
@@ -27,6 +34,8 @@ components:
   properties: {}
   type: DropDown
   layout_properties: {grid_position: 'LMEUSD,PEPUDF BSXFDK,OXWWFR'}
+  data_bindings:
+  - {property: selected_value, code: 'self.item[''pop_initial_dd'']', writeback: true}
 - name: label_1_copy_2
   properties: {align: center, text: Percent Affected}
   type: Label
@@ -35,6 +44,8 @@ components:
   properties: {}
   type: form:Slider
   layout_properties: {grid_position: 'LMEUSD,DSCPVO XDMIMP,BSTPVU'}
+  data_bindings:
+  - {property: level, code: 'self.item[''pop_percent_slider'']', writeback: true}
 - name: label_1_copy_3
   properties: {align: center, text: Percent Success}
   type: Label
@@ -43,11 +54,15 @@ components:
   properties: {}
   type: form:Slider
   layout_properties: {grid_position: 'LMEUSD,NSLIBO CBHFTU,MKYPUS'}
+  data_bindings:
+  - {property: level, code: 'self.item[''pop_percentsuccess_slider'']', writeback: true}
 - name: label_1_copy_4
   properties: {align: center, text: After}
   type: Label
   layout_properties: {grid_position: 'LMEUSD,UYELYC ZEOJRI,JRZUTS'}
-- name: pop_showadjusted_dd
+- name: pop_viewadjusted_dd
   properties: {}
   type: DropDown
   layout_properties: {grid_position: 'LMEUSD,UYELYC MYIBHQ,MLPYQQ'}
+  data_bindings:
+  - {property: selected_value, code: 'self.item[''pop_adjusted_dd'']', writeback: true}
