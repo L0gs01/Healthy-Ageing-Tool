@@ -48,7 +48,7 @@ components:
     data_bindings:
     - {property: selected_value, code: 'self.item[''initial'']', writeback: true}
   - name: label_3
-    properties: {text: Percent Improved, align: center}
+    properties: {text: Percent Impacted, align: center}
     type: Label
     layout_properties: {grid_position: 'FHPFXP,CXTNST LIOOIJ,QPZXKB'}
   - name: pop_percent_slider
