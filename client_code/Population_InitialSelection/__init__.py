@@ -30,6 +30,10 @@ class Population_InitialSelection(Population_InitialSelectionTemplate):
                self.pop_adjusted_dd.selected_value}
     print(pop_variables)
 
+  def pop_percentsuccess_slider_change(self, level, **event_args):
+    """This method is called when the slider is moved"""
+    self.percentsuccess_label.text = self.pop_percentsuccess_slider.level
+
 
  
   

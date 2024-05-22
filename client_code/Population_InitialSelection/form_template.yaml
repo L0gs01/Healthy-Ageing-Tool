@@ -17,12 +17,12 @@ components:
     type: DropDown
     layout_properties: {grid_position: 'POLITZ,FMGGJG'}
 - name: outlined_card_1
-  properties: {role: outlined-card}
+  properties: {role: outlined-card, col_widths: '{"QPZXKB":47,"UOOUWK":13,"MIUCPG":47,"GCQIKM":13}'}
   type: ColumnPanel
   layout_properties: {grid_position: 'FTPCUD,QEJLAL'}
   components:
   - name: pop_age_label
-    properties: {text: Age, align: center}
+    properties: {text: Age Range Of Group, align: center}
     type: Label
     layout_properties: {grid_position: 'FHPFXP,SLGMSX RLBQSO,ITMUHZ'}
   - name: pop_age_dd
@@ -49,32 +49,32 @@ components:
     properties: {text: Percent Improved, align: center}
     type: Label
     layout_properties: {grid_position: 'FHPFXP,CXTNST LIOOIJ,QPZXKB'}
+  - name: percent_label
+    properties: {text: '0', align: right}
+    type: Label
+    layout_properties: {grid_position: 'FHPFXP,CXTNST LIOOIJ,UOOUWK'}
+    data_bindings:
+    - {property: text, code: 'self.item['''']', writeback: false}
   - name: pop_percent_slider
     properties: {slider_max: 100, slider_min: 16, step: 5, level: 0}
     type: form:Slider
     layout_properties: {grid_position: 'FHPFXP,CXTNST LNZYUI,QRDFOM'}
     event_bindings: {change: pop_percent_slider_change}
-  - name: percent_label
-    properties: {text: '0', align: right}
-    type: Label
-    layout_properties: {grid_position: 'FHPFXP,CXTNST ZYHOWS,HLKBQE'}
-    data_bindings:
-    - {property: text, code: 'self.item['''']', writeback: false}
   - name: label_3_copy
     properties: {text: Percent Success, align: center}
     type: Label
     layout_properties: {grid_position: 'FHPFXP,ZBZYEY ZPASIQ,MIUCPG'}
+  - name: percentsuccess_label
+    properties: {text: '0', align: right}
+    type: Label
+    layout_properties: {grid_position: 'FHPFXP,ZBZYEY ZPASIQ,GCQIKM'}
+    data_bindings:
+    - {property: text, code: 'self.item['''']', writeback: false}
   - name: pop_percentsuccess_slider
     properties: {slider_max: 100, slider_min: 16, step: 5, level: 0}
     type: form:Slider
     layout_properties: {grid_position: 'FHPFXP,ZBZYEY YPSLUX,UXMYQR'}
-    event_bindings: {change: pop_percent_slider_change}
-  - name: percentsuccess_label
-    properties: {text: '0', align: right}
-    type: Label
-    layout_properties: {grid_position: 'FHPFXP,ZBZYEY ZFBTRR,JYYIUG'}
-    data_bindings:
-    - {property: text, code: 'self.item['''']', writeback: false}
+    event_bindings: {change: pop_percentsuccess_slider_change}
   - name: label_4
     properties: {text: After Intervention Health Status, align: center}
     type: Label
