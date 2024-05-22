@@ -16,3 +16,11 @@ class Population_ViewSelection(Population_ViewSelectionTemplate):
     # Any code you write here will run before the form opens.
     self.pop_repeating_panel.items = app_tables.pop_info.search(q.all_of())
 
+  def pop_percent_slider_change(self, level, **event_args):
+    """This method is called when the slider is moved"""
+    self.pop_viewpercent_label.text = self.pop_percent_slider.level
+  
+  def pop_percentsuccess_slider_change(self, level, **event_args):
+    """This method is called when the slider is moved"""
+    self.pop_viewpercent_label.text = self.pop_percentsuccess_slider.level
+

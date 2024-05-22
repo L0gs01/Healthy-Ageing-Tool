@@ -98,20 +98,20 @@ db_schema:
     - name: pop_initial_dd
       admin_ui: {order: 1, width: 200}
       type: string
-    - name: pop_percent_slider
-      admin_ui: {order: 2, width: 200}
-      type: string
     - name: pop_adjusted_dd
       admin_ui: {order: 3, width: 200}
       type: string
     - name: pop_country_dd
       admin_ui: {order: -1, width: 200}
       type: string
-    - name: pop_percentsuccess_slider
-      admin_ui: {order: 2.5, width: 200}
-      type: string
     - name: pop_name_text
       admin_ui: {width: 200, order: 4}
       type: string
+    - name: pop_percent_slider
+      admin_ui: {order: 1.75, width: 200}
+      type: number
+    - name: pop_percentsuccess_slider
+      admin_ui: {order: 5, width: 200}
+      type: number
     title: Pop_Info
 renamed: true
