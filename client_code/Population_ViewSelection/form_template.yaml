@@ -21,6 +21,10 @@ components:
   properties: {text: Edit, role: filled-button}
   type: Button
   layout_properties: {grid_position: 'KFMUKL,UFDSHC'}
+- name: pop_addgroup_button
+  properties: {text: Add Group, role: filled-button}
+  type: Button
+  layout_properties: {grid_position: 'KFMUKL,EUHHVC'}
 - name: pop_money_edit
   properties: {text: Set Hourly Rates By Activity, role: filled-button}
   type: Button
