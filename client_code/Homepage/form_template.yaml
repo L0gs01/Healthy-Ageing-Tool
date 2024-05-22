@@ -53,11 +53,11 @@ components:
       type: Button
       layout_properties: {grid_position: 'OKJPYK,AFUQZS'}
       event_bindings: {click: is_button_select_click}
-    - name: button_2
+    - name: pop_button_select
       properties: {text: Population, role: filled-button}
       type: Button
       layout_properties: {grid_position: 'OKJPYK,QDZCHI'}
-      event_bindings: {click: button_2_click}
+      event_bindings: {click: pop_button_select_click}
   - name: individualhome_card
     properties: {role: outlined-card, visible: false, col_widths: '{}'}
     type: ColumnPanel
