@@ -27,6 +27,7 @@ class Population_InitialSelection(Population_InitialSelectionTemplate):
                self.pop_age_dd.selected_value,
                self.pop_initial_dd.selected_value,
                self.pop_percent_slider.level,
+               self.pop_percentsuccess_slider.level,
                self.pop_adjusted_dd.selected_value}
     print(pop_variables)
 

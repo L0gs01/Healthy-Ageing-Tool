@@ -214,11 +214,8 @@ class Homepage(HomepageTemplate):
       print(pop_variables)
       self.populationhome_card.visible = True
       #app_tables.pop_info.delete_all_rows()
-      app_tables.pop_info.add_row(pop_country_dd = self.pop_country_dd.selected_value,
-                                  pop_age_dd = self.pop_age_dd.selected_value,
-                                  pop_initial_dd = self.pop_initial_dd.selected_value,
-                                  pop_percent_slider = self.pop_percent_slider.level,
-                                  pop_adjusted_dd = self.pop_adjusted_dd.selected_value)
+      app_tables.pop_info.add_row(pop_country_dd=pop_variables['country'],
+                                 pop_age_dd=pop_variables['age'])
 
 
 
