@@ -1,5 +1,11 @@
 properties:
-- {name: level, type: number, important: true, default_binding_prop: true, default_value: 1}
+- name: level
+  type: number
+  important: true
+  default_binding_prop: true
+  default_value: 1
+  allow_binding_writeback: true
+  binding_writeback_events: [change]
 - {name: slider_min, type: number, important: true}
 - {name: slider_max, type: number, important: true}
 - {name: step, type: number, important: true, default_value: 1}
