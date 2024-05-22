@@ -1,33 +1,63 @@
 is_package: true
-container: {type: ColumnPanel}
+container:
+  type: ColumnPanel
+  properties: {col_widths: '{"DIUEXA":10,"QXWFWD":50}'}
 components:
+- name: label_2
+  properties: {text: 'Group Name:', align: center}
+  type: Label
+  layout_properties: {grid_position: 'BCWUVJ,DIUEXA'}
+- name: text_box_1
+  properties: {}
+  type: TextBox
+  layout_properties: {grid_position: 'BCWUVJ,QXWFWD'}
+- name: label_1
+  properties: {text: Age Range, align: center}
+  type: Label
+  layout_properties: {grid_position: 'VESBRB,GCXRVD VHRCJY,EKWSJP'}
 - name: pop_viewage_dd
   properties: {}
   type: DropDown
-  layout_properties: {grid_position: 'VESBRB,GCXRVD'}
+  layout_properties: {grid_position: 'VESBRB,GCXRVD XEMRYM,ISUKWW'}
   data_bindings:
   - {property: selected_value, code: 'self.item[''pop_age_dd'']', writeback: true}
+- name: label_1_copy
+  properties: {text: Before Intervention Health Status, align: center}
+  type: Label
+  layout_properties: {grid_position: 'VESBRB,RZKZSO IOFDZA,LUOQZZ'}
 - name: pop_viewinitial_dd
   properties: {}
   type: DropDown
-  layout_properties: {grid_position: 'VESBRB,RZKZSO'}
+  layout_properties: {grid_position: 'VESBRB,RZKZSO ODGFJH,BQJRAG'}
   data_bindings:
   - {property: selected_value, code: 'self.item[''pop_initial_dd'']', writeback: true}
+- name: label_1_copy_2
+  properties: {text: Percent Impacted, align: center}
+  type: Label
+  layout_properties: {grid_position: 'VESBRB,ZZVQSD GEAPIJ,KHNHQZ'}
 - name: pop_viewpercent_slider
   properties: {}
   type: form:Slider
-  layout_properties: {grid_position: 'VESBRB,ZZVQSD'}
+  layout_properties: {grid_position: 'VESBRB,ZZVQSD JBKZUL,XGSHBC'}
   data_bindings:
   - {property: level, code: 'self.item[''pop_percent_slider'']', writeback: true}
+- name: label_1_copy_3
+  properties: {text: Percent Success, align: center}
+  type: Label
+  layout_properties: {grid_position: 'VESBRB,XAHQVW LRTFBB,BHEJLS'}
 - name: pop_viewpercent_s_slider
   properties: {}
   type: form:Slider
-  layout_properties: {grid_position: 'VESBRB,XAHQVW'}
+  layout_properties: {grid_position: 'VESBRB,XAHQVW VHPYTN,EUYIDH'}
   data_bindings:
   - {property: level, code: 'self.item[''pop_percentsuccess_slider'']', writeback: false}
+- name: label_1_copy_4
+  properties: {text: After Intervention Health Status, align: center}
+  type: Label
+  layout_properties: {grid_position: 'VESBRB,HRNWEW FAXDLR,GWLELQ'}
 - name: pop_viewadjusted_dd
   properties: {}
   type: DropDown
-  layout_properties: {grid_position: 'VESBRB,HRNWEW'}
+  layout_properties: {grid_position: 'VESBRB,HRNWEW BFKKYW,STXIBE'}
   data_bindings:
   - {property: selected_value, code: 'self.item[''pop_adjusted_dd'']', writeback: true}

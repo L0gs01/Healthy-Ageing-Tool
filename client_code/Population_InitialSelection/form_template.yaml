@@ -1,12 +1,12 @@
 container: {type: ColumnPanel}
 components:
 - name: outlined_card_2
-  properties: {role: outlined-card, col_widths: '{"VHXMFQ":5,"FMGGJG":55}'}
+  properties: {role: outlined-card, col_widths: '{"VHXMFQ":10,"FMGGJG":50}'}
   type: ColumnPanel
   layout_properties: {grid_position: 'JOIVMB,DERRNE'}
   components:
   - name: label_1
-    properties: {text: 'Country:'}
+    properties: {text: 'Group Name:', align: center}
     type: Label
     layout_properties: {grid_position: 'POLITZ,VHXMFQ'}
   - name: pop_country_dd

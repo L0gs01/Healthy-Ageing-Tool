@@ -1,13 +1,18 @@
 container: {type: ColumnPanel}
 components:
-- name: label_1
-  properties: {text: 'Country Selected:'}
-  type: Label
-  layout_properties: {grid_position: 'LQAZAF,EIGTIM'}
-- name: pop_country_label
-  properties: {}
-  type: Label
-  layout_properties: {grid_position: 'LQAZAF,OMSNCK'}
+- name: outlined_card_1
+  properties: {role: outlined-card, col_widths: '{"EPDPGH":15,"FMNRHV":45}'}
+  type: ColumnPanel
+  layout_properties: {grid_position: 'FFTYJV,HNVTGO'}
+  components:
+  - name: label_1
+    properties: {text: 'Country Selected:', align: center}
+    type: Label
+    layout_properties: {grid_position: 'MLQZTX,EPDPGH'}
+  - name: pop_country_label
+    properties: {}
+    type: Label
+    layout_properties: {grid_position: 'MLQZTX,FMNRHV'}
 - name: pop_repeating_panel
   properties: {item_template: Population_ViewSelection.ItemTemplate1}
   type: RepeatingPanel
