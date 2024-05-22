@@ -198,12 +198,12 @@ class Homepage(HomepageTemplate):
 
   def pop_button_select_click(self, **event_args):
     """This method is called when the button is clicked"""
-    global variables
-    variables= {}
+    global pop_variables
+    pop_variables= {}
     self.homepage_buttons.visible = False
     save_clicked = alert(
-      content = Individual_InitialSelection(item=variables),
-      title = "Define the person’s characteristics:",
+      content = Individual_InitialSelection(item=pop_variablesvariables),
+      title = "Define the ’s characteristics:",
       large=True,
       buttons=[("Next", True), ("Cancel", False)],
     )
