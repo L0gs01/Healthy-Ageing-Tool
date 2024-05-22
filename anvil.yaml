@@ -92,17 +92,20 @@ db_schema:
     client: full
     server: full
     columns:
-    - name: pop_age
+    - name: pop_age_dd
       admin_ui: {order: 0, width: 200}
       type: string
     - name: pop_initial
       admin_ui: {order: 1, width: 200}
       type: string
-    - name: pop_percent
+    - name: pop_percent_slider
       admin_ui: {order: 2, width: 200}
       type: string
-    - name: pop_adjusted
+    - name: pop_adjusted_dd
       admin_ui: {order: 3, width: 200}
+      type: string
+    - name: pop_country_dd
+      admin_ui: {order: -1, width: 200}
       type: string
     title: Pop_Info
 renamed: true

@@ -41,9 +41,9 @@ class Homepage(HomepageTemplate):
       buttons=[("Next", True), ("Cancel", False)],
     )
     if save_clicked:
-        self.individualhome_card.visible = True
-        app_tables.selectedvariables_i.delete_all_rows()
-        app_tables.selectedvariables_i.add_row(initialrank=variables['initialrank'],
+      self.individualhome_card.visible = True
+      app_tables.selectedvariables_i.delete_all_rows()
+      app_tables.selectedvariables_i.add_row(initialrank=variables['initialrank'],
                                             sex=variables['sex'],
                                             age=variables['age'],
                                             maritalstatus=variables['maritalstatus'],
@@ -52,17 +52,17 @@ class Homepage(HomepageTemplate):
                                             country=variables['country'],
                                             adjustedrank=variables['adjustedrank'],
                                             name=variables['name'])
-        self.name_label.text = variables['name']
-        self.initialrank_label.text = variables['initialrank']
-        self.adjustedrank_label.text = variables['adjustedrank']
-        self.age_label.text = variables['age']
-        self.sex_label.text = variables['sex']
-        self.maritalstatus_label.text = variables['maritalstatus']
-        self.employment_label.text = variables['employment']
-        self.education_label.text = variables['education']
-        self.country_label.text = variables['country'] 
-        print(variables)
-        if variables['country'] == (' United Kingdom') and variables['education'] == ('Lower Than Secondary'):
+      self.name_label.text = variables['name']
+      self.initialrank_label.text = variables['initialrank']
+      self.adjustedrank_label.text = variables['adjustedrank']
+      self.age_label.text = variables['age']
+      self.sex_label.text = variables['sex']
+      self.maritalstatus_label.text = variables['maritalstatus']
+      self.employment_label.text = variables['employment']
+      self.education_label.text = variables['education']
+      self.country_label.text = variables['country'] 
+      print(variables)
+      if variables['country'] == (' United Kingdom') and variables['education'] == ('Lower Than Secondary'):
           alert('There is no data for people with education "lower than secondary" in the United Kindgom. Please choose a different country and/or education level.')
 
   def is_edit_button_click(self, **event_args):
@@ -202,8 +202,8 @@ class Homepage(HomepageTemplate):
   def pop_button_select_click(self, **event_args):
     """This method is called when the button is clicked"""
     global pop_variables
-    pop_variables= {}
     self.homepage_buttons.visible = False
+    pop_variables= {}
     save_clicked = alert(
       content = Population_InitialSelection(item=pop_variables),
       title = "Define the populations’s characteristics:",
@@ -211,19 +211,14 @@ class Homepage(HomepageTemplate):
       buttons=[("Next", True), ("Cancel", False)],
     )
     if save_clicked:
+      print(pop_variables)
       self.populationhome_card.visible = True
-    #     app_tables.pop_info.delete_all_rows()
-    #     app_tables.pop_info.add_row(initial_health=variables['initialrank'],
-    #                                         pop_initial,
-    #                                         pop_adjusted,
-                                    
-    #                                         pop_country,
-    #     self.name_label.text = variables['name']
-    #     # print(pop_variables)
-    #     # if variables['country'] == (' United Kingdom') and variables['education'] == ('Lower Than Secondary'):
-    #       # alert('There is no data for people with education "lower than secondary" in the United Kindgom. Please choose a different country and/or education level.')
-
-
+      #app_tables.pop_info.delete_all_rows()
+      app_tables.pop_info.add_row(pop_country_dd = self.pop_country_dd.selected_value,
+                                  pop_age_dd = self.pop_age_dd.selected_value,
+                                  pop_initial_dd = self.pop_initial_dd.selected_value,
+                                  pop_percent_slider = self.pop_percent_slider.level,
+                                  pop_adjusted_dd = self.pop_adjusted_dd.selected_value)
 
 
 
