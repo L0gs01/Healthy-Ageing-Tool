@@ -24,3 +24,13 @@ class Population_ViewSelection(Population_ViewSelectionTemplate):
     """This method is called when the slider is moved"""
     self.pop_viewpercent_label.text = self.pop_percentsuccess_slider.level
 
+  def pop_addgroup_button_click(self, **event_args):
+    """This method is called when the button is clicked"""
+    save_clicked = alert(
+      content = Population_ViewSelection(item=variable),
+      title = "Define the person’s characteristics:",
+      large=True,
+      buttons=[("Next", True), ("Cancel", False)],
+    )
+    if save_clicked:
+        print(variables)
