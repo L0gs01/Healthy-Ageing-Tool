@@ -216,6 +216,7 @@ class Homepage(HomepageTemplate):
       self.populationhome_card.visible = True
       #app_tables.pop_info.delete_all_rows()
       app_tables.pop_info.add_row(pop_country_dd=str(pop_variables['country']),
+                                 pop_name_text = str(pop_variables['name']),
                                  pop_age_dd=str(pop_variables['age']),
                                  pop_initial_dd=str(pop_variables['initial']),
                                  pop_percent_slider=(pop_variables['percent']),
@@ -225,6 +226,7 @@ class Homepage(HomepageTemplate):
       print(percent_impact)
       percent_success = (percent_impact*(int(pop_variables['percent_s'])/100))
       print(percent_success)
+      print(app_tables.pop_info.search())
 
 
 

@@ -105,7 +105,7 @@ db_schema:
       admin_ui: {order: -1, width: 200}
       type: string
     - name: pop_name_text
-      admin_ui: {width: 200, order: 4}
+      admin_ui: {order: -0.5, width: 200}
       type: string
     - name: pop_percent_slider
       admin_ui: {order: 1.75, width: 200}
