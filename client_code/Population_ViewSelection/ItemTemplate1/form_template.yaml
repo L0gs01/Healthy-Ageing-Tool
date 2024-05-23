@@ -24,7 +24,7 @@ components:
     layout_properties: {grid_position: 'DUTHBP,HBYCJH OGOKPD,KICOGD'}
   - name: pop_viewage_dd
     properties:
-      items: [Good, Fair, Poor]
+      items: [55-64, 65-74, 75+]
       include_placeholder: false
       placeholder: self.item['pop_age_dd']
     type: DropDown

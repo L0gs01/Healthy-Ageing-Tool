@@ -218,8 +218,8 @@ class Homepage(HomepageTemplate):
       app_tables.pop_info.add_row(pop_country_dd=str(pop_variables['country']),
                                  pop_age_dd=str(pop_variables['age']),
                                  pop_initial_dd=str(pop_variables['initial']),
-                                 pop_percent_slider=str(pop_variables['percent']),
-                                 pop_percentsuccess_slider=str(pop_variables['percent_s']),
+                                 pop_percent_slider=(pop_variables['percent']),
+                                 pop_percentsuccess_slider=(pop_variables['percent_s']),
                                  pop_adjusted_dd=str(pop_variables['adjusted']))
       percent_impact = (1000*(int(pop_variables['percent'])/100))
       print(percent_impact)
