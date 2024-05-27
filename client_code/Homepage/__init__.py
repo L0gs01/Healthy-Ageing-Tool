@@ -27,6 +27,7 @@ class Homepage(HomepageTemplate):
                             childcare='4.9',
                             adultcare='4.46',
                             voluntaryactivity='11.63')
+    self.refresh_popinfo()
     # Any code you write here will run before the form opens.
 
   def refresh_popinfo(self):
@@ -225,12 +226,6 @@ class Homepage(HomepageTemplate):
                                  pop_adjusted_dd=str(pop_variables['adjusted']))
       self.refresh_popinfo()
       self.populationhome_card.visible = True
-      percent_impact = (1000*(int(pop_variables['percent'])/100))
-      print(percent_impact)
-      percent_success = (percent_impact*(int(pop_variables['percent_s'])/100))
-      print(percent_success)
-      print(app_tables.pop_info.search())
-
 
 
 

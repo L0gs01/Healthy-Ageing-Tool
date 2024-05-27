@@ -337,7 +337,7 @@ components:
     layout_properties: {grid_position: 'ARAECF,DAGFAS'}
     components:
     - name: popinfo_panel
-      properties: {item_template: Homepage.ItemTemplate2}
+      properties: {item_template: Population_ViewSelection}
       type: RepeatingPanel
       layout_properties: {grid_position: 'VQJZOR,PYEYMB'}
   - name: pop_plot_card
