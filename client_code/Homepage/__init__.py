@@ -213,7 +213,6 @@ class Homepage(HomepageTemplate):
     )
     if save_clicked:
       print(pop_variables)
-      self.populationhome_card.visible = True
       #app_tables.pop_info.delete_all_rows()
       app_tables.pop_info.add_row(pop_country_dd=str(pop_variables['country']),
                                  pop_name_text = str(pop_variables['name']),
@@ -222,6 +221,7 @@ class Homepage(HomepageTemplate):
                                  pop_percent_slider=(pop_variables['percent']),
                                  pop_percentsuccess_slider=(pop_variables['percent_s']),
                                  pop_adjusted_dd=str(pop_variables['adjusted']))
+      self.populationhome_card.visible = True
       percent_impact = (1000*(int(pop_variables['percent'])/100))
       print(percent_impact)
       percent_success = (percent_impact*(int(pop_variables['percent_s'])/100))
