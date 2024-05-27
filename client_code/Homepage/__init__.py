@@ -12,7 +12,6 @@ from ..Individual_MoneyValue import Individual_MoneyValue
 from ..Individual_ViewSelection import Individual_ViewSelection
 from ..Population_InitialSelection import Population_InitialSelection
 from ..Population_ViewSelection import Population_ViewSelection
-from ..Population_ViewSelection.ItemTemplate1 import ItemTemplate1
 import anvil.media
 
 class Homepage(HomepageTemplate):
@@ -31,7 +30,8 @@ class Homepage(HomepageTemplate):
     # Any code you write here will run before the form opens.
 
   def refresh_popinfo(self):
-    self.population_view_selection.itemtemplate1.items = self.population_view_selection_1.itemtemplate1.items
+    self.popinfo_panel.items = anvil.server.call('get_popinfo')
+  
   def is_button_select_click(self, **event_args):
     """This method is called when the button is clicked"""
     global variables

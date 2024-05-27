@@ -14,23 +14,15 @@ class Population_ViewSelection(Population_ViewSelectionTemplate):
     self.init_components(**properties)
 
     # Any code you write here will run before the form opens.
-    self.pop_repeating_panel.items = app_tables.pop_info.search(q.all_of())
+    # self.pop_repeating_panel.items = app_tables.pop_info.search(q.all_of())
 
-  def pop_percent_slider_change(self, level, **event_args):
+  def pop_viewpercent_slider_change(self, level, **event_args):
     """This method is called when the slider is moved"""
-    self.pop_viewpercent_label.text = self.pop_percent_slider.level
-  
-  def pop_percentsuccess_slider_change(self, level, **event_args):
-    """This method is called when the slider is moved"""
-    self.pop_viewpercent_label.text = self.pop_percentsuccess_slider.level
+    self.pop_viewpercent_label.text = self.pop_viewpercent_slider.level
 
-  def pop_addgroup_button_click(self, **event_args):
-    """This method is called when the button is clicked"""
-    save_clicked = alert(
-      content = Population_ViewSelection(item=variable),
-      title = "Define the person’s characteristics:",
-      large=True,
-      buttons=[("Next", True), ("Cancel", False)],
-    )
-    if save_clicked:
-        print(variables)
+  def pop_viewpercent_s_slider_change(self, level, **event_args):
+    """This method is called when the slider is moved"""
+    self.pop_viewpercent_s_label.text = self.pop_viewpercent_s_slider.level
+
+
+ 
