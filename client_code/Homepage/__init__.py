@@ -30,6 +30,8 @@ class Homepage(HomepageTemplate):
                             voluntaryactivity='11.63')
     # Any code you write here will run before the form opens.
 
+  def refresh_popinfo(self):
+    self.population_view_selection.itemtemplate1.items = self.population_view_selection_1.itemtemplate1.items
   def is_button_select_click(self, **event_args):
     """This method is called when the button is clicked"""
     global variables
@@ -221,7 +223,7 @@ class Homepage(HomepageTemplate):
                                  pop_percent_slider=(pop_variables['percent']),
                                  pop_percentsuccess_slider=(pop_variables['percent_s']),
                                  pop_adjusted_dd=str(pop_variables['adjusted']))
-      self.populationhome_card.raise_event()
+      self.refresh_popinfo()
       self.populationhome_card.visible = True
       percent_impact = (1000*(int(pop_variables['percent'])/100))
       print(percent_impact)

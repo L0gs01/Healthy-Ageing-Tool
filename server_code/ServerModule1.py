@@ -348,3 +348,6 @@ def get_adjusted_value():
 def get_difference_value():
   return int(total_difference_value)
 
+@anvil.server.callable
+def get_popinfo():
+  return app_tables.pop_info.search()
