@@ -26,7 +26,10 @@ class Population_ViewSelection(Population_ViewSelectionTemplate):
 
   def pop_delete_button_click(self, **event_args):
     """This method is called when the button is clicked"""
-    pass
+    self.item.delete()
+    self.remove_from_parent()
+
+
 
 
  
