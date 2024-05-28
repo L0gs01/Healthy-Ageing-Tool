@@ -28,7 +28,9 @@ df_serbia = pd.read_csv(data_files['RS_predicted_values_55.csv'])
 df_ukireland = pd.read_csv(data_files['UK_predicted_values_total.csv'])
 
 selected_var = app_tables.selectedvariables_i.search()
+pop_selected_var = app_tables.pop_info.search()
 variable_dicts = [{'initialrank':r['initialrank'], 'adjustedrank':r['adjustedrank'], 'age':r['age'],'sex':r['sex'],'maritalstatus':r['maritalstatus'], 'employment':r['employment'], 'education':r['education'], 'country':r['country']} for r in selected_var]
+
 df_selectedvariables = pd.DataFrame.from_dict(variable_dicts)
 selected_money = app_tables.moneyvalues.search()
 money_dicts = [{'housing':r['housing'], 'transport':r['transport'], 'nutrition':r['nutrition'],'clothing':r['clothing'],'laundry':r['laundry'], 'childcare':r['childcare'], 'adultcare':r['adultcare'], 'voluntaryactivity':r['voluntaryactivity']} for r in selected_money]
