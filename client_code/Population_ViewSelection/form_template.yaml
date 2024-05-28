@@ -1,7 +1,7 @@
 container: {type: ColumnPanel}
 components:
 - name: popview_card
-  properties: {role: outlined-card, col_widths: '{"JBINBX":10,"TQOXBT":50,"XVFOKZ":47,"EXTUFV":13,"WXEHRE":47,"CEBGJY":13,"VNEPEA":15,"ANQAEJ":45}'}
+  properties: {role: outlined-card, col_widths: '{"JBINBX":10,"TQOXBT":50,"XVFOKZ":47,"EXTUFV":13,"WXEHRE":47,"CEBGJY":13,"VNEPEA":10,"ANQAEJ":50}'}
   type: ColumnPanel
   layout_properties: {grid_position: 'NALXEB,CUSDYX'}
   components:

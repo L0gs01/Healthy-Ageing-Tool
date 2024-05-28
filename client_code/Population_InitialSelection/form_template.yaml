@@ -1,28 +1,23 @@
 container: {type: ColumnPanel}
 components:
-- name: outlined_card_2
-  properties: {role: outlined-card, col_widths: '{"RINTBJ":5,"SXHZGQ":55}'}
+- name: outlined_card_1
+  properties: {role: outlined-card, col_widths: '{"QPZXKB":47,"MIUCPG":47,"QRDFOM":47,"YCHSHT":13,"UXMYQR":47,"TBLKQD":13,"WORWLW":10,"OLRMGA":50,"MUKJBT":10,"UWAGEJ":50}'}
   type: ColumnPanel
-  layout_properties: {grid_position: 'JOIVMB,DERRNE'}
+  layout_properties: {grid_position: 'FTPCUD,QEJLAL'}
   components:
   - name: label_5
-    properties: {text: 'Country:', align: center}
+    properties: {text: 'Country:', align: center, role: input-prompt, bold: false}
     type: Label
-    layout_properties: {grid_position: 'FKUPJR,RINTBJ'}
+    layout_properties: {grid_position: 'YQCKBP,MUKJBT'}
   - name: pop_country_dd
     properties:
       items: [Europe (all), Belgium, Estonia, Finland, France, Greece, Romania, Serbia,
         ' United Kingdom']
       include_placeholder: true
     type: DropDown
-    layout_properties: {grid_position: 'FKUPJR,SXHZGQ'}
+    layout_properties: {grid_position: 'YQCKBP,UWAGEJ'}
     data_bindings:
     - {property: selected_value, code: 'self.item[''country'']', writeback: true}
-- name: outlined_card_1
-  properties: {role: outlined-card, col_widths: '{"QPZXKB":47,"MIUCPG":47,"QRDFOM":47,"YCHSHT":13,"UXMYQR":47,"TBLKQD":13,"WORWLW":10,"OLRMGA":50}'}
-  type: ColumnPanel
-  layout_properties: {grid_position: 'FTPCUD,QEJLAL'}
-  components:
   - name: label_1
     properties: {text: 'Group Name:', align: center}
     type: Label

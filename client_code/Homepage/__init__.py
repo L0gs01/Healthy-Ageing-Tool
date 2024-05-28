@@ -227,6 +227,28 @@ class Homepage(HomepageTemplate):
       self.refresh_popinfo()
       self.populationhome_card.visible = True
 
+  def pop_add_button_click(self, **event_args):
+    """This method is called when the button is clicked"""
+    pop_variables= {}
+    save_clicked = alert(
+      content = Population_InitialSelection(item=pop_variables),
+      title = "Define the populations’s characteristics:",
+      large=True,
+      buttons=[("Next", True), ("Cancel", False)],
+    )
+    if save_clicked:
+      print(pop_variables)
+      #app_tables.pop_info.delete_all_rows()
+      app_tables.pop_info.add_row(pop_country_dd=str(pop_variables['country']),
+                                 pop_name_text = str(pop_variables['name']),
+                                 pop_age_dd=str(pop_variables['age']),
+                                 pop_initial_dd=str(pop_variables['initial']),
+                                 pop_percent_slider=(pop_variables['percent']),
+                                 pop_percentsuccess_slider=(pop_variables['percent_s']),
+                                 pop_adjusted_dd=str(pop_variables['adjusted']))
+      self.refresh_popinfo()
+      self.populationhome_card.visible = True
+
 
 
 
