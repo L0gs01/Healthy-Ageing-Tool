@@ -9,7 +9,6 @@ unique_ids:
     Individual_MoneyValue: '1713354558326218955507645.76187'
     Individual_EditSelection: '1713354508723811367964491.5084'
     Individual_ViewSelection: '1713354577057584672828849.3373'
-    Homepage.RowTemplate1: '1713724469602848702585317.8561'
   modules: {}
   server_modules:
     ServerModule1: '1713356173952574658945596.464'

@@ -24,5 +24,9 @@ class Population_ViewSelection(Population_ViewSelectionTemplate):
     """This method is called when the slider is moved"""
     self.pop_viewpercent_s_label.text = self.pop_viewpercent_s_slider.level
 
+  def pop_delete_button_click(self, **event_args):
+    """This method is called when the button is clicked"""
+    pass
+
 
  
