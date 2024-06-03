@@ -39,7 +39,7 @@ components:
         layout_properties: {grid_position: 'USOCHD,XVZQGV'}
         event_bindings: {click: population_navbutton_click}
   - name: label_1
-    properties: {text: Healthy Aging Tool, role: title}
+    properties: {text: Healthy Ageing Tool, role: title}
     type: Label
     layout_properties: {grid_position: 'XAXIEZ,PLEVDJ'}
   - name: homepage_buttons
