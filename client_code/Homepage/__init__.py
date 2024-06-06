@@ -27,7 +27,7 @@ class Homepage(HomepageTemplate):
                             childcare='4.9',
                             adultcare='4.46',
                             voluntaryactivity='11.63')
-    self.refresh_popinfo()
+    # self.refresh_popinfo()
     # Any code you write here will run before the form opens.
 
   def refresh_popinfo(self):
