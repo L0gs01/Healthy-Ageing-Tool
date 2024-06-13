@@ -9,6 +9,7 @@ import pandas as pd
 from pandas import DataFrame
 import plotly.express as px
 import plotly.graph_objects as go
+import numpy as np
 
 
 # This is a server module. It runs on the Anvil server,
@@ -217,17 +218,49 @@ df_popselectedvar = pop_variable_dicts
 print(df_popselectedvar)
 
 pop_selected_money = app_tables.moneyvalues.search()
-pop_money_dicts = [{'housing':r['housing'], 'transport':r['transport'], 'nutrition':r['nutrition'],'clothing':r['clothing'],'laundry':r['laundry'], 'childcare':r['childcare'], 'adultcare':r['adultcare'], 'voluntaryactivity':r['voluntaryactivity']} for r in selected_money]
+popmoney_dicts = [{'housing':r['housing'], 'transport':r['transport'], 'nutrition':r['nutrition'],'clothing':r['clothing'],'laundry':r['laundry'], 'childcare':r['childcare'], 'adultcare':r['adultcare'], 'voluntaryactivity':r['voluntaryactivity']} for r in selected_money]
 df_popselectedmoney = pd.DataFrame.from_dict(popmoney_dicts)
 print(df_popselectedmoney)
 
-popselect_country = df_.at[0,'initialrank']
-selection_adjustedrank = df_selectedvariables.at[0,'adjustedrank']
-selection_age = df_selectedvariables.at[0,"age"]    
-selection_sex = df_selectedvariables.at[0,'sex']
-selection_maritalstatus = df_selectedvariables.at[0,"maritalstatus"]
-selection_employment = df_selectedvariables.at[0,"employment"]
-selection_education = df_selectedvariables.at[0,"education"]
+popselect_country1 = df_popselectedvar.at[0,'pop_country']
+pop_name1 = df_popselectedvar.at[0,'pop_name']
+selection_age1 = df_popselectedvar.at[0,"pop_age"]    
+pop_age1 = df_popselectedvar.at[0,'pop_initial']
+pop_precent1 = df_popselectedvar.at[0,"pop_precent"]
+pop_percentsuccess1 = df_popselectedvar.at[0,"pop_percentsuccess"]
+pop_adjusted1 = df_popselectedvar.at[0,"pop_adjusted"]
+
+popselect_country2 = df_popselectedvar.at[1,'pop_country']
+pop_name2 = df_popselectedvar.at[1,'pop_name']
+selection_age2 = df_popselectedvar.at[1,"pop_age"]    
+pop_age2 = df_popselectedvar.at[1,'pop_initial']
+pop_precent2 = df_popselectedvar.at[1,"pop_precent"]
+pop_percentsuccess2 = df_popselectedvar.at[1,"pop_percentsuccess"]
+pop_adjusted2 = df_popselectedvar.at[1,"pop_adjusted"]
+
+popselect_country3 = df_popselectedvar.at[2,'pop_country']
+pop_name3 = df_popselectedvar.at[2,'pop_name']
+selection_age3 = df_popselectedvar.at[2,"pop_age"]    
+pop_age3 = df_popselectedvar.at[2,'pop_initial']
+pop_precent3 = df_popselectedvar.at[2,"pop_precent"]
+pop_percentsuccess3 = df_popselectedvar.at[2,"pop_percentsuccess"]
+pop_adjusted3 = df_popselectedvar.at[2,"pop_adjusted"]
+
+popselect_country4 = df_popselectedvar.at[3,'pop_country']
+pop_name4 = df_popselectedvar.at[3,'pop_name']
+selection_age4 = df_popselectedvar.at[3,"pop_age"]    
+pop_age4 = df_popselectedvar.at[3,'pop_initial']
+pop_precent4 = df_popselectedvar.at[3,"pop_precent"]
+pop_percentsuccess4 = df_popselectedvar.at[3,"pop_percentsuccess"]
+pop_adjusted4 = df_popselectedvar.at[3,"pop_adjusted"]
+
+popselect_country5 = df_popselectedvar.at[4,'pop_country']
+pop_name5 = df_popselectedvar.at[4,'pop_name']
+selection_age5 = df_popselectedvar.at[4,"pop_age"]    
+pop_age5 = df_popselectedvar.at[4,'pop_initial']
+pop_precent5 = df_popselectedvar.at[4,"pop_precent"]
+pop_percentsuccess5 = df_popselectedvar.at[4,"pop_percentsuccess"]
+pop_adjusted5 = df_popselectedvar.at[4,"pop_adjusted"]
 
 if pop_country == 'Good':
     pop_country = 'good'
