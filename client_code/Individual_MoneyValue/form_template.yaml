@@ -9,10 +9,7 @@ components:
   type: Label
   layout_properties: {grid_position: 'BRTWEO,QMTQQP'}
 - name: housing_box
-  properties: {role: null, align: left, hide_text: false, tooltip: '', placeholder: '',
-    border: '', enabled: true, foreground: '', visible: true, text: '', font_size: null,
-    font: '', spacing_above: small, type: text, spacing_below: small, italic: false,
-    background: '', bold: false, underline: false}
+  properties: {role: null, align: left, hide_text: false, tooltip: '', placeholder: '', border: '', enabled: true, foreground: '', visible: true, text: '', font_size: null, font: '', spacing_above: small, type: text, spacing_below: small, italic: false, background: '', bold: false, underline: false}
   type: TextBox
   layout_properties: {grid_position: 'BRTWEO,VEWFAI'}
   data_bindings:
@@ -22,10 +19,7 @@ components:
   type: Label
   layout_properties: {grid_position: 'HWCJCU,OWTLXS'}
 - name: transport_box
-  properties: {role: null, align: left, hide_text: false, tooltip: '', placeholder: '',
-    border: '', enabled: true, foreground: '', visible: true, text: '', font_size: null,
-    font: '', spacing_above: small, type: text, spacing_below: small, italic: false,
-    background: '', bold: false, underline: false}
+  properties: {role: null, align: left, hide_text: false, tooltip: '', placeholder: '', border: '', enabled: true, foreground: '', visible: true, text: '', font_size: null, font: '', spacing_above: small, type: text, spacing_below: small, italic: false, background: '', bold: false, underline: false}
   type: TextBox
   layout_properties: {grid_position: 'HWCJCU,QUDQAC'}
   data_bindings:
@@ -35,10 +29,7 @@ components:
   type: Label
   layout_properties: {grid_position: 'RNBHNN,IYIGCQ'}
 - name: nutrition_box
-  properties: {role: null, align: left, hide_text: false, tooltip: '', placeholder: '',
-    border: '', enabled: true, foreground: '', visible: true, text: '', font_size: null,
-    font: '', spacing_above: small, type: text, spacing_below: small, italic: false,
-    background: '', bold: false, underline: false}
+  properties: {role: null, align: left, hide_text: false, tooltip: '', placeholder: '', border: '', enabled: true, foreground: '', visible: true, text: '', font_size: null, font: '', spacing_above: small, type: text, spacing_below: small, italic: false, background: '', bold: false, underline: false}
   type: TextBox
   layout_properties: {grid_position: 'RNBHNN,LTLFDD'}
   data_bindings:
@@ -48,10 +39,7 @@ components:
   type: Label
   layout_properties: {grid_position: 'YHMWTV,GIJJGY'}
 - name: clothing_box
-  properties: {role: null, align: left, hide_text: false, tooltip: '', placeholder: '',
-    border: '', enabled: true, foreground: '', visible: true, text: '', font_size: null,
-    font: '', spacing_above: small, type: text, spacing_below: small, italic: false,
-    background: '', bold: false, underline: false}
+  properties: {role: null, align: left, hide_text: false, tooltip: '', placeholder: '', border: '', enabled: true, foreground: '', visible: true, text: '', font_size: null, font: '', spacing_above: small, type: text, spacing_below: small, italic: false, background: '', bold: false, underline: false}
   type: TextBox
   layout_properties: {grid_position: 'YHMWTV,ICBVZQ'}
   data_bindings:
@@ -61,10 +49,7 @@ components:
   type: Label
   layout_properties: {grid_position: 'XBVFIU,EUTZGW'}
 - name: laundry_box
-  properties: {role: null, align: left, hide_text: false, tooltip: '', placeholder: '',
-    border: '', enabled: true, foreground: '', visible: true, text: '', font_size: null,
-    font: '', spacing_above: small, type: text, spacing_below: small, italic: false,
-    background: '', bold: false, underline: false}
+  properties: {role: null, align: left, hide_text: false, tooltip: '', placeholder: '', border: '', enabled: true, foreground: '', visible: true, text: '', font_size: null, font: '', spacing_above: small, type: text, spacing_below: small, italic: false, background: '', bold: false, underline: false}
   type: TextBox
   layout_properties: {grid_position: 'XBVFIU,DMBNAO'}
   data_bindings:
@@ -74,10 +59,7 @@ components:
   type: Label
   layout_properties: {grid_position: 'JTADOJ,KFASZY'}
 - name: childcare_box
-  properties: {role: null, align: left, hide_text: false, tooltip: '', placeholder: '',
-    border: '', enabled: true, foreground: '', visible: true, text: '', font_size: null,
-    font: '', spacing_above: small, type: text, spacing_below: small, italic: false,
-    background: '', bold: false, underline: false}
+  properties: {role: null, align: left, hide_text: false, tooltip: '', placeholder: '', border: '', enabled: true, foreground: '', visible: true, text: '', font_size: null, font: '', spacing_above: small, type: text, spacing_below: small, italic: false, background: '', bold: false, underline: false}
   type: TextBox
   layout_properties: {grid_position: 'JTADOJ,LMXXRJ'}
   data_bindings:
@@ -87,10 +69,7 @@ components:
   type: Label
   layout_properties: {grid_position: 'QUNTWE,SPADQL'}
 - name: adultcare_box
-  properties: {role: null, align: left, hide_text: false, tooltip: '', placeholder: '',
-    border: '', enabled: true, foreground: '', visible: true, text: '', font_size: null,
-    font: '', spacing_above: small, type: text, spacing_below: small, italic: false,
-    background: '', bold: false, underline: false}
+  properties: {role: null, align: left, hide_text: false, tooltip: '', placeholder: '', border: '', enabled: true, foreground: '', visible: true, text: '', font_size: null, font: '', spacing_above: small, type: text, spacing_below: small, italic: false, background: '', bold: false, underline: false}
   type: TextBox
   layout_properties: {grid_position: 'QUNTWE,EKIGMA'}
   data_bindings:
@@ -100,10 +79,7 @@ components:
   type: Label
   layout_properties: {grid_position: 'EFQSYN,PZIJCJ'}
 - name: voluntaryactivity_box
-  properties: {role: null, align: left, hide_text: false, tooltip: '', placeholder: '',
-    border: '', enabled: true, foreground: '', visible: true, text: '', font_size: null,
-    font: '', spacing_above: small, type: text, spacing_below: small, italic: false,
-    background: '', bold: false, underline: false}
+  properties: {role: null, align: left, hide_text: false, tooltip: '', placeholder: '', border: '', enabled: true, foreground: '', visible: true, text: '', font_size: null, font: '', spacing_above: small, type: text, spacing_below: small, italic: false, background: '', bold: false, underline: false}
   type: TextBox
   layout_properties: {grid_position: 'EFQSYN,DRSNLJ'}
   data_bindings:

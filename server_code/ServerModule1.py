@@ -28,7 +28,6 @@ df_serbia = pd.read_csv(data_files['RS_predicted_values_55.csv'])
 df_ukireland = pd.read_csv(data_files['UK_predicted_values_total.csv'])
 
 selected_var = app_tables.selectedvariables_i.search()
-pop_selected_var = app_tables.pop_info.search()
 variable_dicts = [{'initialrank':r['initialrank'], 'adjustedrank':r['adjustedrank'], 'age':r['age'],'sex':r['sex'],'maritalstatus':r['maritalstatus'], 'employment':r['employment'], 'education':r['education'], 'country':r['country']} for r in selected_var]
 
 df_selectedvariables = pd.DataFrame.from_dict(variable_dicts)
@@ -209,7 +208,47 @@ df_total_diff_trans = df_total_diff.T
 # print(df_total_diff_trans)
 
 #display(df_final)
+#----------------------------------------------------------------------------------------------------------------------------------------------------
+df_poptotal = pd.read_csv(data_files['pop_total.csv'])
 
+pop_selected_var = app_tables.pop_info.search()
+pop_variable_dicts = [{'pop_country':r['pop_country_dd'], 'pop_name':r['pop_name_text'], 'pop_age':r['pop_age_dd'],'pop_initial':r['pop_initial_dd'],'pop_percent':r['pop_percent_slider'], 'pop_percentsuccess':r['pop_percentsuccess_slider'], 'pop_adjusted':r['pop_adjusted_dd']} for r in pop_selected_var]
+df_popselectedvar = pop_variable_dicts
+print(df_popselectedvar)
+
+pop_selected_money = app_tables.moneyvalues.search()
+pop_money_dicts = [{'housing':r['housing'], 'transport':r['transport'], 'nutrition':r['nutrition'],'clothing':r['clothing'],'laundry':r['laundry'], 'childcare':r['childcare'], 'adultcare':r['adultcare'], 'voluntaryactivity':r['voluntaryactivity']} for r in selected_money]
+df_popselectedmoney = pd.DataFrame.from_dict(popmoney_dicts)
+print(df_popselectedmoney)
+
+popselect_country = df_.at[0,'initialrank']
+selection_adjustedrank = df_selectedvariables.at[0,'adjustedrank']
+selection_age = df_selectedvariables.at[0,"age"]    
+selection_sex = df_selectedvariables.at[0,'sex']
+selection_maritalstatus = df_selectedvariables.at[0,"maritalstatus"]
+selection_employment = df_selectedvariables.at[0,"employment"]
+selection_education = df_selectedvariables.at[0,"education"]
+
+if selection_initialrank == 'Good':
+    selection_initialrank = 'good'
+if selection_initialrank == 'Poor':
+    selection_initialrank = 'bad'
+if selection_initialrank == 'Fair':
+    selection_initialrank = 'fair'
+if selection_adjustedrank == 'Good':
+    selection_adjustedrank = 'good'
+if selection_adjustedrank == 'Poor':
+    selection_adjustedrank = 'bad'
+if selection_adjustedrank == 'Fair':
+    selection_adjustedrank = 'fair'
+if selection_age == '55-64':
+    selection_age = '55_64'
+if selection_age == '65-74':
+    selection_age = '65_74'
+if selection_age == '75+':
+    selection_age = '75_more'
+
+#----------------------------------------------------------------------------------------------------------------------------------
 @anvil.server.callable
 def create_barfig_initial_time():
   data = df_final

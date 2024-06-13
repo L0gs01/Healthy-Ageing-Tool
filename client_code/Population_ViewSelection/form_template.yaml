@@ -11,8 +11,7 @@ components:
     layout_properties: {grid_position: 'MOBLUT,VNEPEA'}
   - name: drop_down_1_copy
     properties:
-      items: [Europe (all), Belgium, Estonia, Finland, France, Greece, Romania, Serbia,
-        ' United Kingdom']
+      items: [Europe (all), Belgium, Estonia, Finland, France, Greece, Romania, Serbia, ' United Kingdom']
     type: DropDown
     layout_properties: {grid_position: 'MOBLUT,ANQAEJ'}
     data_bindings:
@@ -83,8 +82,7 @@ components:
     layout_properties: {grid_position: 'DUTHBP,CSRCRD MPAZXK,WXEHRE'}
     data_bindings:
     - {property: level, code: 'self.item[''pop_percentsuccess_slider'']', writeback: true}
-    - {property: selected_value, code: 'self.item[''pop_percentsuccess_slider'']',
-      writeback: true}
+    - {property: selected_value, code: 'self.item[''pop_percentsuccess_slider'']', writeback: true}
     event_bindings: {change: pop_viewpercent_s_slider_change}
   - name: pop_viewpercent_s_label
     properties: {text: '1'}
