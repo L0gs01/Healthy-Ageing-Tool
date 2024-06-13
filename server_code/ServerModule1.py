@@ -229,20 +229,20 @@ selection_maritalstatus = df_selectedvariables.at[0,"maritalstatus"]
 selection_employment = df_selectedvariables.at[0,"employment"]
 selection_education = df_selectedvariables.at[0,"education"]
 
-if selection_initialrank == 'Good':
-    selection_initialrank = 'good'
-if selection_initialrank == 'Poor':
-    selection_initialrank = 'bad'
-if selection_initialrank == 'Fair':
-    selection_initialrank = 'fair'
-if selection_adjustedrank == 'Good':
-    selection_adjustedrank = 'good'
-if selection_adjustedrank == 'Poor':
-    selection_adjustedrank = 'bad'
-if selection_adjustedrank == 'Fair':
-    selection_adjustedrank = 'fair'
-if selection_age == '55-64':
-    selection_age = '55_64'
+if pop_country == 'Good':
+    pop_country = 'good'
+if pop_name == 'Poor':
+    pop_name = 'bad'
+if pop_age == 'Fair':
+    pop_age = 'fair'
+if pop_initial == 'Good':
+    pop_initial = 'good'
+if pop_percent == 'Poor':
+    pop_percent = 'bad'
+if pop_percentsuccess == 'Fair':
+    pop_percentsuccess = 'fair'
+if pop_adjusted == '55-64':
+    pop_adjusted = '55_64'
 if selection_age == '65-74':
     selection_age = '65_74'
 if selection_age == '75+':
