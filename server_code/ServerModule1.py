@@ -465,3 +465,129 @@ def get_difference_value():
 @anvil.server.callable
 def get_popinfo():
   return app_tables.pop_info.search()
+
+#----------------------------------------------------------------------------------------------------------------------------------------
+ 
+@anvil.server.callable
+def pop_create_barfig_difference_time():
+  data = df_pop_total
+  fig_difference_time = px.bar(data, x=df_pop_total.index,
+                               y='adjusted'-'initial',
+                               title="Increase In Time Spent On<br>Non-Market Productive Activities",
+                               color_discrete_sequence=["green"],
+                               labels={'index': 'Activity', 'difference_monthlytime':'Minutes Per Month'})
+  return fig_difference_time
+  
+# @anvil.server.callable
+# def create_barfig_combo_time():
+#   data = df_final
+#   fig1 = go.Figure(data=[
+#         go.Bar(name="Before Intervention",
+#           x=df_final.index,
+#           y=data["initial_monthlytime"],
+#           offsetgroup=0,
+#           marker=dict(color='red')),
+#         go.Bar(name="After Intervention",
+#           x=df_final.index,
+#           y=data["adjusted_monthlytime"],
+#           offsetgroup=1,
+#           marker=dict(color='blue'))
+#         # go.Bar(name="Difference Values",
+#         #   x=df_final.index,
+#         #   y=data["difference_value"],
+#         #   offsetgroup=1,
+#         #   marker=dict(color='green'))
+#     ],
+#     layout=go.Layout(
+#         title="Time Spent On Non-Market Productive Activities",
+#         yaxis_title="Minutes Per Month",
+#         xaxis_title="Activity"
+#     )
+#   )
+#   fig1.update_xaxes(tickangle=90)
+#   return fig1
+
+# @anvil.server.callable
+# def create_piefig_time():
+#   data = [go.Pie(labels= df_final.index,
+#                  values=df_final.iloc[:,0],
+#                  domain={'x':[0.3,0.7], 'y':[0.2,0.8]}, 
+#                  hole=0.5,
+#                  direction='clockwise',
+#                  sort=False,
+#                  title=dict(text='Before',
+#                       position='top center')
+#                 ),
+#            go.Pie(labels= df_final.index,
+#                  values=df_final.iloc[:,1],
+#                  domain={'x':[0.1,0.9], 'y':[0,1]},
+#                  hole=0.75,
+#                  direction='clockwise',
+#                  sort=False,
+#                  title=dict(text='After',
+#                      position='top center')
+#                  )
+#          ]
+#   figure=go.Figure(data=data, layout={'title':'Breakdown Of Time Spent<br>On Non-Market Productive Activities' + '<br>' +  '<span style="font-size: 12px;">Before Intervention (Inner Circle)</span>' + '<br>' +  '<span style="font-size: 12px;">After Intervention (Outer Circle)</span>'})  
+#   figure.update_traces(textposition='inside')
+#   figure.update_layout(uniformtext_minsize=12, uniformtext_mode='hide')
+#   return(figure)
+
+# @anvil.server.callable
+# def create_piefig_difference_time():
+#   trace = go.Pie(labels= df_final.index, values=df_final.iloc[:,2])
+#   data = [trace]
+#   fig = go.Figure(data = data, layout={'title':'Breakdown Of Increase In Time Spent<br>On Non-Market Productive Activities'})                                    
+#   return(fig)
+
+# @anvil.server.callable
+# def create_piefig_timecomp_initial():
+#   trace = go.Pie(labels= df_total_diff_trans.index,values=df_total_diff_trans.loc[:,"initial_times"],sort=False)
+#   data = [trace]
+#   fig = go.Figure(data = data, layout={'title':'Time Usage Before Intervention'})  
+#   fig.update_traces(marker=dict(colors=['blue', 'red']))
+#   return(fig)
+
+# @anvil.server.callable
+# def create_piefig_timecomp_adjusted():
+#   trace = go.Pie(labels= df_total_diff_trans.index,values=df_total_diff_trans.loc[:,"adjusted_times"],sort=False)
+#   data = [trace]
+#   fig = go.Figure(data = data, layout={'title':'Time Usage After Intervention'}) 
+#   fig.update_traces(marker=dict(colors=['blue', 'red']))
+#   return(fig)
+    
+# @anvil.server.callable
+# def get_variables():
+#     return app_tables.selectedvariables_i.search()[0]
+
+# @anvil.server.callable
+# def get_money():
+#     return app_tables.moneyvalues.search()[0]
+
+# @anvil.server.callable
+# def get_inital_time():
+#   return int(total_initial_time)
+
+# @anvil.server.callable
+# def get_adjusted_time():
+#   return int(total_adjusted_time)
+
+# @anvil.server.callable
+# def get_difference_time():
+#   return int(total_difference_time)
+
+# @anvil.server.callable
+# def get_inital_value():
+#   return int(total_initial_value)
+
+# @anvil.server.callable
+# def get_adjusted_value():
+#   return int(total_adjusted_value)
+  
+# @anvil.server.callable
+# def get_difference_value():
+#   return int(total_difference_value)
+
+# @anvil.server.callable
+# def get_popinfo():
+#   return app_tables.pop_info.search()
