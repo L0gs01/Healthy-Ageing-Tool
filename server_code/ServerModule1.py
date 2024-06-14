@@ -210,11 +210,11 @@ df_total_diff_trans = df_total_diff.T
 
 #display(df_final)
 #----------------------------------------------------------------------------------------------------------------------------------------------------
-df_poptotal = pd.read_csv(data_files['pop_total.csv'])
+df_pop = pd.read_csv(data_files['pop_total.csv'])
 
 popselected_var = app_tables.pop_info.search()
 pop_variable_dicts = [{'pop_country':r['pop_country_dd'], 'pop_name':r['pop_name_text'], 'pop_age':r['pop_age_dd'],'pop_initial':r['pop_initial_dd'],'pop_percent':r['pop_percent_slider'], 'pop_percentsuccess':r['pop_percentsuccess_slider'], 'pop_adjusted':r['pop_adjusted_dd']} for r in popselected_var]
-df_popselectedvar = pop_variable_dicts
+df_popselectedvar = pd.DataFrame.from_dict(pop_variable_dicts)
 print(df_popselectedvar)
 
 pop_selected_money = app_tables.moneyvalues.search()
