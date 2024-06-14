@@ -222,64 +222,51 @@ popmoney_dicts = [{'housing':r['housing'], 'transport':r['transport'], 'nutritio
 df_popselectedmoney = pd.DataFrame.from_dict(popmoney_dicts)
 print(df_popselectedmoney)
 
-popselect_country1 = df_popselectedvar.at[0,'pop_country']
+pop_country1 = df_popselectedvar.at[0,'pop_country']
 pop_name1 = df_popselectedvar.at[0,'pop_name']
-selection_age1 = df_popselectedvar.at[0,"pop_age"]    
-pop_age1 = df_popselectedvar.at[0,'pop_initial']
+pop_age1 = df_popselectedvar.at[0,"pop_age"]    
+pop_initial1 = df_popselectedvar.at[0,'pop_initial']
 pop_precent1 = df_popselectedvar.at[0,"pop_precent"]
 pop_percentsuccess1 = df_popselectedvar.at[0,"pop_percentsuccess"]
 pop_adjusted1 = df_popselectedvar.at[0,"pop_adjusted"]
+pop_selection1 = (pop_country1,pop_name1,pop_age1,pop_initial1,pop_precent1,pop_percentsuccess1,pop_adjusted1)
 
-popselect_country2 = df_popselectedvar.at[1,'pop_country']
+pop_country2 = df_popselectedvar.at[1,'pop_country']
 pop_name2 = df_popselectedvar.at[1,'pop_name']
-selection_age2 = df_popselectedvar.at[1,"pop_age"]    
-pop_age2 = df_popselectedvar.at[1,'pop_initial']
+pop_age2 = df_popselectedvar.at[1,"pop_age"]    
+pop_initial2 = df_popselectedvar.at[1,'pop_initial']
 pop_precent2 = df_popselectedvar.at[1,"pop_precent"]
 pop_percentsuccess2 = df_popselectedvar.at[1,"pop_percentsuccess"]
 pop_adjusted2 = df_popselectedvar.at[1,"pop_adjusted"]
+pop_selection2 = (pop_country2,pop_name2,pop_age2,pop_initial2,pop_precent2,pop_percentsuccess2,pop_adjusted2)
 
-popselect_country3 = df_popselectedvar.at[2,'pop_country']
+pop_country3 = df_popselectedvar.at[2,'pop_country']
 pop_name3 = df_popselectedvar.at[2,'pop_name']
-selection_age3 = df_popselectedvar.at[2,"pop_age"]    
-pop_age3 = df_popselectedvar.at[2,'pop_initial']
+pop_age3 = df_popselectedvar.at[2,"pop_age"]    
+pop_initial3 = df_popselectedvar.at[2,'pop_initial']
 pop_precent3 = df_popselectedvar.at[2,"pop_precent"]
 pop_percentsuccess3 = df_popselectedvar.at[2,"pop_percentsuccess"]
 pop_adjusted3 = df_popselectedvar.at[2,"pop_adjusted"]
+pop_selection3 = (pop_country3,pop_name3,pop_age3,pop_initial3,pop_precent3,pop_percentsuccess3,pop_adjusted3)
 
-popselect_country4 = df_popselectedvar.at[3,'pop_country']
+pop_country4 = df_popselectedvar.at[3,'pop_country']
 pop_name4 = df_popselectedvar.at[3,'pop_name']
-selection_age4 = df_popselectedvar.at[3,"pop_age"]    
-pop_age4 = df_popselectedvar.at[3,'pop_initial']
+pop_age4 = df_popselectedvar.at[3,"pop_age"]    
+pop_initial4 = df_popselectedvar.at[3,'pop_initial']
 pop_precent4 = df_popselectedvar.at[3,"pop_precent"]
 pop_percentsuccess4 = df_popselectedvar.at[3,"pop_percentsuccess"]
 pop_adjusted4 = df_popselectedvar.at[3,"pop_adjusted"]
+pop_selection4 = (pop_country4,pop_name4,pop_age4,pop_initial4,pop_precent4,pop_percentsuccess4,pop_adjusted4)
 
-popselect_country5 = df_popselectedvar.at[4,'pop_country']
+pop_country5 = df_popselectedvar.at[4,'pop_country']
 pop_name5 = df_popselectedvar.at[4,'pop_name']
-selection_age5 = df_popselectedvar.at[4,"pop_age"]    
-pop_age5 = df_popselectedvar.at[4,'pop_initial']
+pop_age5 = df_popselectedvar.at[4,"pop_age"]    
+pop_initial5 = df_popselectedvar.at[4,'pop_initial']
 pop_precent5 = df_popselectedvar.at[4,"pop_precent"]
 pop_percentsuccess5 = df_popselectedvar.at[4,"pop_percentsuccess"]
 pop_adjusted5 = df_popselectedvar.at[4,"pop_adjusted"]
+pop_selection5 = (pop_country5,pop_name5,pop_age5,pop_initial5,pop_precent5,pop_percentsuccess5,pop_adjusted5)
 
-if pop_country == 'Good':
-    pop_country = 'good'
-if pop_name == 'Poor':
-    pop_name = 'bad'
-if pop_age == 'Fair':
-    pop_age = 'fair'
-if pop_initial == 'Good':
-    pop_initial = 'good'
-if pop_percent == 'Poor':
-    pop_percent = 'bad'
-if pop_percentsuccess == 'Fair':
-    pop_percentsuccess = 'fair'
-if pop_adjusted == '55-64':
-    pop_adjusted = '55_64'
-if selection_age == '65-74':
-    selection_age = '65_74'
-if selection_age == '75+':
-    selection_age = '75_more'
 
 #----------------------------------------------------------------------------------------------------------------------------------
 @anvil.server.callable
