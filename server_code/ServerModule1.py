@@ -222,53 +222,105 @@ popmoney_dicts = [{'housing':r['housing'], 'transport':r['transport'], 'nutritio
 df_popselectedmoney = pd.DataFrame.from_dict(popmoney_dicts)
 print(df_popselectedmoney)
 
-pop_country1 = df_popselectedvar.at[0,'pop_country']
-pop_name1 = df_popselectedvar.at[0,'pop_name']
-pop_age1 = df_popselectedvar.at[0,"pop_age"]    
-pop_initial1 = df_popselectedvar.at[0,'pop_initial']
-pop_precent1 = df_popselectedvar.at[0,"pop_precent"]
-pop_percentsuccess1 = df_popselectedvar.at[0,"pop_percentsuccess"]
-pop_adjusted1 = df_popselectedvar.at[0,"pop_adjusted"]
-pop_selection1 = (pop_country1,pop_name1,pop_age1,pop_initial1,pop_precent1,pop_percentsuccess1,pop_adjusted1)
+pop_1 = df_popselectedvar.loc[0].to_dict()
+index_1 = 1
+if index_1 in df_popselectedvar.index:
+    pop_2 = df_popselectedvar.loc[1].to_dict()
+index_2 = 2
+if index_2 in df_popselectedvar.index:
+    pop_3 = df_popselectedvar.loc[2].to_dict()
+index_3 = 3
+if index_3 in df_popselectedvar.index:
+    pop_4 = df_popselectedvar.loc[3].to_dict()
+index_4 = 4
+if index_4 in df_popselectedvar.index:
+    pop_5 = df_popselectedvar.loc[4].to_dict()
 
-pop_country2 = df_popselectedvar.at[1,'pop_country']
-pop_name2 = df_popselectedvar.at[1,'pop_name']
-pop_age2 = df_popselectedvar.at[1,"pop_age"]    
-pop_initial2 = df_popselectedvar.at[1,'pop_initial']
-pop_precent2 = df_popselectedvar.at[1,"pop_precent"]
-pop_percentsuccess2 = df_popselectedvar.at[1,"pop_percentsuccess"]
-pop_adjusted2 = df_popselectedvar.at[1,"pop_adjusted"]
-pop_selection2 = (pop_country2,pop_name2,pop_age2,pop_initial2,pop_precent2,pop_percentsuccess2,pop_adjusted2)
+pop_1_country = pop_1['pop_country']
+pop_1_age = pop_1['pop_age']
+pop_1_initial = pop_1['pop_initial']
+pop_1_adjusted = pop_1['pop_adjusted']
+if index_1 in df_popselectedvar.index:
+    pop_2_country = pop_2['pop_country']
+    pop_2_age = pop_2['pop_age']
+    pop_2_initial = pop_2['pop_initial']
+    pop_2_adjusted = pop_2['pop_adjusted']
+if index_2 in df_popselectedvar.index:
+    pop_3_country = pop_3['pop_country']
+    pop_3_age = pop_3['pop_age']
+    pop_3_initial = pop_3['pop_initial']
+    pop_3_adjusted = pop_3['pop_adjusted']
+if index_3 in df_popselectedvar.index:
+    pop_4_country = pop_4['pop_country']
+    pop_4_age = pop_4['pop_age']
+    pop_4_initial = pop_4['pop_initial']
+    pop_4_adjusted = pop_4['pop_adjusted']
+if index_4 in df_popselectedvar.index:
+    pop_5_country = pop_5['pop_country']
+    pop_5_age = pop_5['pop_age']
+    pop_5_initial = pop_5['pop_initial']
+    pop_5_adjusted = pop_5['pop_adjusted']
+    pop_3_country
 
-pop_country3 = df_popselectedvar.at[2,'pop_country']
-pop_name3 = df_popselectedvar.at[2,'pop_name']
-pop_age3 = df_popselectedvar.at[2,"pop_age"]    
-pop_initial3 = df_popselectedvar.at[2,'pop_initial']
-pop_precent3 = df_popselectedvar.at[2,"pop_precent"]
-pop_percentsuccess3 = df_popselectedvar.at[2,"pop_percentsuccess"]
-pop_adjusted3 = df_popselectedvar.at[2,"pop_adjusted"]
-pop_selection3 = (pop_country3,pop_name3,pop_age3,pop_initial3,pop_precent3,pop_percentsuccess3,pop_adjusted3)
+df_pop1_initial = df_pop.loc[(df_pop['country'] == pop_1_country)&(df_pop['age_group'] == pop_1_age)&(df_pop['group_col'] == pop_1_initial)]
+df_pop1_initial = df_pop1_initial.drop(['group_col','country','age_group'],axis=1) 
+df_pop1_initial = df_pop1_initial.rename(columns={"predicted": "initial"})
+df_pop1_initial = df_pop1_initial.set_index('activity')
+df_pop1_adjusted = df_pop.loc[(df_pop['country'] == pop_1_country)&(df_pop['age_group'] == pop_1_age)&(df_pop['group_col'] == pop_1_adjusted)] 
+df_pop1_adjusted = df_pop1_adjusted.drop(['group_col','country','age_group'],axis=1) 
+df_pop1_adjusted = df_pop1_adjusted.rename(columns={"predicted": "adjusted"})
+df_pop1_adjusted =  df_pop1_adjusted.set_index('activity')
+df_pop1_total = pd.merge(df_pop1_initial,df_pop1_adjusted, left_index=True, right_index=True)
 
-pop_country4 = df_popselectedvar.at[3,'pop_country']
-pop_name4 = df_popselectedvar.at[3,'pop_name']
-pop_age4 = df_popselectedvar.at[3,"pop_age"]    
-pop_initial4 = df_popselectedvar.at[3,'pop_initial']
-pop_precent4 = df_popselectedvar.at[3,"pop_precent"]
-pop_percentsuccess4 = df_popselectedvar.at[3,"pop_percentsuccess"]
-pop_adjusted4 = df_popselectedvar.at[3,"pop_adjusted"]
-pop_selection4 = (pop_country4,pop_name4,pop_age4,pop_initial4,pop_precent4,pop_percentsuccess4,pop_adjusted4)
-
-pop_country5 = df_popselectedvar.at[4,'pop_country']
-pop_name5 = df_popselectedvar.at[4,'pop_name']
-pop_age5 = df_popselectedvar.at[4,"pop_age"]    
-pop_initial5 = df_popselectedvar.at[4,'pop_initial']
-pop_precent5 = df_popselectedvar.at[4,"pop_precent"]
-pop_percentsuccess5 = df_popselectedvar.at[4,"pop_percentsuccess"]
-pop_adjusted5 = df_popselectedvar.at[4,"pop_adjusted"]
-pop_selection5 = (pop_country5,pop_name5,pop_age5,pop_initial5,pop_precent5,pop_percentsuccess5,pop_adjusted5)
-
-pop
-
+if index_1 in df_popselectedvar.index:
+    df_pop2_initial = df_pop.loc[(df_pop['country'] == pop_2_country)&(df_pop['age_group'] == pop_2_age)&(df_pop['group_col'] == pop_2_initial)]
+    df_pop2_initial = df_pop2_initial.drop(['group_col','country','age_group'],axis=1) 
+    df_pop2_initial = df_pop2_initial.rename(columns={"predicted": "initial"})
+    df_pop2_initial = df_pop2_initial.set_index('activity')
+    df_pop2_adjusted = df_pop.loc[(df_pop['country'] == pop_2_country)&(df_pop['age_group'] == pop_2_age)&(df_pop['group_col'] == pop_2_adjusted)]
+    df_pop2_adjusted = df_pop2_adjusted.drop(['group_col','country','age_group'],axis=1) 
+    df_pop2_adjusted = df_pop2_adjusted.rename(columns={"predicted": "adjusted"})
+    df_pop2_adjusted =  df_pop2_adjusted.set_index('activity')
+    df_pop2_total = pd.merge(df_pop2_initial,df_pop2_adjusted, left_index=True, right_index=True)
+if index_2 in df_popselectedvar.index:
+    df_pop3_initial = df_pop.loc[(df_pop['country'] == pop_3_country)&(df_pop['age_group'] == pop_3_age)&(df_pop['group_col'] == pop_3_initial)]
+    df_pop3_initial = df_pop3_initial.drop(['group_col','country','age_group'],axis=1) 
+    df_pop3_initial = df_pop3_initial.rename(columns={"predicted": "initial"})
+    df_pop3_initial = df_pop3_initial.set_index('activity')
+    df_pop3_adjusted = df_pop.loc[(df_pop['country'] == pop_3_country)&(df_pop['age_group'] == pop_3_age)&(df_pop['group_col'] == pop_3_adjusted)]
+    df_pop3_adjusted = df_pop3_adjusted.drop(['group_col','country','age_group'],axis=1) 
+    df_pop3_adjusted = df_pop3_adjusted.rename(columns={"predicted": "adjusted"})
+    df_pop3_adjusted =  df_pop3_adjusted.set_index('activity')
+    df_pop3_total = pd.merge(df_pop3_initial,df_pop3_adjusted, left_index=True, right_index=True)
+if index_3 in df_popselectedvar.index:
+    df_pop4_initial = df_pop.loc[(df_pop['country'] == pop_4_country)&(df_pop['age_group'] == pop_4_age)&(df_pop['group_col'] == pop_4_initial)]
+    df_pop4_initial = df_pop4_initial.drop(['group_col','country','age_group'],axis=1) 
+    df_pop4_initial = df_pop4_initial.rename(columns={"predicted": "initial"})
+    df_pop4_initial = df_pop4_initial.set_index('activity')
+    df_pop4_adjusted = df_pop.loc[(df_pop['country'] == pop_4_country)&(df_pop['age_group'] == pop_4_age)&(df_pop['group_col'] == pop_4_adjusted)]
+    df_pop4_adjusted = df_pop4_adjusted.drop(['group_col','country','age_group'],axis=1) 
+    df_pop4_adjusted = df_pop4_adjusted.rename(columns={"predicted": "adjusted"})
+    df_pop4_adjusted =  df_pop4_adjusted.set_index('activity')
+    df_pop4_total = pd.merge(df_pop4_initial,df_pop4_adjusted, left_index=True, right_index=True)
+if index_4 in df_popselectedvar.index:
+    df_pop5_initial = df_pop.loc[(df_pop['country'] == pop_5_country)&(df_pop['age_group'] == pop_5_age)&(df_pop['group_col'] == pop_5_initial)]
+    df_pop5_initial = df_pop5_initial.drop(['group_col','country','age_group'],axis=1) 
+    df_pop5_initial = df_pop5_initial.rename(columns={"predicted": "initial"})
+    df_pop5_initial = df_pop5_initial.set_index('activity')
+    df_pop5_adjusted = df_pop.loc[(df_pop['country'] == pop_5_country)&(df_pop['age_group'] == pop_5_age)&(df_pop['group_col'] == pop_5_adjusted)]
+    df_pop5_adjusted = df_pop5_adjusted.drop(['group_col','country','age_group'],axis=1) 
+    df_pop5_adjusted = df_pop5_adjusted.rename(columns={"predicted": "adjusted"})
+    df_pop5_adjusted =  df_pop5_adjusted.set_index('activity')
+    df_pop5_total = pd.merge(df_pop5_initial,df_pop5_adjusted, left_index=True, right_index=True)
+df_pop_total = df_pop1_total
+if index_1 in df_popselectedvar.index:  
+    df_pop_total = df_pop_total.add(df_pop2_total, fill_value=0)
+if index_2 in df_popselectedvar.index:  
+    df_pop_total = df_pop_total.add(df_pop3_total, fill_value=0)
+if index_3 in df_popselectedvar.index:  
+    df_pop_total = df_pop_total.add(df_pop4_total, fill_value=0)
+if index_4 in df_popselectedvar.index:  
+    df_pop_total = df_pop_total.add(df_pop5_total, fill_value=0)
 #----------------------------------------------------------------------------------------------------------------------------------
 @anvil.server.callable
 def create_barfig_initial_time():
