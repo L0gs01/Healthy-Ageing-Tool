@@ -249,6 +249,10 @@ class Homepage(HomepageTemplate):
       self.refresh_popinfo()
       self.populationhome_card.visible = True
 
+  def outlined_button_1_click(self, **event_args):
+    """This method is called when the button is clicked"""
+    self.pop_dif_bar.figure = anvil.server.call('pop_create_barfig_difference_time') 
+
 
 
 

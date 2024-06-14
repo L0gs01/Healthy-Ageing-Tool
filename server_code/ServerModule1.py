@@ -472,7 +472,7 @@ def get_popinfo():
 def pop_create_barfig_difference_time():
   data = df_pop_total
   fig_difference_time = px.bar(data, x=df_pop_total.index,
-                               y='adjusted'-'initial',
+                               y=('adjusted'),
                                title="Increase In Time Spent On<br>Non-Market Productive Activities",
                                color_discrete_sequence=["green"],
                                labels={'index': 'Activity', 'difference_monthlytime':'Minutes Per Month'})
