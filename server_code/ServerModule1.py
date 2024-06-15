@@ -222,16 +222,19 @@ popmoney_dicts = [{'housing':r['housing'], 'transport':r['transport'], 'nutritio
 df_popselectedmoney = pd.DataFrame.from_dict(popmoney_dicts)
 df_popselectedmoney = df_popselectedmoney.apply(pd.to_numeric, errors='coerce')
 df_popselectedmoney = df_popselectedmoney/60
+df_popselectedmoney.rename(index={0:'hourly_value'})
+print(df_popselectedmoney)
+df_popselectedmoney.transpose()
 print(df_popselectedmoney)
 
 df_pop = pd.read_csv(data_files['pop_total.csv'])
 
-pop_country = df_pop['pop_country'].iloc[0]
-pop_age = df_pop['pop_age'].iloc[0]
-pop_initial = df_pop['pop_initial'].iloc[0]
-pop_adjusted = df_pop['pop_adjusted'].iloc[0]
-pop_percent =df_pop['pop_percent'].iloc[0]
-pop_percentsuccess = df_pop['pop_percentsuccess'].iloc[0]
+pop_country = df_popselectedvar['pop_country'].iloc[0]
+pop_age = df_popselectedvar['pop_age'].iloc[0]
+pop_initial = df_popselectedvar['pop_initial'].iloc[0]
+pop_adjusted = df_popselectedvar['pop_adjusted'].iloc[0]
+pop_percent =df_popselectedvar['pop_percent'].iloc[0]
+pop_percentsuccess = df_popselectedvar['pop_percentsuccess'].iloc[0]
 
 df_pop_initial = df_pop.loc[(df_pop['country'] == pop_country)&(df_pop['age_group'] == pop_age)&(df_pop['group_col'] == pop_initial)]
 df_pop_initial = df_pop_initial.drop(['group_col','age_group'],axis=1) 
