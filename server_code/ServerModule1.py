@@ -211,6 +211,7 @@ df_total_diff_trans = df_total_diff.T
 #display(df_final)
 #----------------------------------------------------------------------------------------------------------------------------------------------------
 df_pop = pd.read_csv(data_files['pop_total.csv'])
+print(df_pop)
 
 popselected_var = app_tables.pop_info.search()
 pop_variable_dicts = [
@@ -218,11 +219,16 @@ pop_variable_dicts = [
     for r in popselected_var
 ]
 df_popselectedvar = pd.DataFrame.from_dict(pop_variable_dicts)
+df_popselectedvar['pop_initial'] = df_popselectedvar['pop_initial'].replace('Good','good').replace('Fair','fair').replace('Bad','bad')
+df_popselectedvar['pop_adjusted'] = df_popselectedvar['pop_adjusted'].replace('Good','good').replace('Fair','fair').replace('Bad','bad')
+df_popselectedvar['pop_country'] = df_popselectedvar['pop_country'].replace('Belgium','BE').replace('Estonia','EE').replace('Finland','FI').replace('France','FR').replace('Greece','EL').replace('Romania','RO').replace('Serbia','RS').replace('Belgium','BE').replace('Belgium','BE').replace('Belgium','BE')
+df_popselectedvar['pop_age'] = df_popselectedvar['pop_age'].replace('55-64','55_64').replace('65-74','65_74').replace('75+','75_more')
+
 print(df_popselectedvar)
 
 pop_selected_money = app_tables.moneyvalues.search()
 popmoney_dicts = [
-    {'housing': r['housing'], 'transport': r['transport'], 'nutrition': r['nutrition'], 'clothing': r['clothing'], 'laundry': r['laundry'], 'childcare': r['childcare'], 'adultcare': r['adultcare'], 'voluntaryactivity': r['voluntaryactivity']}
+    {'Housing': r['housing'], 'Transport': r['transport'], 'Nutrition': r['nutrition'], 'Clothing': r['clothing'], 'Laundry': r['laundry'], 'ChildCare': r['childcare'], 'AdultCare': r['adultcare'], 'Voluntary': r['voluntaryactivity']}
     for r in pop_selected_money
 ]
 df_popselectedmoney = pd.DataFrame.from_dict(popmoney_dicts)
@@ -231,22 +237,32 @@ df_popselectedmoney = df_popselectedmoney.transpose()
 df_popselectedmoney.columns = ['hourly_value']
 print(df_popselectedmoney)
 pop_country = df_popselectedvar['pop_country'].iloc[0]
+print(pop_country)
 pop_age = df_popselectedvar['pop_age'].iloc[0]
+print(pop_age)
 pop_initial = df_popselectedvar['pop_initial'].iloc[0]
+print(pop_initial)
 pop_adjusted = df_popselectedvar['pop_adjusted'].iloc[0]
+print(pop_adjusted)
 pop_percent = df_popselectedvar['pop_percent'].iloc[0]
+print(pop_percent)
 pop_percentsuccess = df_popselectedvar['pop_percentsuccess'].iloc[0]
+print(pop_percentsuccess)
 
 df_pop_initial = df_pop[(df_pop['country'] == pop_country) & (df_pop['age_group'] == pop_age) & (df_pop['group_col'] == pop_initial)]
 df_pop_initial = df_pop_initial.drop(['group_col', 'age_group'], axis=1).rename(columns={"predicted": "initial"}).set_index('activity')
+df_pop_initial = df_pop_initial.reindex(["Housing",'Transport','Nutrition','Clothing','Laundry','ChildCare','AdultCare',"Voluntary"])
 
+print(df_pop_initial)
 df_pop_adjusted = df_pop[(df_pop['country'] == pop_country) & (df_pop['age_group'] == pop_age) & (df_pop['group_col'] == pop_adjusted)]
 df_pop_adjusted = df_pop_adjusted.drop(['group_col', 'country', 'age_group'], axis=1).rename(columns={"predicted": "adjusted"}).set_index('activity')
-
+df_pop_adjusted = df_pop_adjusted.reindex(["Housing",'Transport','Nutrition','Clothing','Laundry','ChildCare','AdultCare',"Voluntary"])
+print(df_pop_adjusted)
 df_pop_total = pd.merge(df_pop_initial, df_pop_adjusted, left_index=True, right_index=True)
 df_pop_total['adjusted_value'] = df_pop_total['adjusted'] * df_popselectedmoney['hourly_value']
 df_pop_total['initial_value'] = df_pop_total['initial'] * df_popselectedmoney['hourly_value']
 df_pop_total['difference'] = df_pop_total['adjusted'] - df_pop_total['initial']
+print(df_pop_total)
 
 scaling_popnum = {
     'BE': 11258400,
@@ -258,11 +274,16 @@ scaling_popnum = {
     'RS': 7112000,
     'UK': 64351200
 }
+print(df_pop_total['initial'] )
+df_pop_total['initial'] = df_pop_total['initial'].astype(int)
+df_pop_total['adjusted'] = df_pop_total['adjusted'].astype(int)
+df_pop_total['difference'] = df_pop_total['difference'].astype(int)
+
 scaler = scaling_popnum.get(pop_country, 1)
 df_pop_total['scaled_int'] = df_pop_total['initial'] * scaler
 df_pop_total['scaled_adj'] = df_pop_total['adjusted'] * scaler
 df_pop_total['scaled_diff'] = df_pop_total['scaled_adj'] - df_pop_total['scaled_int']
-df_pop_total = df_pop_total.drop(['initial', 'adjusted', 'adjusted_value', 'initial_value', 'difference'], axis=1)
+# df_pop_total = df_pop_total.drop(['initial', 'adjusted', 'adjusted_value', 'initial_value', 'difference'], axis=1)
 df_pop_total['scaled_diff_z'] = df_pop_total['scaled_diff'].clip(lower=0)
 
 df_pop_total['scaled_adj_value'] = df_pop_total['scaled_adj'] * df_popselectedmoney['hourly_value']
@@ -275,118 +296,6 @@ pop_percentsuccess = float(pop_percentsuccess)
 df_pop_total['scaled_adj_p'] = df_pop_total['scaled_adj_value'] * (pop_percent / 100) * (pop_percentsuccess / 100)
 df_pop_total = df_pop_total.drop(['scaled_diff', 'scaled_int', 'scaled_adj', 'scaled_diff_value', 'scaled_diff_z'], axis=1)
 print(df_pop_total)
-# df_pop = pd.read_csv(data_files['pop_total.csv'])
-
-# popselected_var = app_tables.pop_info.search()
-# pop_variable_dicts = [{'pop_country':r['pop_country'], 'pop_name':r['pop_name'], 'pop_age':r['pop_age'],'pop_initial':r['pop_initial'],'pop_percent':r['pop_percent'], 'pop_percentsuccess':r['pop_percentsuccess'], 'pop_adjusted':r['pop_adjusted']} for r in popselected_var]
-# df_popselectedvar = pd.DataFrame.from_dict(pop_variable_dicts)
-# print(df_popselectedvar)
-
-# pop_selected_money = app_tables.moneyvalues.search()
-# popmoney_dicts = [{'housing':r['housing'], 'transport':r['transport'], 'nutrition':r['nutrition'],'clothing':r['clothing'],'laundry':r['laundry'], 'childcare':r['childcare'], 'adultcare':r['adultcare'], 'voluntaryactivity':r['voluntaryactivity']} for r in pop_selected_money]
-# df_popselectedmoney = pd.DataFrame.from_dict(popmoney_dicts)
-# df_popselectedmoney = df_popselectedmoney.apply(pd.to_numeric, errors='coerce')
-# df_popselectedmoney = df_popselectedmoney/60
-# print(df_popselectedmoney)
-# df_popselectedmoney=df_popselectedmoney.transpose()
-# df_popselectedmoney.columns = ['hourly_value']
-# print(df_popselectedmoney)
-
-# df_pop = pd.read_csv(data_files['pop_total.csv'])
-
-# pop_country = df_popselectedvar['pop_country'].iloc[0]
-# pop_age = df_popselectedvar['pop_age'].iloc[0]
-# pop_initial = df_popselectedvar['pop_initial'].iloc[0]
-# pop_adjusted = df_popselectedvar['pop_adjusted'].iloc[0]
-# pop_percent =df_popselectedvar['pop_percent'].iloc[0]
-# pop_percentsuccess = df_popselectedvar['pop_percentsuccess'].iloc[0]
-
-# df_pop_initial = df_pop.loc[(df_pop['country'] == pop_country)&(df_pop['age_group'] == pop_age)&(df_pop['group_col'] == pop_initial)]
-# df_pop_initial = df_pop_initial.drop(['group_col','age_group'],axis=1) 
-# df_pop_initial = df_pop_initial.rename(columns={"predicted": "initial"})
-# df_pop_initial = df_pop_initial.set_index('activity')
-# df_pop_adjusted = df_pop.loc[(df_pop['country'] == pop_country)&(df_pop['age_group'] == pop_age)&(df_pop['group_col'] == pop_adjusted)] 
-# df_pop_adjusted = df_pop_adjusted.drop(['group_col','country','age_group'],axis=1) 
-# df_pop_adjusted = df_pop_adjusted.rename(columns={"predicted": "adjusted"})
-# df_pop_adjusted =  df_pop_adjusted.set_index('activity')
-# df_pop_total = pd.merge(df_pop_initial,df_pop_adjusted, left_index=True, right_index=True)
-# df_pop_total['adjusted_value']=df_pop_total['adjusted']*df_popselectedmoney['hourly_value']
-# df_pop_total['initial_value']=df_pop_total['initial']*df_popselectedmoney['hourly_value']
-
-# # pop_total_num = df_pop_total._get_numeric_data()
-
-
-# # df_pop_total['initial'] = pd.to_numeric(df_pop_total['initial'])
-# # df_pop_total['adjusted'] = pd.to_numeric(df_pop_total['adjusted'])
-# df_pop_total['difference']=df_pop_total['adjusted']-df_pop_total['initial']
-
-# print(df_pop_total)
-
-# scaling_popnum = {
-#     'BE': 11258400,
-#     'EE': 1313300,
-#     'FI': 5451300,
-#     'FR': 66352500,
-#     'EL': 10812500,
-#     'RO': 19861400,
-#     'RS': 7112000,
-#     'UK': 64351200
-# }
-# # if df_pop_total['country'].iloc[0] == ['BE']:
-# #     scaler = 11258400
-# # if df_pop_total['country'].iloc[0] == 'EE':
-# #     scaler = 1313300
-# # if df_pop_total['country'].iloc[0] == 'FI':
-# #     scaler = 5451300
-# # if df_pop_total['country'].iloc[0] == 'FR':
-# #     scaler = 66352500
-# # if df_pop_total['country'].iloc[0] == 'EL':
-# #     scaler = 10812500
-# # if df_pop_total['country'].iloc[0] == 'RO':
-# #     scaler = 7112000
-# # if df_pop_total['country'].iloc[0] == 'RS':
-# #     scaler = 11258400
-# # if df_pop_total['country'].iloc[0] == 'UK':
-# #     scaler = 64351200
-
-
-# # # df_pop_total['scaled_adj'] = df_pop_total.apply(lambda row: row['adjusted'] * scaling_popnum[row['country']], axis=1)
-# # # df_pop_total['scaled_int'] = df_pop_total.apply(lambda row: row['initial'] * scaling_popnum[row['country']], axis=1)
-# # df_pop_total['scaled_int'] = df_pop_total['initial'] * scaler
-# # df_pop_total['scaled_adj'] = df_pop_total['adjusted'] * scaler
-# # Define the scaling dictionary
-# scaling_popnum = {
-#     'BE': 11258400,
-#     'EE': 1313300,
-#     'FI': 5451300,
-#     'FR': 66352500,
-#     'EL': 10812500,
-#     'RO': 19861400,
-#     'RS': 7112000,
-#     'UK': 64351200
-# }
-
-# # Get the scaler value using the dictionary, with a default of 1 if the country is not found
-# scaler = scaling_popnum.get(df_pop_total['country'].iloc[0], 1)
-
-# # Apply the scaler to the 'adjusted' and 'initial' columns
-# df_pop_total['scaled_int'] = df_pop_total['initial'] * scaler
-# df_pop_total['scaled_adj'] = df_pop_total['adjusted'] * scaler
-
-# df_pop_total['scaled_diff'] = df_pop_total['scaled_adj']-df_pop_total['scaled_int']
-# df_pop_total = df_pop_total.drop(['initial','adjusted','adjusted_value','initial_value','difference'],axis=1) 
-# df_pop_total['scaled_diff_z']= df_pop_total['scaled_diff'].clip(lower=0)
-# df_pop_total
-
-# df_pop_total['scaled_adj_value'] = (pd.to_numeric(df_pop_total['scaled_adj']))*df_hourlymoneyrate['hourly_value']
-# df_pop_total['scaled_int_value'] = (pd.to_numeric(df_pop_total['scaled_int']))*df_hourlymoneyrate['hourly_value']
-# df_pop_total['scaled_diff_value'] = (pd.to_numeric(df_pop_total['scaled_diff']))*df_hourlymoneyrate['hourly_value']
-# df_pop_total['scaled_diff_value_z']= df_pop_total['scaled_diff_value'].clip(lower=0)
-# pop_percent = float(pop_percent)
-# pop_percentsuccess = float(pop_percentsuccess)
-# df_pop_total['scaled_adj_p'] = df_pop_total['scaled_adj_value'] * (pop_percent / 100) * (pop_percentsuccess / 100)
-# df_pop_total = df_pop_total.drop(['scaled_diff','scaled_int','scaled_adj','scaled_diff_value','scaled_diff_z'],axis=1) 
-# print(df_pop_total)
 
 #----------------------------------------------------------------------------------------------------------------------------------
 @anvil.server.callable
@@ -537,125 +446,31 @@ def get_popinfo():
  
 @anvil.server.callable
 def pop_create_barfig_difference_time():
-  data = df_pop_total
-  fig_difference_time = px.bar(data,
-                               x=df_pop_total.index,
-                               y=('adjusted'),
-                               title="Increase In Time Spent On<br>Non-Market Productive Activities",
-                               color_discrete_sequence=["green"],
-                               labels={'index': 'Activity', 'difference_monthlytime':'Minutes Per Month'})
-  return fig_difference_time
-  
-# @anvil.server.callable
-# def create_barfig_combo_time():
-#   data = df_final
-#   fig1 = go.Figure(data=[
-#         go.Bar(name="Before Intervention",
-#           x=df_final.index,
-#           y=data["initial_monthlytime"],
-#           offsetgroup=0,
-#           marker=dict(color='red')),
-#         go.Bar(name="After Intervention",
-#           x=df_final.index,
-#           y=data["adjusted_monthlytime"],
-#           offsetgroup=1,
-#           marker=dict(color='blue'))
-#         # go.Bar(name="Difference Values",
-#         #   x=df_final.index,
-#         #   y=data["difference_value"],
-#         #   offsetgroup=1,
-#         #   marker=dict(color='green'))
-#     ],
-#     layout=go.Layout(
-#         title="Time Spent On Non-Market Productive Activities",
-#         yaxis_title="Minutes Per Month",
-#         xaxis_title="Activity"
-#     )
-#   )
-#   fig1.update_xaxes(tickangle=90)
-#   return fig1
-
-# @anvil.server.callable
-# def create_piefig_time():
-#   data = [go.Pie(labels= df_final.index,
-#                  values=df_final.iloc[:,0],
-#                  domain={'x':[0.3,0.7], 'y':[0.2,0.8]}, 
-#                  hole=0.5,
-#                  direction='clockwise',
-#                  sort=False,
-#                  title=dict(text='Before',
-#                       position='top center')
-#                 ),
-#            go.Pie(labels= df_final.index,
-#                  values=df_final.iloc[:,1],
-#                  domain={'x':[0.1,0.9], 'y':[0,1]},
-#                  hole=0.75,
-#                  direction='clockwise',
-#                  sort=False,
-#                  title=dict(text='After',
-#                      position='top center')
-#                  )
-#          ]
-#   figure=go.Figure(data=data, layout={'title':'Breakdown Of Time Spent<br>On Non-Market Productive Activities' + '<br>' +  '<span style="font-size: 12px;">Before Intervention (Inner Circle)</span>' + '<br>' +  '<span style="font-size: 12px;">After Intervention (Outer Circle)</span>'})  
-#   figure.update_traces(textposition='inside')
-#   figure.update_layout(uniformtext_minsize=12, uniformtext_mode='hide')
-#   return(figure)
-
-# @anvil.server.callable
-# def create_piefig_difference_time():
-#   trace = go.Pie(labels= df_final.index, values=df_final.iloc[:,2])
-#   data = [trace]
-#   fig = go.Figure(data = data, layout={'title':'Breakdown Of Increase In Time Spent<br>On Non-Market Productive Activities'})                                    
-#   return(fig)
-
-# @anvil.server.callable
-# def create_piefig_timecomp_initial():
-#   trace = go.Pie(labels= df_total_diff_trans.index,values=df_total_diff_trans.loc[:,"initial_times"],sort=False)
-#   data = [trace]
-#   fig = go.Figure(data = data, layout={'title':'Time Usage Before Intervention'})  
-#   fig.update_traces(marker=dict(colors=['blue', 'red']))
-#   return(fig)
-
-# @anvil.server.callable
-# def create_piefig_timecomp_adjusted():
-#   trace = go.Pie(labels= df_total_diff_trans.index,values=df_total_diff_trans.loc[:,"adjusted_times"],sort=False)
-#   data = [trace]
-#   fig = go.Figure(data = data, layout={'title':'Time Usage After Intervention'}) 
-#   fig.update_traces(marker=dict(colors=['blue', 'red']))
-#   return(fig)
+    global df_pop_total
     
-# @anvil.server.callable
-# def get_variables():
-#     return app_tables.selectedvariables_i.search()[0]
+    # Check if df_pop_total is available and not empty
+    if 'df_pop_total' in globals() and not df_pop_total.empty:
+        print("df_pop_total before plotting:\n", df_pop_total.head())
+        
+        # Check for NaN values in the DataFrame
+        print("Checking for NaN values in df_pop_total:\n", df_pop_total.isna().sum())
+        
+        # Replace NaN values with 0
+        df_pop_total = df_pop_total.fillna(0)
+        
+        # Ensure there are non-zero values in 'scaled_adj_p'
+        if df_pop_total['scaled_adj_p'].sum() == 0:
+            print("Warning: All values in 'scaled_adj_p' are zero.")
+        else:
+            # Create the Plotly pie chart
+            fig = px.pie(
+                df_pop_total,
+                names=df_pop_total.index,
+                values='scaled_adj_p',
+                title='Scaled Adj P Distribution by Activity'
+            )
+            # Display the Plotly figure
+            fig.show()
+    else:
+        print("DataFrame df_pop_total is not available or is empty.")
 
-# @anvil.server.callable
-# def get_money():
-#     return app_tables.moneyvalues.search()[0]
-
-# @anvil.server.callable
-# def get_inital_time():
-#   return int(total_initial_time)
-
-# @anvil.server.callable
-# def get_adjusted_time():
-#   return int(total_adjusted_time)
-
-# @anvil.server.callable
-# def get_difference_time():
-#   return int(total_difference_time)
-
-# @anvil.server.callable
-# def get_inital_value():
-#   return int(total_initial_value)
-
-# @anvil.server.callable
-# def get_adjusted_value():
-#   return int(total_adjusted_value)
-  
-# @anvil.server.callable
-# def get_difference_value():
-#   return int(total_difference_value)
-
-# @anvil.server.callable
-# def get_popinfo():
-#   return app_tables.pop_info.search()
