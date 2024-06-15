@@ -222,6 +222,16 @@ popmoney_dicts = [{'housing':r['housing'], 'transport':r['transport'], 'nutritio
 df_popselectedmoney = pd.DataFrame.from_dict(popmoney_dicts)
 print(df_popselectedmoney)
 
+BE_pop_count = 11258400
+EE_pop_count = 1313300
+FI_pop_count = 5451300
+FR_pop_count = 66352500
+EL_pop_count = 10812500
+RO_pop_count = 19861400
+RS_pop_count = 7112000
+UK_pop_count = 64351200
+ALL_pop_count = BE_pop_count+EE_pop_count+FI_pop_count+FR_pop_count+EL_pop_count+RO_pop_count+RS_pop_count+UK_pop_count
+
 pop_1 = df_popselectedvar.loc[0].to_dict()
 index_1 = 1
 if index_1 in df_popselectedvar.index:
@@ -321,6 +331,8 @@ if index_3 in df_popselectedvar.index:
     df_pop_total = df_pop_total.add(df_pop4_total, fill_value=0)
 if index_4 in df_popselectedvar.index:  
     df_pop_total = df_pop_total.add(df_pop5_total, fill_value=0)
+
+
 #----------------------------------------------------------------------------------------------------------------------------------
 @anvil.server.callable
 def create_barfig_initial_time():
@@ -471,7 +483,8 @@ def get_popinfo():
 @anvil.server.callable
 def pop_create_barfig_difference_time():
   data = df_pop_total
-  fig_difference_time = px.bar(data, x=df_pop_total.index,
+  fig_difference_time = px.bar(data,
+                               x=df_pop_total.index,
                                y=('adjusted'),
                                title="Increase In Time Spent On<br>Non-Market Productive Activities",
                                color_discrete_sequence=["green"],
