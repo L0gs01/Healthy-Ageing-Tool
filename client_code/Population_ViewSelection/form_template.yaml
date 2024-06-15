@@ -15,7 +15,7 @@ components:
     type: DropDown
     layout_properties: {grid_position: 'MOBLUT,ANQAEJ'}
     data_bindings:
-    - {property: selected_value, code: 'self.item[''pop_country_dd'']', writeback: true}
+    - {property: selected_value, code: 'self.item[''pop_country'']', writeback: true}
   - name: label_1_copy_5
     properties: {align: center, text: 'Group Name:'}
     type: Label
@@ -25,7 +25,7 @@ components:
     type: TextBox
     layout_properties: {grid_position: 'SINWZA,TQOXBT'}
     data_bindings:
-    - {property: text, code: 'self.item[''pop_name_text'']', writeback: true}
+    - {property: text, code: 'self.item[''pop_name'']', writeback: true}
   - name: label_1_copy
     properties: {align: center, text: Age Range}
     type: Label
@@ -38,8 +38,8 @@ components:
     type: DropDown
     layout_properties: {grid_position: 'DUTHBP,HBYCJH DVLLSV,EWVBVN'}
     data_bindings:
-    - {property: selected_value, code: 'self.item[''pop_age_dd'']', writeback: true}
-    - {property: placeholder, code: 'self.item[''pop_age_dd'']', writeback: false}
+    - {property: selected_value, code: 'self.item[''pop_age'']', writeback: true}
+    - {property: placeholder, code: 'self.item[''pop_age'']', writeback: false}
     event_bindings: {}
   - name: label_1_copy_copy
     properties: {align: center, text: Before}
@@ -52,8 +52,8 @@ components:
     type: DropDown
     layout_properties: {grid_position: 'DUTHBP,ZECENW KZDUNI,TRLHVH'}
     data_bindings:
-    - {property: selected_value, code: 'self.item[''pop_initial_dd'']', writeback: true}
-    - {property: placeholder, code: 'self.item[''pop_initial_dd'']', writeback: false}
+    - {property: selected_value, code: 'self.item[''pop_initial'']', writeback: true}
+    - {property: placeholder, code: 'self.item[''pop_initial'']', writeback: false}
   - name: label_1_copy_2
     properties: {align: center, text: Percent Affected}
     type: Label
@@ -63,15 +63,15 @@ components:
     type: form:Slider
     layout_properties: {grid_position: 'DUTHBP,GUVXPF NRKMGV,XVFOKZ'}
     data_bindings:
-    - {property: level, code: 'self.item[''pop_percent_slider'']', writeback: true}
-    - {property: selected_value, code: 'self.item[''pop_percent_slider'']', writeback: true}
+    - {property: level, code: 'self.item[''pop_percent'']', writeback: true}
+    - {property: selected_value, code: 'self.item[''pop_percent'']', writeback: true}
     event_bindings: {change: pop_viewpercent_slider_change}
   - name: pop_viewpercent_label
     properties: {text: '1'}
     type: Label
     layout_properties: {grid_position: 'DUTHBP,GUVXPF NRKMGV,EXTUFV'}
     data_bindings:
-    - {property: text, code: 'self.item[''pop_percent_slider'']', writeback: false}
+    - {property: text, code: 'self.item[''pop_percent'']', writeback: false}
   - name: label_1_copy_3
     properties: {align: center, text: Percent Success}
     type: Label
@@ -81,15 +81,15 @@ components:
     type: form:Slider
     layout_properties: {grid_position: 'DUTHBP,CSRCRD MPAZXK,WXEHRE'}
     data_bindings:
-    - {property: level, code: 'self.item[''pop_percentsuccess_slider'']', writeback: true}
-    - {property: selected_value, code: 'self.item[''pop_percentsuccess_slider'']', writeback: true}
+    - {property: level, code: 'self.item[''pop_percentsuccess'']', writeback: true}
+    - {property: selected_value, code: 'self.item[''pop_percentsuccess'']', writeback: true}
     event_bindings: {change: pop_viewpercent_s_slider_change}
   - name: pop_viewpercent_s_label
     properties: {text: '1'}
     type: Label
     layout_properties: {grid_position: 'DUTHBP,CSRCRD MPAZXK,CEBGJY'}
     data_bindings:
-    - {property: text, code: 'self.item[''pop_percentsuccess_slider'']', writeback: false}
+    - {property: text, code: 'self.item[''pop_percentsuccess'']', writeback: false}
   - name: label_1_copy_4
     properties: {align: center, text: After}
     type: Label
@@ -101,8 +101,8 @@ components:
     type: DropDown
     layout_properties: {grid_position: 'DUTHBP,FPCIPL GLQXGB,BAPTNT'}
     data_bindings:
-    - {property: selected_value, code: 'self.item[''pop_adjusted_dd'']', writeback: true}
-    - {property: placeholder, code: 'self.item[''pop_adjusted_dd'']', writeback: false}
+    - {property: selected_value, code: 'self.item[''pop_adjusted'']', writeback: true}
+    - {property: placeholder, code: 'self.item[''pop_adjusted'']', writeback: false}
   - name: pop_money_button
     properties: {text: Set Hourly Rates By Activity, role: outlined-button}
     type: Button
