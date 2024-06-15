@@ -218,13 +218,13 @@ df_popselectedvar = pd.DataFrame.from_dict(pop_variable_dicts)
 print(df_popselectedvar)
 
 pop_selected_money = app_tables.moneyvalues.search()
-popmoney_dicts = [{'housing':r['housing'], 'transport':r['transport'], 'nutrition':r['nutrition'],'clothing':r['clothing'],'laundry':r['laundry'], 'childcare':r['childcare'], 'adultcare':r['adultcare'], 'voluntaryactivity':r['voluntaryactivity']} for r in selected_money]
+popmoney_dicts = [{'housing':r['housing'], 'transport':r['transport'], 'nutrition':r['nutrition'],'clothing':r['clothing'],'laundry':r['laundry'], 'childcare':r['childcare'], 'adultcare':r['adultcare'], 'voluntaryactivity':r['voluntaryactivity']} for r in pop_selected_money]
 df_popselectedmoney = pd.DataFrame.from_dict(popmoney_dicts)
 df_popselectedmoney = df_popselectedmoney.apply(pd.to_numeric, errors='coerce')
 df_popselectedmoney = df_popselectedmoney/60
-df_popselectedmoney.rename(index={0:'hourly_value'})
 print(df_popselectedmoney)
-df_popselectedmoney.transpose()
+df_popselectedmoney=df_popselectedmoney.transpose()
+df_popselectedmoney.columns = ['hourly_value']
 print(df_popselectedmoney)
 
 df_pop = pd.read_csv(data_files['pop_total.csv'])
