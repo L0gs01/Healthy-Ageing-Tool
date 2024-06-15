@@ -217,13 +217,13 @@ class Homepage(HomepageTemplate):
     if save_clicked:
       print(pop_variables)
       #app_tables.pop_info.delete_all_rows()
-      app_tables.pop_info.add_row(pop_country_dd=str(pop_variables['country']),
-                                 pop_name_text = str(pop_variables['name']),
-                                 pop_age_dd=str(pop_variables['age']),
-                                 pop_initial_dd=str(pop_variables['initial']),
-                                 pop_percent_slider=(pop_variables['percent']),
-                                 pop_percentsuccess_slider=(pop_variables['percent_s']),
-                                 pop_adjusted_dd=str(pop_variables['adjusted']))
+      app_tables.pop_info.add_row(pop_country=str(pop_variables['country']),
+                                 pop_name = str(pop_variables['name']),
+                                 pop_age=str(pop_variables['age']),
+                                 pop_initial=str(pop_variables['initial']),
+                                 pop_percent=(pop_variables['percent']),
+                                 pop_percentsuccess=(pop_variables['percent_s']),
+                                 pop_adjusted=str(pop_variables['adjusted']))
       self.refresh_popinfo()
       self.populationhome_card.visible = True
 

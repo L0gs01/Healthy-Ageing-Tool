@@ -92,26 +92,26 @@ db_schema:
     client: full
     server: full
     columns:
-    - name: pop_age_dd
-      admin_ui: {order: 0, width: 200}
+    - name: pop_age
+      admin_ui: {order: 0.25, width: 200}
       type: string
-    - name: pop_initial_dd
+    - name: pop_initial
       admin_ui: {order: 1, width: 200}
       type: string
-    - name: pop_adjusted_dd
-      admin_ui: {order: 3, width: 200}
+    - name: pop_adjusted
+      admin_ui: {order: 3.34375, width: 200}
       type: string
-    - name: pop_country_dd
+    - name: pop_country
       admin_ui: {order: -1, width: 200}
       type: string
-    - name: pop_name_text
+    - name: pop_name
       admin_ui: {order: -0.5, width: 200}
       type: string
-    - name: pop_percent_slider
-      admin_ui: {order: 1.75, width: 200}
+    - name: pop_percent
+      admin_ui: {order: 1.6875, width: 200}
       type: number
-    - name: pop_percentsuccess_slider
-      admin_ui: {order: 2.375, width: 200}
+    - name: pop_percentsuccess
+      admin_ui: {order: 2.34375, width: 200}
       type: number
     title: Pop_Info
 renamed: true
