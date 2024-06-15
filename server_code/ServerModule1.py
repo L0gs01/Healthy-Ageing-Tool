@@ -272,8 +272,20 @@ if index_4 in df_popselectedvar.index:
     pop_5_adjusted = pop_5['pop_adjusted']
     pop_3_country
 
+scaling_popnum = {
+    'BE': 11258400,
+    'EE': 1313300,
+    'FI': 5451300,
+    'FR': 66352500,
+    'EL': 10812500,
+    'RO': 19861400,
+    'RS': 7112000,
+    'UK': 6435120
+}
+
+
 df_pop1_initial = df_pop.loc[(df_pop['country'] == pop_1_country)&(df_pop['age_group'] == pop_1_age)&(df_pop['group_col'] == pop_1_initial)]
-df_pop1_initial = df_pop1_initial.drop(['group_col','country','age_group'],axis=1) 
+df_pop1_initial = df_pop1_initial.drop(['group_col','age_group'],axis=1) 
 df_pop1_initial = df_pop1_initial.rename(columns={"predicted": "initial"})
 df_pop1_initial = df_pop1_initial.set_index('activity')
 df_pop1_adjusted = df_pop.loc[(df_pop['country'] == pop_1_country)&(df_pop['age_group'] == pop_1_age)&(df_pop['group_col'] == pop_1_adjusted)] 
@@ -281,47 +293,59 @@ df_pop1_adjusted = df_pop1_adjusted.drop(['group_col','country','age_group'],axi
 df_pop1_adjusted = df_pop1_adjusted.rename(columns={"predicted": "adjusted"})
 df_pop1_adjusted =  df_pop1_adjusted.set_index('activity')
 df_pop1_total = pd.merge(df_pop1_initial,df_pop1_adjusted, left_index=True, right_index=True)
+df_pop1_total['scaled_adj'] = df_pop1_total['adjusted'] * scaling_popnum[pop_country]
+df_pop1_total['scaled_int'] = df_pop1_total['initial'] * scaling_popnum[pop_country]
 
 if index_1 in df_popselectedvar.index:
     df_pop2_initial = df_pop.loc[(df_pop['country'] == pop_2_country)&(df_pop['age_group'] == pop_2_age)&(df_pop['group_col'] == pop_2_initial)]
-    df_pop2_initial = df_pop2_initial.drop(['group_col','country','age_group'],axis=1) 
+    df_pop2_initial = df_pop2_initial.drop(['group_col','age_group'],axis=1) 
     df_pop2_initial = df_pop2_initial.rename(columns={"predicted": "initial"})
     df_pop2_initial = df_pop2_initial.set_index('activity')
     df_pop2_adjusted = df_pop.loc[(df_pop['country'] == pop_2_country)&(df_pop['age_group'] == pop_2_age)&(df_pop['group_col'] == pop_2_adjusted)]
-    df_pop2_adjusted = df_pop2_adjusted.drop(['group_col','country','age_group'],axis=1) 
+    df_pop2_adjusted = df_pop2_adjusted.drop(['group_col','age_group'],axis=1) 
     df_pop2_adjusted = df_pop2_adjusted.rename(columns={"predicted": "adjusted"})
     df_pop2_adjusted =  df_pop2_adjusted.set_index('activity')
     df_pop2_total = pd.merge(df_pop2_initial,df_pop2_adjusted, left_index=True, right_index=True)
+    df_pop2_total['scaled_adj'] = df_pop1_total.apply(lambda row: row['adjusted'] * scaling_popnum[row['country']], axis=1)
+    df_pop2_total['scaled_int'] = df_pop1_total.apply(lambda row: row['initial'] * scaling_popnum[row['country']], axis=1)
 if index_2 in df_popselectedvar.index:
     df_pop3_initial = df_pop.loc[(df_pop['country'] == pop_3_country)&(df_pop['age_group'] == pop_3_age)&(df_pop['group_col'] == pop_3_initial)]
     df_pop3_initial = df_pop3_initial.drop(['group_col','country','age_group'],axis=1) 
     df_pop3_initial = df_pop3_initial.rename(columns={"predicted": "initial"})
     df_pop3_initial = df_pop3_initial.set_index('activity')
     df_pop3_adjusted = df_pop.loc[(df_pop['country'] == pop_3_country)&(df_pop['age_group'] == pop_3_age)&(df_pop['group_col'] == pop_3_adjusted)]
-    df_pop3_adjusted = df_pop3_adjusted.drop(['group_col','country','age_group'],axis=1) 
+    df_pop3_adjusted = df_pop3_adjusted.drop(['group_col','age_group'],axis=1) 
     df_pop3_adjusted = df_pop3_adjusted.rename(columns={"predicted": "adjusted"})
     df_pop3_adjusted =  df_pop3_adjusted.set_index('activity')
     df_pop3_total = pd.merge(df_pop3_initial,df_pop3_adjusted, left_index=True, right_index=True)
+    df_pop3_total['scaled_adj'] = df_pop1_total.apply(lambda row: row['adjusted'] * scaling_popnum[row['country']], axis=1)
+    df_pop3_total['scaled_int'] = df_pop1_total.apply(lambda row: row['initial'] * scaling_popnum[row['country']], axis=1)
 if index_3 in df_popselectedvar.index:
     df_pop4_initial = df_pop.loc[(df_pop['country'] == pop_4_country)&(df_pop['age_group'] == pop_4_age)&(df_pop['group_col'] == pop_4_initial)]
     df_pop4_initial = df_pop4_initial.drop(['group_col','country','age_group'],axis=1) 
     df_pop4_initial = df_pop4_initial.rename(columns={"predicted": "initial"})
     df_pop4_initial = df_pop4_initial.set_index('activity')
     df_pop4_adjusted = df_pop.loc[(df_pop['country'] == pop_4_country)&(df_pop['age_group'] == pop_4_age)&(df_pop['group_col'] == pop_4_adjusted)]
-    df_pop4_adjusted = df_pop4_adjusted.drop(['group_col','country','age_group'],axis=1) 
+    df_pop4_adjusted = df_pop4_adjusted.drop(['group_col','age_group'],axis=1) 
     df_pop4_adjusted = df_pop4_adjusted.rename(columns={"predicted": "adjusted"})
     df_pop4_adjusted =  df_pop4_adjusted.set_index('activity')
     df_pop4_total = pd.merge(df_pop4_initial,df_pop4_adjusted, left_index=True, right_index=True)
+    df_pop4_total['scaled_adj'] = df_pop1_total.apply(lambda row: row['adjusted'] * scaling_popnum[row['country']], axis=1)
+    df_pop4_total['scaled_int'] = df_pop1_total.apply(lambda row: row['initial'] * scaling_popnum[row['country']], axis=1)
 if index_4 in df_popselectedvar.index:
     df_pop5_initial = df_pop.loc[(df_pop['country'] == pop_5_country)&(df_pop['age_group'] == pop_5_age)&(df_pop['group_col'] == pop_5_initial)]
     df_pop5_initial = df_pop5_initial.drop(['group_col','country','age_group'],axis=1) 
     df_pop5_initial = df_pop5_initial.rename(columns={"predicted": "initial"})
     df_pop5_initial = df_pop5_initial.set_index('activity')
     df_pop5_adjusted = df_pop.loc[(df_pop['country'] == pop_5_country)&(df_pop['age_group'] == pop_5_age)&(df_pop['group_col'] == pop_5_adjusted)]
-    df_pop5_adjusted = df_pop5_adjusted.drop(['group_col','country','age_group'],axis=1) 
+    df_pop5_adjusted = df_pop5_adjusted.drop(['group_col','age_group'],axis=1) 
     df_pop5_adjusted = df_pop5_adjusted.rename(columns={"predicted": "adjusted"})
     df_pop5_adjusted =  df_pop5_adjusted.set_index('activity')
     df_pop5_total = pd.merge(df_pop5_initial,df_pop5_adjusted, left_index=True, right_index=True)
+    df_pop5_total['scaled_adj'] = df_pop1_total.apply(lambda row: row['adjusted'] * scaling_popnum[row['country']], axis=1)
+    df_pop5_total['scaled_int'] = df_pop1_total.apply(lambda row: row['initial'] * scaling_popnum[row['country']], axis=1)
+  
+
 df_pop_total = df_pop1_total
 if index_1 in df_popselectedvar.index:  
     df_pop_total = df_pop_total.add(df_pop2_total, fill_value=0)
@@ -332,7 +356,7 @@ if index_3 in df_popselectedvar.index:
 if index_4 in df_popselectedvar.index:  
     df_pop_total = df_pop_total.add(df_pop5_total, fill_value=0)
 
-
+print(df_pop_total)
 #----------------------------------------------------------------------------------------------------------------------------------
 @anvil.server.callable
 def create_barfig_initial_time():
