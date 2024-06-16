@@ -251,7 +251,10 @@ class Homepage(HomepageTemplate):
 
   def outlined_button_1_click(self, **event_args):
     """This method is called when the button is clicked"""
-    self.pop_dif_bar.figure = anvil.server.call('pop_create_barfig_difference_time') 
+    pop_diff_bar_val= anvil.server.call('pop_create_barfig_difference_time') 
+    self.pop_dif_bar.figure = pop_diff_bar_val
+
+
 
 
 

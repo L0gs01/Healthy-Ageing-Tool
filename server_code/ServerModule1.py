@@ -472,31 +472,12 @@ def get_popinfo():
  
 @anvil.server.callable
 def pop_create_barfig_difference_time():
-    global df_pop_total
-    
-    # Check if df_pop_total is available and not empty
-    if 'df_pop_total' in globals() and not df_pop_total.empty:
-        print("df_pop_total before plotting:\n", df_pop_total.head())
-        
-        # Check for NaN values in the DataFrame
-        print("Checking for NaN values in df_pop_total:\n", df_pop_total.isna().sum())
-        
-        # Replace NaN values with 0
-        df_pop_total = df_pop_total.fillna(0)
-        
-        # Ensure there are non-zero values in 'scaled_adj_p'
-        if df_pop_total['scaled_adj_p'].sum() == 0:
-            print("Warning: All values in 'scaled_adj_p' are zero.")
-        else:
-            # Create the Plotly pie chart
-            fig = px.pie(
-                df_pop_total,
-                names=df_pop_total.index,
-                values='scaled_adj_p',
-                title='Scaled Adj P Distribution by Activity'
-            )
-            # Display the Plotly figure
-            fig.show()
-    else:
-        print("DataFrame df_pop_total is not available or is empty.")
+    data = df_pop_total
+    fig_difference_time = px.bar(data, x=df_pop_total.index,
+                               y='scaled_adj_p',
+                               title="Increase In Time Spent On<br>Non-Market Productive Activities",
+                               color_discrete_sequence=["green"],
+                               labels={'index': 'Activity', 'difference_monthlytime':'Minutes Per Month'})
+    return fig_difference_time
+
 
