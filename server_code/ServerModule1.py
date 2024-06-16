@@ -221,7 +221,7 @@ pop_variable_dicts = [
 df_popselectedvar = pd.DataFrame.from_dict(pop_variable_dicts)
 df_popselectedvar['pop_initial'] = df_popselectedvar['pop_initial'].replace('Good','good').replace('Fair','fair').replace('Poor','bad')
 df_popselectedvar['pop_adjusted'] = df_popselectedvar['pop_adjusted'].replace('Good','good').replace('Fair','fair').replace('Bad','bad')
-df_popselectedvar['pop_country'] = df_popselectedvar['pop_country'].replace('Belgium','BE').replace('Estonia','EE').replace('Finland','FI').replace('France','FR').replace('Greece','EL').replace('Romania','RO').replace('Serbia','RS').replace('Belgium','BE').replace('Belgium','BE').replace('Belgium','BE')
+df_popselectedvar['pop_country'] = df_popselectedvar['pop_country'].replace('Belgium','BE').replace('Estonia','EE').replace('Finland','FI').replace('France','FR').replace('Greece','EL').replace('Romania','RO').replace('Serbia','RS')
 df_popselectedvar['pop_age'] = df_popselectedvar['pop_age'].replace('55-64','55_64').replace('65-74','65_74').replace('75+','75_more')
 
 print(df_popselectedvar)
@@ -265,22 +265,44 @@ df_pop_total['initial_value'] = df_pop_total['initial'] * df_popselectedmoney['h
 df_pop_total['difference'] = df_pop_total['adjusted'] - df_pop_total['initial']
 print(df_pop_total)
 
-scaling_popnum = {
-    'BE': 11258400,
-    'EE': 1313300,
-    'FI': 5451300,
-    'FR': 66352500,
-    'EL': 10812500,
-    'RO': 19861400,
-    'RS': 7112000,
-    'UK': 64351200
+
+data = {
+    'country': ['BE', 'EE', 'FI', 'FR', 'EL', 'RO', 'RS'],
+    '55_64': [1427000, 187000, 743000, 8015000, 1342000, 2678000, 1146000],
+    '65_74': [1038000, 128000, 629000, 6162000, 1101000, 1817000, 832000],
+    '75+': [1011000, 119000, 478000, 6028000, 1147000, 1533000, 616000]
 }
+
+# Create a DataFrame
+df_pop_country_num = pd.DataFrame(data)
+
+def get_population(country, age_group):
+    # Dictionary to map age group labels to DataFrame column names
+    age_group_mapping = {
+        '55_64': '55_64',
+        '65_74': '65_74',
+        '75+': '75+'
+    }
+    
+    # Validate inputs
+    if country not in df_pop_country_num['country'].values:
+        return f"Error: Country '{country}' not found."
+    if age_group not in age_group_mapping:
+        return f"Error: Age group '{age_group}' not found."
+    
+    # Get the population value
+    value = df_pop_country_num.loc[df_pop_country_num['country'] == country, age_group_mapping[age_group]].values[0]
+    return value
+
+country = pop_country
+age_group = pop_age
+scaler = get_population(country, age_group)
+
 print(df_pop_total['initial'] )
 df_pop_total['initial'] = df_pop_total['initial'].astype(int)
 df_pop_total['adjusted'] = df_pop_total['adjusted'].astype(int)
 df_pop_total['difference'] = df_pop_total['difference'].astype(int)
 
-scaler = scaling_popnum.get(pop_country, 1)
 df_pop_total['scaled_int'] = df_pop_total['initial'] * scaler
 df_pop_total['scaled_adj'] = df_pop_total['adjusted'] * scaler
 df_pop_total['scaled_diff'] = df_pop_total['scaled_adj'] - df_pop_total['scaled_int']
@@ -295,7 +317,10 @@ df_pop_total['scaled_diff_value_z'] = df_pop_total['scaled_diff_value'].clip(low
 pop_percent = float(pop_percent)
 pop_percentsuccess = float(pop_percentsuccess)
 df_pop_total['scaled_adj_p'] = df_pop_total['scaled_adj_value'] * (pop_percent / 100) * (pop_percentsuccess / 100)
-df_pop_total = df_pop_total.drop(['scaled_diff', 'scaled_int', 'scaled_adj', 'scaled_diff_value', 'scaled_diff_z'], axis=1)
+df_pop_total = df_pop_total.drop(['country','scaled_diff', 'scaled_int', 'scaled_adj', 'scaled_diff_value', 'scaled_diff_z'], axis=1)
+print(df_pop_total)
+df_pop_total = df_pop_total.astype(int)
+df_pop_total[df_pop_total < 0] = 0
 print(df_pop_total)
 
 #----------------------------------------------------------------------------------------------------------------------------------
