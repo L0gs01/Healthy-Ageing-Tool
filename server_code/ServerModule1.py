@@ -317,10 +317,11 @@ df_pop_total['scaled_diff_value_z'] = df_pop_total['scaled_diff_value'].clip(low
 pop_percent = float(pop_percent)
 pop_percentsuccess = float(pop_percentsuccess)
 df_pop_total['scaled_adj_p'] = df_pop_total['scaled_adj_value'] * (pop_percent / 100) * (pop_percentsuccess / 100)
-df_pop_total = df_pop_total.drop(['country'], axis=1)
+df_pop_total = df_pop_total.drop(['country','age_group'], axis=1)
 print(df_pop_total)
 df_pop_total = df_pop_total.astype(int)
 df_pop_total[df_pop_total < 0] = 0
+# df_pop_total['']
 print(df_pop_total)
 
 #----------------------------------------------------------------------------------------------------------------------------------
