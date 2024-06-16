@@ -230,7 +230,7 @@ pop_selected_money = app_tables.moneyvalues.search()
 popmoney_dicts = [
     {'Housing': r['housing'], 'Transport': r['transport'], 'Nutrition': r['nutrition'], 'Clothing': r['clothing'], 'Laundry': r['laundry'], 'ChildCare': r['childcare'], 'AdultCare': r['adultcare'], 'Voluntary': r['voluntaryactivity']}
     for r in pop_selected_money
-]
+    ]
 df_popselectedmoney = pd.DataFrame.from_dict(popmoney_dicts)
 df_popselectedmoney = df_popselectedmoney.apply(pd.to_numeric, errors='coerce') / 60
 df_popselectedmoney = df_popselectedmoney.transpose()
@@ -252,12 +252,13 @@ print(pop_percentsuccess)
 df_pop_initial = df_pop[(df_pop['country'] == pop_country) & (df_pop['age_group'] == pop_age) & (df_pop['group_col'] == pop_initial)]
 df_pop_initial = df_pop_initial.drop(['group_col', 'age_group'], axis=1).rename(columns={"predicted": "initial"}).set_index('activity')
 df_pop_initial = df_pop_initial.reindex(["Housing",'Transport','Nutrition','Clothing','Laundry','ChildCare','AdultCare',"Voluntary"])
-
 print(df_pop_initial)
+
 df_pop_adjusted = df_pop[(df_pop['country'] == pop_country) & (df_pop['age_group'] == pop_age) & (df_pop['group_col'] == pop_adjusted)]
 df_pop_adjusted = df_pop_adjusted.drop(['group_col', 'country', 'age_group'], axis=1).rename(columns={"predicted": "adjusted"}).set_index('activity')
 df_pop_adjusted = df_pop_adjusted.reindex(["Housing",'Transport','Nutrition','Clothing','Laundry','ChildCare','AdultCare',"Voluntary"])
 print(df_pop_adjusted)
+
 df_pop_total = pd.merge(df_pop_initial, df_pop_adjusted, left_index=True, right_index=True)
 df_pop_total['adjusted_value'] = df_pop_total['adjusted'] * df_popselectedmoney['hourly_value']
 df_pop_total['initial_value'] = df_pop_total['initial'] * df_popselectedmoney['hourly_value']

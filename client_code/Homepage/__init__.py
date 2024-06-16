@@ -215,8 +215,7 @@ class Homepage(HomepageTemplate):
       buttons=[("Next", True), ("Cancel", False)],
     )
     if save_clicked:
-      print(pop_variables)
-      #app_tables.pop_info.delete_all_rows()
+      app_tables.pop_info.delete_all_rows()
       app_tables.pop_info.add_row(pop_country=str(pop_variables['country']),
                                  pop_name = str(pop_variables['name']),
                                  pop_age=str(pop_variables['age']),
@@ -225,6 +224,7 @@ class Homepage(HomepageTemplate):
                                  pop_percentsuccess=(pop_variables['percent_s']),
                                  pop_adjusted=str(pop_variables['adjusted']))
       self.refresh_popinfo()
+      print(pop_variables)
       self.populationhome_card.visible = True
 
   def pop_add_button_click(self, **event_args):
