@@ -318,7 +318,7 @@ pop_percentsuccess = float(pop_percentsuccess)
 df_pop_total['scaled_adj_a'] = df_pop_total['scaled_adj'] * (pop_percent / 100) * (pop_percentsuccess / 100)
 df_pop_total['scaled_adj_u'] = df_pop_total['scaled_int'] - (df_pop_total['scaled_int']*(pop_percent / 100)*(pop_percentsuccess / 100))
 df_pop_total['scaled_adj_f'] = df_pop_total['scaled_adj_a']+df_pop_total['scaled_adj_u']
-df_pop_total = df_pop_total.drop(['country','age_group'], axis=1)
+df_pop_total = df_pop_total.drop(['country','age_group','initial','adjusted','adjusted_value','initial_value','difference','scaled_int','scaled_adj','scaled_adj_value', 'scaled_int_value', 'scaled_adj_a', 'scaled_adj_u'], axis=1)
 print(df_pop_total)
 df_pop_total = df_pop_total.astype(int)
 df_pop_total[df_pop_total < 0] = 0
@@ -477,7 +477,7 @@ def pop_create_barfig_difference_time():
     data = df_pop_total
     fig_difference_time = px.bar(data,
                                x=df_pop_total.index,
-                               y='scaled_adj_p',
+                               y='scaled_adj_f',
                                title="Increase In Economic Impact (€)<br>Due To Intervention",
                                color_discrete_sequence=["green"],
                                labels={'activity': 'Activity', 'scaled_adj_p':'Minutes Per Month'})
