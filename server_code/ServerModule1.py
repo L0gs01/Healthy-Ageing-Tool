@@ -317,7 +317,7 @@ df_pop_total['scaled_diff_value_z'] = df_pop_total['scaled_diff_value'].clip(low
 pop_percent = float(pop_percent)
 pop_percentsuccess = float(pop_percentsuccess)
 df_pop_total['scaled_adj_p'] = df_pop_total['scaled_adj_value'] * (pop_percent / 100) * (pop_percentsuccess / 100)
-df_pop_total = df_pop_total.drop(['country','scaled_diff', 'scaled_int', 'scaled_adj', 'scaled_diff_value', 'scaled_diff_z'], axis=1)
+df_pop_total = df_pop_total.drop(['country'], axis=1)
 print(df_pop_total)
 df_pop_total = df_pop_total.astype(int)
 df_pop_total[df_pop_total < 0] = 0
@@ -473,11 +473,12 @@ def get_popinfo():
 @anvil.server.callable
 def pop_create_barfig_difference_time():
     data = df_pop_total
-    fig_difference_time = px.bar(data, x=df_pop_total.index,
+    fig_difference_time = px.bar(data,
+                               x=df_pop_total.index,
                                y='scaled_adj_p',
-                               title="Increase In Time Spent On<br>Non-Market Productive Activities",
+                               title="Increase In Economic Impact (€)<br>Due To Intervention",
                                color_discrete_sequence=["green"],
-                               labels={'index': 'Activity', 'difference_monthlytime':'Minutes Per Month'})
+                               labels={'activity': 'Activity', 'scaled_adj_p':'Minutes Per Month'})
     return fig_difference_time
 
 
