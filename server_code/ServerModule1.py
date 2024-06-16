@@ -505,6 +505,32 @@ def pop_create_barfig_adjusted_time():
                                labels={'activity': 'Activity', 'scaled_adj_z':'Minutes Per Month'})
     return fig_initial_time
 
+
+@anvil.server.callable
+def pop_create_piefig_time():
+  data = [go.Pie(labels= df_pop_total.index,
+                 values=df_pop_total.iloc[:,0],
+                 domain={'x':[0.3,0.7], 'y':[0.2,0.8]}, 
+                 hole=0.5,
+                 direction='clockwise',
+                 sort=False,
+                 title=dict(text='Before',
+                      position='top center')
+                ),
+           go.Pie(labels= df_pop_total.index,
+                 values=df_pop_total.iloc[:,1],
+                 domain={'x':[0.1,0.9], 'y':[0,1]},
+                 hole=0.75,
+                 direction='clockwise',
+                 sort=False,
+                 title=dict(text='After',
+                     position='top center')
+                 )
+         ]
+  figure=go.Figure(data=data, layout={'title':'Breakdown Of Time Spent<br>On Non-Market Productive Activities' + '<br>' +  '<span style="font-size: 12px;">Before Intervention (Inner Circle)</span>' + '<br>' +  '<span style="font-size: 12px;">After Intervention (Outer Circle)</span>'})  
+  figure.update_traces(textposition='inside')
+  figure.update_layout(uniformtext_minsize=12, uniformtext_mode='hide')
+  return(figure)
 # @anvil.server.callable
 # def pop_create_barfig_combo_time():
 #   data = df_pop_total
