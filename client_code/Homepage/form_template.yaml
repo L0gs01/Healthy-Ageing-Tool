@@ -346,6 +346,10 @@ components:
     type: ColumnPanel
     layout_properties: {grid_position: 'PTJVSR,HGVFSR'}
     components:
+    - name: pop_combo_bar
+      properties: {}
+      type: Plot
+      layout_properties: {grid_position: 'LCTEGJ,HLTNLF'}
     - name: pop_dif_bar
       properties: {}
       type: Plot

@@ -253,6 +253,8 @@ class Homepage(HomepageTemplate):
     """This method is called when the button is clicked"""
     pop_diff_bar_val= anvil.server.call('pop_create_barfig_difference_time') 
     self.pop_dif_bar.figure = pop_diff_bar_val
+    self.pop_combo_bar_val= anvil.server.call('pop_create_barfig_difference_time') 
+    self.pop_combo_bar_bar.figure = self.pop_combo_bar_val
 
 
 

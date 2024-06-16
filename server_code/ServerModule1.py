@@ -483,4 +483,33 @@ def pop_create_barfig_difference_time():
                                labels={'activity': 'Activity', 'scaled_adj_p':'Minutes Per Month'})
     return fig_difference_time
 
+@anvil.server.callable
+def pop_create_barfig_combo_time():
+  data = df_pop_total
+  fig1 = go.Figure(data=[
+        go.Bar(name="Before Intervention",
+          x=df_pop_total.index,
+          y=data["scaled_int_z"],
+          offsetgroup=0,
+          marker=dict(color='red')),
+        go.Bar(name="After Intervention",
+          x=df_pop_total.index,
+          y=data["scaled_adj_f"],
+          offsetgroup=1,
+          marker=dict(color='blue'))
+        # go.Bar(name="Difference Values",
+        #   x=df_final.index,
+        #   y=data["difference_value"],
+        #   offsetgroup=1,
+        #   marker=dict(color='green'))
+    ],
+    layout=go.Layout(
+        title="Time Spent On Non-Market Productive Activities",
+        yaxis_title="Minutes Per Month",
+        xaxis_title="Activity"
+    )
+  )
+  fig1.update_xaxes(tickangle=90)
+  return fig1
+
 
