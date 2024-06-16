@@ -301,22 +301,23 @@ scaler = get_population(country, age_group)
 print(df_pop_total['initial'] )
 df_pop_total['initial'] = df_pop_total['initial'].astype(int)
 df_pop_total['adjusted'] = df_pop_total['adjusted'].astype(int)
-df_pop_total['difference'] = df_pop_total['difference'].astype(int)
 
 df_pop_total['scaled_int'] = df_pop_total['initial'] * scaler
 df_pop_total['scaled_adj'] = df_pop_total['adjusted'] * scaler
-df_pop_total['scaled_diff'] = df_pop_total['scaled_adj'] - df_pop_total['scaled_int']
 # df_pop_total = df_pop_total.drop(['initial', 'adjusted', 'adjusted_value', 'initial_value', 'difference'], axis=1)
-df_pop_total['scaled_diff_z'] = df_pop_total['scaled_diff'].clip(lower=0)
+df_pop_total['scaled_int_z'] = df_pop_total['scaled_int'].clip(lower=0)
+df_pop_total['scaled_adj_z'] = df_pop_total['scaled_adj'].clip(lower=0)
 
 df_pop_total['scaled_adj_value'] = df_pop_total['scaled_adj'] * df_popselectedmoney['hourly_value']
 df_pop_total['scaled_int_value'] = df_pop_total['scaled_int'] * df_popselectedmoney['hourly_value']
-df_pop_total['scaled_diff_value'] = df_pop_total['scaled_diff'] * df_popselectedmoney['hourly_value']
-df_pop_total['scaled_diff_value_z'] = df_pop_total['scaled_diff_value'].clip(lower=0)
+df_pop_total['scaled_int_value_z'] = df_pop_total['scaled_int_value'].clip(lower=0)
+df_pop_total['scaled_adj_value_z'] = df_pop_total['scaled_adj_value'].clip(lower=0)
 
 pop_percent = float(pop_percent)
 pop_percentsuccess = float(pop_percentsuccess)
-df_pop_total['scaled_adj_p'] = df_pop_total['scaled_adj_value'] * (pop_percent / 100) * (pop_percentsuccess / 100)
+df_pop_total['scaled_adj_a'] = df_pop_total['scaled_adj'] * (pop_percent / 100) * (pop_percentsuccess / 100)
+df_pop_total['scaled_adj_u'] = df_pop_total['scaled_int'] - (df_pop_total['scaled_int']*(pop_percent / 100)*(pop_percentsuccess / 100))
+df_pop_total['scaled_adj_f'] = df_pop_total['scaled_adj_a']+df_pop_total['scaled_adj_u']
 df_pop_total = df_pop_total.drop(['country','age_group'], axis=1)
 print(df_pop_total)
 df_pop_total = df_pop_total.astype(int)
