@@ -480,36 +480,58 @@ def pop_create_barfig_difference_time():
                                y='scaled_adj_f',
                                title="Increase In Economic Impact (€)<br>Due To Intervention",
                                color_discrete_sequence=["green"],
-                               labels={'activity': 'Activity', 'scaled_adj_p':'Minutes Per Month'})
+                               labels={'activity': 'Activity', 'scaled_adj_f':'Minutes Per Month'})
     return fig_difference_time
 
 @anvil.server.callable
-def pop_create_barfig_combo_time():
-  data = df_pop_total
-  fig1 = go.Figure(data=[
-        go.Bar(name="Before Intervention",
-          x=df_pop_total.index,
-          y=data["scaled_int_z"],
-          offsetgroup=0,
-          marker=dict(color='red')),
-        go.Bar(name="After Intervention",
-          x=df_pop_total.index,
-          y=data["scaled_adj_f"],
-          offsetgroup=1,
-          marker=dict(color='blue'))
-        # go.Bar(name="Difference Values",
-        #   x=df_final.index,
-        #   y=data["difference_value"],
-        #   offsetgroup=1,
-        #   marker=dict(color='green'))
-    ],
-    layout=go.Layout(
-        title="Time Spent On Non-Market Productive Activities",
-        yaxis_title="Minutes Per Month",
-        xaxis_title="Activity"
-    )
-  )
-  fig1.update_xaxes(tickangle=90)
-  return fig1
+def pop_create_barfig_initial_time():
+    data = df_pop_total
+    fig_initial_time = px.bar(data,
+                               x=df_pop_total.index,
+                               y='scaled_int_z',
+                               title="Increase In Economic Impact (€)<br>Due To Intervention",
+                               color_discrete_sequence=["red"],
+                               labels={'activity': 'Activity', 'scaled_int_z':'Minutes Per Month'})
+    return fig_initial_time
+
+@anvil.server.callable
+def pop_create_barfig_adjusted_time():
+    data = df_pop_total
+    fig_initial_time = px.bar(data,
+                               x=df_pop_total.index,
+                               y='scaled_adj_z',
+                               title="Increase In Economic Impact (€)<br>Due To Intervention",
+                               color_discrete_sequence=["blue"],
+                               labels={'activity': 'Activity', 'scaled_adj_z':'Minutes Per Month'})
+    return fig_initial_time
+
+# @anvil.server.callable
+# def pop_create_barfig_combo_time():
+#   data = df_pop_total
+#   fig1 = go.Figure(data=[
+#         go.Bar(name="Before Intervention",
+#           x=df_pop_total.index,
+#           y=data["scaled_int_z"],
+#           offsetgroup=0,
+#           marker=dict(color='red')),
+#         go.Bar(name="After Intervention",
+#           x=df_pop_total.index,
+#           y=data["scaled_adj_f"],
+#           offsetgroup=1,
+#           marker=dict(color='blue'))
+#         # go.Bar(name="Difference Values",
+#         #   x=df_final.index,
+#         #   y=data["difference_value"],
+#         #   offsetgroup=1,
+#         #   marker=dict(color='green'))
+#     ],
+#     layout=go.Layout(
+#         title="Time Spent On Non-Market Productive Activities",
+#         yaxis_title="Minutes Per Month",
+#         xaxis_title="Activity"
+#     )
+#   )
+#   fig1.update_xaxes(tickangle=90)
+#   return fig1
 
 
