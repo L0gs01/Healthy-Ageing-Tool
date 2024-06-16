@@ -319,7 +319,7 @@ df_pop_total['scaled_adj_a'] = df_pop_total['scaled_adj'] * (pop_percent / 100) 
 df_pop_total['scaled_adj_u'] = df_pop_total['scaled_int'] - (df_pop_total['scaled_int']*(pop_percent / 100)*(pop_percentsuccess / 100))
 df_pop_total['scaled_adj_f'] = df_pop_total['scaled_adj_a']+df_pop_total['scaled_adj_u']
 df_pop_total = df_pop_total.drop(['country','age_group','initial','adjusted','adjusted_value','initial_value','difference','scaled_int','scaled_adj','scaled_adj_value', 'scaled_int_value', 'scaled_adj_a', 'scaled_adj_u'], axis=1)
-print(df_pop_total)
+df_pop_total['scaled_diff'] = print(df_pop_total)
 df_pop_total = df_pop_total.astype(int)
 df_pop_total[df_pop_total < 0] = 0
 # df_pop_total['']

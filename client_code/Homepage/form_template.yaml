@@ -357,7 +357,7 @@ components:
     - name: pop_dif_bar
       properties: {}
       type: Plot
-      layout_properties: {grid_position: 'LCTEGJ,EVYUGI'}
+      layout_properties: {grid_position: 'KMGOCN,XSJGKU'}
 - type: FlowPanel
   properties: {}
   name: navbar_links
