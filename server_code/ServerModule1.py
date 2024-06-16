@@ -250,7 +250,7 @@ pop_percentsuccess = df_popselectedvar['pop_percentsuccess'].iloc[0]
 print(pop_percentsuccess)
 
 df_pop_initial = df_pop[(df_pop['country'] == pop_country) & (df_pop['age_group'] == pop_age) & (df_pop['group_col'] == pop_initial)]
-df_pop_initial = df_pop_initial.drop(['group_col', 'age_group'], axis=1).rename(columns={"predicted": "initial"}).set_index('activity')
+df_pop_initial = df_pop_initial.drop(['group_col'], axis=1).rename(columns={"predicted": "initial"}).set_index('activity')
 df_pop_initial = df_pop_initial.reindex(["Housing",'Transport','Nutrition','Clothing','Laundry','ChildCare','AdultCare',"Voluntary"])
 print(df_pop_initial)
 
