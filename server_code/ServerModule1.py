@@ -219,7 +219,7 @@ pop_variable_dicts = [
     for r in popselected_var
 ]
 df_popselectedvar = pd.DataFrame.from_dict(pop_variable_dicts)
-df_popselectedvar['pop_initial'] = df_popselectedvar['pop_initial'].replace('Good','good').replace('Fair','fair').replace('Bad','bad')
+df_popselectedvar['pop_initial'] = df_popselectedvar['pop_initial'].replace('Good','good').replace('Fair','fair').replace('Poor','bad')
 df_popselectedvar['pop_adjusted'] = df_popselectedvar['pop_adjusted'].replace('Good','good').replace('Fair','fair').replace('Bad','bad')
 df_popselectedvar['pop_country'] = df_popselectedvar['pop_country'].replace('Belgium','BE').replace('Estonia','EE').replace('Finland','FI').replace('France','FR').replace('Greece','EL').replace('Romania','RO').replace('Serbia','RS').replace('Belgium','BE').replace('Belgium','BE').replace('Belgium','BE')
 df_popselectedvar['pop_age'] = df_popselectedvar['pop_age'].replace('55-64','55_64').replace('65-74','65_74').replace('75+','75_more')
