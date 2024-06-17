@@ -332,7 +332,7 @@ components:
       type: RepeatingPanel
       layout_properties: {grid_position: 'VQJZOR,PYEYMB'}
     - name: pop_add_button
-      properties: {text: Add Group, role: outlined-button}
+      properties: {text: Add Group, role: outlined-button, visible: false}
       type: Button
       layout_properties: {grid_position: 'DNQXDS,MLKMKK'}
       event_bindings: {click: pop_add_button_click}

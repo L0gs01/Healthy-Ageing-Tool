@@ -108,7 +108,7 @@ components:
     type: Button
     layout_properties: {grid_position: 'LSUDOI,RKCCNS'}
   - name: pop_delete_button
-    properties: {text: Delete Group, role: filled-button, align: right}
+    properties: {text: Delete Group, role: filled-button, align: right, visible: false}
     type: Button
     layout_properties: {grid_position: 'LSUDOI,UHZVHQ'}
     event_bindings: {click: pop_delete_button_click}
