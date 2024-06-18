@@ -322,7 +322,9 @@ scaler = get_population(country, age_group)
 
 # Scale the initial and adjusted population values
 df_pop_total['initial'] = df_pop_total['initial'].astype(int)
+print(df_pop_total)
 df_pop_total['adjusted'] = df_pop_total['adjusted'].astype(int)
+print(df_pop_total)
 
 df_pop_total['scaled_int'] = df_pop_total['initial'] * scaler
 df_pop_total['scaled_adj'] = df_pop_total['adjusted'] * scaler
