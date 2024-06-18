@@ -511,9 +511,9 @@ def pop_create_barfig_difference_time():
     fig_difference_time = px.bar(data,
                                x=df_pop_total.index,
                                y='difference',
-                               title="Increase In Economic Impact (€)<br>Due To Intervention",
+                               title="Increase In Economic Impact <br>Due To Intervention",
                                color_discrete_sequence=["green"],
-                               labels={'activity': 'Activity', 'scaled_diff_f':'Minutes Per Month'})
+                               labels={'activity': 'Activity', 'difference':'Minutes Per Month'})
     return fig_difference_time
 
 @anvil.server.callable
@@ -557,7 +557,7 @@ def pop_create_barfig_adjusted_time():
     fig_initial_time = px.bar(data,
                                x=df_pop_total.index,
                                y='scaled_adj_f',
-                               title="Increase In Economic Impact (€)<br>Due To Intervention",
+                               title="Increase In Economic <br>Impact Due To <br>Intervention",
                                color_discrete_sequence=["blue"],
                                labels={'activity': 'Activity', 'scaled_adj_z':'Minutes Per Month'})
     return fig_initial_time
@@ -583,7 +583,7 @@ def pop_create_piefig_time():
                               position='top center')
                    )
            ]
-    figure=go.Figure(data=data, layout={'title':'Breakdown Of Time Spent On Non-Market Productive Activities' + '<br>' +  '<span style="font-size: 12px;">Before Intervention (Inner Circle)</span>' + '<br>' +  '<span style="font-size: 12px;">After Intervention (Outer Circle)</span>'})  
+    figure=go.Figure(data=data, layout={'title':'Breakdown Of Time Spent<br>On Non-Market Productive Activities' + '<br>' +  '<span style="font-size: 12px;">Before Intervention (Inner Circle)</span>' + '<br>' +  '<span style="font-size: 12px;">After Intervention (Outer Circle)</span>'})  
     figure.update_traces(textposition='inside')
     figure.update_layout(uniformtext_minsize=12, uniformtext_mode='hide')
     return(figure)
@@ -592,7 +592,7 @@ def pop_create_piefig_time():
 def pop_create_piefig_difference_time():
     trace = go.Pie(labels= df_final.index, values=df_pop_total.iloc[:,2])
     data = [trace]
-    fig = go.Figure(data = data, layout={'title':'Breakdown Of Increase In Time Spent On Non-Market Productive Activities'})                                    
+    fig = go.Figure(data = data, layout={'title':'Increase In Economic <br>Impact Due To <br>Interventions'})                                    
     return(fig)
 df_pop_time
 @anvil.server.callable
