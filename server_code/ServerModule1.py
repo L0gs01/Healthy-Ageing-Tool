@@ -495,7 +495,7 @@ def pop_create_barfig_difference_time():
                                y='scaled_diff_f',
                                title="Increase In Economic Impact (€)<br>Due To Intervention",
                                color_discrete_sequence=["green"],
-                               labels={'activity': 'Activity', 'scaled_adj_f':'Minutes Per Month'})
+                               labels={'activity': 'Activity', 'scaled_diff_f':'Minutes Per Month'})
     return fig_difference_time
 
 @anvil.server.callable
