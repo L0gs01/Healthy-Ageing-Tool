@@ -342,7 +342,7 @@ components:
       layout_properties: {grid_position: 'DNQXDS,EQCHHW'}
       event_bindings: {click: outlined_button_1_click}
   - name: pop_plots_card
-    properties: {role: outlined-card, visible: false, col_widths: '{"WKLMBB":40,"PQEHUN":20}'}
+    properties: {role: outlined-card, visible: false, col_widths: '{"WKLMBB":40,"PQEHUN":20,"EMARTO":20,"ROYWDT":20,"KEKMYI":20}'}
     type: ColumnPanel
     layout_properties: {grid_position: 'PTJVSR,HGVFSR'}
     components:
@@ -374,10 +374,69 @@ components:
       properties: {}
       type: Plot
       layout_properties: {grid_position: 'IRHMQD,CESGMR'}
-    - name: plot_1
-      properties: {}
-      type: Plot
-      layout_properties: {grid_position: 'QWFKOO,PORAZQ'}
+    - name: outlined_card_1_copy_3
+      properties: {role: outlined-card}
+      type: ColumnPanel
+      layout_properties: {grid_position: 'BYHPDU,EMARTO'}
+      components:
+      - name: label_10_copy_3
+        properties: {text: Before Intervention, role: input-prompt, align: center}
+        type: Label
+        layout_properties: {grid_position: 'OFTFXY,WJDDSM'}
+      - name: rich_text_1_copy
+        properties: {content: £, align: right}
+        type: RichText
+        layout_properties: {grid_position: 'OAPYQG,WMQXFQ'}
+      - name: pop_initial_box
+        properties: {content: ' {something}', role: null, align: center}
+        type: RichText
+        layout_properties: {grid_position: 'OAPYQG,PUJAOY'}
+      - name: spacer_1_copy_2_copy
+        properties: {height: 32}
+        type: Spacer
+        layout_properties: {grid_position: 'OAPYQG,IILQZT'}
+    - name: outlined_card_1_copy_copy
+      properties: {role: outlined-card}
+      type: ColumnPanel
+      layout_properties: {grid_position: 'BYHPDU,ROYWDT'}
+      components:
+      - name: label_10_copy_copy
+        properties: {text: After Intervention, role: input-prompt, align: center}
+        type: Label
+        layout_properties: {grid_position: 'OFTFXY,WJDDSM'}
+      - name: rich_text_2_copy
+        properties: {align: right, content: £}
+        type: RichText
+        layout_properties: {grid_position: 'OAPYQG,ZQNKFQ'}
+      - name: pop_adjusted_box
+        properties: {content: '{adjusted}', role: null, align: center}
+        type: RichText
+        layout_properties: {grid_position: 'OAPYQG,PUJAOY'}
+      - name: spacer_1_copy_copy
+        properties: {height: 32}
+        type: Spacer
+        layout_properties: {grid_position: 'OAPYQG,ONXWNV'}
+    - name: outlined_card_1_copy_2_copy
+      properties: {role: outlined-card}
+      type: ColumnPanel
+      layout_properties: {grid_position: 'BYHPDU,KEKMYI'}
+      components:
+      - name: label_10_copy_2_copy
+        properties: {text: Value Of Change In Health Status, role: input-prompt, align: center}
+        type: Label
+        layout_properties: {grid_position: 'OFTFXY,WJDDSM'}
+      - name: rich_text_3_copy
+        properties: {align: right, content: £}
+        type: RichText
+        layout_properties: {grid_position: 'OAPYQG,KDVNNK'}
+      - name: pop_difference_box
+        properties: {content: '{difference}', role: null, align: center}
+        type: RichText
+        layout_properties: {grid_position: 'OAPYQG,PUJAOY'}
+      - name: spacer_1_copy_3
+        properties: {height: 32}
+        type: Spacer
+        layout_properties: {grid_position: 'OAPYQG,BBUWPX'}
 - type: FlowPanel
   properties: {}
   name: navbar_links

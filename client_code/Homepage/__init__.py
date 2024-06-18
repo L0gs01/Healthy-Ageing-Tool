@@ -263,6 +263,15 @@ class Homepage(HomepageTemplate):
     self.pop_stacked_pie.figure = anvil.server.call('pop_create_piefig_time')
     self.pop_intyear_pie.figure = anvil.server.call('pop_create_piefig_timecomp_initial')
     self.pop_adjyear_pie.figure = anvil.server.call('pop_create_piefig_timecomp_adjusted')  
+    #sentence stuff  
+    pop_initial_value_text = anvil.server.call('pop_get_inital_value')
+    self.pop_initial_box.content = pop_initial_value_text
+    pop_adjusted_value_text = anvil.server.call('pop_get_adjusted_value')
+    self.pop_adjusted_box.content = pop_adjusted_value_text
+    pop_difference_value_text = (pop_adjusted_value_text - pop_initial_value_text)
+    if pop_difference_value_text < 0:
+      pop_difference_value_text = 0
+    self.pop_difference_box.content = pop_difference_value_text
     
 
 

@@ -339,11 +339,12 @@ pop_percentsuccess = float(pop_percentsuccess)
 df_pop_total['scaled_adj_a'] = df_pop_total['scaled_adj'] * (pop_percent / 100) * (pop_percentsuccess / 100)
 df_pop_total['scaled_adj_u'] = df_pop_total['scaled_int'] - (df_pop_total['scaled_int']*(pop_percent / 100)*(pop_percentsuccess / 100))
 df_pop_total['scaled_adj_f'] = df_pop_total['scaled_adj_a'] + df_pop_total['scaled_adj_u']
-df_pop_total['scaled_diff_f'] = df_pop_total['scaled_adj_f']-df_pop_total['scaled_int_value_z']
+df_pop_total['scaled_diff_f'] = df_pop_total['scaled_adj_f']-df_pop_total['scaled_int_z']
 # Drop unnecessary columns and ensure non-negative values
-df_pop_total = df_pop_total.drop(['country', 'age_group', 'initial', 'adjusted', 'adjusted_value', 'initial_value', 'difference', 'scaled_int', 'scaled_adj', 'scaled_adj_value', 'scaled_int_value', 'scaled_adj_a', 'scaled_adj_u'], axis=1)
+df_pop_total = df_pop_total.drop(['country', 'age_group', 'initial', 'adjusted', 'adjusted_value', 'initial_value', 'difference', 'scaled_int', 'scaled_adj', 'scaled_adj_a', 'scaled_adj_u'], axis=1)
 df_pop_total[df_pop_total < 0] = 0
-
+pop_total_initial_value = df_pop_total['scaled_int_value_z'].sum()
+pop_total_adjusted_value = df_pop_total['scaled_adj_value_z'].sum()
 print(df_pop_total)
 
 # Define Anvil server callable functions
@@ -591,6 +592,11 @@ def pop_create_piefig_timecomp_adjusted():
     fig = go.Figure(data = data, layout={'title':'Time Usage After Intervention'}) 
     fig.update_traces(marker=dict(colors=['blue', 'red']))
     return(fig)
+@anvil.server.callable
+def pop_get_inital_value():
+   return int(pop_total_initial_value)
+@anvil.server.callable
+def pop_get_adjusted_value():
+   return int(pop_total_adjusted_value)
 
-# total_initial_time = df_final['initial_monthlytime'].sum()
 
