@@ -334,10 +334,13 @@ df_pop_total['scaled_adj_value'] = df_pop_total['scaled_adj'] * df_popselectedmo
 df_pop_total['scaled_int_value'] = df_pop_total['scaled_int'] * df_popselectedmoney['hourly_value']
 df_pop_total['scaled_int_value_z'] = df_pop_total['scaled_int_value'].clip(lower=0)
 df_pop_total['scaled_adj_value_z'] = df_pop_total['scaled_adj_value'].clip(lower=0)
+df_pop_total['scaled_adj_value_a'] = df_pop_total['scaled_adj_value_z'] * (pop_percent / 100) * (pop_percentsuccess / 100)
+df_pop_total['scaled_adj_value_u'] = df_pop_total['scaled_int_value_z'] - (df_pop_total['scaled_int_value_z']*(pop_percent / 100)*(pop_percentsuccess / 100))
+df_pop_total['scaled_adj_value_f'] = df_pop_total['scaled_adj_value_a'] + df_pop_total['scaled_adj_value_u']
 
 # Calculate adjusted values
-pop_percent = float(pop_percent)
-pop_percentsuccess = float(pop_percentsuccess)
+pop_percent = int(pop_percent)
+pop_percentsuccess = int(pop_percentsuccess)
 df_pop_total['scaled_adj_a'] = df_pop_total['scaled_adj'] * (pop_percent / 100) * (pop_percentsuccess / 100)
 df_pop_total['scaled_adj_u'] = df_pop_total['scaled_int'] - (df_pop_total['scaled_int']*(pop_percent / 100)*(pop_percentsuccess / 100))
 df_pop_total['scaled_adj_f'] = df_pop_total['scaled_adj_a'] + df_pop_total['scaled_adj_u']
@@ -346,7 +349,7 @@ df_pop_total['scaled_diff_f'] = df_pop_total['scaled_adj_f']-df_pop_total['scale
 df_pop_total = df_pop_total.drop(['country', 'age_group', 'adjusted_value', 'initial_value', 'difference', 'scaled_int', 'scaled_adj', 'scaled_adj_a', 'scaled_adj_u'], axis=1)
 df_pop_total[df_pop_total < 0] = 0
 pop_total_initial_value = df_pop_total['scaled_int_value_z'].sum()
-pop_total_adjusted_value = df_pop_total['scaled_adj_value_z'].sum()
+pop_total_adjusted_value = df_pop_total['scaled_adj_value_f'].sum()
 pop_total_int_time = (df_pop_total['initial'].sum())
 print(pop_total_int_time)
 pop_total_adj_time = (df_pop_total['adjusted'].sum())
