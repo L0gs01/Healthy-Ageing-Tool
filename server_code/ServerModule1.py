@@ -341,10 +341,24 @@ df_pop_total['scaled_adj_u'] = df_pop_total['scaled_int'] - (df_pop_total['scale
 df_pop_total['scaled_adj_f'] = df_pop_total['scaled_adj_a'] + df_pop_total['scaled_adj_u']
 df_pop_total['scaled_diff_f'] = df_pop_total['scaled_adj_f']-df_pop_total['scaled_int_z']
 # Drop unnecessary columns and ensure non-negative values
-df_pop_total = df_pop_total.drop(['country', 'age_group', 'initial', 'adjusted', 'adjusted_value', 'initial_value', 'difference', 'scaled_int', 'scaled_adj', 'scaled_adj_a', 'scaled_adj_u'], axis=1)
+df_pop_total = df_pop_total.drop(['country', 'age_group', 'adjusted_value', 'initial_value', 'difference', 'scaled_int', 'scaled_adj', 'scaled_adj_a', 'scaled_adj_u'], axis=1)
 df_pop_total[df_pop_total < 0] = 0
 pop_total_initial_value = df_pop_total['scaled_int_value_z'].sum()
 pop_total_adjusted_value = df_pop_total['scaled_adj_value_z'].sum()
+pop_total_int_time = (df_pop_total['initial'].sum())
+pop_total_adj_time = (df_pop_total['adjusted'].sum())
+pop_total_int_nottime = 43800 - (df_pop_total['initial'].sum())
+pop_total_adj_nottime = 43800 - (df_pop_total['adjusted'].sum())
+data = {
+    'Category': ['Adjusted Time', 'Not Adjusted Time'],
+    'Values': [pop_total_int_time, pop_total_int_nottime]
+}
+df_pie_int_timeratio = pd.DataFrame(data)
+data = {
+    'Category': ['Adjusted Time', 'Not Adjusted Time'],
+    'Values': [pop_total_adj_time, pop_total_adj_nottime]
+}
+df_pie_adj_timeratio = pd.DataFrame(data)
 print(df_pop_total)
 
 # Define Anvil server callable functions
@@ -579,22 +593,35 @@ def pop_create_piefig_difference_time():
 
 @anvil.server.callable
 def pop_create_piefig_timecomp_initial():
-    trace = go.Pie(labels= df_total_diff_trans.index,values=df_total_diff_trans.loc[:,"initial_times"],sort=False)
-    data = [trace]
-    fig = go.Figure(data = data, layout={'title':'Time Usage Before Intervention'})  
-    fig.update_traces(marker=dict(colors=['blue', 'red']))
-    return(fig)
+    # Create the pie chart
+    fig = go.Figure(data=[go.Pie(labels=['Adjusted Time', 'Not Adjusted Time'],
+                             values=[pop_total_adj_time, pop_total_adj_nottime],
+                             hole=.3)])
+
+# Update the layout for the pie chart
+    fig.update_layout(title_text='Adjusted Time vs Not Adjusted Time')
+
+# Show the pie chart
+    fig.show()
 
 @anvil.server.callable
 def pop_create_piefig_timecomp_adjusted():
-    trace = go.Pie(labels= df_total_diff_trans.index,values=df_total_diff_trans.loc[:,"adjusted_times"],sort=False)
-    data = [trace]
-    fig = go.Figure(data = data, layout={'title':'Time Usage After Intervention'}) 
-    fig.update_traces(marker=dict(colors=['blue', 'red']))
-    return(fig)
+    # Create the pie chart
+    fig = go.Figure(data=[go.Pie(labels=['Initial Time', 'Not Adjusted Time'],
+                             values=[pop_total_adj_time, pop_total_adj_nottime],
+                             hole=.3)])
+
+# Update the layout for the pie chart
+    fig.update_layout(title_text='Adjusted Time vs Not Adjusted Time')
+
+# Show the pie chart
+    fig.show()
+  
 @anvil.server.callable
 def pop_get_inital_value():
    return int(pop_total_initial_value)
+
+
 @anvil.server.callable
 def pop_get_adjusted_value():
    return int(pop_total_adjusted_value)
