@@ -367,7 +367,7 @@ def create_barfig_initial_time():
     data = df_final
     fig_initial_time = px.bar(data, x=df_final.index,
                               y='initial_value',
-                              title="Before Intervention Time Spent On Non-Market Productive Activities",
+                              title="Before Intervention Time Spent<br>On Non-Market Productive Activities",
                               color_discrete_sequence=["red"],
                               labels={'index': 'Activity', 'initial_value':'Minutes Per Month'})
     return fig_initial_time
@@ -377,7 +377,7 @@ def create_barfig_adjusted_time():
     data = df_final
     fig_adjusted_time = px.bar(data, x=df_final.index,
                                y='adjusted_value',
-                               title="After Intervention Time Spent On Non-Market Productive Activities",
+                               title="After Intervention Time Spent<br>On Non-Market Productive Activities",
                                color_discrete_sequence=["blue"],
                                labels={'index': 'Activity', 'adjusted_value':'Minutes Per Month'})
     return fig_adjusted_time
@@ -387,7 +387,7 @@ def create_barfig_difference_time():
     data = df_final
     fig_difference_time = px.bar(data, x=df_final.index,
                                  y='difference_monthlytime',
-                                 title="Increase In Time Spent On Non-Market Productive Activities",
+                                 title="Increase In Time Spent<br>On Non-Market Productive Activities",
                                  color_discrete_sequence=["green"],
                                  labels={'index': 'Activity', 'difference_monthlytime':'Minutes Per Month'})
     return fig_difference_time
@@ -408,7 +408,7 @@ def create_barfig_combo_time():
                 marker=dict(color='blue'))
       ],
       layout=go.Layout(
-          title="Time Spent On Non-Market Productive Activities",
+          title="Time Spent On<br>Non-Market Productive Activities",
           yaxis_title="Minutes Per Month",
           xaxis_title="Activity"
       )
@@ -437,7 +437,7 @@ def create_piefig_time():
                               position='top center')
                    )
            ]
-    figure=go.Figure(data=data, layout={'title':'Breakdown Of Time Spent On Non-Market Productive Activities' + '<br>' +  '<span style="font-size: 12px;">Before Intervention (Inner Circle)</span>' + '<br>' +  '<span style="font-size: 12px;">After Intervention (Outer Circle)</span>'})  
+    figure=go.Figure(data=data, layout={'title':'Breakdown Of Time Spent<br>On Non-Market Productive Activities' + '<br>' +  '<span style="font-size: 12px;">Before Intervention (Inner Circle)</span>' + '<br>' +  '<span style="font-size: 12px;">After Intervention (Outer Circle)</span>'})  
     figure.update_traces(textposition='inside')
     figure.update_layout(uniformtext_minsize=12, uniformtext_mode='hide')
     return(figure)
@@ -446,7 +446,7 @@ def create_piefig_time():
 def create_piefig_difference_time():
     trace = go.Pie(labels= df_final.index, values=df_final.iloc[:,2])
     data = [trace]
-    fig = go.Figure(data = data, layout={'title':'Breakdown Of Increase In Time Spent On Non-Market Productive Activities'})                                    
+    fig = go.Figure(data = data, layout={'title':'Breakdown Of Increase In Time Spent<br>On Non-Market Productive Activities'})                                    
     return(fig)
 
 @anvil.server.callable
