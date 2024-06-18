@@ -261,6 +261,7 @@ class Homepage(HomepageTemplate):
     self.pop_adj_bar_val= anvil.server.call('pop_create_barfig_adjusted_time') 
     self.pop_adj_bar.figure = self.pop_adj_bar_val
     self.pop_stacked_pie.figure = anvil.server.call('pop_create_piefig_time')
+    self.pop_difference_pie.figure = anvil.server.call('pop_create_piefig_difference_time')
     self.pop_intyear_pie.figure = anvil.server.call('pop_create_piefig_timecomp_initial')
     self.pop_adjyear_pie.figure = anvil.server.call('pop_create_piefig_timecomp_adjusted')  
     #sentence stuff  
