@@ -241,7 +241,7 @@ popmoney_dicts = [
 
 # Create DataFrame from dictionary and process it
 df_popselectedmoney = pd.DataFrame.from_dict(popmoney_dicts)
-df_popselectedmoney = df_popselectedmoney.apply(pd.to_numeric, errors='coerce') / 60
+df_popselectedmoney = df_popselectedmoney.apply(pd.to_numeric, errors='coerce') #/60
 df_popselectedmoney = df_popselectedmoney.transpose()
 df_popselectedmoney.columns = ['hourly_value']
 
@@ -282,8 +282,8 @@ print(df_pop_adjusted)
 
 # Merge initial and adjusted DataFrames
 df_pop_total = pd.merge(df_pop_initial, df_pop_adjusted, left_index=True, right_index=True)
-df_pop_total['adjusted_value'] = df_pop_total['adjusted'] * df_popselectedmoney['hourly_value']
-df_pop_total['initial_value'] = df_pop_total['initial'] * df_popselectedmoney['hourly_value']
+df_pop_total['adjusted_value'] = (df_pop_total['adjusted']/60) * df_popselectedmoney['hourly_value']
+df_pop_total['initial_value'] = (df_pop_total['initial']/60) * df_popselectedmoney['hourly_value']
 df_pop_total['difference'] = df_pop_total['adjusted'] - df_pop_total['initial']
 
 print(df_pop_total)
@@ -335,7 +335,7 @@ df_pop_total['scaled_int_value'] = df_pop_total['scaled_int'] * df_popselectedmo
 df_pop_total['scaled_int_value_z'] = df_pop_total['scaled_int_value'].clip(lower=0)
 df_pop_total['scaled_adj_value_z'] = df_pop_total['scaled_adj_value'].clip(lower=0)
 df_pop_total['scaled_adj_value_a'] = df_pop_total['scaled_adj_value_z'] * (pop_percent / 100) * (pop_percentsuccess / 100)
-df_pop_total['scaled_adj_value_u'] = df_pop_total['scaled_int_value_z'] - (df_pop_total['scaled_int_value_z']*(pop_percent / 100)*(pop_percentsuccess / 100))
+df_pop_total['scaled_adj_value_u'] = df_pop_total['scaled_int_value_z'] - (df_pop_total['scaled_adj_value_z']*(pop_percent / 100)*(pop_percentsuccess / 100))
 df_pop_total['scaled_adj_value_f'] = df_pop_total['scaled_adj_value_a'] + df_pop_total['scaled_adj_value_u']
 
 # Calculate adjusted values
@@ -351,7 +351,6 @@ df_pop_total[df_pop_total < 0] = 0
 pop_total_initial_value = df_pop_total['scaled_int_value_z'].sum()
 pop_total_adjusted_value = df_pop_total['scaled_adj_value_f'].sum()
 pop_total_int_time = (df_pop_total['initial'].sum())
-print(pop_total_int_time)
 pop_total_adj_time = (df_pop_total['adjusted'].sum())
 pop_total_int_nottime = 43800 - (df_pop_total['initial'].sum())
 pop_total_adj_nottime = 43800 - (df_pop_total['adjusted'].sum())
