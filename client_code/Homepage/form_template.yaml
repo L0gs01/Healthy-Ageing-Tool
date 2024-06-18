@@ -366,6 +366,10 @@ components:
       properties: {}
       type: Plot
       layout_properties: {grid_position: 'PTVYHY,DNPRFN'}
+    - name: pop_difference_pie
+      properties: {}
+      type: Plot
+      layout_properties: {grid_position: 'PTVYHY,AEPKKI'}
     - name: pop_intyear_pie
       properties: {}
       type: Plot
