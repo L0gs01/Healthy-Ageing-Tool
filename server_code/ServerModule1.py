@@ -334,7 +334,7 @@ df_pop_total['scaled_adj_value'] = df_pop_total['scaled_adj'] * df_popselectedmo
 df_pop_total['scaled_int_value'] = df_pop_total['scaled_int'] * df_popselectedmoney['hourly_value']
 df_pop_total['scaled_int_value_z'] = df_pop_total['scaled_int_value'].clip(lower=0)
 df_pop_total['scaled_adj_value_z'] = df_pop_total['scaled_adj_value'].clip(lower=0)
-df_pop_total['scaled_adj_value_a'] = df_pop_total['scaled_int_value_z'] * (pop_percent / 100) * (pop_percentsuccess / 100)
+df_pop_total['scaled_adj_value_a'] = df_pop_total['scaled_adj_value_z'] * (pop_percent / 100) * (pop_percentsuccess / 100)
 df_pop_total['scaled_adj_value_u'] = df_pop_total['scaled_int_value_z'] * (pop_percent / 100)*(1-(pop_percentsuccess / 100))
 df_pop_total['scaled_adj_value_f'] = df_pop_total['scaled_adj_value_a'] + df_pop_total['scaled_adj_value_u']
 
