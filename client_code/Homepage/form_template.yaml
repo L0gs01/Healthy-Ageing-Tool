@@ -342,22 +342,26 @@ components:
       layout_properties: {grid_position: 'DNQXDS,EQCHHW'}
       event_bindings: {click: outlined_button_1_click}
   - name: pop_plots_card
-    properties: {role: outlined-card, visible: false}
+    properties: {role: outlined-card, visible: false, col_widths: '{"WKLMBB":40,"PQEHUN":20}'}
     type: ColumnPanel
     layout_properties: {grid_position: 'PTJVSR,HGVFSR'}
     components:
-    - name: pop_int_bar
+    - name: pop_stacked_bar
       properties: {}
       type: Plot
-      layout_properties: {grid_position: 'LCTEGJ,HLTNLF'}
-    - name: pop_adj_bar
-      properties: {}
-      type: Plot
-      layout_properties: {grid_position: 'LCTEGJ,JMHQBW'}
+      layout_properties: {grid_position: 'MRFXVQ,WKLMBB'}
     - name: pop_dif_bar
       properties: {}
       type: Plot
-      layout_properties: {grid_position: 'KMGOCN,XSJGKU'}
+      layout_properties: {grid_position: 'MRFXVQ,PQEHUN'}
+    - name: pop_int_bar
+      properties: {visible: false}
+      type: Plot
+      layout_properties: {grid_position: 'LCTEGJ,HLTNLF'}
+    - name: pop_adj_bar
+      properties: {visible: false}
+      type: Plot
+      layout_properties: {grid_position: 'LCTEGJ,JMHQBW'}
     - name: pop_stacked_pie
       properties: {}
       type: Plot
@@ -365,11 +369,15 @@ components:
     - name: pop_intyear_pie
       properties: {}
       type: Plot
-      layout_properties: {grid_position: 'PTVYHY,NQJDPY'}
+      layout_properties: {grid_position: 'IRHMQD,JXQFKM'}
     - name: pop_adjyear_pie
       properties: {}
       type: Plot
-      layout_properties: {grid_position: 'PTVYHY,KMRNHP'}
+      layout_properties: {grid_position: 'IRHMQD,CESGMR'}
+    - name: plot_1
+      properties: {}
+      type: Plot
+      layout_properties: {grid_position: 'QWFKOO,PORAZQ'}
 - type: FlowPanel
   properties: {}
   name: navbar_links

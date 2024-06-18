@@ -339,7 +339,7 @@ pop_percentsuccess = float(pop_percentsuccess)
 df_pop_total['scaled_adj_a'] = df_pop_total['scaled_adj'] * (pop_percent / 100) * (pop_percentsuccess / 100)
 df_pop_total['scaled_adj_u'] = df_pop_total['scaled_int'] - (df_pop_total['scaled_int']*(pop_percent / 100)*(pop_percentsuccess / 100))
 df_pop_total['scaled_adj_f'] = df_pop_total['scaled_adj_a'] + df_pop_total['scaled_adj_u']
-
+df_pop_total['scaled_diff_f'] = df_pop_total['scaled_adj_f']-df_pop_total['scaled_int_value_z']
 # Drop unnecessary columns and ensure non-negative values
 df_pop_total = df_pop_total.drop(['country', 'age_group', 'initial', 'adjusted', 'adjusted_value', 'initial_value', 'difference', 'scaled_int', 'scaled_adj', 'scaled_adj_value', 'scaled_int_value', 'scaled_adj_a', 'scaled_adj_u'], axis=1)
 df_pop_total[df_pop_total < 0] = 0
@@ -491,18 +491,42 @@ def pop_create_barfig_difference_time():
     data = df_pop_total
     fig_difference_time = px.bar(data,
                                x=df_pop_total.index,
-                               y='scaled_adj_f',
+                               y='scaled_diff_f',
                                title="Increase In Economic Impact (€)<br>Due To Intervention",
                                color_discrete_sequence=["green"],
                                labels={'activity': 'Activity', 'scaled_adj_f':'Minutes Per Month'})
     return fig_difference_time
 
 @anvil.server.callable
+def pop_create_barfig_combo_time():
+    data = df_pop_total
+    fig1 = go.Figure(data=[
+          go.Bar(name="Before Intervention",
+                x=df_pop_total.index,
+                y=data["scaled_int_z"],
+                offsetgroup=0,
+                marker=dict(color='red')),
+          go.Bar(name="After Intervention",
+                x=df_pop_total.index,
+                y=data["scaled_adj_f"],
+                offsetgroup=1,
+                marker=dict(color='blue'))
+      ],
+      layout=go.Layout(
+          title="Time Spent On Non-Market Productive Activities",
+          yaxis_title="Minutes Per Month",
+          xaxis_title="Activity"
+      )
+    )
+    fig1.update_xaxes(tickangle=90)
+    return fig1
+
+@anvil.server.callable
 def pop_create_barfig_initial_time():
     data = df_pop_total
     fig_initial_time = px.bar(data,
                                x=df_pop_total.index,
-                               y='scaled_int_z',
+                               y=('scaled_int_z'),
                                title="Increase In Economic Impact (€)<br>Due To Intervention",
                                color_discrete_sequence=["red"],
                                labels={'activity': 'Activity', 'scaled_int_z':'Minutes Per Month'})
@@ -513,7 +537,7 @@ def pop_create_barfig_adjusted_time():
     data = df_pop_total
     fig_initial_time = px.bar(data,
                                x=df_pop_total.index,
-                               y='scaled_adj_z',
+                               y='scaled_adj_f',
                                title="Increase In Economic Impact (€)<br>Due To Intervention",
                                color_discrete_sequence=["blue"],
                                labels={'activity': 'Activity', 'scaled_adj_z':'Minutes Per Month'})
@@ -544,3 +568,29 @@ def pop_create_piefig_time():
     figure.update_traces(textposition='inside')
     figure.update_layout(uniformtext_minsize=12, uniformtext_mode='hide')
     return(figure)
+
+@anvil.server.callable
+def pop_create_piefig_difference_time():
+    trace = go.Pie(labels= df_final.index, values=df_pop_total.iloc[:,2])
+    data = [trace]
+    fig = go.Figure(data = data, layout={'title':'Breakdown Of Increase In Time Spent On Non-Market Productive Activities'})                                    
+    return(fig)
+
+@anvil.server.callable
+def pop_create_piefig_timecomp_initial():
+    trace = go.Pie(labels= df_total_diff_trans.index,values=df_total_diff_trans.loc[:,"initial_times"],sort=False)
+    data = [trace]
+    fig = go.Figure(data = data, layout={'title':'Time Usage Before Intervention'})  
+    fig.update_traces(marker=dict(colors=['blue', 'red']))
+    return(fig)
+
+@anvil.server.callable
+def pop_create_piefig_timecomp_adjusted():
+    trace = go.Pie(labels= df_total_diff_trans.index,values=df_total_diff_trans.loc[:,"adjusted_times"],sort=False)
+    data = [trace]
+    fig = go.Figure(data = data, layout={'title':'Time Usage After Intervention'}) 
+    fig.update_traces(marker=dict(colors=['blue', 'red']))
+    return(fig)
+
+# total_initial_time = df_final['initial_monthlytime'].sum()
+

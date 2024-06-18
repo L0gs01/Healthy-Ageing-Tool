@@ -252,14 +252,18 @@ class Homepage(HomepageTemplate):
   def outlined_button_1_click(self, **event_args):
     """This method is called when the button is clicked"""
     self.pop_plots_card.visible=True
+    pop_stacked_bar_val= anvil.server.call('pop_create_barfig_combo_time') 
+    self.pop_stacked_bar.figure = pop_stacked_bar_val
     pop_diff_bar_val= anvil.server.call('pop_create_barfig_difference_time') 
     self.pop_dif_bar.figure = pop_diff_bar_val
     self.pop_int_bar_val= anvil.server.call('pop_create_barfig_initial_time') 
     self.pop_int_bar.figure = self.pop_int_bar_val
     self.pop_adj_bar_val= anvil.server.call('pop_create_barfig_adjusted_time') 
     self.pop_adj_bar.figure = self.pop_adj_bar_val
-    self.time_pie.figure = anvil.server.call('pop_create_piefig_time')
-
+    self.pop_stacked_pie.figure = anvil.server.call('pop_create_piefig_time')
+    self.pop_intyear_pie.figure = anvil.server.call('pop_create_piefig_timecomp_initial')
+    self.pop_adjyear_pie.figure = anvil.server.call('pop_create_piefig_timecomp_adjusted')  
+    
 
 
 
