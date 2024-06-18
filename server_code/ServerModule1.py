@@ -346,19 +346,16 @@ df_pop_total[df_pop_total < 0] = 0
 pop_total_initial_value = df_pop_total['scaled_int_value_z'].sum()
 pop_total_adjusted_value = df_pop_total['scaled_adj_value_z'].sum()
 pop_total_int_time = (df_pop_total['initial'].sum())
+print(pop_total_int_time)
 pop_total_adj_time = (df_pop_total['adjusted'].sum())
 pop_total_int_nottime = 43800 - (df_pop_total['initial'].sum())
 pop_total_adj_nottime = 43800 - (df_pop_total['adjusted'].sum())
-data = {
-    'Category': ['Adjusted Time', 'Not Adjusted Time'],
-    'Values': [pop_total_int_time, pop_total_int_nottime]
-}
-df_pie_int_timeratio = pd.DataFrame(data)
-data = {
-    'Category': ['Adjusted Time', 'Not Adjusted Time'],
-    'Values': [pop_total_adj_time, pop_total_adj_nottime]
-}
-df_pie_adj_timeratio = pd.DataFrame(data)
+print(pop_total_int_time)
+pop_time_dict = {'Type': ['Adjusted Time', 'Not Adjusted Time'],
+    'Pop Int': [pop_total_int_time, pop_total_int_nottime],
+    'Pop Adj': [pop_total_adj_time, pop_total_adj_nottime]}
+df_pop_time = pd.DataFrame(pop_time_dict)
+print(df_pop_time)
 print(df_pop_total)
 #____________________________________________________________________________________________________________________________________________________________________________________________________________________________________________
 # Define Anvil server callable functions
@@ -590,32 +587,32 @@ def pop_create_piefig_difference_time():
     data = [trace]
     fig = go.Figure(data = data, layout={'title':'Breakdown Of Increase In Time Spent On Non-Market Productive Activities'})                                    
     return(fig)
-
+df_pop_time
 @anvil.server.callable
 def pop_create_piefig_timecomp_initial():
-    # Create the pie chart
-    fig = go.Figure(data=[go.Pie(labels=['Adjusted Time', 'Not Adjusted Time'],
-                             values=[pop_total_adj_time, pop_total_adj_nottime],
-                             hole=.3)])
-
+    labels = df_pop_time['Type']
+    values = df_pop_time['Pop Int']
+# Define custom colors to match the provided image
+    colors = ['#0000FF', '#FF0000']  # Blue and DeepPink 
+  # Create the pie chart
+    fig = go.Figure(data=[go.Pie(labels=labels, values=values, marker=dict(colors=colors))])
 # Update the layout for the pie chart
-    fig.update_layout(title_text='Adjusted Time vs Not Adjusted Time')
-
+    fig.update_layout(title_text='Breakdown Of Time Spent <br>Before Intervention')
 # Show the pie chart
-    fig.show()
+    return(fig)
 
 @anvil.server.callable
 def pop_create_piefig_timecomp_adjusted():
-    # Create the pie chart
-    fig = go.Figure(data=[go.Pie(labels=['Initial Time', 'Not Adjusted Time'],
-                             values=[pop_total_adj_time, pop_total_adj_nottime],
-                             hole=.3)])
-
+    labels = df_pop_time['Type']
+    values = df_pop_time['Pop Adj']
+  # Define custom colors to match the provided image
+    colors = ['#0000FF', '#FF0000']  # Blue and DeepPink 
+# Create the pie chart
+    fig = go.Figure(data=[go.Pie(labels=labels, values=values ,marker=dict(colors=colors))])
 # Update the layout for the pie chart
-    fig.update_layout(title_text='Adjusted Time vs Not Adjusted Time')
-
+    fig.update_layout(title_text='Breakdown Of Time Spent <br>After Intervention')
 # Show the pie chart
-    fig.show()
+    return(fig)
   
 @anvil.server.callable
 def pop_get_inital_value():
