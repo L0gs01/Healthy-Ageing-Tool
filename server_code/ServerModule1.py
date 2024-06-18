@@ -282,9 +282,12 @@ print(df_pop_adjusted)
 
 # Merge initial and adjusted DataFrames
 df_pop_total = pd.merge(df_pop_initial, df_pop_adjusted, left_index=True, right_index=True)
+df_pop_total['adjusted'] = (df_pop_total['adjusted']) 
+df_pop_total['initial'] = (df_pop_total['initial']) 
+df_pop_total['difference'] = df_pop_total['adjusted'] - df_pop_total['initial']
 df_pop_total['adjusted_value'] = (df_pop_total['adjusted']/60) * df_popselectedmoney['hourly_value']
 df_pop_total['initial_value'] = (df_pop_total['initial']/60) * df_popselectedmoney['hourly_value']
-df_pop_total['difference'] = df_pop_total['adjusted'] - df_pop_total['initial']
+
 
 print(df_pop_total)
 
@@ -325,7 +328,7 @@ df_pop_total['initial'] = df_pop_total['initial'].astype(int)
 print(df_pop_total)
 df_pop_total['adjusted'] = df_pop_total['adjusted'].astype(int)
 print(df_pop_total)
-
+print(scaler)
 df_pop_total['scaled_int'] = df_pop_total['initial'] * scaler
 df_pop_total['scaled_adj'] = df_pop_total['adjusted'] * scaler
 df_pop_total['scaled_int_z'] = df_pop_total['scaled_int'].clip(lower=0)
@@ -346,7 +349,7 @@ df_pop_total['scaled_adj_u'] = df_pop_total['scaled_int'] - (df_pop_total['scale
 df_pop_total['scaled_adj_f'] = df_pop_total['scaled_adj_a'] + df_pop_total['scaled_adj_u']
 df_pop_total['scaled_diff_f'] = df_pop_total['scaled_adj_f']-df_pop_total['scaled_int_z']
 # Drop unnecessary columns and ensure non-negative values
-df_pop_total = df_pop_total.drop(['country', 'age_group', 'adjusted_value', 'initial_value', 'difference', 'scaled_int', 'scaled_adj', 'scaled_adj_a', 'scaled_adj_u'], axis=1)
+df_pop_total = df_pop_total.drop(['country', 'age_group', 'adjusted_value', 'initial_value', 'scaled_int', 'scaled_adj', 'scaled_adj_a', 'scaled_adj_u'], axis=1)
 df_pop_total[df_pop_total < 0] = 0
 pop_total_initial_value = df_pop_total['scaled_int_value_z'].sum()
 pop_total_adjusted_value = df_pop_total['scaled_adj_value_f'].sum()
@@ -507,7 +510,7 @@ def pop_create_barfig_difference_time():
     data = df_pop_total
     fig_difference_time = px.bar(data,
                                x=df_pop_total.index,
-                               y='scaled_diff_f',
+                               y='difference',
                                title="Increase In Economic Impact (€)<br>Due To Intervention",
                                color_discrete_sequence=["green"],
                                labels={'activity': 'Activity', 'scaled_diff_f':'Minutes Per Month'})
@@ -519,12 +522,12 @@ def pop_create_barfig_combo_time():
     fig1 = go.Figure(data=[
           go.Bar(name="Before Intervention",
                 x=df_pop_total.index,
-                y=data["scaled_int_z"],
+                y=data["initial"],
                 offsetgroup=0,
                 marker=dict(color='red')),
           go.Bar(name="After Intervention",
                 x=df_pop_total.index,
-                y=data["scaled_adj_f"],
+                y=data["adjusted"],
                 offsetgroup=1,
                 marker=dict(color='blue'))
       ],
