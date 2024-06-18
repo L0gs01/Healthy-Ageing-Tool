@@ -208,7 +208,7 @@ df_total_diff_trans = df_total_diff.T
 # print(df_total_diff_trans)
 
 #display(df_final)
-
+#___________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________
 # Fetch population-related variables from the database
 popselected_var = app_tables.pop_info.search()
 pop_variable_dicts = [
@@ -360,7 +360,7 @@ data = {
 }
 df_pie_adj_timeratio = pd.DataFrame(data)
 print(df_pop_total)
-
+#____________________________________________________________________________________________________________________________________________________________________________________________________________________________________________
 # Define Anvil server callable functions
 @anvil.server.callable
 def create_barfig_initial_time():
@@ -500,7 +500,7 @@ def get_difference_value():
 @anvil.server.callable
 def get_popinfo():
     return app_tables.pop_info.search()
-
+#___________________________________________________________________________________________________________________________________________________________________________
 @anvil.server.callable
 def pop_create_barfig_difference_time():
     data = df_pop_total
