@@ -117,7 +117,7 @@ class Homepage(HomepageTemplate):
     money_val={'housing':housing,'transport':transport,'nutrition':nutrition,'clothing':clothing,'laundry':laundry,'childcare':childcare,'adultcare':adultcare,'voluntaryactivity':voluntaryactivity}
     save_clicked = alert(
       content = Individual_MoneyValue(item=money_val),
-      title = "Edit Monatary Value For Activities",
+      title = "Edit Monetary Value For Activities",
       large=True,
       buttons=[("Save", True), ("Cancel", False)],
     )

@@ -362,6 +362,7 @@ pop_time_dict = {'Type': ['Adjusted Time', 'Not Adjusted Time'],
     'Pop Int': [pop_total_int_time, pop_total_int_nottime],
     'Pop Adj': [pop_total_adj_time, pop_total_adj_nottime]}
 df_pop_time = pd.DataFrame(pop_time_dict)
+df_pop_time.rename(index={0:'Non-Market Productive Activities', 1:'All Other Activities'}, inplace=True)
 print(df_pop_time)
 print(df_pop_total)
 #____________________________________________________________________________________________________________________________________________________________________________________________________________________________________________
@@ -602,7 +603,7 @@ def pop_create_piefig_timecomp_initial():
 # Define custom colors to match the provided image
     colors = ['#0000FF', '#FF0000']  # Blue and DeepPink 
   # Create the pie chart
-    fig = go.Figure(data=[go.Pie(labels=labels, values=values, marker=dict(colors=colors))])
+    fig = go.Figure(data=[go.Pie(labels=df_pop_time.index, values=values, marker=dict(colors=colors))])
 # Update the layout for the pie chart
     fig.update_layout(title_text='Breakdown Of Time Spent <br>Before Intervention')
 # Show the pie chart
@@ -615,7 +616,7 @@ def pop_create_piefig_timecomp_adjusted():
   # Define custom colors to match the provided image
     colors = ['#0000FF', '#FF0000']  # Blue and DeepPink 
 # Create the pie chart
-    fig = go.Figure(data=[go.Pie(labels=labels, values=values ,marker=dict(colors=colors))])
+    fig = go.Figure(data=[go.Pie(labels=df_pop_time.index, values=values ,marker=dict(colors=colors))])
 # Update the layout for the pie chart
     fig.update_layout(title_text='Breakdown Of Time Spent <br>After Intervention')
 # Show the pie chart
