@@ -441,6 +441,17 @@ components:
         properties: {height: 32}
         type: Spacer
         layout_properties: {grid_position: 'OAPYQG,BBUWPX'}
+  - name: general_nav_card
+    properties: {role: outlined-card}
+    type: ColumnPanel
+    layout_properties: {grid_position: 'RFSJDM,FERIWM'}
+    components:
+    - name: outlined_button_2
+      properties: {text: Return To Homepage, role: outlined-button}
+      type: Button
+      layout_properties: {grid_position: 'MMOWRY,EZLSZS'}
+      event_bindings: {click: outlined_button_2_click}
+    event_bindings: {hide: general_nav_card_hide}
 - type: FlowPanel
   properties: {}
   name: navbar_links

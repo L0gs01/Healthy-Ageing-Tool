@@ -273,6 +273,19 @@ class Homepage(HomepageTemplate):
     if pop_difference_value_text < 0:
       pop_difference_value_text = 0
     self.pop_difference_box.content = pop_difference_value_text
+
+  def outlined_button_2_click(self, **event_args):
+    """This method is called when the button is clicked"""
+    self.homepage_buttons.visible =True
+    self.individualhome_card.visible = False 
+    self.plots_card.visable = False
+    self.populationhome_card.visible = False 
+    self.pop_plots_card.visible = False
+
+  def general_nav_card_hide(self, **event_args):
+    """This method is called when the column panel is removed from the screen"""
+    self.homepage_buttons.visible = True
+    
     
 
 
