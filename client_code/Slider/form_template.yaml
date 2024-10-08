@@ -1,26 +1,26 @@
-properties:
-- name: level
-  type: number
-  important: true
-  default_value: 1
-  allow_binding_writeback: true
-  binding_writeback_events: [change]
-  default_binding_prop: true
-- {name: slider_min, type: number, important: true}
-- {name: slider_max, type: number, important: true}
-- {name: step, type: number, important: true, default_value: 1}
-- {name: selected_value, type: string, default_value: '', important: true, allow_binding_writeback: true}
-is_package: true
-events:
-- name: change
-  default_event: true
-  parameters:
-  - {name: level, description: Slider's new value}
-  description: When the slider is moved
-custom_component: true
 components: []
 container:
-  type: HtmlTemplate
+  event_bindings: {show: form_show}
   properties:
     html: "<!-- CSS moved to theme.css under Assets -->\n<!-- You'll need to copy the Custom CSS portion to your own theme.css -->\n\n<div class=\"box\">\n  <input type=\"range\" min=\"0\" max=\"10\" step=\"1\" value=\"0\">\n</div>\n\n<script>\nfunction set_behavior(level, slider_min, slider_max, step) {\n  var slider = this.find(\"input\");\n\n  slider.on(\"input\", function() {\n    var newValue = slider.parent().find(\"input\").val();\n    anvil.call(slider, \"slider_change\", newValue);\n  })\n  \n  slider.prop({\n    \"value\": level,\n    \"min\": slider_min,\n    \"max\": slider_max,\n    \"step\": step\n  });\n}\n</script>"
-  event_bindings: {show: form_show}
+  type: HtmlTemplate
+custom_component: true
+events:
+- default_event: true
+  description: When the slider is moved
+  name: change
+  parameters:
+  - {description: Slider's new value, name: level}
+is_package: true
+properties:
+- allow_binding_writeback: true
+  binding_writeback_events: [change]
+  default_binding_prop: true
+  default_value: 1
+  important: true
+  name: level
+  type: number
+- {important: true, name: slider_min, type: number}
+- {important: true, name: slider_max, type: number}
+- {default_value: 1, important: true, name: step, type: number}
+- {allow_binding_writeback: true, default_value: '', important: true, name: selected_value, type: string}

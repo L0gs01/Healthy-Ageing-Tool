@@ -1,100 +1,100 @@
-container: {type: ColumnPanel}
 components:
-- name: outlined_card_1
-  properties: {role: outlined-card, col_widths: '{"QPZXKB":47,"MIUCPG":47,"QRDFOM":47,"YCHSHT":13,"UXMYQR":47,"TBLKQD":13,"WORWLW":10,"OLRMGA":50,"MUKJBT":10,"UWAGEJ":50}'}
-  type: ColumnPanel
-  layout_properties: {grid_position: 'FTPCUD,QEJLAL'}
-  components:
-  - name: label_5
-    properties: {text: 'Country:', align: center, role: input-prompt, bold: false}
+- components:
+  - layout_properties: {grid_position: 'YQCKBP,MUKJBT'}
+    name: label_5
+    properties: {align: center, bold: false, role: input-prompt, text: 'Country:'}
     type: Label
-    layout_properties: {grid_position: 'YQCKBP,MUKJBT'}
-  - name: pop_country_dd
-    properties:
-      items: [Europe (all), Belgium, Estonia, Finland, France, Greece, Romania, Serbia, ' United Kingdom']
-      include_placeholder: true
-    type: DropDown
+  - data_bindings:
+    - {code: 'self.item[''country'']', property: selected_value, writeback: true}
     layout_properties: {grid_position: 'YQCKBP,UWAGEJ'}
-    data_bindings:
-    - {property: selected_value, code: 'self.item[''country'']', writeback: true}
-  - name: label_1
-    properties: {text: 'Intervention Name:', align: center}
+    name: pop_country_dd
+    properties:
+      include_placeholder: true
+      items: [Europe (all), Belgium, Estonia, Finland, France, Greece, Romania, Serbia, ' United Kingdom']
+    type: DropDown
+  - layout_properties: {grid_position: 'WPCVMQ,WORWLW'}
+    name: label_1
+    properties: {align: center, text: 'Intervention Name:'}
     type: Label
-    layout_properties: {grid_position: 'WPCVMQ,WORWLW'}
-  - name: text_box_1
+  - data_bindings:
+    - {code: 'self.item[''name'']', property: text, writeback: true}
+    layout_properties: {grid_position: 'WPCVMQ,OLRMGA'}
+    name: text_box_1
     properties: {}
     type: TextBox
-    layout_properties: {grid_position: 'WPCVMQ,OLRMGA'}
-    data_bindings:
-    - {property: text, code: 'self.item[''name'']', writeback: true}
-  - name: pop_age_label
-    properties: {text: Age Range Of Group, align: center}
+  - layout_properties: {grid_position: 'FHPFXP,SLGMSX RLBQSO,ITMUHZ'}
+    name: pop_age_label
+    properties: {align: center, text: Age Range Of Group}
     type: Label
-    layout_properties: {grid_position: 'FHPFXP,SLGMSX RLBQSO,ITMUHZ'}
-  - name: pop_age_dd
-    properties:
-      items: [55-64, 65-74, 75+]
-      include_placeholder: true
-    type: DropDown
+  - data_bindings:
+    - {code: 'self.item[''age'']', property: selected_value, writeback: true}
     layout_properties: {grid_position: 'FHPFXP,SLGMSX PLWTKW,WBJVCW'}
-    data_bindings:
-    - {property: selected_value, code: 'self.item[''age'']', writeback: true}
-  - name: label_2
-    properties: {text: Before Intervention Health Status, align: center}
-    type: Label
-    layout_properties: {grid_position: 'FHPFXP,AMIWFF IGIFGU,EXLBKM'}
-  - name: pop_initial_dd
+    name: pop_age_dd
     properties:
       include_placeholder: true
-      items: [Good, Fair, Poor]
+      items: [55-64, 65-74, 75+]
     type: DropDown
+  - layout_properties: {grid_position: 'FHPFXP,AMIWFF IGIFGU,EXLBKM'}
+    name: label_2
+    properties: {align: center, text: Before Intervention Health Status}
+    type: Label
+  - data_bindings:
+    - {code: 'self.item[''initial'']', property: selected_value, writeback: true}
     layout_properties: {grid_position: 'FHPFXP,AMIWFF KBVQCP,OSRMPA'}
-    data_bindings:
-    - {property: selected_value, code: 'self.item[''initial'']', writeback: true}
-  - name: label_3
-    properties: {text: Percent Impacted, align: center}
-    type: Label
-    layout_properties: {grid_position: 'FHPFXP,CXTNST LIOOIJ,QPZXKB'}
-  - name: pop_percent_slider
-    properties: {slider_max: 100, slider_min: 0, step: 5, level: 0}
-    type: form:Slider
-    layout_properties: {grid_position: 'FHPFXP,CXTNST LNZYUI,QRDFOM'}
-    event_bindings: {change: pop_percent_slider_change}
-    data_bindings:
-    - {property: level, code: 'self.item[''percent'']', writeback: true}
-  - name: percent_label
-    properties: {text: '0', align: right}
-    type: Label
-    layout_properties: {grid_position: 'FHPFXP,CXTNST LNZYUI,YCHSHT'}
-    data_bindings:
-    - {property: text, code: 'self.item['''']', writeback: false}
-  - name: label_3_copy
-    properties: {text: Percent Success, align: center}
-    type: Label
-    layout_properties: {grid_position: 'FHPFXP,ZBZYEY ZPASIQ,MIUCPG'}
-  - name: pop_percentsuccess_slider
-    properties: {slider_max: 100, slider_min: 0, step: 5, level: 0}
-    type: form:Slider
-    layout_properties: {grid_position: 'FHPFXP,ZBZYEY YPSLUX,UXMYQR'}
-    event_bindings: {change: pop_percentsuccess_slider_change}
-    data_bindings:
-    - {property: level, code: 'self.item[''percent_s'']', writeback: true}
-  - name: percentsuccess_label
-    properties: {text: '0', align: right}
-    type: Label
-    layout_properties: {grid_position: 'FHPFXP,ZBZYEY YPSLUX,TBLKQD'}
-    data_bindings:
-    - {property: text, code: 'self.item['''']', writeback: false}
-  - name: label_4
-    properties: {text: After Intervention Health Status, align: center}
-    type: Label
-    layout_properties: {grid_position: 'FHPFXP,KALCBP'}
-  - name: pop_adjusted_dd
+    name: pop_initial_dd
     properties:
-      items: [Good, Fair, Poor]
       include_placeholder: true
+      items: [Good, Fair, Poor]
     type: DropDown
+  - layout_properties: {grid_position: 'FHPFXP,CXTNST LIOOIJ,QPZXKB'}
+    name: label_3
+    properties: {align: center, text: Percent Impacted}
+    type: Label
+  - data_bindings:
+    - {code: 'self.item[''percent'']', property: level, writeback: true}
+    event_bindings: {change: pop_percent_slider_change}
+    layout_properties: {grid_position: 'FHPFXP,CXTNST LNZYUI,QRDFOM'}
+    name: pop_percent_slider
+    properties: {level: 0, slider_max: 100, slider_min: 0, step: 5}
+    type: form:Slider
+  - data_bindings:
+    - {code: 'self.item['''']', property: text, writeback: false}
+    layout_properties: {grid_position: 'FHPFXP,CXTNST LNZYUI,YCHSHT'}
+    name: percent_label
+    properties: {align: right, text: '0'}
+    type: Label
+  - layout_properties: {grid_position: 'FHPFXP,ZBZYEY ZPASIQ,MIUCPG'}
+    name: label_3_copy
+    properties: {align: center, text: Percent Success}
+    type: Label
+  - data_bindings:
+    - {code: 'self.item[''percent_s'']', property: level, writeback: true}
+    event_bindings: {change: pop_percentsuccess_slider_change}
+    layout_properties: {grid_position: 'FHPFXP,ZBZYEY YPSLUX,UXMYQR'}
+    name: pop_percentsuccess_slider
+    properties: {level: 0, slider_max: 100, slider_min: 0, step: 5}
+    type: form:Slider
+  - data_bindings:
+    - {code: 'self.item['''']', property: text, writeback: false}
+    layout_properties: {grid_position: 'FHPFXP,ZBZYEY YPSLUX,TBLKQD'}
+    name: percentsuccess_label
+    properties: {align: right, text: '0'}
+    type: Label
+  - layout_properties: {grid_position: 'FHPFXP,KALCBP'}
+    name: label_4
+    properties: {align: center, text: After Intervention Health Status}
+    type: Label
+  - data_bindings:
+    - {code: 'self.item[''adjusted'']', property: selected_value, writeback: true}
     layout_properties: {grid_position: 'FHPFXP,KALCBP'}
-    data_bindings:
-    - {property: selected_value, code: 'self.item[''adjusted'']', writeback: true}
+    name: pop_adjusted_dd
+    properties:
+      include_placeholder: true
+      items: [Good, Fair, Poor]
+    type: DropDown
+  layout_properties: {grid_position: 'FTPCUD,QEJLAL'}
+  name: outlined_card_1
+  properties: {col_widths: '{"QPZXKB":47,"MIUCPG":47,"QRDFOM":47,"YCHSHT":13,"UXMYQR":47,"TBLKQD":13,"WORWLW":10,"OLRMGA":50,"MUKJBT":10,"UWAGEJ":50}', role: outlined-card}
+  type: ColumnPanel
+container: {type: ColumnPanel}
 is_package: true

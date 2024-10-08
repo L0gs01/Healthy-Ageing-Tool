@@ -1,7 +1,7 @@
-is_package: true
-container: {type: ColumnPanel}
 components:
-- name: population_view_selection_1
+- layout_properties: {grid_position: 'AEKQQC,SXQTZY'}
+  name: population_view_selection_1
   properties: {}
   type: form:Population_ViewSelection
-  layout_properties: {grid_position: 'AEKQQC,SXQTZY'}
+container: {type: ColumnPanel}
+is_package: true

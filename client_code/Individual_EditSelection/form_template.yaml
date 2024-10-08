@@ -1,135 +1,135 @@
-container: {type: ColumnPanel}
 components:
-- name: is_inital_card
-  properties: {role: outlined-card}
-  type: ColumnPanel
-  layout_properties: {grid_position: 'AQEYTG,IKAFBC'}
-  components:
-  - name: is_selection_title
+- components:
+  - layout_properties: {grid_position: 'TAUWTF,DIELUL'}
+    name: is_selection_title
     properties: {align: center, text: Please describe the individual}
     type: Label
-    layout_properties: {grid_position: 'TAUWTF,DIELUL'}
-  - name: individualname_label_copy
-    properties: {text: Name of person, align: center}
+  - layout_properties: {grid_position: 'YTNVOA,DJZSGP'}
+    name: individualname_label_copy
+    properties: {align: center, text: Name of person}
     type: Label
-    layout_properties: {grid_position: 'YTNVOA,DJZSGP'}
-  - name: name_textbox_copy
+  - layout_properties: {grid_position: 'YTNVOA,YPHDLY'}
+    name: name_textbox_copy
     properties: {placeholder: Please enter a name}
     type: TextBox
-    layout_properties: {grid_position: 'YTNVOA,YPHDLY'}
-  - name: age_label_copy
-    properties: {text: Age, align: center}
+  - layout_properties: {grid_position: 'WHQQXL,CHVICC'}
+    name: age_label_copy
+    properties: {align: center, text: Age}
     type: Label
-    layout_properties: {grid_position: 'WHQQXL,CHVICC'}
-  - name: age_dropdown_copy
-    properties:
-      include_placeholder: true
-      placeholder: Please Select An Option
-      items: [55-64, 65-74, 75+]
-    type: DropDown
+  - data_bindings:
+    - {code: 'self.item[''age'']', property: selected_value, writeback: true}
     layout_properties: {grid_position: 'WHQQXL,KRGWBU'}
-    data_bindings:
-    - {property: selected_value, code: 'self.item[''age'']', writeback: true}
-  - name: sex_label_copy
-    properties: {text: Sex, align: center}
-    type: Label
-    layout_properties: {grid_position: 'OMIAZA,NXCYVN'}
-  - name: sex_dropdown_copy
+    name: age_dropdown_copy
     properties:
       include_placeholder: true
+      items: [55-64, 65-74, 75+]
       placeholder: Please Select An Option
-      items: [Male, Female]
     type: DropDown
+  - layout_properties: {grid_position: 'OMIAZA,NXCYVN'}
+    name: sex_label_copy
+    properties: {align: center, text: Sex}
+    type: Label
+  - data_bindings:
+    - {code: 'self.item[''sex'']', property: selected_value, writeback: true}
     layout_properties: {grid_position: 'OMIAZA,QXVLAG'}
-    data_bindings:
-    - {property: selected_value, code: 'self.item[''sex'']', writeback: true}
-  - name: maritalstatus_label_copy
-    properties: {text: Marital Status, align: center}
-    type: Label
-    layout_properties: {grid_position: 'FVRELL,BVARWU'}
-  - name: maritalstatus_dropdown_copy
+    name: sex_dropdown_copy
     properties:
       include_placeholder: true
+      items: [Male, Female]
       placeholder: Please Select An Option
-      items: [Unmarried, Married, Other]
     type: DropDown
+  - layout_properties: {grid_position: 'FVRELL,BVARWU'}
+    name: maritalstatus_label_copy
+    properties: {align: center, text: Marital Status}
+    type: Label
+  - data_bindings:
+    - {code: 'self.item[''maritalstatus'']', property: selected_value, writeback: true}
     layout_properties: {grid_position: 'FVRELL,YRIHDH'}
-    data_bindings:
-    - {property: selected_value, code: 'self.item[''maritalstatus'']', writeback: true}
-  - name: employment_label_copy
-    properties: {text: Employment, align: center}
-    type: Label
-    layout_properties: {grid_position: 'CAAZKB,PVMYQF'}
-  - name: employment_dropdown_copy
+    name: maritalstatus_dropdown_copy
     properties:
       include_placeholder: true
+      items: [Unmarried, Married, Other]
       placeholder: Please Select An Option
-      items: [Full Time, Part Time, Not Paid]
     type: DropDown
+  - layout_properties: {grid_position: 'CAAZKB,PVMYQF'}
+    name: employment_label_copy
+    properties: {align: center, text: Employment}
+    type: Label
+  - data_bindings:
+    - {code: 'self.item[''employment'']', property: selected_value, writeback: true}
     layout_properties: {grid_position: 'CAAZKB,PZDQYA'}
-    data_bindings:
-    - {property: selected_value, code: 'self.item[''employment'']', writeback: true}
-  - name: education_label_copy
-    properties: {text: Education, align: center}
-    type: Label
-    layout_properties: {grid_position: 'CUOVJJ,TNCVID'}
-  - name: education_dropdown_copy
+    name: employment_dropdown_copy
     properties:
       include_placeholder: true
+      items: [Full Time, Part Time, Not Paid]
       placeholder: Please Select An Option
-      items: [Tertiary, Secondary, Lower Than Secondary]
     type: DropDown
+  - layout_properties: {grid_position: 'CUOVJJ,TNCVID'}
+    name: education_label_copy
+    properties: {align: center, text: Education}
+    type: Label
+  - data_bindings:
+    - {code: 'self.item[''education'']', property: selected_value, writeback: true}
     layout_properties: {grid_position: 'CUOVJJ,EGQQOQ'}
-    data_bindings:
-    - {property: selected_value, code: 'self.item[''education'']', writeback: true}
-  - name: country_label_copy
-    properties: {text: Country, align: center}
-    type: Label
-    layout_properties: {grid_position: 'ITFPLU,GMLDTP'}
-  - name: country_dropdown_copy
+    name: education_dropdown_copy
     properties:
       include_placeholder: true
+      items: [Tertiary, Secondary, Lower Than Secondary]
       placeholder: Please Select An Option
-      items: [Europe (all), Belgium, Estonia, Finland, France, Greece, Romania, Serbia, ' United Kingdom']
     type: DropDown
+  - layout_properties: {grid_position: 'ITFPLU,GMLDTP'}
+    name: country_label_copy
+    properties: {align: center, text: Country}
+    type: Label
+  - data_bindings:
+    - {code: 'self.item[''country'']', property: selected_value, writeback: true}
     layout_properties: {grid_position: 'ITFPLU,AVIBMQ'}
-    data_bindings:
-    - {property: selected_value, code: 'self.item[''country'']', writeback: true}
-- name: outlined_card_1
+    name: country_dropdown_copy
+    properties:
+      include_placeholder: true
+      items: [Europe (all), Belgium, Estonia, Finland, France, Greece, Romania, Serbia, ' United Kingdom']
+      placeholder: Please Select An Option
+    type: DropDown
+  layout_properties: {grid_position: 'AQEYTG,IKAFBC'}
+  name: is_inital_card
   properties: {role: outlined-card}
   type: ColumnPanel
-  layout_properties: {grid_position: 'EBZYGF,KNPRCP'}
-  components:
-  - name: is_newhealth
+- components:
+  - layout_properties: {grid_position: 'TKNQIP,JQKKMR'}
+    name: is_newhealth
     properties: {align: center, text: Health status}
     type: Label
-    layout_properties: {grid_position: 'TKNQIP,JQKKMR'}
-  - name: initialhealth_label_copy
-    properties: {text: Before intervention, align: center}
+  - layout_properties: {grid_position: 'DNUOSA,ZGLMUW'}
+    name: initialhealth_label_copy
+    properties: {align: center, text: Before intervention}
     type: Label
-    layout_properties: {grid_position: 'DNUOSA,ZGLMUW'}
-  - name: initialhealth_dropdown_copy
-    properties:
-      include_placeholder: true
-      placeholder: Please Select An Option
-      foreground: ''
-      border: ''
-      items: ['Good ', Fair, Poor]
-    type: DropDown
+  - data_bindings:
+    - {code: 'self.item[''initialrank'']', property: selected_value, writeback: true}
     layout_properties: {grid_position: 'DNUOSA,GOWEIP'}
-    data_bindings:
-    - {property: selected_value, code: 'self.item[''initialrank'']', writeback: true}
-  - name: adjustedrank_label_copy
-    properties: {role: null, align: center, tooltip: '', border: '', foreground: '', visible: true, text: After intervention, font_size: null, font: '', spacing_above: small, icon_align: left, spacing_below: small, italic: false, background: '', bold: false, underline: false, icon: ''}
+    name: initialhealth_dropdown_copy
+    properties:
+      border: ''
+      foreground: ''
+      include_placeholder: true
+      items: ['Good ', Fair, Poor]
+      placeholder: Please Select An Option
+    type: DropDown
+  - layout_properties: {grid_position: 'FFDENX,UEVDAI'}
+    name: adjustedrank_label_copy
+    properties: {align: center, background: '', bold: false, border: '', font: '', font_size: null, foreground: '', icon: '', icon_align: left, italic: false, role: null, spacing_above: small, spacing_below: small, text: After intervention, tooltip: '', underline: false, visible: true}
     type: Label
-    layout_properties: {grid_position: 'FFDENX,UEVDAI'}
-  - name: adjustedrank_dropdown_copy
+  - data_bindings:
+    - {code: 'self.item[''adjustedrank'']', property: selected_value, writeback: true}
+    layout_properties: {grid_position: 'FFDENX,PKQUSN'}
+    name: adjustedrank_dropdown_copy
     properties:
       include_placeholder: true
-      placeholder: Please Select An Option
       items: [Good, Fair, Poor, '']
+      placeholder: Please Select An Option
     type: DropDown
-    layout_properties: {grid_position: 'FFDENX,PKQUSN'}
-    data_bindings:
-    - {property: selected_value, code: 'self.item[''adjustedrank'']', writeback: true}
+  layout_properties: {grid_position: 'EBZYGF,KNPRCP'}
+  name: outlined_card_1
+  properties: {role: outlined-card}
+  type: ColumnPanel
+container: {type: ColumnPanel}
 is_package: true

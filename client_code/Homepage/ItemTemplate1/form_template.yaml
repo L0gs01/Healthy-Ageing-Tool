@@ -1,77 +1,77 @@
-is_package: true
-container: {type: ColumnPanel}
 components:
-- name: label_1
-  properties: {text: 'Name:', align: center}
+- layout_properties: {grid_position: 'HXMOLG,FRMNUB'}
+  name: label_1
+  properties: {align: center, text: 'Name:'}
   type: Label
-  layout_properties: {grid_position: 'HXMOLG,FRMNUB'}
-- name: text_box_1
+- data_bindings:
+  - {code: 'self.item[''name'']', property: text, writeback: true}
+  layout_properties: {grid_position: 'HXMOLG,OYHAPF'}
+  name: text_box_1
   properties: {}
   type: TextBox
-  layout_properties: {grid_position: 'HXMOLG,OYHAPF'}
-  data_bindings:
-  - {property: text, code: 'self.item[''name'']', writeback: true}
-- name: label_1_copy
-  properties: {text: 'Age:', align: center}
+- layout_properties: {grid_position: 'SXPIGA,TTSSOI'}
+  name: label_1_copy
+  properties: {align: center, text: 'Age:'}
   type: Label
-  layout_properties: {grid_position: 'SXPIGA,TTSSOI'}
-- name: drop_down_1
+- layout_properties: {grid_position: 'SXPIGA,ORZBGM'}
+  name: drop_down_1
   properties: {}
   type: DropDown
-  layout_properties: {grid_position: 'SXPIGA,ORZBGM'}
-- name: label_1_copy_8
-  properties: {text: 'Education:', align: center}
+- layout_properties: {grid_position: 'SXPIGA,ENWYNS'}
+  name: label_1_copy_8
+  properties: {align: center, text: 'Education:'}
   type: Label
-  layout_properties: {grid_position: 'SXPIGA,ENWYNS'}
-- name: drop_down_1_copy
+- layout_properties: {grid_position: 'SXPIGA,AHQMWY'}
+  name: drop_down_1_copy
   properties: {}
   type: DropDown
-  layout_properties: {grid_position: 'SXPIGA,AHQMWY'}
-- name: label_1_copy_5
-  properties: {text: 'Sex:', align: center}
+- layout_properties: {grid_position: 'DHJXXX,EHLFYM'}
+  name: label_1_copy_5
+  properties: {align: center, text: 'Sex:'}
   type: Label
-  layout_properties: {grid_position: 'DHJXXX,EHLFYM'}
-- name: drop_down_1_copy_2
+- layout_properties: {grid_position: 'DHJXXX,JOYBRV'}
+  name: drop_down_1_copy_2
   properties: {}
   type: DropDown
-  layout_properties: {grid_position: 'DHJXXX,JOYBRV'}
-- name: label_1_copy_2
-  properties: {text: 'Country:', align: center}
+- layout_properties: {grid_position: 'DHJXXX,OUOOCB'}
+  name: label_1_copy_2
+  properties: {align: center, text: 'Country:'}
   type: Label
-  layout_properties: {grid_position: 'DHJXXX,OUOOCB'}
-- name: drop_down_1_copy_3
+- layout_properties: {grid_position: 'DHJXXX,RFJLXP'}
+  name: drop_down_1_copy_3
   properties: {}
   type: DropDown
-  layout_properties: {grid_position: 'DHJXXX,RFJLXP'}
-- name: label_1_copy_4
-  properties: {text: Marital Status, align: center}
+- layout_properties: {grid_position: 'SPYDSC,GOETIN'}
+  name: label_1_copy_4
+  properties: {align: center, text: Marital Status}
   type: Label
-  layout_properties: {grid_position: 'SPYDSC,GOETIN'}
-- name: drop_down_1_copy_4
+- layout_properties: {grid_position: 'SPYDSC,ZWGETJ'}
+  name: drop_down_1_copy_4
   properties: {}
   type: DropDown
-  layout_properties: {grid_position: 'SPYDSC,ZWGETJ'}
-- name: label_1_copy_6
-  properties: {text: 'Health Status (Before):', align: center}
+- layout_properties: {grid_position: 'SPYDSC,KICZWA'}
+  name: label_1_copy_6
+  properties: {align: center, text: 'Health Status (Before):'}
   type: Label
-  layout_properties: {grid_position: 'SPYDSC,KICZWA'}
-- name: drop_down_1_copy_5
+- layout_properties: {grid_position: 'SPYDSC,AOFZQT'}
+  name: drop_down_1_copy_5
   properties: {}
   type: DropDown
-  layout_properties: {grid_position: 'SPYDSC,AOFZQT'}
-- name: label_1_copy_3
-  properties: {text: 'Employment:', align: center}
+- layout_properties: {grid_position: 'JMYAMJ,FKITZR'}
+  name: label_1_copy_3
+  properties: {align: center, text: 'Employment:'}
   type: Label
-  layout_properties: {grid_position: 'JMYAMJ,FKITZR'}
-- name: drop_down_1_copy_6
+- layout_properties: {grid_position: 'JMYAMJ,WYIHVY'}
+  name: drop_down_1_copy_6
   properties: {}
   type: DropDown
-  layout_properties: {grid_position: 'JMYAMJ,WYIHVY'}
-- name: label_1_copy_7
-  properties: {text: 'Health Status (After):', align: center}
+- layout_properties: {grid_position: 'JMYAMJ,EWJLEV'}
+  name: label_1_copy_7
+  properties: {align: center, text: 'Health Status (After):'}
   type: Label
-  layout_properties: {grid_position: 'JMYAMJ,EWJLEV'}
-- name: drop_down_1_copy_8
+- layout_properties: {grid_position: 'JMYAMJ,VNWKLT'}
+  name: drop_down_1_copy_8
   properties: {}
   type: DropDown
-  layout_properties: {grid_position: 'JMYAMJ,VNWKLT'}
+container: {type: ColumnPanel}
+is_package: true

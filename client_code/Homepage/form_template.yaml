@@ -1,459 +1,459 @@
-is_package: true
-container:
-  type: HtmlTemplate
-  properties: {html: '', visible: true}
 components:
-- type: ColumnPanel
-  properties: {col_widths: '{}'}
-  name: content_panel
-  layout_properties: {slot: default}
-  components:
-  - name: column_panel_1
-    properties: {}
-    type: ColumnPanel
-    layout_properties: {grid_position: 'RQZXKG,BXZXFZ'}
-    components:
-    - name: nav_panel
+- components:
+  - components:
+    - components:
+      - layout_properties: {grid_position: 'IMHDKS,VYRAPO'}
+        name: nav_title
+        properties: {align: center, bold: true, role: body, text: Navigation, underline: true}
+        type: Label
+      - event_bindings: {click: homepage_navbutton_click}
+        layout_properties: {grid_position: 'USOCHD,ZOQZBL'}
+        name: homepage_navbutton
+        properties: {role: outlined-button, text: Homepage}
+        type: Button
+      - event_bindings: {click: individual_navbutton_click}
+        layout_properties: {grid_position: 'USOCHD,FIUTMQ'}
+        name: individual_navbutton
+        properties: {role: outlined-button, text: Individual}
+        type: Button
+      - event_bindings: {click: population_navbutton_click}
+        layout_properties: {grid_position: 'USOCHD,XVZQGV'}
+        name: population_navbutton
+        properties: {role: outlined-button, text: Population}
+        type: Button
+      layout_properties: {grid_position: 'BXPFJA,MIRVNT'}
+      name: nav_panel
       properties: {role: tonal-card, visible: false}
       type: ColumnPanel
-      layout_properties: {grid_position: 'BXPFJA,MIRVNT'}
-      components:
-      - name: nav_title
-        properties: {bold: true, text: Navigation, underline: true, align: center, role: body}
-        type: Label
-        layout_properties: {grid_position: 'IMHDKS,VYRAPO'}
-      - name: homepage_navbutton
-        properties: {text: Homepage, role: outlined-button}
-        type: Button
-        layout_properties: {grid_position: 'USOCHD,ZOQZBL'}
-        event_bindings: {click: homepage_navbutton_click}
-      - name: individual_navbutton
-        properties: {text: Individual, role: outlined-button}
-        type: Button
-        layout_properties: {grid_position: 'USOCHD,FIUTMQ'}
-        event_bindings: {click: individual_navbutton_click}
-      - name: population_navbutton
-        properties: {text: Population, role: outlined-button}
-        type: Button
-        layout_properties: {grid_position: 'USOCHD,XVZQGV'}
-        event_bindings: {click: population_navbutton_click}
-  - name: label_1
-    properties: {text: Healthy Ageing Tool, role: title}
+    layout_properties: {grid_position: 'RQZXKG,BXZXFZ'}
+    name: column_panel_1
+    properties: {}
+    type: ColumnPanel
+  - layout_properties: {grid_position: 'XAXIEZ,PLEVDJ'}
+    name: label_1
+    properties: {role: title, text: Healthy Ageing Tool}
     type: Label
-    layout_properties: {grid_position: 'XAXIEZ,PLEVDJ'}
-  - name: homepage_buttons
+  - components:
+    - event_bindings: {click: is_button_select_click}
+      layout_properties: {grid_position: 'OKJPYK,AFUQZS'}
+      name: is_button_select
+      properties: {role: filled-button, text: Individual}
+      type: Button
+    - event_bindings: {click: pop_button_select_click}
+      layout_properties: {grid_position: 'OKJPYK,QDZCHI'}
+      name: pop_button_select
+      properties: {role: filled-button, text: Population}
+      type: Button
+    event_bindings: {}
+    layout_properties: {grid_position: 'VMJIJE,PYLYIE'}
+    name: homepage_buttons
     properties: {role: outlined-card}
     type: ColumnPanel
-    layout_properties: {grid_position: 'VMJIJE,PYLYIE'}
-    event_bindings: {}
-    components:
-    - name: is_button_select
-      properties: {text: Individual, role: filled-button}
-      type: Button
-      layout_properties: {grid_position: 'OKJPYK,AFUQZS'}
-      event_bindings: {click: is_button_select_click}
-    - name: pop_button_select
-      properties: {text: Population, role: filled-button}
-      type: Button
-      layout_properties: {grid_position: 'OKJPYK,QDZCHI'}
-      event_bindings: {click: pop_button_select_click}
-  - name: individualhome_card
-    properties: {role: outlined-card, visible: false, col_widths: '{}'}
-    type: ColumnPanel
-    layout_properties: {grid_position: 'QZWGGA,JXUAQQ'}
-    event_bindings: {}
-    components:
-    - name: variables_panel
-      properties: {role: elevated-card, col_widths: '{"YZCOUC":15,"PLIZHB":5,"PJOXAY":10,"OEGDXQ":10,"PFMDHU":20,"DMUJFE":15,"LRTAMH":5,"NUUEJY":10,"VKKPEW":10,"ZIHUVO":10,"CBUTHH":10,"QMHRAS":15,"DRMJRN":5,"QIAJVT":10,"OQGLBJ":10,"WNVCAI":10,"UJMHLB":10}', spacing_above: small, background: '', wrap_on: mobile, col_spacing: medium, foreground: '', spacing_below: small, visible: true, border: '', tooltip: ''}
-      type: ColumnPanel
+  - components:
+    - components:
+      - layout_properties: {grid_position: 'IQZGOL,QMHRAS'}
+        name: label_1_copy
+        properties: {align: right, text: 'Name:'}
+        type: Label
+      - data_bindings:
+        - {code: 'self.item[''name'']', property: text}
+        layout_properties: {grid_position: 'IQZGOL,DRMJRN'}
+        name: name_label
+        properties: {text: ''}
+        type: Label
+      - layout_properties: {grid_position: 'IQZGOL,QIAJVT'}
+        name: label_4
+        properties: {align: right, text: 'Age:'}
+        type: Label
+      - data_bindings:
+        - {code: 'self.item[''age'']', property: text}
+        layout_properties: {grid_position: 'IQZGOL,OQGLBJ'}
+        name: age_label
+        properties: {}
+        type: Label
+      - layout_properties: {grid_position: 'IQZGOL,WNVCAI'}
+        name: label_8
+        properties: {align: right, text: 'Employment:'}
+        type: Label
+      - data_bindings:
+        - {code: 'self.item[''employment'']', property: text}
+        layout_properties: {grid_position: 'IQZGOL,UJMHLB'}
+        name: employment_label
+        properties: {}
+        type: Label
+      - layout_properties: {grid_position: 'OUXOHW,DMUJFE'}
+        name: label_2
+        properties: {align: right, text: 'Health Quality (Before):'}
+        type: Label
+      - data_bindings:
+        - {code: 'self.item[''initalrank'']', property: text}
+        layout_properties: {grid_position: 'OUXOHW,LRTAMH'}
+        name: initialrank_label
+        properties: {}
+        type: Label
+      - layout_properties: {grid_position: 'OUXOHW,NUUEJY'}
+        name: label_5
+        properties: {align: right, text: 'Sex:'}
+        type: Label
+      - data_bindings:
+        - {code: 'self.item[''sex'']', property: text}
+        layout_properties: {grid_position: 'OUXOHW,VKKPEW'}
+        name: sex_label
+        properties: {}
+        type: Label
+      - layout_properties: {grid_position: 'OUXOHW,ZIHUVO'}
+        name: label_7
+        properties: {align: right, text: 'Education:'}
+        type: Label
+      - data_bindings:
+        - {code: 'self.item[''education'']', property: text}
+        layout_properties: {grid_position: 'OUXOHW,CBUTHH'}
+        name: education_label
+        properties: {}
+        type: Label
+      - layout_properties: {grid_position: 'IBWSTW,YZCOUC'}
+        name: label_3
+        properties: {align: right, text: 'Health Quality (After) :'}
+        type: Label
+      - data_bindings:
+        - {code: 'self.item[''adjustedrank'']', property: text}
+        layout_properties: {grid_position: 'IBWSTW,PLIZHB'}
+        name: adjustedrank_label
+        properties: {}
+        type: Label
+      - layout_properties: {grid_position: 'IBWSTW,PJOXAY'}
+        name: label_6
+        properties: {align: right, text: 'Martial Status:'}
+        type: Label
+      - data_bindings:
+        - {code: 'self.item[''maritalstatus'']', property: text}
+        layout_properties: {grid_position: 'IBWSTW,OEGDXQ'}
+        name: maritalstatus_label
+        properties: {}
+        type: Label
+      - layout_properties: {grid_position: 'IBWSTW,PFMDHU TQFUUB,KIUIET'}
+        name: label_9
+        properties: {align: right, role: null, text: 'Country:'}
+        type: Label
+      - data_bindings:
+        - {code: 'self.item[''country'']', property: text}
+        layout_properties: {grid_position: 'IBWSTW,PFMDHU TQFUUB,DUZCTK'}
+        name: country_label
+        properties: {}
+        type: Label
       layout_properties:
         col_widths: {}
         grid_position: NFENRC,XBEQAK
-      components:
-      - name: label_1_copy
-        properties: {text: 'Name:', align: right}
-        type: Label
-        layout_properties: {grid_position: 'IQZGOL,QMHRAS'}
-      - name: name_label
-        properties: {text: ''}
-        type: Label
-        layout_properties: {grid_position: 'IQZGOL,DRMJRN'}
-        data_bindings:
-        - {property: text, code: 'self.item[''name'']'}
-      - name: label_4
-        properties: {text: 'Age:', align: right}
-        type: Label
-        layout_properties: {grid_position: 'IQZGOL,QIAJVT'}
-      - name: age_label
-        properties: {}
-        type: Label
-        layout_properties: {grid_position: 'IQZGOL,OQGLBJ'}
-        data_bindings:
-        - {property: text, code: 'self.item[''age'']'}
-      - name: label_8
-        properties: {text: 'Employment:', align: right}
-        type: Label
-        layout_properties: {grid_position: 'IQZGOL,WNVCAI'}
-      - name: employment_label
-        properties: {}
-        type: Label
-        layout_properties: {grid_position: 'IQZGOL,UJMHLB'}
-        data_bindings:
-        - {property: text, code: 'self.item[''employment'']'}
-      - name: label_2
-        properties: {text: 'Health Quality (Before):', align: right}
-        type: Label
-        layout_properties: {grid_position: 'OUXOHW,DMUJFE'}
-      - name: initialrank_label
-        properties: {}
-        type: Label
-        layout_properties: {grid_position: 'OUXOHW,LRTAMH'}
-        data_bindings:
-        - {property: text, code: 'self.item[''initalrank'']'}
-      - name: label_5
-        properties: {text: 'Sex:', align: right}
-        type: Label
-        layout_properties: {grid_position: 'OUXOHW,NUUEJY'}
-      - name: sex_label
-        properties: {}
-        type: Label
-        layout_properties: {grid_position: 'OUXOHW,VKKPEW'}
-        data_bindings:
-        - {property: text, code: 'self.item[''sex'']'}
-      - name: label_7
-        properties: {text: 'Education:', align: right}
-        type: Label
-        layout_properties: {grid_position: 'OUXOHW,ZIHUVO'}
-      - name: education_label
-        properties: {}
-        type: Label
-        layout_properties: {grid_position: 'OUXOHW,CBUTHH'}
-        data_bindings:
-        - {property: text, code: 'self.item[''education'']'}
-      - name: label_3
-        properties: {text: 'Health Quality (After) :', align: right}
-        type: Label
-        layout_properties: {grid_position: 'IBWSTW,YZCOUC'}
-      - name: adjustedrank_label
-        properties: {}
-        type: Label
-        layout_properties: {grid_position: 'IBWSTW,PLIZHB'}
-        data_bindings:
-        - {property: text, code: 'self.item[''adjustedrank'']'}
-      - name: label_6
-        properties: {text: 'Martial Status:', align: right}
-        type: Label
-        layout_properties: {grid_position: 'IBWSTW,PJOXAY'}
-      - name: maritalstatus_label
-        properties: {}
-        type: Label
-        layout_properties: {grid_position: 'IBWSTW,OEGDXQ'}
-        data_bindings:
-        - {property: text, code: 'self.item[''maritalstatus'']'}
-      - name: label_9
-        properties: {text: 'Country:', role: null, align: right}
-        type: Label
-        layout_properties: {grid_position: 'IBWSTW,PFMDHU TQFUUB,KIUIET'}
-      - name: country_label
-        properties: {}
-        type: Label
-        layout_properties: {grid_position: 'IBWSTW,PFMDHU TQFUUB,DUZCTK'}
-        data_bindings:
-        - {property: text, code: 'self.item[''country'']'}
-    - name: is_edit_button
-      properties: {text: Edit Individual Characteristics, role: filled-button}
-      type: Button
-      layout_properties: {grid_position: 'LXDSPI,HJLRDN'}
-      event_bindings: {click: is_edit_button_click}
-    - name: is_money_button
-      properties: {text: Set Hourly Rates By Activity, role: filled-button}
-      type: Button
-      layout_properties: {grid_position: 'LXDSPI,ELEMMH'}
-      event_bindings: {click: is_money_button_click}
-    - name: button_1
-      properties: {text: Run Simulator, role: outlined-button}
-      type: Button
-      layout_properties: {grid_position: 'LXDSPI,ORVQTR'}
-      event_bindings: {click: button_1_click}
-  - name: plots_card
-    properties: {role: outlined-card, visible: false, col_widths: '{}'}
-    type: ColumnPanel
-    layout_properties: {grid_position: 'MXAUTD,VSVNPB'}
-    components:
-    - name: combo_bar_time
-      properties: {}
-      type: Plot
-      layout_properties: {grid_position: 'UKEJML,DZGVUV'}
-      event_bindings: {click: combo_bar_time_click}
-    - name: difference_time_bar
-      properties: {}
-      type: Plot
-      layout_properties: {grid_position: 'UKEJML,FZTLJA'}
-    - name: time_pie
-      properties: {}
-      type: Plot
-      layout_properties: {grid_position: ',KUMEWD'}
-    - name: difference_time_pie
-      properties: {}
-      type: Plot
-      layout_properties: {grid_position: ',LQBUOL'}
-    - name: time_comparison_pie_initial
-      properties: {}
-      type: Plot
-      layout_properties: {grid_position: 'SHHZIA,WOODFM'}
-    - name: time_comparison_pie_adjusted
-      properties: {}
-      type: Plot
-      layout_properties: {grid_position: 'SHHZIA,DTKUUK'}
-    - name: outlined_card_2
-      properties: {role: outlined-card}
+      name: variables_panel
+      properties: {background: '', border: '', col_spacing: medium, col_widths: '{"YZCOUC":15,"PLIZHB":5,"PJOXAY":10,"OEGDXQ":10,"PFMDHU":20,"DMUJFE":15,"LRTAMH":5,"NUUEJY":10,"VKKPEW":10,"ZIHUVO":10,"CBUTHH":10,"QMHRAS":15,"DRMJRN":5,"QIAJVT":10,"OQGLBJ":10,"WNVCAI":10,"UJMHLB":10}', foreground: '', role: elevated-card, spacing_above: small, spacing_below: small, tooltip: '', visible: true, wrap_on: mobile}
       type: ColumnPanel
-      layout_properties: {grid_position: 'FNMEYO,ZTLDZM'}
-      components:
-      - name: richtext_sentence_p1
+    - event_bindings: {click: is_edit_button_click}
+      layout_properties: {grid_position: 'LXDSPI,HJLRDN'}
+      name: is_edit_button
+      properties: {role: filled-button, text: Edit Individual Characteristics}
+      type: Button
+    - event_bindings: {click: is_money_button_click}
+      layout_properties: {grid_position: 'LXDSPI,ELEMMH'}
+      name: is_money_button
+      properties: {role: filled-button, text: Set Hourly Rates By Activity}
+      type: Button
+    - event_bindings: {click: button_1_click}
+      layout_properties: {grid_position: 'LXDSPI,ORVQTR'}
+      name: button_1
+      properties: {role: outlined-button, text: Run Simulator}
+      type: Button
+    event_bindings: {}
+    layout_properties: {grid_position: 'QZWGGA,JXUAQQ'}
+    name: individualhome_card
+    properties: {col_widths: '{}', role: outlined-card, visible: false}
+    type: ColumnPanel
+  - components:
+    - event_bindings: {click: combo_bar_time_click}
+      layout_properties: {grid_position: 'UKEJML,DZGVUV'}
+      name: combo_bar_time
+      properties: {}
+      type: Plot
+    - layout_properties: {grid_position: 'UKEJML,FZTLJA'}
+      name: difference_time_bar
+      properties: {}
+      type: Plot
+    - layout_properties: {grid_position: ',KUMEWD'}
+      name: time_pie
+      properties: {}
+      type: Plot
+    - layout_properties: {grid_position: ',LQBUOL'}
+      name: difference_time_pie
+      properties: {}
+      type: Plot
+    - layout_properties: {grid_position: 'SHHZIA,WOODFM'}
+      name: time_comparison_pie_initial
+      properties: {}
+      type: Plot
+    - layout_properties: {grid_position: 'SHHZIA,DTKUUK'}
+      name: time_comparison_pie_adjusted
+      properties: {}
+      type: Plot
+    - components:
+      - components:
+        - layout_properties: {slot: name_1}
+          name: name_1
+          properties: {}
+          type: RichText
+        - layout_properties: {slot: name_2}
+          name: name_2
+          properties: {}
+          type: RichText
+        - layout_properties: {slot: initial_rank_1}
+          name: initial_rank1
+          properties: {}
+          type: RichText
+        - layout_properties: {slot: initial_rank_2}
+          name: initial_rank2
+          properties: {}
+          type: RichText
+        - layout_properties: {slot: initial_value}
+          name: initial_value
+          properties: {}
+          type: RichText
+        - layout_properties: {slot: adjusted_rank1}
+          name: adjusted_rank1
+          properties: {}
+          type: RichText
+        - layout_properties: {slot: adjusted_rank2}
+          name: adjusted_rank2
+          properties: {}
+          type: RichText
+        - layout_properties: {slot: name_3}
+          name: name_3
+          properties: {}
+          type: RichText
+        - layout_properties: {slot: adjusted_value}
+          name: adjusted_value
+          properties: {}
+          type: RichText
+        - layout_properties: {slot: difference_value}
+          name: difference_value1
+          properties: {}
+          type: RichText
+        - layout_properties: {slot: name}
+          name: name_4
+          properties: {}
+          type: RichText
+        layout_properties: {grid_position: 'XKHVTQ,LHFYMF'}
+        name: richtext_sentence_p1
         properties: {content: 'The annual value of non-market productive activities when {name_1}''s health is {initial_rank_1} is £{initial_value} (in real 2015 GBP). The annual value of non-market productive activities when {name_2}''s health is {adjusted_rank1} is £{adjusted_value} (in real 2015 GBP).  The value of health attributable to changes in time spent on non-market productive activities for {name_3}''s when {name}''s health changes from {initial_rank_2} to {adjusted_rank2} is £{difference_value} (in real 2015 GBP).'}
         type: RichText
-        layout_properties: {grid_position: 'XKHVTQ,LHFYMF'}
-        components:
-        - name: name_1
-          properties: {}
-          type: RichText
-          layout_properties: {slot: name_1}
-        - name: name_2
-          properties: {}
-          type: RichText
-          layout_properties: {slot: name_2}
-        - name: initial_rank1
-          properties: {}
-          type: RichText
-          layout_properties: {slot: initial_rank_1}
-        - name: initial_rank2
-          properties: {}
-          type: RichText
-          layout_properties: {slot: initial_rank_2}
-        - name: initial_value
-          properties: {}
-          type: RichText
-          layout_properties: {slot: initial_value}
-        - name: adjusted_rank1
-          properties: {}
-          type: RichText
-          layout_properties: {slot: adjusted_rank1}
-        - name: adjusted_rank2
-          properties: {}
-          type: RichText
-          layout_properties: {slot: adjusted_rank2}
-        - name: name_3
-          properties: {}
-          type: RichText
-          layout_properties: {slot: name_3}
-        - name: adjusted_value
-          properties: {}
-          type: RichText
-          layout_properties: {slot: adjusted_value}
-        - name: difference_value1
-          properties: {}
-          type: RichText
-          layout_properties: {slot: difference_value}
-        - name: name_4
-          properties: {}
-          type: RichText
-          layout_properties: {slot: name}
-    - name: outlined_card_1
+      layout_properties: {grid_position: 'FNMEYO,ZTLDZM'}
+      name: outlined_card_2
       properties: {role: outlined-card}
       type: ColumnPanel
-      components:
-      - name: label_10
-        properties: {text: Before Intervention, role: input-prompt, align: center}
+    - components:
+      - layout_properties: {grid_position: 'OFTFXY,WJDDSM'}
+        name: label_10
+        properties: {align: center, role: input-prompt, text: Before Intervention}
         type: Label
-        layout_properties: {grid_position: 'OFTFXY,WJDDSM'}
-      - name: rich_text_1
-        properties: {content: £, align: right}
+      - layout_properties: {grid_position: 'OAPYQG,WMQXFQ'}
+        name: rich_text_1
+        properties: {align: right, content: £}
         type: RichText
-        layout_properties: {grid_position: 'OAPYQG,WMQXFQ'}
-      - name: initial_box
-        properties: {content: ' {something}', role: null, align: center}
+      - layout_properties: {grid_position: 'OAPYQG,PUJAOY'}
+        name: initial_box
+        properties: {align: center, content: ' {something}', role: null}
         type: RichText
-        layout_properties: {grid_position: 'OAPYQG,PUJAOY'}
-      - name: spacer_1_copy_2
+      - layout_properties: {grid_position: 'OAPYQG,IILQZT'}
+        name: spacer_1_copy_2
         properties: {height: 32}
         type: Spacer
-        layout_properties: {grid_position: 'OAPYQG,IILQZT'}
       layout_properties: {grid_position: 'FOZIPL,VSBLKC'}
-    - name: outlined_card_1_copy
+      name: outlined_card_1
       properties: {role: outlined-card}
       type: ColumnPanel
+    - components:
+      - layout_properties: {grid_position: 'OFTFXY,WJDDSM'}
+        name: label_10_copy
+        properties: {align: center, role: input-prompt, text: After Intervention}
+        type: Label
+      - layout_properties: {grid_position: 'OAPYQG,ZQNKFQ'}
+        name: rich_text_2
+        properties: {align: right, content: £}
+        type: RichText
+      - layout_properties: {grid_position: 'OAPYQG,PUJAOY'}
+        name: adjusted_box
+        properties: {align: center, content: '{adjusted}', role: null}
+        type: RichText
+      - layout_properties: {grid_position: 'OAPYQG,ONXWNV'}
+        name: spacer_1_copy
+        properties: {height: 32}
+        type: Spacer
       layout_properties: {grid_position: 'FOZIPL,PVEWXU'}
-      components:
-      - name: label_10_copy
-        properties: {text: After Intervention, role: input-prompt, align: center}
-        type: Label
-        layout_properties: {grid_position: 'OFTFXY,WJDDSM'}
-      - name: rich_text_2
-        properties: {align: right, content: £}
-        type: RichText
-        layout_properties: {grid_position: 'OAPYQG,ZQNKFQ'}
-      - name: adjusted_box
-        properties: {content: '{adjusted}', role: null, align: center}
-        type: RichText
-        layout_properties: {grid_position: 'OAPYQG,PUJAOY'}
-      - name: spacer_1_copy
-        properties: {height: 32}
-        type: Spacer
-        layout_properties: {grid_position: 'OAPYQG,ONXWNV'}
-    - name: outlined_card_1_copy_2
+      name: outlined_card_1_copy
       properties: {role: outlined-card}
       type: ColumnPanel
-      layout_properties: {grid_position: 'FOZIPL,BGJWDL'}
-      components:
-      - name: label_10_copy_2
-        properties: {text: Value Of Change In Health Status, role: input-prompt, align: center}
+    - components:
+      - layout_properties: {grid_position: 'OFTFXY,WJDDSM'}
+        name: label_10_copy_2
+        properties: {align: center, role: input-prompt, text: Value Of Change In Health Status}
         type: Label
-        layout_properties: {grid_position: 'OFTFXY,WJDDSM'}
-      - name: rich_text_3
+      - layout_properties: {grid_position: 'OAPYQG,KDVNNK'}
+        name: rich_text_3
         properties: {align: right, content: £}
         type: RichText
-        layout_properties: {grid_position: 'OAPYQG,KDVNNK'}
-      - name: difference_box
-        properties: {content: '{difference}', role: null, align: center}
+      - layout_properties: {grid_position: 'OAPYQG,PUJAOY'}
+        name: difference_box
+        properties: {align: center, content: '{difference}', role: null}
         type: RichText
-        layout_properties: {grid_position: 'OAPYQG,PUJAOY'}
-      - name: spacer_1
+      - layout_properties: {grid_position: 'OAPYQG,BBUWPX'}
+        name: spacer_1
         properties: {height: 32}
         type: Spacer
-        layout_properties: {grid_position: 'OAPYQG,BBUWPX'}
-  - name: populationhome_card
-    properties: {role: outlined-card, visible: false}
+      layout_properties: {grid_position: 'FOZIPL,BGJWDL'}
+      name: outlined_card_1_copy_2
+      properties: {role: outlined-card}
+      type: ColumnPanel
+    layout_properties: {grid_position: 'MXAUTD,VSVNPB'}
+    name: plots_card
+    properties: {col_widths: '{}', role: outlined-card, visible: false}
     type: ColumnPanel
-    layout_properties: {grid_position: 'ARAECF,DAGFAS'}
-    components:
-    - name: popinfo_panel
+  - components:
+    - layout_properties: {grid_position: 'VQJZOR,PYEYMB'}
+      name: popinfo_panel
       properties: {item_template: Population_ViewSelection}
       type: RepeatingPanel
-      layout_properties: {grid_position: 'VQJZOR,PYEYMB'}
-    - name: pop_add_button
-      properties: {text: Add Group, role: outlined-button, visible: false}
-      type: Button
+    - event_bindings: {click: pop_add_button_click}
       layout_properties: {grid_position: 'DNQXDS,MLKMKK'}
-      event_bindings: {click: pop_add_button_click}
-    - name: outlined_button_1
-      properties: {text: Run Simulator, role: outlined-button}
+      name: pop_add_button
+      properties: {role: outlined-button, text: Add Group, visible: false}
       type: Button
+    - event_bindings: {click: outlined_button_1_click}
       layout_properties: {grid_position: 'DNQXDS,EQCHHW'}
-      event_bindings: {click: outlined_button_1_click}
-  - name: pop_plots_card
-    properties: {role: outlined-card, visible: false, col_widths: '{"WKLMBB":30,"PQEHUN":30,"EMARTO":20,"ROYWDT":20,"KEKMYI":20}'}
+      name: outlined_button_1
+      properties: {role: outlined-button, text: Run Simulator}
+      type: Button
+    layout_properties: {grid_position: 'ARAECF,DAGFAS'}
+    name: populationhome_card
+    properties: {role: outlined-card, visible: false}
     type: ColumnPanel
-    layout_properties: {grid_position: 'PTJVSR,HGVFSR'}
-    components:
-    - name: pop_stacked_bar
+  - components:
+    - layout_properties: {grid_position: 'MRFXVQ,WKLMBB'}
+      name: pop_stacked_bar
       properties: {}
       type: Plot
-      layout_properties: {grid_position: 'MRFXVQ,WKLMBB'}
-    - name: pop_dif_bar
+    - layout_properties: {grid_position: 'MRFXVQ,PQEHUN'}
+      name: pop_dif_bar
       properties: {}
       type: Plot
-      layout_properties: {grid_position: 'MRFXVQ,PQEHUN'}
-    - name: pop_int_bar
+    - layout_properties: {grid_position: 'LCTEGJ,HLTNLF'}
+      name: pop_int_bar
       properties: {visible: false}
       type: Plot
-      layout_properties: {grid_position: 'LCTEGJ,HLTNLF'}
-    - name: pop_adj_bar
+    - layout_properties: {grid_position: 'LCTEGJ,JMHQBW'}
+      name: pop_adj_bar
       properties: {visible: false}
       type: Plot
-      layout_properties: {grid_position: 'LCTEGJ,JMHQBW'}
-    - name: pop_stacked_pie
+    - layout_properties: {grid_position: 'PTVYHY,DNPRFN'}
+      name: pop_stacked_pie
       properties: {}
       type: Plot
-      layout_properties: {grid_position: 'PTVYHY,DNPRFN'}
-    - name: pop_difference_pie
+    - layout_properties: {grid_position: 'PTVYHY,AEPKKI'}
+      name: pop_difference_pie
       properties: {}
       type: Plot
-      layout_properties: {grid_position: 'PTVYHY,AEPKKI'}
-    - name: pop_intyear_pie
+    - layout_properties: {grid_position: 'IRHMQD,JXQFKM'}
+      name: pop_intyear_pie
       properties: {}
       type: Plot
-      layout_properties: {grid_position: 'IRHMQD,JXQFKM'}
-    - name: pop_adjyear_pie
+    - layout_properties: {grid_position: 'IRHMQD,CESGMR'}
+      name: pop_adjyear_pie
       properties: {}
       type: Plot
-      layout_properties: {grid_position: 'IRHMQD,CESGMR'}
-    - name: outlined_card_1_copy_3
-      properties: {role: outlined-card}
-      type: ColumnPanel
+    - components:
+      - layout_properties: {grid_position: 'OFTFXY,WJDDSM'}
+        name: label_10_copy_3
+        properties: {align: center, role: input-prompt, text: Before Intervention}
+        type: Label
+      - layout_properties: {grid_position: 'OAPYQG,WMQXFQ'}
+        name: rich_text_1_copy
+        properties: {align: right, content: £}
+        type: RichText
+      - layout_properties: {grid_position: 'OAPYQG,PUJAOY'}
+        name: pop_initial_box
+        properties: {align: center, content: ' {something}', role: null}
+        type: RichText
+      - layout_properties: {grid_position: 'OAPYQG,IILQZT'}
+        name: spacer_1_copy_2_copy
+        properties: {height: 32}
+        type: Spacer
       layout_properties: {grid_position: 'BYHPDU,EMARTO'}
-      components:
-      - name: label_10_copy_3
-        properties: {text: Before Intervention, role: input-prompt, align: center}
-        type: Label
-        layout_properties: {grid_position: 'OFTFXY,WJDDSM'}
-      - name: rich_text_1_copy
-        properties: {content: £, align: right}
-        type: RichText
-        layout_properties: {grid_position: 'OAPYQG,WMQXFQ'}
-      - name: pop_initial_box
-        properties: {content: ' {something}', role: null, align: center}
-        type: RichText
-        layout_properties: {grid_position: 'OAPYQG,PUJAOY'}
-      - name: spacer_1_copy_2_copy
-        properties: {height: 32}
-        type: Spacer
-        layout_properties: {grid_position: 'OAPYQG,IILQZT'}
-    - name: outlined_card_1_copy_copy
+      name: outlined_card_1_copy_3
       properties: {role: outlined-card}
       type: ColumnPanel
+    - components:
+      - layout_properties: {grid_position: 'OFTFXY,WJDDSM'}
+        name: label_10_copy_copy
+        properties: {align: center, role: input-prompt, text: After Intervention}
+        type: Label
+      - layout_properties: {grid_position: 'OAPYQG,ZQNKFQ'}
+        name: rich_text_2_copy
+        properties: {align: right, content: £}
+        type: RichText
+      - layout_properties: {grid_position: 'OAPYQG,PUJAOY'}
+        name: pop_adjusted_box
+        properties: {align: center, content: '{adjusted}', role: null}
+        type: RichText
+      - layout_properties: {grid_position: 'OAPYQG,ONXWNV'}
+        name: spacer_1_copy_copy
+        properties: {height: 32}
+        type: Spacer
       layout_properties: {grid_position: 'BYHPDU,ROYWDT'}
-      components:
-      - name: label_10_copy_copy
-        properties: {text: After Intervention, role: input-prompt, align: center}
-        type: Label
-        layout_properties: {grid_position: 'OFTFXY,WJDDSM'}
-      - name: rich_text_2_copy
-        properties: {align: right, content: £}
-        type: RichText
-        layout_properties: {grid_position: 'OAPYQG,ZQNKFQ'}
-      - name: pop_adjusted_box
-        properties: {content: '{adjusted}', role: null, align: center}
-        type: RichText
-        layout_properties: {grid_position: 'OAPYQG,PUJAOY'}
-      - name: spacer_1_copy_copy
-        properties: {height: 32}
-        type: Spacer
-        layout_properties: {grid_position: 'OAPYQG,ONXWNV'}
-    - name: outlined_card_1_copy_2_copy
+      name: outlined_card_1_copy_copy
       properties: {role: outlined-card}
       type: ColumnPanel
-      layout_properties: {grid_position: 'BYHPDU,KEKMYI'}
-      components:
-      - name: label_10_copy_2_copy
-        properties: {text: Value Of Change In Health Status, role: input-prompt, align: center}
+    - components:
+      - layout_properties: {grid_position: 'OFTFXY,WJDDSM'}
+        name: label_10_copy_2_copy
+        properties: {align: center, role: input-prompt, text: Value Of Change In Health Status}
         type: Label
-        layout_properties: {grid_position: 'OFTFXY,WJDDSM'}
-      - name: rich_text_3_copy
+      - layout_properties: {grid_position: 'OAPYQG,KDVNNK'}
+        name: rich_text_3_copy
         properties: {align: right, content: £}
         type: RichText
-        layout_properties: {grid_position: 'OAPYQG,KDVNNK'}
-      - name: pop_difference_box
-        properties: {content: '{difference}', role: null, align: center}
+      - layout_properties: {grid_position: 'OAPYQG,PUJAOY'}
+        name: pop_difference_box
+        properties: {align: center, content: '{difference}', role: null}
         type: RichText
-        layout_properties: {grid_position: 'OAPYQG,PUJAOY'}
-      - name: spacer_1_copy_3
+      - layout_properties: {grid_position: 'OAPYQG,BBUWPX'}
+        name: spacer_1_copy_3
         properties: {height: 32}
         type: Spacer
-        layout_properties: {grid_position: 'OAPYQG,BBUWPX'}
-  - name: general_nav_card
+      layout_properties: {grid_position: 'BYHPDU,KEKMYI'}
+      name: outlined_card_1_copy_2_copy
+      properties: {role: outlined-card}
+      type: ColumnPanel
+    layout_properties: {grid_position: 'PTJVSR,HGVFSR'}
+    name: pop_plots_card
+    properties: {col_widths: '{"WKLMBB":30,"PQEHUN":30,"EMARTO":20,"ROYWDT":20,"KEKMYI":20}', role: outlined-card, visible: false}
+    type: ColumnPanel
+  - components:
+    - event_bindings: {click: outlined_button_2_click}
+      layout_properties: {grid_position: 'MMOWRY,EZLSZS'}
+      name: outlined_button_2
+      properties: {role: outlined-button, text: Return To Homepage}
+      type: Button
+    event_bindings: {hide: general_nav_card_hide}
+    layout_properties: {grid_position: 'RFSJDM,FERIWM'}
+    name: general_nav_card
     properties: {role: outlined-card}
     type: ColumnPanel
-    layout_properties: {grid_position: 'RFSJDM,FERIWM'}
-    components:
-    - name: outlined_button_2
-      properties: {text: Return To Homepage, role: outlined-button}
-      type: Button
-      layout_properties: {grid_position: 'MMOWRY,EZLSZS'}
-      event_bindings: {click: outlined_button_2_click}
-    event_bindings: {hide: general_nav_card_hide}
-- type: FlowPanel
-  properties: {}
-  name: navbar_links
+  layout_properties: {slot: default}
+  name: content_panel
+  properties: {col_widths: '{}'}
+  type: ColumnPanel
+- components: []
   layout_properties: {slot: nav-right}
-  components: []
+  name: navbar_links
+  properties: {}
+  type: FlowPanel
+container:
+  properties: {html: '', visible: true}
+  type: HtmlTemplate
+is_package: true

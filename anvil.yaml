@@ -1,117 +1,117 @@
-dependencies: []
-services:
-- source: /runtime/services/tables.yml
-  client_config: {}
-  server_config: {}
-- source: /runtime/services/anvil/files.yml
-  client_config: {}
-  server_config: {file_table: files}
-startup: {type: form, module: Homepage}
-package_name: Adjusted_Values_Tool
 allow_embedding: false
-name: Adjusted Values Tool
-runtime_options: {version: 2, client_version: '3', server_version: python3-full, server_spec: null}
-startup_form: null
 db_schema:
   files:
     client: none
-    server: full
     columns:
-    - name: path
-      admin_ui: {order: 0, width: 200}
+    - admin_ui: {order: 0, width: 200}
+      name: path
       type: string
-    - name: file
-      admin_ui: {order: 1, width: 200}
+    - admin_ui: {order: 1, width: 200}
+      name: file
       type: media
-    - name: file_version
-      admin_ui: {order: 2, width: 200}
+    - admin_ui: {order: 2, width: 200}
+      name: file_version
       type: string
+    server: full
     title: Files
   moneyvalues:
     client: full
-    server: full
     columns:
-    - name: housing
-      admin_ui: {width: 200, order: 0}
+    - admin_ui: {order: 0, width: 200}
+      name: housing
       type: string
-    - name: transport
-      admin_ui: {width: 200, order: 1}
+    - admin_ui: {order: 1, width: 200}
+      name: transport
       type: string
-    - name: nutrition
-      admin_ui: {width: 200, order: 2}
+    - admin_ui: {order: 2, width: 200}
+      name: nutrition
       type: string
-    - name: clothing
-      admin_ui: {width: 200, order: 3}
+    - admin_ui: {order: 3, width: 200}
+      name: clothing
       type: string
-    - name: laundry
-      admin_ui: {width: 200, order: 4}
+    - admin_ui: {order: 4, width: 200}
+      name: laundry
       type: string
-    - name: childcare
-      admin_ui: {width: 200, order: 5}
+    - admin_ui: {order: 5, width: 200}
+      name: childcare
       type: string
-    - name: adultcare
-      admin_ui: {order: 6, width: 200}
+    - admin_ui: {order: 6, width: 200}
+      name: adultcare
       type: string
-    - name: voluntaryactivity
-      admin_ui: {width: 200, order: 7}
+    - admin_ui: {order: 7, width: 200}
+      name: voluntaryactivity
       type: string
+    server: full
     title: MoneyValues
-  selectedvariables_i:
-    client: full
-    server: full
-    columns:
-    - name: name
-      admin_ui: {width: 200, order: 0}
-      type: string
-    - name: initialrank
-      admin_ui: {width: 200, order: 1}
-      type: string
-    - name: adjustedrank
-      admin_ui: {width: 200, order: 2}
-      type: string
-    - name: age
-      admin_ui: {width: 200, order: 3}
-      type: string
-    - name: sex
-      admin_ui: {width: 200, order: 4}
-      type: string
-    - name: maritalstatus
-      admin_ui: {width: 200, order: 5}
-      type: string
-    - name: employment
-      admin_ui: {width: 200, order: 6}
-      type: string
-    - name: education
-      admin_ui: {width: 200, order: 7}
-      type: string
-    - name: country
-      admin_ui: {width: 200, order: 8}
-      type: string
-    title: SelectedVariables_I
   pop_info:
     client: full
-    server: full
     columns:
-    - name: pop_age
-      admin_ui: {order: 0.25, width: 200}
+    - admin_ui: {order: 0.25, width: 200}
+      name: pop_age
       type: string
-    - name: pop_initial
-      admin_ui: {order: 1, width: 200}
+    - admin_ui: {order: 1, width: 200}
+      name: pop_initial
       type: string
-    - name: pop_adjusted
-      admin_ui: {order: 3.34375, width: 200}
+    - admin_ui: {order: 3.34375, width: 200}
+      name: pop_adjusted
       type: string
-    - name: pop_country
-      admin_ui: {order: -1, width: 200}
+    - admin_ui: {order: -1, width: 200}
+      name: pop_country
       type: string
-    - name: pop_name
-      admin_ui: {order: -0.5, width: 200}
+    - admin_ui: {order: -0.5, width: 200}
+      name: pop_name
       type: string
-    - name: pop_percent
-      admin_ui: {order: 1.6875, width: 200}
+    - admin_ui: {order: 1.6875, width: 200}
+      name: pop_percent
       type: number
-    - name: pop_percentsuccess
-      admin_ui: {order: 2.34375, width: 200}
+    - admin_ui: {order: 2.34375, width: 200}
+      name: pop_percentsuccess
       type: number
+    server: full
     title: Pop_Info
+  selectedvariables_i:
+    client: full
+    columns:
+    - admin_ui: {order: 0, width: 200}
+      name: name
+      type: string
+    - admin_ui: {order: 1, width: 200}
+      name: initialrank
+      type: string
+    - admin_ui: {order: 2, width: 200}
+      name: adjustedrank
+      type: string
+    - admin_ui: {order: 3, width: 200}
+      name: age
+      type: string
+    - admin_ui: {order: 4, width: 200}
+      name: sex
+      type: string
+    - admin_ui: {order: 5, width: 200}
+      name: maritalstatus
+      type: string
+    - admin_ui: {order: 6, width: 200}
+      name: employment
+      type: string
+    - admin_ui: {order: 7, width: 200}
+      name: education
+      type: string
+    - admin_ui: {order: 8, width: 200}
+      name: country
+      type: string
+    server: full
+    title: SelectedVariables_I
+dependencies: []
+name: Adjusted Values Tool (PROD)
+package_name: Adjusted_Values_Tool__PROD_
 renamed: true
+runtime_options: {client_version: '3', server_spec: null, server_version: python3-full, version: 2}
+services:
+- client_config: {}
+  server_config: {}
+  source: /runtime/services/tables.yml
+- client_config: {}
+  server_config: {file_table: files}
+  source: /runtime/services/anvil/files.yml
+startup: {module: Homepage, type: form}
+startup_form: null

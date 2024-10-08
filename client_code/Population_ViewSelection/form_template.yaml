@@ -1,115 +1,115 @@
-container: {type: ColumnPanel}
 components:
-- name: popview_card
-  properties: {role: outlined-card, col_widths: '{"JBINBX":10,"TQOXBT":50,"XVFOKZ":47,"EXTUFV":13,"WXEHRE":47,"CEBGJY":13,"VNEPEA":10,"ANQAEJ":50}'}
-  type: ColumnPanel
-  layout_properties: {grid_position: 'NALXEB,CUSDYX'}
-  components:
-  - name: label_2
-    properties: {text: 'Country:', align: center}
+- components:
+  - layout_properties: {grid_position: 'MOBLUT,VNEPEA'}
+    name: label_2
+    properties: {align: center, text: 'Country:'}
     type: Label
-    layout_properties: {grid_position: 'MOBLUT,VNEPEA'}
-  - name: drop_down_1_copy
+  - data_bindings:
+    - {code: 'self.item[''pop_country'']', property: selected_value, writeback: true}
+    layout_properties: {grid_position: 'MOBLUT,ANQAEJ'}
+    name: drop_down_1_copy
     properties:
       items: [Europe (all), Belgium, Estonia, Finland, France, Greece, Romania, Serbia, ' United Kingdom']
     type: DropDown
-    layout_properties: {grid_position: 'MOBLUT,ANQAEJ'}
-    data_bindings:
-    - {property: selected_value, code: 'self.item[''pop_country'']', writeback: true}
-  - name: label_1_copy_5
+  - layout_properties: {grid_position: 'SINWZA,JBINBX'}
+    name: label_1_copy_5
     properties: {align: center, text: 'Group Name:'}
     type: Label
-    layout_properties: {grid_position: 'SINWZA,JBINBX'}
-  - name: pop_showgroup_text
+  - data_bindings:
+    - {code: 'self.item[''pop_name'']', property: text, writeback: true}
+    layout_properties: {grid_position: 'SINWZA,TQOXBT'}
+    name: pop_showgroup_text
     properties: {}
     type: TextBox
-    layout_properties: {grid_position: 'SINWZA,TQOXBT'}
-    data_bindings:
-    - {property: text, code: 'self.item[''pop_name'']', writeback: true}
-  - name: label_1_copy
+  - layout_properties: {grid_position: 'DUTHBP,HBYCJH OGOKPD,KICOGD'}
+    name: label_1_copy
     properties: {align: center, text: Age Range}
     type: Label
-    layout_properties: {grid_position: 'DUTHBP,HBYCJH OGOKPD,KICOGD'}
-  - name: pop_viewage_dd
+  - data_bindings:
+    - {code: 'self.item[''pop_age'']', property: selected_value, writeback: true}
+    - {code: 'self.item[''pop_age'']', property: placeholder, writeback: false}
+    event_bindings: {}
+    layout_properties: {grid_position: 'DUTHBP,HBYCJH DVLLSV,EWVBVN'}
+    name: pop_viewage_dd
     properties:
-      items: [55-64, 65-74, 75+]
       include_placeholder: false
+      items: [55-64, 65-74, 75+]
       placeholder: self.item['pop_age_dd']
     type: DropDown
-    layout_properties: {grid_position: 'DUTHBP,HBYCJH DVLLSV,EWVBVN'}
-    data_bindings:
-    - {property: selected_value, code: 'self.item[''pop_age'']', writeback: true}
-    - {property: placeholder, code: 'self.item[''pop_age'']', writeback: false}
-    event_bindings: {}
-  - name: label_1_copy_copy
+  - layout_properties: {grid_position: 'DUTHBP,ZECENW DAWGGU,FZVREF'}
+    name: label_1_copy_copy
     properties: {align: center, text: Before}
     type: Label
-    layout_properties: {grid_position: 'DUTHBP,ZECENW DAWGGU,FZVREF'}
-  - name: pop_viewinitial_dd
+  - data_bindings:
+    - {code: 'self.item[''pop_initial'']', property: selected_value, writeback: true}
+    - {code: 'self.item[''pop_initial'']', property: placeholder, writeback: false}
+    layout_properties: {grid_position: 'DUTHBP,ZECENW KZDUNI,TRLHVH'}
+    name: pop_viewinitial_dd
     properties:
       include_placeholder: false
       items: [Good, Fair, Poor]
     type: DropDown
-    layout_properties: {grid_position: 'DUTHBP,ZECENW KZDUNI,TRLHVH'}
-    data_bindings:
-    - {property: selected_value, code: 'self.item[''pop_initial'']', writeback: true}
-    - {property: placeholder, code: 'self.item[''pop_initial'']', writeback: false}
-  - name: label_1_copy_2
+  - layout_properties: {grid_position: 'DUTHBP,GUVXPF THIISJ,ROIYWI'}
+    name: label_1_copy_2
     properties: {align: center, text: Percent Affected}
     type: Label
-    layout_properties: {grid_position: 'DUTHBP,GUVXPF THIISJ,ROIYWI'}
-  - name: pop_viewpercent_slider
-    properties: {step: 5, slider_max: 100, slider_min: 0}
-    type: form:Slider
-    layout_properties: {grid_position: 'DUTHBP,GUVXPF NRKMGV,XVFOKZ'}
-    data_bindings:
-    - {property: level, code: 'self.item[''pop_percent'']', writeback: true}
-    - {property: selected_value, code: 'self.item[''pop_percent'']', writeback: true}
+  - data_bindings:
+    - {code: 'self.item[''pop_percent'']', property: level, writeback: true}
+    - {code: 'self.item[''pop_percent'']', property: selected_value, writeback: true}
     event_bindings: {change: pop_viewpercent_slider_change}
-  - name: pop_viewpercent_label
+    layout_properties: {grid_position: 'DUTHBP,GUVXPF NRKMGV,XVFOKZ'}
+    name: pop_viewpercent_slider
+    properties: {slider_max: 100, slider_min: 0, step: 5}
+    type: form:Slider
+  - data_bindings:
+    - {code: 'self.item[''pop_percent'']', property: text, writeback: false}
+    layout_properties: {grid_position: 'DUTHBP,GUVXPF NRKMGV,EXTUFV'}
+    name: pop_viewpercent_label
     properties: {text: '1'}
     type: Label
-    layout_properties: {grid_position: 'DUTHBP,GUVXPF NRKMGV,EXTUFV'}
-    data_bindings:
-    - {property: text, code: 'self.item[''pop_percent'']', writeback: false}
-  - name: label_1_copy_3
+  - layout_properties: {grid_position: 'DUTHBP,CSRCRD KJPXIV,MTRLDG'}
+    name: label_1_copy_3
     properties: {align: center, text: Percent Success}
     type: Label
-    layout_properties: {grid_position: 'DUTHBP,CSRCRD KJPXIV,MTRLDG'}
-  - name: pop_viewpercent_s_slider
-    properties: {step: 5, slider_max: 100, slider_min: 0}
-    type: form:Slider
-    layout_properties: {grid_position: 'DUTHBP,CSRCRD MPAZXK,WXEHRE'}
-    data_bindings:
-    - {property: level, code: 'self.item[''pop_percentsuccess'']', writeback: true}
-    - {property: selected_value, code: 'self.item[''pop_percentsuccess'']', writeback: true}
+  - data_bindings:
+    - {code: 'self.item[''pop_percentsuccess'']', property: level, writeback: true}
+    - {code: 'self.item[''pop_percentsuccess'']', property: selected_value, writeback: true}
     event_bindings: {change: pop_viewpercent_s_slider_change}
-  - name: pop_viewpercent_s_label
+    layout_properties: {grid_position: 'DUTHBP,CSRCRD MPAZXK,WXEHRE'}
+    name: pop_viewpercent_s_slider
+    properties: {slider_max: 100, slider_min: 0, step: 5}
+    type: form:Slider
+  - data_bindings:
+    - {code: 'self.item[''pop_percentsuccess'']', property: text, writeback: false}
+    layout_properties: {grid_position: 'DUTHBP,CSRCRD MPAZXK,CEBGJY'}
+    name: pop_viewpercent_s_label
     properties: {text: '1'}
     type: Label
-    layout_properties: {grid_position: 'DUTHBP,CSRCRD MPAZXK,CEBGJY'}
-    data_bindings:
-    - {property: text, code: 'self.item[''pop_percentsuccess'']', writeback: false}
-  - name: label_1_copy_4
+  - layout_properties: {grid_position: 'DUTHBP,FPCIPL JXWTHH,YFGVWI'}
+    name: label_1_copy_4
     properties: {align: center, text: After}
     type: Label
-    layout_properties: {grid_position: 'DUTHBP,FPCIPL JXWTHH,YFGVWI'}
-  - name: pop_viewadjusted_dd
-    properties:
-      items: [Good, Fair, Poor]
-      include_placeholder: false
-    type: DropDown
+  - data_bindings:
+    - {code: 'self.item[''pop_adjusted'']', property: selected_value, writeback: true}
+    - {code: 'self.item[''pop_adjusted'']', property: placeholder, writeback: false}
     layout_properties: {grid_position: 'DUTHBP,FPCIPL GLQXGB,BAPTNT'}
-    data_bindings:
-    - {property: selected_value, code: 'self.item[''pop_adjusted'']', writeback: true}
-    - {property: placeholder, code: 'self.item[''pop_adjusted'']', writeback: false}
-  - name: pop_money_button
-    properties: {text: Set Hourly Rates By Activity, role: outlined-button}
+    name: pop_viewadjusted_dd
+    properties:
+      include_placeholder: false
+      items: [Good, Fair, Poor]
+    type: DropDown
+  - layout_properties: {grid_position: 'LSUDOI,RKCCNS'}
+    name: pop_money_button
+    properties: {role: outlined-button, text: Set Hourly Rates By Activity}
     type: Button
-    layout_properties: {grid_position: 'LSUDOI,RKCCNS'}
-  - name: pop_delete_button
-    properties: {text: Delete Group, role: filled-button, align: right, visible: false}
-    type: Button
+  - event_bindings: {click: pop_delete_button_click}
     layout_properties: {grid_position: 'LSUDOI,UHZVHQ'}
-    event_bindings: {click: pop_delete_button_click}
+    name: pop_delete_button
+    properties: {align: right, role: filled-button, text: Delete Group, visible: false}
+    type: Button
+  layout_properties: {grid_position: 'NALXEB,CUSDYX'}
+  name: popview_card
+  properties: {col_widths: '{"JBINBX":10,"TQOXBT":50,"XVFOKZ":47,"EXTUFV":13,"WXEHRE":47,"CEBGJY":13,"VNEPEA":10,"ANQAEJ":50}', role: outlined-card}
+  type: ColumnPanel
+container: {type: ColumnPanel}
 is_package: true
