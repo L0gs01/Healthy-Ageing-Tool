@@ -59,6 +59,7 @@ components:
     type: form:Slider
   - data_bindings:
     - {code: 'self.item['''']', property: text, writeback: false}
+    event_bindings: {show: percent_label_show}
     layout_properties: {grid_position: 'FHPFXP,CXTNST LNZYUI,YCHSHT'}
     name: percent_label
     properties: {align: right, text: '0'}
