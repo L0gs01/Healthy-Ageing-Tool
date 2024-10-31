@@ -163,7 +163,7 @@ class Homepage(HomepageTemplate):
     self.initial_rank2.content = self.initialrank_label.text
     self.adjusted_rank1.content = self.adjustedrank_label.text
     self.adjusted_rank2.content = self.adjustedrank_label.text   
-    initial_value_text = anvil.server.call('get_inital_value')
+    c
     self.initial_box.content = initial_value_text
     self.initial_value.content = initial_value_text
     adjusted_value_text = anvil.server.call('get_adjusted_value')
